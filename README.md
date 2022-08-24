@@ -27,8 +27,8 @@ This course provides future data analysts with several tools, methods, and skill
 By the end of this course, learners will be able to:&#x20;
 
 * Use RStudio, read R documentation, and write R scripts,&#x20;
-* Import, export and manipulate data,
-* Produce statistical summaries of continuous and categorical data,&#x20;
+* Import, export, and manipulate data,
+* Create statistical summaries of continuous and categorical data,&#x20;
 * Produce basic and advanced graphics using the ggplot2 library,
 * Perform standard hypothesis tests and run simple regression models,
 * Produce statistical analysis reports in R Markdown/R Notebooks.
