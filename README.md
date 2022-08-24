@@ -10,4 +10,10 @@ Class time and location:
 
 ### Instructor: <a href="#instructor" id="instructor"></a>
 
-Armin Yeganeh, Ph.D.Email: armin@msu.eduOffice location: Human Ecology Building,Office hours: By appointment
+Armin Yeganeh, Ph.D.
+
+Email: armin@msu.edu
+
+Office location: Human Ecology Building
+
+Office hours: By appointment
