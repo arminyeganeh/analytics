@@ -10,17 +10,14 @@ Class time and location:
 
 ### Instructor <a href="#instructor" id="instructor"></a>
 
-Armin Yeganeh, Ph.D.
-
-Email: armin@msu.edu
-
-Office location: Human Ecology Building
-
-Office hours: By appointment
+* Name: Armin Yeganeh, Ph.D.
+* Email: armin@msu.edu
+* Office: Human Ecology Building
+* Hours: Please schedule an appointment by email
 
 ### Course Description <a href="#instructor" id="instructor"></a>
 
-This course provides future data analysts with several tools, methods, and skills needed to answer real-life questions. Learners will practice collecting, preparing, processing, visualizing, and interpreting data, and reporting reproducible results to improve decisionmaking in business, finance, and policy areas. Using the most widely used statistical programming languages, such as R and Python, learners will study data wrangling and exploration, regression analysis, causal analysis, and machine learning. Through several case studies, learners will apply the acquired skills to problems focused on housing and community development.
+This course provides future data analysts with several tools, methods, and skills needed to answer real-life questions. Learners will practice collecting, preparing, processing, visualizing, and interpreting data, and reporting reproducible results to improve decision-making in business, finance, and policy areas. Using the most widely used statistical programming languages, such as R and Python, learners will study data wrangling and exploration, regression analysis, causal analysis, and machine learning. Through several case studies, learners will apply the acquired skills to problems focused on housing and community development.
 
 ### Learning Outcomes
 
