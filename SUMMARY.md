@@ -3,10 +3,6 @@
 ## Course Information
 
 * [Syllabus](README.md)
-* [Week 2](<course-schedule/week-2/README (1).md>)
-  * [Lecture 1](course-schedule/week-2/lecture-1.md)
-  * [Lecture 2](<course-schedule/week-2/lecture-2 (1).md>)
-  * [Lab](course-schedule/week-2/lab.md)
 
 ## Course Schedule
 
@@ -16,6 +12,6 @@
   * [Lab](course-schedule/week-1/lab.md)
   * [Assignments](course-schedule/week-1/assignments.md)
 * [Week 2](course-schedule/week-2/README.md)
-  * [Lecture 1](<course-schedule/week-2/lecture-1 (1).md>)
+  * [Lecture 1](course-schedule/week-2/lecture-1.md)
   * [Lecture 2](course-schedule/week-2/lecture-2.md)
-  * [Lab](<course-schedule/week-2/lab (1).md>)
+  * [Lab](course-schedule/week-2/lab.md)
