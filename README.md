@@ -29,3 +29,22 @@ By the end of this course, learners will be able to:&#x20;
 * Produce basic and advanced graphics using the ggplot2 library,
 * Perform standard hypothesis tests and run simple regression models,
 * Produce statistical analysis reports in R Markdown/R Notebooks.
+
+### Prerequisites
+
+* Graduate standing required.
+
+### Textbooks
+
+* [Data Analysis for Business, Economics, and Analysis](https://www.amazon.com/Data-Analysis-Business-Economics-Policy/dp/1108483011) by G. Bekez and G. Kezdi
+* [R for Data Science](https://r4ds.had.co.nz/) by G. Grolemund and H. Wickham
+
+### Course Requirements
+
+* Laptop and internet connection
+
+### Course Work
+
+Your grade in this course will be determined by attendance (10%), bi-weekly assignments (40%), lab quizzes (20%), and a final project (30%).
+
+Weekly assignments will take the form of a single [R Markdown](https://rmarkdown.rstudio.com/). Except where otherwise noted, assignments are typically due in two weeks, on Fridays at 11:59 pm ET. The final course assignment grade will be the average of all assignments, excluding the one that has the lowest grade. Assignments and the final project will be evaluated on the basis of Correctness, Style,&#x20;
