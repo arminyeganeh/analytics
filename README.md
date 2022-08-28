@@ -17,7 +17,7 @@ Class time and location:
 
 ### Course Description <a href="#instructor" id="instructor"></a>
 
-This course provides future data analysts with several tools, methods, and skills needed to answer real-life questions. Learners will practice collecting, preparing, processing, visualizing, and interpreting data, and reporting reproducible results to improve decision-making in business, finance, and policy areas. Using the most widely used statistical programming languages, such as R and Python, learners will study data wrangling and exploration, regression analysis, causal analysis, and machine learning. Through several case studies, learners will apply the acquired skills to problems focused on housing and community development.
+This gradute-level course provides future data analysts with several tools, methods, and skills to answer real-life questions. Learners will practice collecting, preparing, processing, visualizing, and interpreting data, and reporting reproducible results to improve decision-making in business, finance, and policy areas. Using the most widely used statistical programming languages, such as R and Python, learners will study data wrangling and exploration, regression analysis, causal analysis, and machine learning. Through several case studies, learners will apply the acquired skills to problems focused on housing and community development.
 
 ### Learning Outcomes
 
@@ -30,23 +30,18 @@ By the end of this course, learners will be able to:&#x20;
 * Perform standard hypothesis tests and run simple regression models,
 * Produce statistical analysis reports in R Markdown/R Notebooks.
 
-### Prerequisites
-
-* Graduate standing
-* Laptop and internet connection&#x20;
-
 ### Textbooks
 
 * [Data Analysis for Business, Economics, and Analysis](https://www.amazon.com/Data-Analysis-Business-Economics-Policy/dp/1108483011) by G. Bekez and G. Kezdi
 * [R for Data Science](https://r4ds.had.co.nz/) by G. Grolemund and H. Wickham
 
+### Course Work
+
+The statistical computing package we will use in this course is R, which is available on many campus computers. A copy from [http://www.r-project.org](http://www.r-project.org/). We require that you use R Markdown to complete your assignments, which is enabled very nicely with [RStudio](http://www.rstudio.com/).
+
 ## Part 2: Schedule <a href="#part-1-course-information" id="part-1-course-information"></a>
 
 
-
-### Course Work
-
-The statistical computing package we will use in this course is R, which is available on many campus computers. You may download your own copy from [http://www.r-project.org](http://www.r-project.org/). We require that you use R Markdown to complete your assignments, which is enabled very nicely with [RStudio](http://www.rstudio.com/).
 
 ## Part 3: Assessment <a href="#part-1-course-information" id="part-1-course-information"></a>
 
@@ -58,14 +53,12 @@ Weekly assignments will take the form of a single [R Markdown](https://rmarkdown
 
 ## Part 4: Policies <a href="#part-1-course-information" id="part-1-course-information"></a>
 
-#### Communication:
+#### Communication:&#x20;
 
-Assignments and class information will be posted on Canvas and the class website.
+* Assignments and class information will be posted on Canvas and the class website.
+* For other matters, please email the instructor, including code 94842 in the subject line.
 
-#### Email:
-
-The Piazza forum should be used for general course-related questions that may be of interest to others in the class. For other types of questions (e.g., to report illness, request various permissions) please contact Prof. Chouldechova via email.\
-Please include the course code 94842 in the subject line of your email.
+The Piazza forum should be used for general course-related questions that may be of interest to others in the class.&#x20;
 
 #### Disability Services:
 
