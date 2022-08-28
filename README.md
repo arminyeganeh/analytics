@@ -45,7 +45,7 @@ The statistical computing package we will use in this course is R, which is avai
 
 ## Part 3: Assessment <a href="#part-1-course-information" id="part-1-course-information"></a>
 
-Your grade in this course will be determined by attendance (10%), bi-weekly assignments (40%), lab quizzes (20%), and a final project (30%).
+The final grade is determined by the sum of attendance (10%), bi-weekly assignments (40%), lab quizzes (20%), and final project (30%) grades.
 
 Weekly assignments will take the form of a single [R Markdown](https://rmarkdown.rstudio.com/). Except where otherwise noted, assignments are typically due in two weeks, on Fridays at 11:59 pm ET. The final course assignment grade will be the average of all assignments, excluding the one that has the lowest grade. Assignments and the final project will be evaluated on the basis of Correctness, Style,&#x20;
 
