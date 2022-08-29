@@ -39,7 +39,7 @@ By the end of this course, learners will be able to:&#x20;
 
 The statistical computing package we will use in this course is R, which is available on many campus computers. A copy from [http://www.r-project.org](http://www.r-project.org/). We require that you use R Markdown to complete your assignments, which is enabled very nicely with [RStudio](http://www.rstudio.com/).
 
-## Part 2: Schedule of Lectures <a href="#part-1-course-information" id="part-1-course-information"></a>
+## Part 2: Lectures Schedule <a href="#part-1-course-information" id="part-1-course-information"></a>
 
 | Section                  | Lecture 1           | Lecture 2           |
 | ------------------------ | ------------------- | ------------------- |
