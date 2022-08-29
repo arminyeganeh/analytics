@@ -27,14 +27,16 @@ By the end of this course, learners will be able to:&#x20;
 
 **Contact preferences:** The best way to contact the instructor is to reach out by email (armin@msu.edu). Student-instructor communications respect [MSU’s policies on FERPA compliance](https://reg.msu.edu/roinfo/notices/privacyguidelines.aspx) and the maintenance of student data confidentiality. Office hours are by appointment. Students are encouraged to make use of office hours to discuss assignments and concepts. Use of office hours counts toward participation grades.
 
-### Course Prerequisites <a href="#instructor" id="instructor"></a>
+### Course Requirements <a href="#instructor" id="instructor"></a>
 
-The only prerequisite for this class is graduate standing at MSU. The class is quantitatively inclined, but university-level math is not required. Students may want to review the following topics if they have not used them recently: Microsoft Excel, Basic algebra (e.g., solving simultaneous equations), Basic statistics (e.g., mean, median, standard deviation), Cartesian graphing (i.e., plotting functions on x- and y- axes), Logarithms (concepts and rules of), Scientific notation and significant figures, and Unit conversions in one to three dimensions.
+**Course prerequisites:** The only prerequisite for this class is graduate standing at MSU. The class is quantitatively inclined, but university-level math is not required. Students may want to review the following topics if they have not used them recently: Microsoft Excel, Basic algebra (e.g., solving simultaneous equations), Basic statistics (e.g., mean, median, standard deviation), Cartesian graphing (i.e., plotting functions on x- and y- axes), Logarithms (concepts and rules of), Scientific notation and significant figures, and Unit conversions in one to three dimensions.
 
-### Textbooks
+**Required textbooks:** Quizzes are based on the course's main textbook **** [Data Analysis for Business, Economics, and Analysis](https://www.amazon.com/Data-Analysis-Business-Economics-Policy/dp/1108483011) by G. Bekez and G. Kezdi, which can be purchased online. Lab and homework assessments are based on multiple freely available resources, including:&#x20;
 
-* [Data Analysis for Business, Economics, and Analysis](https://www.amazon.com/Data-Analysis-Business-Economics-Policy/dp/1108483011) by G. Bekez and G. Kezdi
+* [An Introduction to R](https://cran.r-project.org/manuals.html) by W. Venables, D. Smith, and the R Core Team
 * [R for Data Science](https://r4ds.had.co.nz/) by G. Grolemund and H. Wickham
+
+
 
 ### Course Work
 
