@@ -42,28 +42,28 @@ The statistical computing package we will use in this course is R, which is avai
 
 ## Part 2: Lectures Schedule <a href="#part-1-course-information" id="part-1-course-information"></a>
 
-| Section                  | Lecture 1           | Lecture 2           |
-| ------------------------ | ------------------- | ------------------- |
-| **Exploratory Analysis** |                     |                     |
-| Week 1                   | Origins of Data     | Preparing Data      |
-| Week 2                   | Exploring Data      | Comparing Data      |
-| Week 3                   | Generalization      | Hypothesis Testing  |
-| **Regression Analysis**  |                     |                     |
-| Week 4                   | Simple Regression   | Complex Patterns    |
-| Week 5                   | Regression Results  | Multiple Regression |
-| Week 6                   | Probability Models  | Time Series 1       |
-| **Predictive Analysis**  |                     |                     |
-| Week 7                   | Predictive Analysis | Predictive Modeling |
-| Week 8                   | Regression Trees    | Random Forest       |
-| Week 9                   | Classification      | Time Series 2       |
-| **Causal Analysis**      |                     |                     |
-| Week 10                  | Causal Analysis     | Experiment Design   |
-| Week 11                  | Matching            | Diff-in-Diffs       |
-| Week 12                  | Panelized Data      | Control Panel Data  |
-| **Spatial Analysis**     |                     |                     |
-| Week 13                  | Working with APIs   | Imputing Data       |
-| Week 14                  |                     |                     |
-|                          |                     |                     |
+| Section                   | Lecture 1           | Lecture 2           |
+| ------------------------- | ------------------- | ------------------- |
+| **Descriptive Analytics** |                     |                     |
+| Week 1                    | Origins of Data     | Preparing Data      |
+| Week 2                    | Exploring Data      | Comparing Data      |
+| Week 3                    | Generalization      | Hypothesis Testing  |
+| **Diagnostic Analytics**  |                     |                     |
+| Week 4                    | Simple Regression   | Complex Patterns    |
+| Week 5                    | Regression Results  | Multiple Regression |
+| Week 6                    | Probability Models  | Time Series 1       |
+| **Predictive Analytics**  |                     |                     |
+| Week 7                    | Predictive Analysis | Predictive Modeling |
+| Week 8                    | Regression Trees    | Random Forest       |
+| Week 9                    | Classification      | Time Series 2       |
+| **Causal Analytics**      |                     |                     |
+| Week 10                   | Causal Analysis     | Experiment Design   |
+| Week 11                   | Matching            | Diff-in-Diffs       |
+| Week 12                   | Panelized Data      | Control Panel Data  |
+| **Spatial Analytics**     |                     |                     |
+| Week 13                   | Working with APIs   | Imputing Data       |
+| Week 14                   |                     |                     |
+|                           |                     |                     |
 
 ## Part 3: Assessment <a href="#part-1-course-information" id="part-1-course-information"></a>
 
