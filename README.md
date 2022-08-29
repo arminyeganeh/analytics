@@ -17,7 +17,7 @@ Class time and location:
 
 ### Course Description <a href="#instructor" id="instructor"></a>
 
-This gradute-level course provides future data analysts with several tools, methods, and skills to answer real-life questions. Learners will practice collecting, preparing, processing, visualizing, and interpreting data, and reporting reproducible results to improve decision-making in business, finance, and policy areas. Using the most widely used statistical programming languages, such as R and Python, learners will study data wrangling and exploration, regression analysis, causal analysis, and machine learning. Through several case studies, learners will apply the acquired skills to problems focused on housing and community development.
+This graduate-level course provides future data analysts with several tools, methods, and skills to answer real-life questions. Learners will practice collecting, preparing, processing, visualizing, and interpreting data, and reporting reproducible results to improve decision-making in business, finance, and policy areas. Using the most widely used statistical programming languages, such as R and Python, learners will study data wrangling and exploration, regression analysis, causal analysis, and machine learning. Through several case studies, learners will apply the acquired skills to problems focused on housing and community development.
 
 ### Learning Outcomes
 
@@ -41,26 +41,32 @@ The statistical computing package we will use in this course is R, which is avai
 
 ## Part 2: Schedule <a href="#part-1-course-information" id="part-1-course-information"></a>
 
-| Time    | Lecture | Lab | Homework |
-| ------- | ------- | --- | -------- |
-| Week 1  |         |     |          |
-| Week 2  |         |     |          |
-| Week 3  |         |     |          |
-| Week 4  |         |     |          |
-| Week 5  |         |     |          |
-| Week 6  |         |     |          |
-| Week 7  |         |     |          |
-| Week 8  |         |     |          |
-| Week 9  |         |     |          |
-| Week 10 |         |     |          |
-| Week 11 |         |     |          |
-| Week 12 |         |     |          |
-| Week 13 |         |     |          |
-| Week 14 |         |     |          |
+| Section                                                         | Lecture 1            | Lecture 2           | Labs/Homework        |
+| --------------------------------------------------------------- | -------------------- | ------------------- | -------------------- |
+| **Exploratory Analysis**                                        |                      |                     |                      |
+| Week 1                                                          | Origins of Data      | Preparing Data      |                      |
+| Week 2                                                          | Exploratory Analysis | Comparing Data      |                      |
+| Week 3                                                          | Generalizing Results | Hypothesis Testing  |                      |
+| **Regression Analysis**                                         |                      |                     | **Assignment 1 Due** |
+| Week 4                                                          | Simple Regression    | Complex Patterns    |                      |
+| Week 5                                                          | Regression Results   | Multiple Regression |                      |
+| Week 6                                                          | Probability Models   | Time Series 1       |                      |
+| **Predictive Analysis**                                         |                      |                     | **Assignment 2 Due** |
+| Week 7                                                          | Predictive Analysis  | Predictive Modeling |                      |
+| Week 8                                                          | Regression Trees     | Random Forest       |                      |
+| Week 9                                                          | Classification       | Time Series 2       |                      |
+| <p><strong>Causal</strong> </p><p><strong>Analysis</strong></p> |                      |                     | **Assignment 3 Due** |
+| Week 10                                                         | Causal Analysis      | Experiment Design   |                      |
+| Week 11                                                         | Matching             | Diff-in-Diffs       |                      |
+| Week 12                                                         | Panelized Data       | Control Panel Data  |                      |
+|                                                                 |                      |                     | **Assignment 4 Due** |
+| Week 13                                                         | Working with APIs    | Imputing Data       |                      |
+| Week 14                                                         |                      |                     |                      |
+|                                                                 |                      |                     | Project Due          |
 
 ## Part 3: Assessment <a href="#part-1-course-information" id="part-1-course-information"></a>
 
-The final grade is determined by the sum of attendance (10%), bi-weekly assignments (40%), lab quizzes (20%), and final project (30%) grades.
+The final grade is determined by the sum of attendance (10%), bi-weekly assignments (70%), and final project (20%) grades.
 
 Weekly assignments will take the form of a single [R Markdown](https://rmarkdown.rstudio.com/). Except where otherwise noted, assignments are typically due in two weeks, on Fridays at 11:59 pm ET. The final course assignment grade will be the average of all assignments, excluding the one that has the lowest grade. Assignments and the final project will be evaluated on the basis of Correctness, Style,&#x20;
 
