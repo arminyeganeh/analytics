@@ -31,8 +31,6 @@ By the end of this course, learners will be able to:&#x20;
 
 The only prerequisite for this class is graduate standing at Michigan State University. The class is quantitatively inclined, but university-level math is not required. Students may want to review the following topics if they have not used them recently: Microsoft Excel, Basic algebra (e.g., solving simultaneous equations), Basic statistics (e.g., mean, median, standard deviation), Cartesian graphing (i.e., plotting functions on x- and y- axes), Logarithms (concepts and rules of), Scientific notation and significant figures, and Unit conversions in one to three dimensions.
 
-**Instructor Background:** Ar
-
 ### Textbooks
 
 * [Data Analysis for Business, Economics, and Analysis](https://www.amazon.com/Data-Analysis-Business-Economics-Policy/dp/1108483011) by G. Bekez and G. Kezdi
@@ -84,6 +82,6 @@ Weekly assignments will take the form of a single [R Markdown](https://rmarkdown
 
 The Piazza forum should be used for general course-related questions that may be of interest to others in the class.&#x20;
 
-#### Disability Services:
+**Disability Services:** If you have a disability and need special accommodations in this class, please contact the instructor. You may also want to contact the Disability Resources office at 412-268-2013.
 
-If you have a disability and need special accommodations in this class, please contact the instructor. You may also want to contact the Disability Resources office at 412-268-2013.
+**Course Content:** The instructor reserves the right to make changes to the syllabus or course content at any time. Students have the responsibility to check email or in-class announcements for changes in assignment requirements, due dates, and materials.
