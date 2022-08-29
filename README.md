@@ -69,35 +69,39 @@ The statistical computing package we will use in this course is R, which is avai
 
 ## Part 3: Assessment <a href="#part-1-course-information" id="part-1-course-information"></a>
 
-The final grade is determined by the sum of attendance (10%), bi-weekly assignments (70%), and final project (20%) grades.
+The final grade is determined by the sum of attendance (10%), quizzes (10%), labs (20%), and homeworks (60%).
 
 Weekly assignments will take the form of a single [R Markdown](https://rmarkdown.rstudio.com/). Except where otherwise noted, assignments are typically due in two weeks, on Fridays at 11:59 pm ET. The final course assignment grade will be the average of all assignments, excluding the one that has the lowest grade. Assignments and the final project will be evaluated on the basis of Correctness, Style,&#x20;
 
 #### **Schedule of Assignments**&#x20;
 
-| Section                       | Quiz                | Lab                 | Homework             |
-| ----------------------------- | ------------------- | ------------------- | -------------------- |
-| **A. Descriptive Analytics**  |                     |                     |                      |
-| Week 1                        | Quiz A1             | Lab A1              | Homework A1          |
-| Week 2                        | Quiz A2             | Lab A2              | Homework A2          |
-| Week 3                        | Quiz A3             | Lab A3              | Homework A3          |
-|                               |                     |                     | **Assignment A Due** |
-| **B. Diagnostic Analytics 1** |                     |                     |                      |
-| Week 4                        | Quiz B.1            | Lab B1              | Homework B1          |
-| Week 5                        | Quiz B2             | Lab B2              | Homework B2          |
-| Week 6                        | Quiz B3             | Lab B3              | Homework B3          |
-| **C. Diagnostic Analytics 2** |                     |                     |                      |
-| Week 7                        | Causal Analysis     | Experiment Design   |                      |
-| Week 8                        | Matching            | Diff-in-Diffs       |                      |
-| Week 9                        | Panelized Data      | Control Panel Data  |                      |
-| **D. Predictive Analytics**   |                     |                     |                      |
-| Week 10                       | Predictive Analysis | Predictive Modeling |                      |
-| Week 11                       | Regression Trees    | Random Forest       |                      |
-| Week 12                       | Classification      | Time Series 2       |                      |
-| **E. Prescriptive Analytics** |                     |                     |                      |
-| Week 13                       | TBD                 | TBD                 |                      |
-| Week 14                       | TBD                 | TBD                 |                      |
-| Week 15                       | TBD                 | TBD                 |                      |
+| Section                       | Quiz     | Lab                 | Homework             |
+| ----------------------------- | -------- | ------------------- | -------------------- |
+| **A. Descriptive Analytics**  |          |                     |                      |
+| Week 1                        | Quiz A1  | Lab A1              | Homework A1          |
+| Week 2                        | Quiz A2  | Lab A2              | Homework A2          |
+| Week 3                        | Quiz A3  | Lab A3              | Homework A3          |
+|                               |          |                     | **Assignment A Due** |
+| **B. Diagnostic Analytics 1** |          |                     |                      |
+| Week 4                        | Quiz B1  | Lab B1              | Homework B1          |
+| Week 5                        | Quiz B2  | Lab B2              | Homework B2          |
+| Week 6                        | Quiz B3  | Lab B3              | Homework B3          |
+|                               |          |                     | **Assignment B Due** |
+| **C. Diagnostic Analytics 2** |          |                     |                      |
+| Week 7                        | Quiz C1  | Lab C1              | Homework C1          |
+| Week 8                        | Quiz C2  | Lab C2              | Homework C2          |
+| Week 9                        | Quiz C3  | Lab C3              | Homework C3          |
+|                               |          |                     | **Assignment C Due** |
+| **D. Predictive Analytics**   |          |                     |                      |
+| Week 10                       | Quiz B.1 | Predictive Modeling |                      |
+| Week 11                       | Quiz B.1 | Random Forest       |                      |
+| Week 12                       | Quiz B.1 | Time Series 2       |                      |
+|                               |          |                     | **Assignment D Due** |
+| **E. Prescriptive Analytics** |          |                     |                      |
+| Week 13                       | Quiz B.1 | TBD                 |                      |
+| Week 14                       | Quiz B.1 | TBD                 |                      |
+| Week 15                       | Quiz B.1 | TBD                 |                      |
+|                               |          |                     | **Assignment E Due** |
 
 ## &#x20;<a href="#part-1-course-information" id="part-1-course-information"></a>
 
