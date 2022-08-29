@@ -40,36 +40,66 @@ The only prerequisite for this class is graduate standing at Michigan State Univ
 
 The statistical computing package we will use in this course is R, which is available on many campus computers. A copy from [http://www.r-project.org](http://www.r-project.org/). We require that you use R Markdown to complete your assignments, which is enabled very nicely with [RStudio](http://www.rstudio.com/).
 
-## Part 2: Lectures Schedule <a href="#part-1-course-information" id="part-1-course-information"></a>
+## Part 2: Schedule <a href="#part-1-course-information" id="part-1-course-information"></a>
 
-| Section                   | Lecture 1           | Lecture 2           |
-| ------------------------- | ------------------- | ------------------- |
-| **Descriptive Analytics** |                     |                     |
-| Week 1                    | Origins of Data     | Preparing Data      |
-| Week 2                    | Exploring Data      | Comparing Data      |
-| Week 3                    | Generalization      | Hypothesis Testing  |
-| **Diagnostic Analytics**  |                     |                     |
-| Week 4                    | Simple Regression   | Complex Patterns    |
-| Week 5                    | Regression Results  | Multiple Regression |
-| Week 6                    | Probability Models  | Time Series 1       |
-| **Predictive Analytics**  |                     |                     |
-| Week 7                    | Predictive Analysis | Predictive Modeling |
-| Week 8                    | Regression Trees    | Random Forest       |
-| Week 9                    | Classification      | Time Series 2       |
-| **Causal Analytics**      |                     |                     |
-| Week 10                   | Causal Analysis     | Experiment Design   |
-| Week 11                   | Matching            | Diff-in-Diffs       |
-| Week 12                   | Panelized Data      | Control Panel Data  |
-| **Spatial Analytics**     |                     |                     |
-| Week 13                   | Working with APIs   | Imputing Data       |
-| Week 14                   |                     |                     |
-|                           |                     |                     |
+#### **Schedule of Lecture Topics**&#x20;
+
+| Section                       | Lecture 1           | Lecture 2           |
+| ----------------------------- | ------------------- | ------------------- |
+| **A. Descriptive Analytics**  |                     |                     |
+| Week 1                        | Origins of Data     | Preparing Data      |
+| Week 2                        | Exploring Data      | Comparing Data      |
+| Week 3                        | Generalization      | Hypothesis Testing  |
+| **B. Diagnostic Analytics 1** |                     |                     |
+| Week 4                        | Simple Regression   | Complex Patterns    |
+| Week 5                        | Regression Results  | Multiple Regression |
+| Week 6                        | Probability Models  | Time Series 1       |
+| **C. Diagnostic Analytics 2** |                     |                     |
+| Week 7                        | Causal Analysis     | Experiment Design   |
+| Week 8                        | Matching            | Diff-in-Diffs       |
+| Week 9                        | Panelized Data      | Control Panel Data  |
+| **D. Predictive Analytics**   |                     |                     |
+| Week 10                       | Predictive Analysis | Predictive Modeling |
+| Week 11                       | Regression Trees    | Random Forest       |
+| Week 12                       | Classification      | Time Series 2       |
+| **E. Prescriptive Analytics** |                     |                     |
+| Week 13                       | TBD                 | TBD                 |
+| Week 14                       | TBD                 | TBD                 |
+| Week 15                       | TBD                 | TBD                 |
 
 ## Part 3: Assessment <a href="#part-1-course-information" id="part-1-course-information"></a>
 
 The final grade is determined by the sum of attendance (10%), bi-weekly assignments (70%), and final project (20%) grades.
 
 Weekly assignments will take the form of a single [R Markdown](https://rmarkdown.rstudio.com/). Except where otherwise noted, assignments are typically due in two weeks, on Fridays at 11:59 pm ET. The final course assignment grade will be the average of all assignments, excluding the one that has the lowest grade. Assignments and the final project will be evaluated on the basis of Correctness, Style,&#x20;
+
+#### **Schedule of Assignments**&#x20;
+
+| Section                       | Quiz                | Lab                 | Homework             |
+| ----------------------------- | ------------------- | ------------------- | -------------------- |
+| **A. Descriptive Analytics**  |                     |                     |                      |
+| Week 1                        | Quiz A1             | Lab A1              | Homework A1          |
+| Week 2                        | Quiz A2             | Lab A2              | Homework A2          |
+| Week 3                        | Quiz A3             | Lab A3              | Homework A3          |
+|                               |                     |                     | **Assignment A Due** |
+| **B. Diagnostic Analytics 1** |                     |                     |                      |
+| Week 4                        | Quiz B.1            | Lab B1              | Homework B1          |
+| Week 5                        | Quiz B2             | Lab B2              | Homework B2          |
+| Week 6                        | Quiz B3             | Lab B3              | Homework B3          |
+| **C. Diagnostic Analytics 2** |                     |                     |                      |
+| Week 7                        | Causal Analysis     | Experiment Design   |                      |
+| Week 8                        | Matching            | Diff-in-Diffs       |                      |
+| Week 9                        | Panelized Data      | Control Panel Data  |                      |
+| **D. Predictive Analytics**   |                     |                     |                      |
+| Week 10                       | Predictive Analysis | Predictive Modeling |                      |
+| Week 11                       | Regression Trees    | Random Forest       |                      |
+| Week 12                       | Classification      | Time Series 2       |                      |
+| **E. Prescriptive Analytics** |                     |                     |                      |
+| Week 13                       | TBD                 | TBD                 |                      |
+| Week 14                       | TBD                 | TBD                 |                      |
+| Week 15                       | TBD                 | TBD                 |                      |
+
+## &#x20;<a href="#part-1-course-information" id="part-1-course-information"></a>
 
 ## &#x20;<a href="#part-1-course-information" id="part-1-course-information"></a>
 
