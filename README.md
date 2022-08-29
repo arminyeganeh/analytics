@@ -81,18 +81,15 @@ Weekly assignments will take the form of a single [R Markdown](https://rmarkdown
 | Week 1                        | Quiz A1  | Lab A1              | Homework A1          |
 | Week 2                        | Quiz A2  | Lab A2              | Homework A2          |
 | Week 3                        | Quiz A3  | Lab A3              | Homework A3          |
-|                               |          |                     | **Assignment A Due** |
-| **Section B**                 |          |                     |                      |
+| **Section B**                 |          |                     | **Submission A Due** |
 | Week 4                        | Quiz B1  | Lab B1              | Homework B1          |
 | Week 5                        | Quiz B2  | Lab B2              | Homework B2          |
 | Week 6                        | Quiz B3  | Lab B3              | Homework B3          |
-|                               |          |                     | **Assignment B Due** |
-| **Section C**                 |          |                     |                      |
+| **Section C**                 |          |                     | **Submission B Due** |
 | Week 7                        | Quiz C1  | Lab C1              | Homework C1          |
 | Week 8                        | Quiz C2  | Lab C2              | Homework C2          |
 | Week 9                        | Quiz C3  | Lab C3              | Homework C3          |
-|                               |          |                     | **Assignment C Due** |
-| **Section D**                 |          |                     |                      |
+| **Section D**                 |          |                     | **Submission C Due** |
 | Week 10                       | Quiz B.1 | Predictive Modeling |                      |
 | Week 11                       | Quiz B.1 | Random Forest       |                      |
 | Week 12                       | Quiz B.1 | Time Series 2       |                      |
