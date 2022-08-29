@@ -41,28 +41,28 @@ The statistical computing package we will use in this course is R, which is avai
 
 ## Part 2: Schedule <a href="#part-1-course-information" id="part-1-course-information"></a>
 
-| Section                                                         | Lecture 1            | Lecture 2           | Labs/Homework        |
-| --------------------------------------------------------------- | -------------------- | ------------------- | -------------------- |
-| **Exploratory Analysis**                                        |                      |                     |                      |
-| Week 1                                                          | Origins of Data      | Preparing Data      |                      |
-| Week 2                                                          | Exploratory Analysis | Comparing Data      |                      |
-| Week 3                                                          | Generalizing Results | Hypothesis Testing  |                      |
-| **Regression Analysis**                                         |                      |                     | **Assignment 1 Due** |
-| Week 4                                                          | Simple Regression    | Complex Patterns    |                      |
-| Week 5                                                          | Regression Results   | Multiple Regression |                      |
-| Week 6                                                          | Probability Models   | Time Series 1       |                      |
-| **Predictive Analysis**                                         |                      |                     | **Assignment 2 Due** |
-| Week 7                                                          | Predictive Analysis  | Predictive Modeling |                      |
-| Week 8                                                          | Regression Trees     | Random Forest       |                      |
-| Week 9                                                          | Classification       | Time Series 2       |                      |
-| <p><strong>Causal</strong> </p><p><strong>Analysis</strong></p> |                      |                     | **Assignment 3 Due** |
-| Week 10                                                         | Causal Analysis      | Experiment Design   |                      |
-| Week 11                                                         | Matching             | Diff-in-Diffs       |                      |
-| Week 12                                                         | Panelized Data       | Control Panel Data  |                      |
-|                                                                 |                      |                     | **Assignment 4 Due** |
-| Week 13                                                         | Working with APIs    | Imputing Data       |                      |
-| Week 14                                                         |                      |                     |                      |
-|                                                                 |                      |                     | Project Due          |
+| Section                                                         | Lecture 1           | Lecture 2           | Labs/Homework        |
+| --------------------------------------------------------------- | ------------------- | ------------------- | -------------------- |
+| **Exploratory Analysis**                                        |                     |                     |                      |
+| Week 1                                                          | Origins of Data     | Preparing Data      |                      |
+| Week 2                                                          | Exploring Data      | Comparing Data      |                      |
+| Week 3                                                          | Generalization      | Hypothesis Testing  |                      |
+| **Regression Analysis**                                         |                     |                     | **Assignment 1 Due** |
+| Week 4                                                          | Simple Regression   | Complex Patterns    |                      |
+| Week 5                                                          | Regression Results  | Multiple Regression |                      |
+| Week 6                                                          | Probability Models  | Time Series 1       |                      |
+| **Predictive Analysis**                                         |                     |                     | **Assignment 2 Due** |
+| Week 7                                                          | Predictive Analysis | Predictive Modeling |                      |
+| Week 8                                                          | Regression Trees    | Random Forest       |                      |
+| Week 9                                                          | Classification      | Time Series 2       |                      |
+| <p><strong>Causal</strong> </p><p><strong>Analysis</strong></p> |                     |                     | **Assignment 3 Due** |
+| Week 10                                                         | Causal Analysis     | Experiment Design   |                      |
+| Week 11                                                         | Matching            | Diff-in-Diffs       |                      |
+| Week 12                                                         | Panelized Data      | Control Panel Data  |                      |
+|                                                                 |                     |                     | **Assignment 4 Due** |
+| Week 13                                                         | Working with APIs   | Imputing Data       |                      |
+| Week 14                                                         |                     |                     |                      |
+|                                                                 |                     |                     | Project Due          |
 
 ## Part 3: Assessment <a href="#part-1-course-information" id="part-1-course-information"></a>
 
