@@ -23,13 +23,13 @@ By the end of this course, learners will be able to:&#x20;
 
 ### Instructor Background and Contact <a href="#instructor" id="instructor"></a>
 
-**Instructor Background:** Armin Yeganeh, Ph.D. is a tenure system Assistant Professor in the Construction Management Program at the School of Planning, Design, and Construction at Michigan State University. His research questions on innovative practices and policies that can help advance construction management, sustainable housing, and real estate development. Armin is interested in employing empirical, quantitative research methods to explore the intersection of economic development, environmental protection, and societal equity to implement sustainability as part of planning, design, construction, and operations. Before joining Michigan State University, Armin was a Postdoctoral Research Associate at Virginia Tech where he earned his Ph.D. in Environmental Design and Planning. During his graduate education, he worked at the Virginia Center for Housing Research on drafting and presenting industry reports, studies, policies, programs, panel discussions, and presentations on housing and community development. Armin received his first master’s degree in Architectural Engineering from Iran University of Science and Technology. At Virginia Tech, he received a master’s degree in Urban and Regional Planning and a master’s degree in Building Science and Construction Management.
+**Instructor Background:** Armin Yeganeh, Ph.D. is a tenure system Assistant Professor in the Construction Management Program at the School of Planning, Design, and Construction at Michigan State University (MSU). His research questions on innovative practices and policies that can help advance construction management, sustainable housing, and real estate development. Armin is interested in employing empirical, quantitative research methods to explore the intersection of economic development, environmental protection, and societal equity to implement sustainability as part of planning, design, construction, and operations. Before joining MSU, Armin was a Postdoctoral Research Associate at Virginia Tech where he earned his Ph.D. in Environmental Design and Planning. During his graduate education, he worked at the Virginia Center for Housing Research on drafting and presenting industry reports, studies, policies, programs, panel discussions, and presentations on housing and community development. Armin received his first master’s degree in Architectural Engineering from Iran University of Science and Technology. At Virginia Tech, he received a master’s degree in Urban and Regional Planning and a master’s degree in Building Science and Construction Management.
 
 **Contact preferences:** The best way to contact the instructor is to reach out by email (armin@msu.edu). Student-instructor communications respect [MSU’s policies on FERPA compliance](https://reg.msu.edu/roinfo/notices/privacyguidelines.aspx) and the maintenance of student data confidentiality. Office hours are by appointment. Students are encouraged to make use of office hours to discuss assignments and concepts. Use of office hours counts toward participation grades.
 
 ### Course Prerequisites <a href="#instructor" id="instructor"></a>
 
-The only prerequisite for this class is graduate standing at Michigan State University. The class is quantitatively inclined, but university-level math is not required. Students may want to review the following topics if they have not used them recently: Microsoft Excel, Basic algebra (e.g., solving simultaneous equations), Basic statistics (e.g., mean, median, standard deviation), Cartesian graphing (i.e., plotting functions on x- and y- axes), Logarithms (concepts and rules of), Scientific notation and significant figures, and Unit conversions in one to three dimensions.
+The only prerequisite for this class is graduate standing at MSU. The class is quantitatively inclined, but university-level math is not required. Students may want to review the following topics if they have not used them recently: Microsoft Excel, Basic algebra (e.g., solving simultaneous equations), Basic statistics (e.g., mean, median, standard deviation), Cartesian graphing (i.e., plotting functions on x- and y- axes), Logarithms (concepts and rules of), Scientific notation and significant figures, and Unit conversions in one to three dimensions.
 
 ### Textbooks
 
@@ -97,19 +97,9 @@ Weekly assignments will take the form of a single [R Markdown](https://rmarkdown
 | Week 15       | Quiz E3 | Lab E3 | Homework E3          |
 |               |         |        | **Assignment E Due** |
 
-### **Schedule of Assessments**
+### Grading System
 
-MSU grades are reported in increments of 0.5 (e.g.**,** 3.0, 3.5, 4.0). Instructors may choose to give you an intermediate grade on an assignment. For example, you could earn a 3.3 on your midterm and 2.9 for participation. In addition, if you earn a 3.25 grade or similar intermediate grade in the class, your instructor may choose to round up or down to the nearest reportable grade for your final course grade.
-
-Michigan State University employs three systems of grading: a numerical system, a supplemental credit-no credit system, and a limited pass-no grade system.
-
-All grades are final and may not be changed by re-examination or by the submission of additional work. See Repeating a Course.
-
-The Numerical System The numerical system consists of the following scale. 4.0 - 3.5 - 3.0 - 2.5 - 2.0 - 1.5 - 1.0 - 0.0.
-
-A+/A (93-100) 4.0 1 1 A-/B+ (87-92) 3.5 2 2 B/B- (80-86) 3.0 3 3 C+ (77-79) 2.5 4 4 C/C- (70-76) 2.0 5 5 D+ (67-69) 1.5 6 6 D/D- (60-66) 1.0 F (59 and under) 0.0
-
-The maximum grade is 4.0, which in this class equals 400 points. The final grade equals the sum of points obtained for attendance (45 points), quiz (45 points), lab (90 points), and assignment (220 points). The course includes 45 sessions (each having 1 attendance point), 15 quizzes (each having 3 quiz points), 15 labs (each having 6 lab points), and 5 assignments (each having 40 assignment points).  &#x20;
+Final grades for this course are reported based on a numerical system that consists of the following scale: 4.0 - 3.5 - 3.0 - 2.5 - 2.0 - 1.5 - 1.0 - 0.0. While the final grades are in increments of 0.5, the Instructor may choose to give an intermediate grade on an assignment, e.g., a 3.3 on the midterm, but round up or down to the nearest reportable grade for the final course grade. All grades are final and may not be changed by re-examination or by the submission of additional work. In this class, the maximum grade is 4.0, which equals 400 points. The final grade equals the sum of points obtained for attendance (45 points), quiz (45 points), lab (90 points), and assignment (220 points). The course includes 45 sessions (each having 1 attendance point), 15 quizzes (each having 3 quiz points), 15 labs (each having 6 lab points), and 5 assignments (each having 40 assignment points).  &#x20;
 
 
 
