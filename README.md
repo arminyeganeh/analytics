@@ -42,7 +42,7 @@ The statistical computing package we will use in this course is R, which is avai
 
 ## Part 2: Schedule <a href="#part-1-course-information" id="part-1-course-information"></a>
 
-#### **Schedule of Lecture Topics**&#x20;
+### **Schedule of Lecture Topics**&#x20;
 
 | Section                       | Lecture 1           | Lecture 2           |
 | ----------------------------- | ------------------- | ------------------- |
@@ -69,38 +69,49 @@ The statistical computing package we will use in this course is R, which is avai
 
 ## Part 3: Assessment <a href="#part-1-course-information" id="part-1-course-information"></a>
 
-The final grade is determined by the sum of attendance (10%), quizzes (10%), labs (20%), and homeworks (60%).
-
 Weekly assignments will take the form of a single [R Markdown](https://rmarkdown.rstudio.com/). Except where otherwise noted, assignments are typically due in two weeks, on Fridays at 11:59 pm ET. The final course assignment grade will be the average of all assignments, excluding the one that has the lowest grade. Assignments and the final project will be evaluated on the basis of Correctness, Style,&#x20;
 
-#### **Schedule of Assignments**&#x20;
+### **Schedule of Assessments**&#x20;
 
-| Section                       | Quiz     | Lab                 | Homework             |
-| ----------------------------- | -------- | ------------------- | -------------------- |
-| **Section A**                 |          |                     |                      |
-| Week 1                        | Quiz A1  | Lab A1              | Homework A1          |
-| Week 2                        | Quiz A2  | Lab A2              | Homework A2          |
-| Week 3                        | Quiz A3  | Lab A3              | Homework A3          |
-| **Section B**                 |          |                     | **Submission A Due** |
-| Week 4                        | Quiz B1  | Lab B1              | Homework B1          |
-| Week 5                        | Quiz B2  | Lab B2              | Homework B2          |
-| Week 6                        | Quiz B3  | Lab B3              | Homework B3          |
-| **Section C**                 |          |                     | **Submission B Due** |
-| Week 7                        | Quiz C1  | Lab C1              | Homework C1          |
-| Week 8                        | Quiz C2  | Lab C2              | Homework C2          |
-| Week 9                        | Quiz C3  | Lab C3              | Homework C3          |
-| **Section D**                 |          |                     | **Submission C Due** |
-| Week 10                       | Quiz B.1 | Predictive Modeling |                      |
-| Week 11                       | Quiz B.1 | Random Forest       |                      |
-| Week 12                       | Quiz B.1 | Time Series 2       |                      |
-|                               |          |                     | **Assignment D Due** |
-| **E. Prescriptive Analytics** |          |                     |                      |
-| Week 13                       | Quiz B.1 | TBD                 |                      |
-| Week 14                       | Quiz B.1 | TBD                 |                      |
-| Week 15                       | Quiz B.1 | TBD                 |                      |
-|                               |          |                     | **Assignment E Due** |
+| Section       | Quiz    | Lab    | Homework             |
+| ------------- | ------- | ------ | -------------------- |
+| **Section A** |         |        |                      |
+| Week 1        | Quiz A1 | Lab A1 | Homework A1          |
+| Week 2        | Quiz A2 | Lab A2 | Homework A2          |
+| Week 3        | Quiz A3 | Lab A3 | Homework A3          |
+| **Section B** |         |        | **Submission A Due** |
+| Week 4        | Quiz B1 | Lab B1 | Homework B1          |
+| Week 5        | Quiz B2 | Lab B2 | Homework B2          |
+| Week 6        | Quiz B3 | Lab B3 | Homework B3          |
+| **Section C** |         |        | **Submission B Due** |
+| Week 7        | Quiz C1 | Lab C1 | Homework C1          |
+| Week 8        | Quiz C2 | Lab C2 | Homework C2          |
+| Week 9        | Quiz C3 | Lab C3 | Homework C3          |
+| **Section D** |         |        | **Submission C Due** |
+| Week 10       | Quiz D1 | Lab D1 | Homework D1          |
+| Week 11       | Quiz D2 | Lab D2 | Homework D2          |
+| Week 12       | Quiz D3 | Lab D3 | Homework D3          |
+| **Section E** |         |        | **Assignment D Due** |
+| Week 13       | Quiz E1 | Lab E1 | Homework E1          |
+| Week 14       | Quiz E2 | Lab E2 | Homework E2          |
+| Week 15       | Quiz E3 | Lab E3 | Homework E3          |
+|               |         |        | **Assignment E Due** |
 
-## &#x20;<a href="#part-1-course-information" id="part-1-course-information"></a>
+### **Schedule of Assessments**
+
+MSU grades are reported in increments of 0.5 (e.g.**,** 3.0, 3.5, 4.0). Instructors may choose to give you an intermediate grade on an assignment. For example, you could earn a 3.3 on your midterm and 2.9 for participation. In addition, if you earn a 3.25 grade or similar intermediate grade in the class, your instructor may choose to round up or down to the nearest reportable grade for your final course grade.
+
+Michigan State University employs three systems of grading: a numerical system, a supplemental credit-no credit system, and a limited pass-no grade system.
+
+All grades are final and may not be changed by re-examination or by the submission of additional work. See Repeating a Course.
+
+The Numerical System The numerical system consists of the following scale. 4.0 - 3.5 - 3.0 - 2.5 - 2.0 - 1.5 - 1.0 - 0.0.
+
+A+/A (93-100) 4.0 1 1 A-/B+ (87-92) 3.5 2 2 B/B- (80-86) 3.0 3 3 C+ (77-79) 2.5 4 4 C/C- (70-76) 2.0 5 5 D+ (67-69) 1.5 6 6 D/D- (60-66) 1.0 F (59 and under) 0.0
+
+The maximum grade is 4.0, which in this class equals 400 points. The final grade equals the sum of points obtained for attendance (45 points), quiz (45 points), lab (90 points), and assignment (220 points). The course includes 45 sessions (each having 1 attendance point), 15 quizzes (each having 3 quiz points), 15 labs (each having 6 lab points), and 5 assignments (each having 40 assignment points).  &#x20;
+
+
 
 ## &#x20;<a href="#part-1-course-information" id="part-1-course-information"></a>
 
