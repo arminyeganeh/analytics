@@ -21,6 +21,10 @@ By the end of this course, learners will be able to:&#x20;
 * Perform standard hypothesis tests and run simple regression models,
 * Produce statistical analysis reports in R Markdown/R Notebooks.
 
+### Program Competencies
+
+
+
 ### Instructor Background and Contact <a href="#instructor" id="instructor"></a>
 
 **Instructor Background:** Armin Yeganeh, Ph.D. is a tenure system Assistant Professor in the Construction Management Program at the School of Planning, Design, and Construction at Michigan State University (MSU). His research questions innovative practices and policies that can help advance construction management, sustainable housing, and real estate development. Armin is interested in employing empirical, quantitative research methods to explore the intersection of economic development, environmental protection, and societal equity to implement sustainability as part of planning, design, construction, and operations. Before joining MSU, Armin was a Postdoctoral Research Associate at Virginia Tech where he earned his Ph.D. in Environmental Design and Planning. During his graduate education, he worked at the Virginia Center for Housing Research on drafting and presenting industry reports, studies, policies, programs, panel discussions, and presentations on housing and community development. Armin received his first master’s degree in Architectural Engineering from Iran University of Science and Technology. At Virginia Tech, he received a master’s degree in Urban and Regional Planning and a master’s degree in Building Science and Construction Management.
