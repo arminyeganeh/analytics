@@ -46,7 +46,7 @@ By the end of this course, learners will be able to:&#x20;
 
 ### Course Work
 
-The statistical computing package we will use in this course is R, a data programming language used for statistics, data analysis, text analysis, and machine learning. R arguably is the fastest-growing and leading statistical tool for researchers. R is freely distributed online and can be downloaded from the R homepage [http://cran.r-project.org/](https://cran.r-project.org/). Students will use R Markdown, along with [RStudio](http://www.rstudio.com/) Desktop, to complete assignments.
+The statistical computing package we will use in this course is R, a data programming language used for statistics, data analysis, text analysis, and machine learning. R arguably is the fastest-growing and leading statistical tool for researchers. R is freely distributed online and can be downloaded from the R homepage [http://cran.r-project.org/](https://cran.r-project.org/). Students will use [R Markdown](https://rmarkdown.rstudio.com/), along with [RStudio](http://www.rstudio.com/) Desktop, to complete the assignments.
 
 ## Part 2: Schedule <a href="#part-1-course-information" id="part-1-course-information"></a>
 
