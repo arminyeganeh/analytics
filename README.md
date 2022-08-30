@@ -54,7 +54,7 @@ Classes are held **\*\*\***days and **\*\*\***days from **\*\*\*** to **\*\*\***
 
 ### **Schedule of Lectures**&#x20;
 
-| Section                       | Lecture 1           | Lecture 2           |
+| Module                        | Lecture 1           | Lecture 2           |
 | ----------------------------- | ------------------- | ------------------- |
 | **A. Descriptive Analytics**  |                     |                     |
 | Week 1                        | Origins of Data     | Preparing Data      |
@@ -79,11 +79,11 @@ Classes are held **\*\*\***days and **\*\*\***days from **\*\*\*** to **\*\*\***
 
 ## Part 3: Assessment <a href="#part-1-course-information" id="part-1-course-information"></a>
 
-All students are expected to complete core readings for every module. Students are expected to complete complementary readings for at least one module based on student interest. Students will report which module for which they would like to complete the complementary readings by way of a poll. For Modules 1 and 2, class discussion of complementary readings will count as homework assignments to be completed by all students. Class discussions will revolve around discussion of complementary readings and will be led by students who completed the associated readings. The below textbook by Frumkin presents an overview of most topics covered in this class but generally does not go into the level of detail of lectures and assignments:Weekly assignments will take the form of a single [R Markdown](https://rmarkdown.rstudio.com/). Except where otherwise noted, assignments are typically due in two weeks, on Fridays at 11:59 pm ET. The final course assignment grade will be the average of all assignments, excluding the one that has the lowest grade. Assignments and the final project will be evaluated on the basis of Correctness, Style,&#x20;
+Students are expected to complete core readings for every module and complementary readings for at least one module based on student interest. Students will report which module for which they would like to complete the complementary readings by way of a poll. Class discussions will revolve around discussion of complementary readings and will be led by students who completed the associated readings. Weekly assignments will take the form of a single [R Markdown](https://rmarkdown.rstudio.com/). Except where otherwise noted, assignments are typically due at the end of the module, on Fridays at 11:59 pm ET. Assignments will be evaluated on the basis of both correctness and style.&#x20;
 
 ### **Schedule of Assessments**&#x20;
 
-| Section      | Quiz    | Lab    | Homework             |
+| Module       | Quiz    | Lab    | Homework             |
 | ------------ | ------- | ------ | -------------------- |
 | **Module A** |         |        |                      |
 | Week 1       | Quiz A1 | Lab A1 | Homework A1          |
