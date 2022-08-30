@@ -44,13 +44,15 @@ By the end of this course, learners will be able to:&#x20;
 * Grolemund G. & Wickham H. (2022) [R for Data Science](https://r4ds.had.co.nz/)
 * Venables W. et al. (2022) [An Introduction to R](https://cran.r-project.org/manuals.html)
 
-### Course Work
+### Course Structure
 
-The statistical computing package we will use in this course is R, a data programming language used for statistics, data analysis, text analysis, and machine learning. R arguably is the fastest-growing and leading statistical tool for researchers. R is freely distributed online and can be downloaded from the R homepage [http://cran.r-project.org/](https://cran.r-project.org/). Students will use [R Markdown](https://rmarkdown.rstudio.com/), along with [RStudio](http://www.rstudio.com/) Desktop, to complete the assignments.
+This course is composed of five modules, and each module is covered in three weeks. Each week involves two lecture sections followed by one lab section structured around case studies. Except for the first one, each week has core and complementary readings. The statistical computing package we will use in this course is R, a data programming language used for statistics, data analysis, text analysis, and machine learning. R arguably is the fastest-growing and leading statistical tool for researchers. R is freely distributed online and can be downloaded from the R homepage [http://cran.r-project.org/](https://cran.r-project.org/). Students will use [R Markdown](https://rmarkdown.rstudio.com/), along with [RStudio](http://www.rstudio.com/) Desktop, to complete the assignments.
 
 ## Part 2: Schedule <a href="#part-1-course-information" id="part-1-course-information"></a>
 
-### **Schedule of Lecture Topics**&#x20;
+Classes are held **\*\*\***days and **\*\*\***days from **\*\*\*** to **\*\*\***. The first day of class is **\*\*\***, January **\*\*\***th, 2023. The last day of classes is **\*\*\***day, April **\*\*\***th, 2023. Lectures are held in **\*\*\*** at **\*\*\***. The street address of the main entrance is **\*\*\***, and the classroom is at the **\*\*\*** of the **\*\*\*** level (see map). Students are normally required to attend class in person. If, however, a reasonable accommodation is needed (either to miss class and watch the lecture online or to participate in class remotely via Zoom), please tell the instructor ahead of time and the accommodation will normally be granted. A tentative schedule of lectures and class assignments is as follows.
+
+### **Schedule of Lectures**&#x20;
 
 | Section                       | Lecture 1           | Lecture 2           |
 | ----------------------------- | ------------------- | ------------------- |
@@ -77,33 +79,33 @@ The statistical computing package we will use in this course is R, a data progra
 
 ## Part 3: Assessment <a href="#part-1-course-information" id="part-1-course-information"></a>
 
-Weekly assignments will take the form of a single [R Markdown](https://rmarkdown.rstudio.com/). Except where otherwise noted, assignments are typically due in two weeks, on Fridays at 11:59 pm ET. The final course assignment grade will be the average of all assignments, excluding the one that has the lowest grade. Assignments and the final project will be evaluated on the basis of Correctness, Style,&#x20;
+All students are expected to complete core readings for every module. Students are expected to complete complementary readings for at least one module based on student interest. Students will report which module for which they would like to complete the complementary readings by way of a poll. For Modules 1 and 2, class discussion of complementary readings will count as homework assignments to be completed by all students. Class discussions will revolve around discussion of complementary readings and will be led by students who completed the associated readings. The below textbook by Frumkin presents an overview of most topics covered in this class but generally does not go into the level of detail of lectures and assignments:Weekly assignments will take the form of a single [R Markdown](https://rmarkdown.rstudio.com/). Except where otherwise noted, assignments are typically due in two weeks, on Fridays at 11:59 pm ET. The final course assignment grade will be the average of all assignments, excluding the one that has the lowest grade. Assignments and the final project will be evaluated on the basis of Correctness, Style,&#x20;
 
 ### **Schedule of Assessments**&#x20;
 
-| Section       | Quiz    | Lab    | Homework             |
-| ------------- | ------- | ------ | -------------------- |
-| **Section A** |         |        |                      |
-| Week 1        | Quiz A1 | Lab A1 | Homework A1          |
-| Week 2        | Quiz A2 | Lab A2 | Homework A2          |
-| Week 3        | Quiz A3 | Lab A3 | Homework A3          |
-| **Section B** |         |        | **Submission A Due** |
-| Week 4        | Quiz B1 | Lab B1 | Homework B1          |
-| Week 5        | Quiz B2 | Lab B2 | Homework B2          |
-| Week 6        | Quiz B3 | Lab B3 | Homework B3          |
-| **Section C** |         |        | **Submission B Due** |
-| Week 7        | Quiz C1 | Lab C1 | Homework C1          |
-| Week 8        | Quiz C2 | Lab C2 | Homework C2          |
-| Week 9        | Quiz C3 | Lab C3 | Homework C3          |
-| **Section D** |         |        | **Submission C Due** |
-| Week 10       | Quiz D1 | Lab D1 | Homework D1          |
-| Week 11       | Quiz D2 | Lab D2 | Homework D2          |
-| Week 12       | Quiz D3 | Lab D3 | Homework D3          |
-| **Section E** |         |        | **Assignment D Due** |
-| Week 13       | Quiz E1 | Lab E1 | Homework E1          |
-| Week 14       | Quiz E2 | Lab E2 | Homework E2          |
-| Week 15       | Quiz E3 | Lab E3 | Homework E3          |
-|               |         |        | **Assignment E Due** |
+| Section      | Quiz    | Lab    | Homework             |
+| ------------ | ------- | ------ | -------------------- |
+| **Module A** |         |        |                      |
+| Week 1       | Quiz A1 | Lab A1 | Homework A1          |
+| Week 2       | Quiz A2 | Lab A2 | Homework A2          |
+| Week 3       | Quiz A3 | Lab A3 | Homework A3          |
+| **Module B** |         |        | **Submission A Due** |
+| Week 4       | Quiz B1 | Lab B1 | Homework B1          |
+| Week 5       | Quiz B2 | Lab B2 | Homework B2          |
+| Week 6       | Quiz B3 | Lab B3 | Homework B3          |
+| **Module C** |         |        | **Submission B Due** |
+| Week 7       | Quiz C1 | Lab C1 | Homework C1          |
+| Week 8       | Quiz C2 | Lab C2 | Homework C2          |
+| Week 9       | Quiz C3 | Lab C3 | Homework C3          |
+| **Module D** |         |        | **Submission C Due** |
+| Week 10      | Quiz D1 | Lab D1 | Homework D1          |
+| Week 11      | Quiz D2 | Lab D2 | Homework D2          |
+| Week 12      | Quiz D3 | Lab D3 | Homework D3          |
+| **Module E** |         |        | **Assignment D Due** |
+| Week 13      | Quiz E1 | Lab E1 | Homework E1          |
+| Week 14      | Quiz E2 | Lab E2 | Homework E2          |
+| Week 15      | Quiz E3 | Lab E3 | Homework E3          |
+|              |         |        | **Assignment E Due** |
 
 ### Grading System
 
