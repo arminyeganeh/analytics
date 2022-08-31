@@ -48,13 +48,13 @@ By the end of this course, learners will be able to:&#x20;
 
 * Bekez G. & Kezdi B. (2021). Data Analysis for Business, Economics, and Analysis. &#x20;
 
-**Recommended Resources for Real Estate Concepts and Analytics:**
+**Recommended Books on Real Estate and Analytics:**
 
 * Brett, D. L. (2019). Real estate market analysis: Trends, methods, and information sources. &#x20;
 * Levy, R. M. (2019). Introduction to real estate development and finance.&#x20;
 * Winson-Geideman, K. et al. (2017). Real Estate Analysis in the Information Age.&#x20;
 
-**Recommended Resources for Statistics Concepts and R Package:**
+**Recommended Books on Statistics and R Package:**
 
 * Garson D. G. (2022) Data Analytics for the Social Sciences.
 * Grolemund G. & Wickham H. (2022) [R for Data Science](https://r4ds.had.co.nz/)
