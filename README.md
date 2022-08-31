@@ -12,13 +12,13 @@ The term [_Analysis_](https://www.merriam-webster.com/dictionary/analysis) refer
 
 ### Course Objectives
 
-This course will cover the following objectives in applying analytics to real estate:&#x20;
+This course covers the following objectives:&#x20;
 
 * Fundamentals of the R programming language for statistical analysis
-* Data collection from available socioeconomic and real estate data sources
-* Developing real estate valuation, risk assessment, and trends analysis models
-* Alternative approaches to analyzing data that violate OLS assumptions&#x20;
-* Data reduction and pattern recognition techniques to reduce the dimensionality of data
+* Data collection from major socioeconomic and real estate data sources
+* Real estate valuation, risk assessment, and trends analysis models
+* Empirical economic analysis to assess market demand for real property&#x20;
+* Data reduction and pattern recognition
 
 ### Learning Outcomes
 
