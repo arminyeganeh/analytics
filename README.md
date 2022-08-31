@@ -12,14 +12,13 @@ The term [_Analysis_](https://www.merriam-webster.com/dictionary/analysis) refer
 
 ### Course Objectives
 
-This course will cover the following objectives:&#x20;
+This course will cover the following objectives in applying analytics to real estate:&#x20;
 
 * Fundamentals of the R programming language for statistical analysis
-* Basic principles of sample design and inference
-* Assumptions and limitations of ordinary least squares (OLS) regression models
+* Data collection from available socioeconomic and real estate data sources
+* Developing real estate valuation, risk assessment, and trends analysis models
 * Alternative approaches to analyzing data that violate OLS assumptions&#x20;
 * Data reduction and pattern recognition techniques to reduce the dimensionality of data
-* ...
 
 ### Learning Outcomes
 
@@ -27,7 +26,7 @@ By the end of this course, learners will be able to:&#x20;
 
 * Use R, read R documentation, and write R scripts,&#x20;
 * Import, export, and manipulate data, and create statistical summaries,&#x20;
-* Produce basic and advanced graphics using the ggplot2 library,
+* Produce, interpret, and communicate basic and advanced statistical results,
 * Perform standard hypothesis tests and run intermediate regression models,
 * Apply non-linear statistical methods to address questions ill-suited for OLS regression,
 * Draw inferences using statistical theory and report in R Markdown/R Notebooks,&#x20;
