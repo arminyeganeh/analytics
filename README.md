@@ -134,17 +134,31 @@ This is a three-credit class that can be taken for an ordinal grade or pass/fail
 
 ## Part 4: Policies <a href="#part-1-course-information" id="part-1-course-information"></a>
 
-#### Time Commitment: &#x20;
+### Time Commitment ****&#x20;
 
+This is a 3-credit hour course, which means students should anticipate spending at least 2 hours 30 min a week on class materials, which may include attending lectures or participating in group discussions or lab activities. Additionally, students should anticipate another two hours of reading/homework/study time per lecture hour. Therefore, students are expected to spend an additional six hours a week reading, working on assigned homework, and studying for exams.
 
+### **Participation Expectations**
 
-#### Communication:&#x20;
+Students who actively participate in class, e.g., by some combination of asking and responding to questions, posting relevant material to the discussion board, and attending office hours get full marks for participation. No one type of engagement is required per se, but students will be evaluated on their engagement with the class holistically. In class, cell phones must be silenced (not vibrate). Laptop computers must be turned off during lectures, as they are distracting to other students or the instructor.&#x20;
 
-* Assignments and class information will be posted on Canvas and the class website.
+### **Late Assignments**
+
+Submission of assignments past the posted due date is subject to penalty at the instructor's discretion. If there are circumstances that require late submission of an assignment, students should contact the instructor as far in advance as possible to discuss a contingency plan. Depending on the circumstances, accommodations may include penalty-free late submission or waiver of the assignment. Students should be prepared to submit evidence of the circumstances that necessitate an accommodation.
+
+### Communication&#x20;
+
+* Assignments and class information will be posted on the class website.
 * For other matters, please email the instructor, including code 94842 in the subject line.
 
 The Piazza forum should be used for general course-related questions that may be of interest to others in the class.&#x20;
 
-**Disability Services:** If you have a disability and need special accommodations in this class, please contact the instructor. You may also want to contact the Disability Resources office at 412-268-2013.
+### Classroom Accessibility&#x20;
+
+If a student needs adaptations or accommodations because of a disability (learning disability, attention deficit disorder, psychological, physical, etc.), or if there is emergency medical information to share, students can contact the instructor via email or make an appointment to discuss. Any student with a disability that may need accommodations in order to successfully complete all requirements of this course should visit the Resource Center for Persons with Disabilities ([www.rcpd.msu.edu](https://www.rcpd.msu.edu/)), located in Bessey Hall, 434 Farm Lane, #120, East Lansing, MI 48824-1033 or by email at rcpd@msu.edu. This office is responsible for registering students and ensuring the University’s compliance with Section 504 of the Rehabilitation Act and the American with Disabilities Act. Any student requiring such accommodation should discuss this with the course leader and assure that the appropriate official accommodation letter is sent from RCPD. More information about accommodation services available can be found at: [www.rcpd.msu.edu](https://www.rcpd.msu.edu/get-started).&#x20;
+
+### Academic Support Services&#x20;
+
+Any student requiring academic support should investigate the Student Success Center at www.studentsuccess.vt.edu. For complete information on student services at Virginia Tech, please visit the website for the Division of Student Affairs. Final Note I reserve the right to make changes to the syllabus or course content at any time. It is your responsibility to check email, Canvas, or in class announcements for changes in assignment requirements, due dates, and materials.
 
 **Course Content:** The instructor reserves the right to make changes to the syllabus or course content at any time. Students have the responsibility to check email or in-class announcements for changes in assignment requirements, due dates, and materials.
