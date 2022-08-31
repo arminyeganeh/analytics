@@ -10,16 +10,24 @@ description: Data Analytics and Emerging Technologies in Real Estate, Spring 202
 
 The term [_Analysis_](https://www.merriam-webster.com/dictionary/analysis) refers to a detailed examination of anything complex in order to understand its nature or to determine its essential features. [_Analytics_](https://www.merriam-webster.com/dictionary/analytics) is the method of logical analysis, often using a model and performed by a computer. _Data Analytics_ is the science of analyzing raw data to make conclusions. Data analytics help businesses and individuals optimize their performance, perform more efficiently, maximize profit, or make more strategically-guided decisions. This graduate-level course provides future data analysts with several tools, methods, and skills to answer questions, characterize trends, and identify opportunities for growth. Learners will practice collecting, preparing, processing, visualizing, and interpreting data, and reporting reproducible results to improve decision-making in business, finance, policy, and their personal life. Using widely used statistical programming languages, such as R and Python, learners will practice various approaches to data analytics, including looking at what happened (descriptive analytics), why something happened (diagnostic analytics), what is going to happen (predictive analytics), or what should be done next (prescriptive analytics). Learners will acquire these skills through solving problems focused on housing and community development.
 
+### Course Objectives
+
+* Fundamentals of the R programming language for statistical analysis
+* Basic principles of sample design and inference
+* Assumptions and limitations of ordinary least squares (OLS) regression models
+* Alternative approaches to analyzing data that violate OLS assumptions&#x20;
+* Data reduction and pattern recognition techniques to reduce the dimensionality of data
+
 ### Learning Outcomes
 
 By the end of this course, learners will be able to:&#x20;
 
-* Use RStudio, read R documentation, and write R scripts,&#x20;
-* Import, export, and manipulate data,
-* Create statistical summaries of continuous and categorical data,&#x20;
+* Use R, read R documentation, and write R scripts,&#x20;
+* Import, export, and manipulate data, and create statistical summaries,&#x20;
 * Produce basic and advanced graphics using the ggplot2 library,
-* Perform standard hypothesis tests and run simple regression models,
-* Produce statistical analysis reports in R Markdown/R Notebooks.
+* Perform standard hypothesis tests and run intermediate regression models,
+* Apply non-linear statistical methods to address questions ill-suited for OLS regression,
+* Draw inferences using statistical theory and report in R Markdown/R Notebooks,&#x20;
 
 ### Program Competencies
 
