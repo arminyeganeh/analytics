@@ -50,15 +50,16 @@ By the end of this course, learners will be able to:&#x20;
 
 **Recommended Books on Real Estate and Analytics:**
 
-* Brett, D. L. (2019). Real estate market analysis: Trends, methods, and information sources. &#x20;
-* Levy, R. M. (2019). Introduction to real estate development and finance.&#x20;
+* Brett, D. L. (2019). Real Estate Market Analysis: Trends, Methods, and Information Sources. &#x20;
+* Levy, R. M. (2019). Introduction to Real Estate Development and Finance.&#x20;
 * Winson-Geideman, K. et al. (2017). Real Estate Analysis in the Information Age.&#x20;
 
 **Recommended Books on Statistics and R Package:**
 
-* Garson D. G. (2022) Data Analytics for the Social Sciences.
-* Grolemund G. & Wickham H. (2022) [R for Data Science](https://r4ds.had.co.nz/)
-* Venables W. et al. (2022) [An Introduction to R](https://cran.r-project.org/manuals.html)
+* Agresti, A. (2018). Statistical Methods for the Social Sciences.
+* Garson D. G. (2022). Data Analytics for the Social Sciences.
+* Grolemund G., & Wickham H. (2022). [R for Data Science](https://r4ds.had.co.nz/)
+* Venables W. et al. (2022). [An Introduction to R](https://cran.r-project.org/manuals.html)
 
 ### Course Structure
 
