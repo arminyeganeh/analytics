@@ -12,13 +12,14 @@ The term [_Analysis_](https://www.merriam-webster.com/dictionary/analysis) refer
 
 ### Course Objectives
 
-This course covers the following objectives:&#x20;
+This course covers the application of quantitative techniques to real estate:&#x20;
 
+* Fundamentals of applied quantitative methods&#x20;
 * Fundamentals of the R programming language for statistical analysis
 * Data collection from major socioeconomic and real estate data sources
-* Real estate valuation, risk assessment, and trends analysis models
+* Real estate valuation, risk assessment, and trends analysis models using data
 * Empirical economic analysis to assess market demand for real property&#x20;
-* Data reduction and pattern recognition
+* Quantitative analysis to drive optimum capital- and location allocation
 
 ### Learning Outcomes
 
@@ -41,7 +42,7 @@ By the end of this course, learners will be able to:&#x20;
 
 ### Course Requirements <a href="#instructor" id="instructor"></a>
 
-**Course prerequisites:** The only prerequisite for this class is graduate standing at MSU. The class is quantitatively inclined, but university-level math is not required. Students may want to review the following topics if they have not used them recently: [College Algebra](https://openstax.org/details/books/college-algebra), [Calculus](https://openstax.org/details/books/calculus-volume-1), and [Introductory Statistics](https://openstax.org/details/books/introductory-statistics).
+**Course prerequisites:** The only prerequisite for this class is graduate standing at MSU. The instructor assumes little knowledge of quantitative techniques, although learners should have basic knowledge of mathematics and statistics. The class is quantitatively inclined, but university-level math is not required. Reviewing the following topics is recommended if not being used recently: [College Algebra](https://openstax.org/details/books/college-algebra), [Calculus](https://openstax.org/details/books/calculus-volume-1), and [Introductory Statistics](https://openstax.org/details/books/introductory-statistics).
 
 **Required Text Book:**
 
@@ -62,7 +63,7 @@ By the end of this course, learners will be able to:&#x20;
 
 ### Course Structure
 
-This course is composed of five modules, and each module is covered in three weeks. Each week involves two lecture sections followed by one lab section structured around case studies. Except for the first one, each week has core and complementary readings. The statistical computing package we will use in this course is R, a data programming language used for statistics, data analysis, text analysis, and machine learning. R arguably is the fastest-growing and leading statistical tool for researchers. R is freely distributed online and can be downloaded from the R homepage [http://cran.r-project.org/](https://cran.r-project.org/). Students will use [R Markdown](https://rmarkdown.rstudio.com/), along with [RStudio](http://www.rstudio.com/) Desktop, to complete the assignments.
+This course is composed of five modules, and each module is covered in three weeks. Each week involves two lecture sections followed by one lab section structured around case studies. Except for the first week, each week has core and complementary readings. The statistical computing package that is used in this course is R, a data programming language used for statistics, data analysis, text analysis, and machine learning. R arguably is the fastest-growing and leading statistical tool for researchers. R is freely distributed online and can be downloaded from the R homepage [http://cran.r-project.org/](https://cran.r-project.org/). Students will use [R Markdown](https://rmarkdown.rstudio.com/), along with [RStudio](http://www.rstudio.com/) Desktop, to complete the assignments.
 
 ## Part 2: Schedule <a href="#part-1-course-information" id="part-1-course-information"></a>
 
@@ -95,7 +96,9 @@ Classes are held **\*\*\***days and **\*\*\***days from **\*\*\*** to **\*\*\***
 
 ## Part 3: Assessment <a href="#part-1-course-information" id="part-1-course-information"></a>
 
-Students are expected to complete core readings for every module and complementary readings for at least one module based on student interest. Students will report which module for which they would like to complete the complementary readings by way of a poll. Class discussions will revolve around complementary readings and will be led by students who completed the associated readings. Every week and at the end of the second lecture, there is a short quiz on the assigned core reading. Weekly assignments take the form of a single [R Markdown](https://rmarkdown.rstudio.com/), composed of three sets of lab questions and three sets of homework questions. Except where otherwise noted, assignments are typically due at the end of the corresponding module, on Fridays at 11:59 pm ET. Assignments will be evaluated on the basis of both correctness and style.&#x20;
+Students are assessed on the following components: participation, weekly quizzes, completion of problem-based assignments, and an inquiry-based class presentation. Students are expected to complete core readings for every module and complementary readings for at least one module based on interest. Students will report which module for which they would like to complete the complementary readings by way of a poll. Class presentations will revolve around complementary readings and will be led by students who completed the associated readings. Every week and at the end of the second lecture, there is a short quiz on the assigned core reading. Weekly assignment submissions take the form of a single [R Markdown](https://rmarkdown.rstudio.com/), composed of three sets of lab questions and three sets of homework questions. Except where otherwise noted, assignments are due at the end of the corresponding module, on Fridays at 11:59 pm ET. Assignments will be evaluated on the basis of correctness and style.&#x20;
+
+Complete descriptions and instructions for completing assessments will be provided when assignments are published on the course website. Assignment details will be available under “Assignments” \[link] and on the page for each module. All submissions are individual except where group work is expressly permitted. Adherence to the Honor Code (see below) will be rigorously enforced.
 
 ### **Schedule of Assessments**&#x20;
 
@@ -125,11 +128,7 @@ Students are expected to complete core readings for every module and complementa
 
 ### Grading System
 
-Final grades for this course are reported based on a numerical system that consists of the following scale: 4.0 - 3.5 - 3.0 - 2.5 - 2.0 - 1.5 - 1.0 - 0.0. While the final grades are in increments of 0.5, the Instructor may choose to give an intermediate grade on an assignment, e.g., a 3.3 on the midterm, but round up or down to the nearest reportable grade for the final course grade. All grades are final and may not be changed by re-examination or by the submission of additional work. In this class, the maximum grade is 4.0, which equals 400 points. The final grade equals the sum of points obtained for attendance (45 points), quiz (45 points), lab (90 points), and assignment (220 points). The course includes 45 sessions (each having 1 attendance point), 15 quizzes (each having 3 quiz points), 15 labs (each having 6 lab points), and 5 assignments (each having 40 assignment points).  &#x20;
-
-
-
-## &#x20;<a href="#part-1-course-information" id="part-1-course-information"></a>
+Final grades for this course are reported based on a numerical system that consists of the following scale: 4.0 - 3.5 - 3.0 - 2.5 - 2.0 - 1.5 - 1.0 - 0.0. While the final grades are in increments of 0.5, the Instructor may choose to give an intermediate grade on an assignment, e.g., a 3.3 on the midterm, but round up or down to the nearest reportable grade for the final course grade. All grades are final and may not be changed by re-examination or by the submission of additional work. In this class, the maximum grade is 4.0, which equals 400 points. The final grade equals the sum of points obtained for attendance (45 points), quiz (45 points), lab (90 points), and assignment (220 points). The course includes 45 sessions (each having 1 attendance point), 15 quizzes (each having 3 quiz points), 15 labs (each having 6 lab points), and 5 assignments (each having 40 assignment points). Presentations will have 15 bonus points.  &#x20;
 
 ## Part 4: Policies <a href="#part-1-course-information" id="part-1-course-information"></a>
 
