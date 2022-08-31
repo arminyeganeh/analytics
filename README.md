@@ -12,11 +12,14 @@ The term [_Analysis_](https://www.merriam-webster.com/dictionary/analysis) refer
 
 ### Course Objectives
 
+This course will cover the following objectives:&#x20;
+
 * Fundamentals of the R programming language for statistical analysis
 * Basic principles of sample design and inference
 * Assumptions and limitations of ordinary least squares (OLS) regression models
 * Alternative approaches to analyzing data that violate OLS assumptions&#x20;
 * Data reduction and pattern recognition techniques to reduce the dimensionality of data
+* ...
 
 ### Learning Outcomes
 
@@ -29,13 +32,11 @@ By the end of this course, learners will be able to:&#x20;
 * Apply non-linear statistical methods to address questions ill-suited for OLS regression,
 * Draw inferences using statistical theory and report in R Markdown/R Notebooks,&#x20;
 
-### Program Competencies
+### Instructor's Background and Contact <a href="#instructor" id="instructor"></a>
 
+**Instructor's Background:** Armin Yeganeh, Ph.D. is a tenure system Assistant Professor in the Construction Management Program at the School of Planning, Design, and Construction at Michigan State University (MSU). His research questions innovative practices and policies that can help advance construction management, sustainable housing, and real estate development. Armin is interested in employing empirical, quantitative research methods to explore the intersection of economic development, environmental protection, and societal equity to implement sustainability as part of planning, design, construction, and operations. Before joining MSU, Armin was a Postdoctoral Research Associate at Virginia Tech where he earned his Ph.D. in Environmental Design and Planning. During his graduate education, he worked at the Virginia Center for Housing Research on drafting and presenting industry reports, studies, policies, programs, panel discussions, and presentations on housing and community development. Armin received his first master’s degree in Architectural Engineering from Iran University of Science and Technology. At Virginia Tech, he received a master’s degree in Urban and Regional Planning and a master’s degree in Building Science and Construction Management.
 
-
-### Instructor Background and Contact <a href="#instructor" id="instructor"></a>
-
-**Instructor Background:** Armin Yeganeh, Ph.D. is a tenure system Assistant Professor in the Construction Management Program at the School of Planning, Design, and Construction at Michigan State University (MSU). His research questions innovative practices and policies that can help advance construction management, sustainable housing, and real estate development. Armin is interested in employing empirical, quantitative research methods to explore the intersection of economic development, environmental protection, and societal equity to implement sustainability as part of planning, design, construction, and operations. Before joining MSU, Armin was a Postdoctoral Research Associate at Virginia Tech where he earned his Ph.D. in Environmental Design and Planning. During his graduate education, he worked at the Virginia Center for Housing Research on drafting and presenting industry reports, studies, policies, programs, panel discussions, and presentations on housing and community development. Armin received his first master’s degree in Architectural Engineering from Iran University of Science and Technology. At Virginia Tech, he received a master’s degree in Urban and Regional Planning and a master’s degree in Building Science and Construction Management.
+**Instructor's teaching philosophy:** The instructor's teaching philosophy is based on the following four pillars: 1) Develop disciplinary competence through inquiry-based learning, experiential learning (e.g., PBL), research-based learning, and guided discovery learning; 2) Develop interdisciplinary competence emphasizing collaborations and partnerships between programs by working with and learning from learners from other disciplines; 3) Develop intrapersonal competence emphasizing self-directed life-long learning, innovation, critical thinking, ethics, and conscientiousness; 4) Develop interpersonal competence emphasizing communication, teamwork, leadership, project management, and social and intercultural activities.
 
 **Contact preferences:** The best way to contact the instructor is to reach out by email (armin@msu.edu). Student-instructor communications respect [MSU’s policies on FERPA compliance](https://reg.msu.edu/roinfo/notices/privacyguidelines.aspx) and the maintenance of student data confidentiality. Office hours are by appointment. Students are encouraged to make use of office hours to discuss assignments and concepts. Use of office hours counts toward participation grades.
 
@@ -43,15 +44,18 @@ By the end of this course, learners will be able to:&#x20;
 
 **Course prerequisites:** The only prerequisite for this class is graduate standing at MSU. The class is quantitatively inclined, but university-level math is not required. Students may want to review the following topics if they have not used them recently: [College Algebra](https://openstax.org/details/books/college-algebra), [Calculus](https://openstax.org/details/books/calculus-volume-1), and [Introductory Statistics](https://openstax.org/details/books/introductory-statistics).
 
-**Real Estate Concepts and Analytics:**
+**Required Text Book:**
+
+* Bekez G. & Kezdi B. (2021). Data Analysis for Business, Economics, and Analysis. &#x20;
+
+**Recommended Resources for Real Estate Concepts and Analytics:**
 
 * Brett, D. L. (2019). Real estate market analysis: Trends, methods, and information sources. &#x20;
 * Levy, R. M. (2019). Introduction to real estate development and finance.&#x20;
 * Winson-Geideman, K. et al. (2017). Real Estate Analysis in the Information Age.&#x20;
 
-**Statistics Concepts and R Package:**
+**Recommended Resources for Statistics Concepts and R Package:**
 
-* Bekez G. & Kezdi B. (2021). Data Analysis for Business, Economics, and Analysis. &#x20;
 * Garson D. G. (2022) Data Analytics for the Social Sciences.
 * Grolemund G. & Wickham H. (2022) [R for Data Science](https://r4ds.had.co.nz/)
 * Venables W. et al. (2022) [An Introduction to R](https://cran.r-project.org/manuals.html)
@@ -91,7 +95,7 @@ Classes are held **\*\*\***days and **\*\*\***days from **\*\*\*** to **\*\*\***
 
 ## Part 3: Assessment <a href="#part-1-course-information" id="part-1-course-information"></a>
 
-Students are expected to complete core readings for every module and complementary readings for at least one module based on student interest. Students will report which module for which they would like to complete the complementary readings by way of a poll. Class discussions will revolve around discussion of complementary readings and will be led by students who completed the associated readings. Weekly assignments will take the form of a single [R Markdown](https://rmarkdown.rstudio.com/). Except where otherwise noted, assignments are typically due at the end of the module, on Fridays at 11:59 pm ET. Assignments will be evaluated on the basis of both correctness and style.&#x20;
+Students are expected to complete core readings for every module and complementary readings for at least one module based on student interest. Students will report which module for which they would like to complete the complementary readings by way of a poll. Class discussions will revolve around complementary readings and will be led by students who completed the associated readings. Every week and at the end of the second lecture, there is a short quiz on the assigned core reading. Weekly assignments take the form of a single [R Markdown](https://rmarkdown.rstudio.com/), composed of three sets of lab questions and three sets of homework questions. Except where otherwise noted, assignments are typically due at the end of the corresponding module, on Fridays at 11:59 pm ET. Assignments will be evaluated on the basis of both correctness and style.&#x20;
 
 ### **Schedule of Assessments**&#x20;
 
