@@ -26,7 +26,7 @@ This course covers the application of quantitative techniques to real estate:&#x
 By the end of this course, learners will be able to:&#x20;
 
 * Use a data programming language, such as R or Python,&#x20;
-* Import, export, and manipulate data, and create statistical summaries,&#x20;
+* Import, export, and manipulate data and create statistical summaries,&#x20;
 * Produce, interpret, and communicate basic and advanced statistical results,
 * Perform standard hypothesis tests and run intermediate regression models,
 * Apply non-linear statistical methods to address questions ill-suited for OLS regression,
@@ -97,7 +97,7 @@ Classes are held **\*\*\***days and **\*\*\***days from **\*\*\*** to **\*\*\***
 
 ## Part 3: Assessment <a href="#part-1-course-information" id="part-1-course-information"></a>
 
-Learners will be assessed on the following components: participation, weekly quizzes, problem-based assignments, and an inquiry-based class presentation. Learners are expected to complete core readings for every module and complementary readings for at least one module based on interest. Learners will report which module for which they would like to complete the complementary readings by way of a poll. Class presentations will revolve around complementary readings and will be led by those who completed the associated readings. Every week and at the end of the second lecture, there will be a short quiz on the assigned core reading.&#x20;
+Learners will be assessed on participation, weekly quizzes, assignments, and a class presentation. Learners are expected to complete core readings for every module and complementary readings for at least one module based on interest. Learners will report which module for which they would like to complete the complementary readings by way of a poll. Class presentations will revolve around complementary readings and will be led by those who completed the associated readings. At the end of every week's second lecture, there will be short quiz on the assigned core reading.&#x20;
 
 Weekly assignment submissions take the form of a single [R Markdown](https://rmarkdown.rstudio.com/), composed of three sets of lab questions and three sets of homework questions. Except where otherwise noted, assignments are due at the end of the corresponding module, on Fridays at 11:59 pm ET. Assignments will be evaluated on the basis of correctness and style. Complete descriptions and instructions for completing assessments will be provided when assignments are published on the course website. All submissions are individual except where group work is expressly permitted. Adherence to the Honor Code (see below) will be rigorously enforced.
 
@@ -137,15 +137,15 @@ This is a three-credit class that can be taken for an ordinal grade or pass/fail
 
 ### Time Commitment ****&#x20;
 
-This is a 3-credit hour course, which means students should anticipate spending at least 2 hours 30 min a week on class materials, which may include attending lectures or participating in group discussions or lab activities. Additionally, students should anticipate another two hours of reading/homework/study time per lecture hour. Therefore, students are expected to spend an additional six hours a week reading, working on assigned homework, and studying for exams.
+This is a 3-credit hour course, which means leaners should anticipate spending at least 2 hours 30 min a week on class materials, which may include attending lectures or participating in lab activities. Additionally, learners should anticipate another two hours of reading/homework/study time per lecture hour, which in total is six hours a week of reading, working on assigned homework, and studying for exams.
 
 ### **Participation Expectations**
 
-Students who actively participate in class, e.g., by asking and responding to questions, posting relevant material to the discussion board, and attending office hours get full marks for participation. No one type of engagement is required per se, but students will be holistically evaluated on their engagement with the class. In class, cell phones must be silenced, not vibrate. Laptop computers must be turned off during lectures, as they are distracting to other students or the instructor.&#x20;
+Active participation in class, e.g., by asking and responding to questions, posting relevant material to the discussion board, and attending office hours results in full participation points. No one type of engagement is required per se, but students will be holistically evaluated on their engagement with the class. In lectures and labs, cell phones must be silenced. Laptop computers must be turned off during lectures, as they are distracting to other students or the instructor.&#x20;
 
 ### **Late Assignments**
 
-Submission of assignments past the posted due date is subject to penalty at the instructor's discretion. If there are circumstances that require late submission of an assignment, students should contact the instructor as far in advance as possible to discuss a contingency plan. Depending on the circumstances, accommodations may include penalty-free late submission or waiver of the assignment. Students should be prepared to submit evidence of the circumstances that necessitate accommodation.
+Submission of assignments past the posted due date is subject to penalty at the instructor's discretion. If there are circumstances that require late submission of an assignment, learners should contact the instructor as far in advance as possible to discuss a contingency plan. Depending on the circumstances, accommodations may include penalty-free late submission or waiver of the assignment. Learners should be prepared to submit evidence of the circumstances that necessitate accommodation.
 
 ### Communication&#x20;
 
