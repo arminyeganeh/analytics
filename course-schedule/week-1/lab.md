@@ -105,6 +105,28 @@ What to expect when you have two operations that have the same priority: that is
 
 Remember that brackets always come first. So, if you’re ever unsure about what order R will do things in, an easy solution is to enclose the thing you want it to do first in brackets. There’s nothing stopping you from typing (4 / 2) \* 3.&#x20;
 
-### Storing a number as a variable
+### Variable assignment
 
-One of the most important things to be able to do in R (or any programming language, for that matter) is to store information in _**variables**_. Variables in R aren’t exactly the same thing as the variables we talked about in the last chapter on research methods, but they are similar. At a conceptual level you can think of a variable as _label_ for a certain piece of information, or even several different pieces of information. When doing statistical analysis in R all of your data (the variables you measured in your study) will be stored as variables in R, but as well see later in the book you’ll find that you end up creating variables for other things too. However, before we delve into all the messy details of data sets and statistical analysis, let’s look at the very basics for how we create variables and work with them.
+One of the most important things to be able to do in R (or any programming language, for that matter) is to store information in variables. At a conceptual level, you can think of a variable as a label for one or more pieces of information. When doing statistical analysis in R, all of your data will be stored as variables in R, but you create variables for other things too. Let’s start by creating variables to store our numbers.&#x20;
+
+Suppose you want to calculate how much money you are going to make from writing a book. There are several different numbers you might want to store. Let’s assume the book will sell one copy per student in your class. So, let’s create a variable called `sales` to which you assign a value, which is `350`, using the assignment operator `<-`. Here’s how we do it:
+
+```
+> sales <- 350
+```
+
+When you run this command, R creates a variable called `sales` and gives it a value of `350`. You can check that this has happened by looking at the environment pane or asking R to print the variable. The simplest way to do _that_ is to type the name of the variable and run it.
+
+```
+> sales
+[1] 350
+```
+
+There are several different ways of making assignments. In addition to the `<-` operator, we can also use `->` and `=` to perform the same operation. `<-` and `->` are identical, just in a “left form” and a “right form.” So if I wanted to define my `sales` variable using `->`, I would write it like this:
+
+```
+350 -> sales
+```
+
+``
+
