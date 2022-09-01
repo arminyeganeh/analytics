@@ -49,8 +49,62 @@ The symbol `>` is the _command prompt_, the __ `10 + 20` part is a _command_, an
 
 ### Autocorrection
 
-### &#x20;
+Always make sure you type _exactly what you mean_. In general, you absolutely _must_ be precise in what you say to R l in its interpretation as there is no equivalent to “autocorrect” in R. There are some situations in which R does show some flexibility. For instance, R ignores redundant spacing in the following cases:
 
-\
+```
+> 10 + 20
+[1] 30
+> 10  +  20
+[1] 30
+```
 
+However, inserting spaces in the middle of a word results in an error.  For instance, try the following commands, individually, to obtain information about how to cite R:
 
+```
+citation()
+citation ()
+cit ation()
+```
+
+### Basic arithmetic operations
+
+Let’s try basic arithmetic operations in R. Table LA.1 lists the operators that correspond to the basic arithmetic of addition, subtraction, multiplication, division, and power.
+
+Table LA.1: Basic arithmetic operations in R.
+
+| operation      | operator | example input | example output |
+| -------------- | :------: | :-----------: | :------------: |
+| addition       |    `+`   |     10 + 2    |       12       |
+| subtraction    |    `-`   |     9 - 3     |        6       |
+| multiplication |    `*`   |     5 \* 5    |       25       |
+| division       |    `/`   |     10 / 3    |        3       |
+| power          |    `^`   |     5 ^ 2     |       25       |
+
+### Order of operations
+
+In most situations where you would want to use a calculator, you might want to do multiple calculations. R lets you do this, just by typing in longer commands. Try:
+
+```
+> 1 + 2 * 4
+[1] 9
+```
+
+In such cases, you need to know the order of operations that R uses, the **BEDMAS** order. That is, first calculate inside **B**rackets `()`, then **E**xponents `^`, then **D**ivision `/` and **M**ultiplication `*`, then **A**ddition `+` and **S**ubtraction `-`. So, to continue the example above, if we want to force R to calculate the part `1+2` before the multiplication, we would have to enclose it in brackets:
+
+```
+> (1 + 2) * 4
+[1] 12 
+```
+
+What to expect when you have two operations that have the same priority: that is, how does R resolve ties? For instance, how does R solve a problem like `4 / 2 * 3` ? The answer, in this case, is that R goes from _left to right_, so in this case, the division step would come first:
+
+```
+> 4 / 2 * 3
+[1] 6
+```
+
+Remember that brackets always come first. So, if you’re ever unsure about what order R will do things in, an easy solution is to enclose the thing you want it to do first in brackets. There’s nothing stopping you from typing (4 / 2) \* 3.&#x20;
+
+### Storing a number as a variable
+
+One of the most important things to be able to do in R (or any programming language, for that matter) is to store information in _**variables**_. Variables in R aren’t exactly the same thing as the variables we talked about in the last chapter on research methods, but they are similar. At a conceptual level you can think of a variable as _label_ for a certain piece of information, or even several different pieces of information. When doing statistical analysis in R all of your data (the variables you measured in your study) will be stored as variables in R, but as well see later in the book you’ll find that you end up creating variables for other things too. However, before we delve into all the messy details of data sets and statistical analysis, let’s look at the very basics for how we create variables and work with them.
