@@ -45,7 +45,7 @@ Click on the script area and type `10 + 20` . Click on the _Run_ button located 
 [1] 30
 ```
 
-The symbol `>` is the _command prompt_, the __ `10 + 20` part is a _command_, and the part printed in the next line, `[1] 30`  is R's response to the command. For now, think of `[1] 30` as if R were saying “the answer to the 1st question you asked is 30”.
+The symbol `>` is the _command prompt_, the __ `10 + 20` part is a _command_, and the part printed in the next line `[1] 30`  is R's _response_ to your command. For now, think of `[1] 30` as if R were saying “the answer to the 1st question you asked is 30”.
 
 ### Autocorrection
 
