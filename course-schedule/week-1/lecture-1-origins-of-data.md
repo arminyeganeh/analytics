@@ -1,2 +1,6 @@
-# Lecture 1: Origins of Data
+---
+description: Lecture A1 Slides
+---
+
+# Origins of Data
 

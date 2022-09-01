@@ -28,9 +28,11 @@ RStudio is an Integrated Development Environment (IDE), providing a free, open-s
 
 When you visit the RStudio website, find and download **RStudio Desktop**. After choosing the desktop version it will take you to a page that shows several possible downloads based on the operating system. The webpage automatically recommends the download that is most appropriate for your computer. Click on the appropriate link, and the RStudio installer file will start downloading. Once finished downloading, open the installer file in the usual way to install RStudio.&#x20;
 
-### Opening R
+### RStudio Interface
 
-After installing, you can start R by opening RStudio. To illustrate what RStudio looks like, Figure [3.1](https://learningstatisticswithr.com/book/introR.html#fig:RStudio) shows a screenshot of an R session in progress. In this screenshot, you can see that it’s running on a Mac, but it looks almost identical no matter what operating system you have. The Windows version looks more like a Windows application (e.g., the menus are attached to the application window and the colour scheme is slightly different), but it’s more or less identical. There are a few minor differences in where things are located in the menus (I’ll point them out as we go along) and in the shortcut keys, because RStudio is trying to “feel” like a proper Mac application or a proper Windows application, and this means that it has to change its behaviour a little bit depending on what computer it’s running on. Even so, these differences are very small: I started out using the Mac version of RStudio and then started using the Windows version as well in order to write these notes.
+After installing, you can start R by opening RStudio. To illustrate what RStudio looks like, **Figure LA1** shows a screenshot of an R session in progress. There could be very small differences in RStudio's appearance between Mac and Windows systems. The upper-left area — called script, source, or program — is where you type, edit, and run R scripts. The bottom-left area — called R console — is where you see the execution of the script. In the top-right area, the environment pane, you see the objects and values created and used in the program, as well as other relevant information. The bottom-right area is where you have access to multiple additional tabs, which will be discussed later in detail.
+
+<figure><img src="../../.gitbook/assets/rstudio_interface.png" alt=""><figcaption><p><strong>Figure LA1:</strong> RStudio with 4 panes</p></figcaption></figure>
 
 \
 

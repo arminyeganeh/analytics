@@ -1,2 +1,6 @@
-# Lecture 2: Preparing Data
+---
+description: Lecture A2 Slides
+---
+
+# Preparing Data
 
