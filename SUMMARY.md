@@ -7,7 +7,7 @@
 ## Course Schedule
 
 * [Week 1](course-schedule/week-1/README.md)
-  * [Lecture 1: Origins of Data](course-schedule/week-1/lecture-1-origins-of-data.md)
+  * [Origins of Data](course-schedule/week-1/origins-of-data.md)
   * [Lecture 2: Preparing Data](course-schedule/week-1/lecture-2-preparing-data.md)
   * [Lab: Intro to R & RStudio](course-schedule/week-1/lab.md)
   * [Homework A1](course-schedule/week-1/homework-a1.md)
