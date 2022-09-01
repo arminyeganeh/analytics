@@ -75,21 +75,21 @@ Classes are held **\*\*\***days and **\*\*\***days from **\*\*\*** to **\*\*\***
 | Module                        | Lecture 1           | Lecture 2           |
 | ----------------------------- | ------------------- | ------------------- |
 | **A. Descriptive Analytics**  |                     |                     |
-| Week 1                        | Origins of Data     | Preparing Data      |
-| Week 2                        | Exploring Data      | Comparing Data      |
-| Week 3                        | Generalization      | Hypothesis Testing  |
+| Week 1                        | Origins of data     | Preparing data      |
+| Week 2                        | Exploring data      | Comparing data      |
+| Week 3                        | Generalization      | Hypothesis testing  |
 | **B. Diagnostic Analytics 1** |                     |                     |
-| Week 4                        | Simple Regression   | Complex Patterns    |
-| Week 5                        | Regression Results  | Multiple Regression |
-| Week 6                        | Probability Models  | Time Series 1       |
+| Week 4                        | Simple regression   | Complex patterns    |
+| Week 5                        | Regression results  | Multiple regression |
+| Week 6                        | Probability models  | Time series 1       |
 | **C. Diagnostic Analytics 2** |                     |                     |
-| Week 7                        | Causal Analysis     | Experiment Design   |
-| Week 8                        | Matching            | Diff-in-Diffs       |
-| Week 9                        | Panelized Data      | Control Panel Data  |
+| Week 7                        | Causal analysis     | Experiment design   |
+| Week 8                        | Matching            | Diff-in-diffs       |
+| Week 9                        | Panelized data      | Control panel data  |
 | **D. Predictive Analytics**   |                     |                     |
-| Week 10                       | Predictive Analysis | Predictive Modeling |
-| Week 11                       | Regression Trees    | Random Forest       |
-| Week 12                       | Classification      | Time Series 2       |
+| Week 10                       | Predictive analysis | Predictive modeling |
+| Week 11                       | Regression trees    | Random forest       |
+| Week 12                       | Classification      | Time series 2       |
 | **E. Prescriptive Analytics** |                     |                     |
 | Week 13                       | TBD                 | TBD                 |
 | Week 14                       | TBD                 | TBD                 |
