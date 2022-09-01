@@ -34,6 +34,23 @@ After installing, you can start R by opening RStudio. To illustrate what RStudio
 
 <figure><img src="../../.gitbook/assets/rstudio_interface.png" alt=""><figcaption><p><strong>Figure LA1:</strong> RStudio with 4 panes</p></figcaption></figure>
 
+### Starting up R
+
+A common way to start learning R is using it as a simple calculator.&#x20;
+
+Click on the script area and type `10 + 20` . Click on the _Run_ button located on the script pane. What you see on the console is:
+
+```
+> 10 + 20
+[1] 30
+```
+
+The symbol `>` is the _command prompt_, the __ `10 + 20` part is a _command_, and the part printed in the next line, `[1] 30`  is R's response to the command. For now, think of `[1] 30` as if R were saying “the answer to the 1st question you asked is 30”.
+
+### Autocorrection
+
+### &#x20;
+
 \
 
 
