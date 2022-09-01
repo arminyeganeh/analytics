@@ -15,9 +15,9 @@ _Data Analytics_ comprises the application of raw data, tools, and processes to 
 This course covers the application of quantitative techniques to real estate:&#x20;
 
 * Fundamentals of applied quantitative methods&#x20;
-* Fundamentals of the R programming language for statistical analysis
+* Fundamentals of data programming for statistical analysis
 * Data collection from major socioeconomic and real estate data sources
-* Real estate valuation, risk assessment, and trends analysis models using data
+* Real estate valuation, risk assessment, and trends analysis models
 * Empirical economic analysis to assess market demand for real property&#x20;
 * Quantitative analysis to drive optimum capital- and location allocation
 
@@ -25,18 +25,18 @@ This course covers the application of quantitative techniques to real estate:&#x
 
 By the end of this course, learners will be able to:&#x20;
 
-* Use R, read R documentation, and write R scripts,&#x20;
+* Use a data programming language, such as R or Python,&#x20;
 * Import, export, and manipulate data, and create statistical summaries,&#x20;
 * Produce, interpret, and communicate basic and advanced statistical results,
 * Perform standard hypothesis tests and run intermediate regression models,
 * Apply non-linear statistical methods to address questions ill-suited for OLS regression,
-* Draw inferences using statistical theory and report in R Markdown/R Notebooks,&#x20;
+* Draw inferences using statistical theory and report in markdowns/notebooks,&#x20;
 
 ### Instructor <a href="#instructor" id="instructor"></a>
 
-**Instructor's background:** Armin Yeganeh, Ph.D. is a tenure system Assistant Professor in the Construction Management Program at the School of Planning, Design, and Construction at Michigan State University (MSU). His research questions innovative practices and policies that can help advance construction management, sustainable housing, and real estate development. Armin is interested in employing empirical, quantitative research methods to explore the intersection of economic development, environmental protection, and societal equity to implement sustainability as part of planning, design, construction, and operations. Before joining MSU, Armin was a Postdoctoral Research Associate at Virginia Tech where he earned his Ph.D. in Environmental Design and Planning. During his graduate education, he worked at the Virginia Center for Housing Research on drafting and presenting industry reports, studies, policies, programs, panel discussions, and presentations on housing and community development. Armin received his first master’s degree in Architectural Engineering from Iran University of Science and Technology. At Virginia Tech, he received a master’s degree in Urban and Regional Planning and a master’s degree in Building Science and Construction Management.
+**Instructor's teaching philosophy:** This course's teaching philosophy is composed of the following four components: 1) Develop disciplinary competence through inquiry-based learning, experiential learning (e.g., PBL), research-based learning, and guided discovery learning; 2) Develop interdisciplinary competence emphasizing collaborations and partnerships between programs by working with and learning from learners from other disciplines; 3) Develop intrapersonal competence emphasizing self-directed life-long learning, innovation, critical thinking, ethics, and conscientiousness; 4) Develop interpersonal competence emphasizing communication, teamwork, leadership, project management, and social and intercultural activities.
 
-**Instructor's teaching philosophy:** The instructor's teaching philosophy is based on the following four pillars: 1) Develop disciplinary competence through inquiry-based learning, experiential learning (e.g., PBL), research-based learning, and guided discovery learning; 2) Develop interdisciplinary competence emphasizing collaborations and partnerships between programs by working with and learning from learners from other disciplines; 3) Develop intrapersonal competence emphasizing self-directed life-long learning, innovation, critical thinking, ethics, and conscientiousness; 4) Develop interpersonal competence emphasizing communication, teamwork, leadership, project management, and social and intercultural activities.
+**Instructor's background:** Armin Yeganeh, Ph.D. is a tenure system Assistant Professor in the Construction Management Program at the School of Planning, Design, and Construction at Michigan State University (MSU). His research questions innovative practices and policies that can help advance construction management, sustainable housing, and real estate development. Armin is interested in employing empirical, quantitative research methods to explore the intersection of economic development, environmental protection, and societal equity to implement sustainability as part of building planning, design, construction, and operations. Before joining MSU, Armin was a Postdoctoral Research Associate at Virginia Tech where he earned his Ph.D. in Environmental Design and Planning. During his graduate education, he worked at the Virginia Center for Housing Research on drafting and presenting industry reports, studies, policies, programs, panel discussions, and presentations on housing and community development. Armin received his first master’s degree in Architectural Engineering from Iran University of Science and Technology. At Virginia Tech, he received a master’s degree in Urban and Regional Planning and a master’s degree in Building Science and Construction Management.
 
 **Instructor contact preferences:** The best way to contact the instructor is to reach out by email (armin@msu.edu). Student-instructor communications respect [MSU’s policies on FERPA compliance](https://reg.msu.edu/roinfo/notices/privacyguidelines.aspx) and the maintenance of student data confidentiality. Office hours are by appointment. Students are encouraged to make use of office hours to discuss assignments and concepts. Use of office hours counts toward participation grades.
 
@@ -54,12 +54,13 @@ By the end of this course, learners will be able to:&#x20;
 * Levy, R. M. (2019). Introduction to Real Estate Development and Finance.&#x20;
 * Winson-Geideman, K. et al. (2017). Real Estate Analysis in the Information Age.&#x20;
 
-**Recommended Books on Statistics and R Package:**
+**Recommended Books on Statistics, R, and Python:**
 
 * Agresti, A. (2018). Statistical Methods for the Social Sciences.
-* Garson D. G. (2022). Data Analytics for the Social Sciences.
-* Grolemund G., & Wickham H. (2022). [R for Data Science](https://r4ds.had.co.nz/)
-* Venables W. et al. (2022). [An Introduction to R](https://cran.r-project.org/manuals.html)
+* Garson, D. G. (2022). Data Analytics for the Social Sciences.
+* Grolemund, G., & Wickham H. (2022). [R for Data Science](https://r4ds.had.co.nz/)
+* Venables, W. et al. (2022). [An Introduction to R](https://cran.r-project.org/manuals.html)
+* Mckinney, W. (2022). [Python for Data Analysis](https://wesmckinney.com/book/)&#x20;
 
 ### Course Structure
 
