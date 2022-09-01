@@ -1,8 +1,8 @@
 ---
-description: Lab A1
+description: Lab A1 Instructions
 ---
 
-# Lab: Intro to R & RStudio
+# Intro to R & RStudio
 
 ### Installing R
 

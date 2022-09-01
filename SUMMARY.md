@@ -8,8 +8,8 @@
 
 * [Week 1](course-schedule/week-1/README.md)
   * [Origins of Data](course-schedule/week-1/lecture-1-origins-of-data.md)
-  * [Preparing Data](course-schedule/week-1/preparing-data.md)
-  * [Lab: Intro to R & RStudio](course-schedule/week-1/lab.md)
+  * [Preparing Data](course-schedule/week-1/lecture-2-preparing-data.md)
+  * [Intro to R & RStudio](course-schedule/week-1/intro-to-r-and-rstudio.md)
   * [Homework A1](course-schedule/week-1/homework-a1.md)
 * [Page 2](course-schedule/page-2.md)
 * [Page 1](course-schedule/page-1.md)
