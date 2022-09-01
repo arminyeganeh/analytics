@@ -49,8 +49,33 @@ The symbol `>` is the _command prompt_, the __ `10 + 20` part is a _command_, an
 
 ### Autocorrection
 
-### &#x20;
+Always make sure you type _exactly what you mean_. In general, you absolutely _must_ be precise in what you say to R l in its interpretation as there is no equivalent to “autocorrect” in R. There are some situations in which R does show some flexibility. For instance, R ignores redundant spacing in the following cases:
 
-\
+```
+> 10 + 20
+[1] 30
+> 10  +  20
+[1] 30
+```
 
+However, inserting spaces in the middle of a word results in an error.  For instance, try the following commands, individually, to obtain information about how to cite R:
 
+```
+citation()
+citation ()
+cit ation()
+```
+
+### Basic arithmetic operations in R
+
+Let’s try basic arithmetic operations in R. Table LA.1 lists the operators that correspond to the basic arithmetic of addition, subtraction, multiplication, division, and power.
+
+Table LA.1: Basic arithmetic operations in R.
+
+| operation      | operator | example input | example output |
+| -------------- | :------: | :-----------: | :------------: |
+| addition       |    `+`   |     10 + 2    |       12       |
+| subtraction    |    `-`   |     9 - 3     |        6       |
+| multiplication |    `*`   |     5 \* 5    |       25       |
+| division       |    `/`   |     10 / 3    |        3       |
+| power          |    `^`   |     5 ^ 2     |       25       |
