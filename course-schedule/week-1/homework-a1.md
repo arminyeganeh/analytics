@@ -163,30 +163,15 @@ Notice that the second element of the output is 25 because R has divided the sec
 
 ### Storing text data
 
-A lot of the time your data will be numeric in nature, but not always. Sometimes your data really needs to be described using text, not using numbers. To create a variable that stores the word “hello”, we can type this:
+A lot of the time data will be numeric in nature, but sometimes data really needs to be described using text. To create a variable that stores the word “hello”, we can type this:
 
 ```
-greeting <- "hello"
-greeting
+> greeting <- "hello"
+> greeting
+[1] "hello"
 ```
 
-```
-## [1] "hello"
-```
-
-When interpreting this, it’s important to recognise that the quote marks here _aren’t_ part of the string itself. They’re just something that we use to make sure that R knows to treat the characters that they enclose as a piece of text data, known as a _**character string**_. In other words, R treats `"hello"` as a string containing the word “hello”; but if I had typed `hello` instead, R would go looking for a variable by that name! You can also use `'hello'` to specify a character string.
-
-Okay, so that’s how we store the text. Next, it’s important to recognise that when we do this, R stores the entire word `"hello"` as a _single_ element: our `greeting` variable is _not_ a vector of five different letters. Rather, it has only the one element, and that element corresponds to the entire character string `"hello"`. To illustrate this, if I actually ask R to find the first element of `greeting`, it prints the whole string:
-
-```
-greeting[1]
-```
-
-```
-## [1] "hello"
-```
-
-Of course, there’s no reason why I can’t create a vector of character strings. For instance, if we were to continue with the example of my attempts to look at the monthly sales data for my book, one variable I might want would include the names of all 12 `months`.[36](https://learningstatisticswithr.com/book/introR.html#fn36) To do so, I could type in a command like this
+When interpreting this, it’s important to recognize that the quotation marks here aren’t part of the string itself. They just tell R to treat the characters that they enclose are text data, known as a **character string**. In other words, R treats `"hello"` as a string containing the word “hello”; but if you had typed `hello` , R would go looking for a variable by that name! You can also use `'hello'` to specify a character string. Of course, there’s no reason why we can’t create a vector of character strings:
 
 ```
 months <- c("January", "February", "March", "April", "May", "June",
@@ -194,13 +179,112 @@ months <- c("January", "February", "March", "April", "May", "June",
             "December")
 ```
 
-This is a _**character vector**_ containing 12 elements, each of which is the name of a month. So if I wanted R to tell me the name of the fourth month, all I would do is this:
+This is a **character vector** containing 12 elements, each of which is the name of a month. So if you wanted R to find the name of the fourth month, all you would do is this:
 
 ```
-months[4]
+> months[4]
+[1] "April"
+```
+
+So far, most of the functions that we have seen (i.e., `sqrt()`, `abs()` and `round()`) only make sense when applied to numeric data (e.g., you can’t calculate the square root of “hello”), and we’ve seen one function that can be applied to pretty much any variable or vector (i.e., `length()`). The function `nchar()` counts the number of individual characters that make up a string.&#x20;
+
+```
+> nchar(x = greeting)
+[1] 5
+```
+
+That makes sense, since there are in fact 5 letters in the string `"hello"`. Better yet, you can apply `nchar()` to whole vectors: So, for instance, to ask R how many letters there are in the names of each of the 12 months:
+
+```
+> nchar(x = months)
+[1] 7 8 5 5 3 4 4 6 9 7 8 8
+```
+
+### Storing “true or false” data
+
+A key concept in R is the idea of a **logical value**. A logical value is an assertion about whether something is true or false. This is implemented in R in a pretty straightforward way. There are two logical values, namely `TRUE` and `FALSE`. If you want R to make an explicit judgement, you can use a command like this:
+
+```
+> 2 + 2 == 4
+[1] TRUE
+> 2 + 2 == 5
+[1] FALSE
+```
+
+What we’ve done here is use the **equality operator** `==` to force R to make a “true or false” judgment. You probably won’t be surprised to discover that we can combine logical operations with other operations and functions in a more complicated way, like this:
+
+```
+> 3*3 + 4*4 == 5*5
+[1] TRUE
+```
+
+There are several other logical operators that you can use, corresponding to some basic mathematical concepts.
+
+| operation                | operator | example input | answer  |
+| ------------------------ | -------- | ------------- | ------- |
+| less than                | <        | 2 < 3         | `TRUE`  |
+| less than or equal to    | <=       | 2 <= 2        | `TRUE`  |
+| greater than             | >        | 2 > 3         | `FALSE` |
+| greater than or equal to | >=       | 2 >= 2        | `TRUE`  |
+| equal to                 | ==       | 2 == 3        | `FALSE` |
+| not equal to             | !=       | 2 != 3        | `TRUE`  |
+
+We’re not quite done yet. There are three more logical operations that are worth knowing about, listed in Table [3.3](https://learningstatisticswithr.com/book/introR.html#tab:logicals2).
+
+| operation | operator | example input    | answer  |
+| --------- | -------- | ---------------- | ------- |
+| not       | !        | !(1==1)          | `FALSE` |
+| or        | \|       | (1==1) \| (2==3) | `TRUE`  |
+| and       | &        | (1==1) & (2==3)  | `FALSE` |
+
+These are the _**not**_ operator `!`, the _**and**_ operator `&`, and the _**or**_ operator `|`. Like the other logical operators, their behaviour is more or less exactly what you’d expect given their names. For instance, if I ask you to assess the claim that “either $$2+2=42+2=4$$ _or_ $$2+2=52+2=5$$” you’d say that it’s true. Since it’s an “either-or” statement, all we need is for one of the two parts to be true. That’s what the `|` operator does:
+
+```
+(2+2 == 4) | (2+2 == 5)
 ```
 
 ```
-## [1] "April"
+## [1] TRUE
 ```
 
+On the other hand, if I ask you to assess the claim that “both $$2+2=42+2=4$$ _and_ $$2+2=52+2=5$$” you’d say that it’s false. Since this is an _and_ statement we need both parts to be true. And that’s what the `&` operator does:
+
+```
+(2+2 == 4) & (2+2 == 5)
+```
+
+```
+## [1] FALSE
+```
+
+Finally, there’s the _not_ operator, which is simple but annoying to describe in English. If I ask you to assess my claim that “it is not true that $$2+2=52+2=5$$” then you would say that my claim is true; because my claim is that “$$2+2=52+2=5$$ is false”. And I’m right. If we write this as an R command we get this:
+
+```
+! (2+2 == 5)
+```
+
+```
+## [1] TRUE
+```
+
+In other words, since `2+2 == 5` is a `FALSE` statement, it must be the case that `!(2+2 == 5)` is a `TRUE` one. Essentially, what we’ve really done is claim that “not false” is the same thing as “true”. Obviously, this isn’t really quite right in real life. But R lives in a much more black or white world: for R everything is either true or false. No shades of gray are allowed. We can actually see this much more explicitly, like this:
+
+```
+! FALSE
+```
+
+```
+## [1] TRUE
+```
+
+Of course, in our $$2+2=52+2=5$$ example, we didn’t really need to use “not” `!` and “equals to” `==` as two separate operators. We could have just used the “not equals to” operator `!=` like this:
+
+```
+2+2 != 5
+```
+
+```
+## [1] TRUE
+```
+
+But there are many situations where you really do need to use the `!` operator. We’ll see some later on.[39](https://learningstatisticswithr.com/book/introR.html#fn39)
