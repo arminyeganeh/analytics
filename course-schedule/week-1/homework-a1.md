@@ -4,6 +4,10 @@ description: Homework Instructions, 4500 words, 3 hours
 
 # Homework A1
 
+### HA1 Instructions
+
+Read the following R tutorial.
+
 ### Rules & conventions for naming variables
 
 Variable names (`sales` and `revenue`) have just been English-language words written using lowercase letters. However, R allows a lot more flexibility when it comes to naming variables:
@@ -111,33 +115,25 @@ To use the correct terminology here, we have a single variable called `sales.by.
 [1] 100
 ```
 
-Notice that R outputs `[1] 100`, _not_ `[2] 100`. This is because R is being extremely literal. When we typed in `sales.by.month[2]`, we asked R to find exactly _one_ thing, and that one thing happens to be the second element of our `sales.by.month` vector. So, when it outputs `[1] 100` what R is saying is that the first number _that we just asked for_ is `100`. This behaviour makes more sense when you realise that we can use this trick to create new variables. For example, I could create a `february.sales` variable like this:
+Notice that the output is `[1] 100`, not `[2] 100`. This is because R is extremely literal. When we typed `sales.by.month[2]`, we asked R to find exactly _one_ thing, and that one thing happens to be the second element of our `sales.by.month` vector. To store the February sales, we could create the variable `february.sales` :
 
 ```
-february.sales <- sales.by.month[2]
-february.sales
+> february.sales <- sales.by.month[2]
+> february.sales
+[1] 100
 ```
 
-```
-## [1] 100
-```
+### Working with vectors
 
-Obviously, the new variable `february.sales` should only have one element and so when I print it out this new variable, the R output begins with a `[1]` because `100` is the value of the first (and only) element of `february.sales`. The fact that this also happens to be the value of the second element of `sales.by.month` is irrelevant. We’ll pick this topic up again shortly (Section [3.10](https://learningstatisticswithr.com/book/introR.html#indexing)).
-
-#### 3.7.4 Altering the elements of a vector
-
-Sometimes you’ll want to change the values stored in a vector. Imagine my surprise when the publisher rings me up to tell me that the sales data for May are wrong. There were actually an additional 25 books sold in May, but there was an error or something so they hadn’t told me about it. How can I fix my `sales.by.month` variable? One possibility would be to assign the whole vector again from the beginning, using `c()`. But that’s a lot of typing. Also, it’s a little wasteful: why should R have to redefine the sales figures for all 12 months, when only the 5th one is wrong? Fortunately, we can tell R to change only the 5th element, using this trick:
+Sometimes you’ll want to change the values stored in a vector. One possibility would be to assign the whole vector again from the beginning, using `c()`. But that’s a lot of typing. Also, it’s a little wasteful: why should R have to redefine the sales figures for all 12 months, when only the 5th one is wrong? Fortunately, we can tell R to change only the 5th element, using this trick:
 
 ```
-sales.by.month[5] <- 25
-sales.by.month
+> sales.by.month[5] <- 25
+> sales.by.month
+[1]   0 100 200  50  25   0   0   0   0   0   0   0
 ```
 
-```
-##  [1]   0 100 200  50  25   0   0   0   0   0   0   0
-```
-
-Another way to edit variables is to use the `edit()` or `fix()` functions. I won’t discuss them in detail right now, but you can check them out on your own.
+Another way to edit variables is to use the `edit()` or `fix()` functions.
 
 #### 3.7.5 Useful things to know about vectors
 
