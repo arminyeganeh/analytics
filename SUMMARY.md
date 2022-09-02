@@ -11,6 +11,7 @@
   * [Preparing Data](course-schedule/week-1/lecture-2-preparing-data.md)
   * [Intro to R & RStudio](course-schedule/week-1/lab.md)
   * [Homework A1](course-schedule/week-1/homework-a1.md)
+  * [Reading](course-schedule/week-1/reading.md)
 * [Week 2](course-schedule/week-2/README.md)
   * [Lecture 1](course-schedule/week-2/lecture-1.md)
   * [Lecture 2](course-schedule/week-2/lecture-2.md)

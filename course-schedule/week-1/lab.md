@@ -1,5 +1,5 @@
 ---
-description: Lab A1 Instructions
+description: Lab A1 Instructions (~1500 words, ~1 hour)
 ---
 
 # Intro to R & RStudio
@@ -128,5 +128,29 @@ There are several different ways of making assignments. In addition to the `<-` 
 350 -> sales
 ```
 
-``
+In addition to defining a `sales` variable that counts the number of copies you are going to sell, you can also create a variable called `royalty`, indicating how much money you get per copy. Let’s say that your royalties are about $7 per book:
 
+```
+sales <- 350
+royalty <- 7
+```
+
+R allows you to multiply `sales` by `royalty`. Not surprisingly, you can assign the output of this calculation to a new variable, such as `revenue`.
+
+```
+> sales * royalty
+[1] 2450
+> revenue <- sales * royalty
+> revenue
+[1] 2450
+```
+
+&#x20;We can reassign the value of a variable, based on its current value. For instance, suppose that one of your students loves the book so much that she donates an extra $550. The simplest way to capture this is by a command like this:
+
+```
+> revenue <- revenue + 550
+> revenue
+[1] 3000
+```
+
+In this calculation, R has taken the old value of `revenue` (i.e., 2450) and added 550 to that value, producing a value of 3000. This new value is assigned to the `revenue` variable, overwriting its previous value. In any case, we now know that I’m expecting to make $3000 off this. Pretty sweet, I thinks to myself. Or at least, that’s what I thinks until I do a few more calculation and work out what the implied hourly wage I’m making off this looks like.
