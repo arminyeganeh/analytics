@@ -92,5 +92,135 @@ The first thing is the autocomplete ability in RStudio. Start typing the name of
 
 ### Command history
 
-R automatically keeps track of your command history. The simplest way is to use the up and down arrow keys in the R console. The second way to get access to your command history is to look at the history panel in RStudio. If you double-click on one of the commands, it will be copied to the R console.&#x20;
+R automatically keeps track of your command history. The simplest way is to use the up and down arrow keys in the R console. The second way to get access to your command history is to look at the history panel in RStudio. If you double-click on one of the commands, it will be copied to the R console.
+
+### Storing numbers as a vector
+
+In R, the name for a variable that can store multiple values is a **vector**. So let’s create one. Let’s stick to the textbook example. Suppose the textbook company sends you sales data on a monthly basis. Let’s suppose there were 100 sales in February, 200 sales in March and 50 sales in April, and no other sales for the rest of the year. What we would like is `sales.by.month`. The first number stored should be `0` since there were no sales in January and the second should be `100`. The way to do this in R is to use the **combine** function `c()` and type the numbers in a comma-separated list:
+
+```
+> sales.by.month <- c(0, 100, 200, 50, 0, 0, 0, 0, 0, 0, 0, 0)
+> sales.by.month
+[1]   0 100 200  50   0   0   0   0   0   0   0   0
+```
+
+To use the correct terminology here, we have a single variable called `sales.by.month`, a vector that consists of 12 **elements**. Now, the next thing to understand is how to pull that information back out again. Suppose we want to pull out the February sales data only. February is the second month of the year, so let’s try this:
+
+```
+> sales.by.month[2]
+[1] 100
+```
+
+Notice that R outputs `[1] 100`, _not_ `[2] 100`. This is because R is being extremely literal. When we typed in `sales.by.month[2]`, we asked R to find exactly _one_ thing, and that one thing happens to be the second element of our `sales.by.month` vector. So, when it outputs `[1] 100` what R is saying is that the first number _that we just asked for_ is `100`. This behaviour makes more sense when you realise that we can use this trick to create new variables. For example, I could create a `february.sales` variable like this:
+
+```
+february.sales <- sales.by.month[2]
+february.sales
+```
+
+```
+## [1] 100
+```
+
+Obviously, the new variable `february.sales` should only have one element and so when I print it out this new variable, the R output begins with a `[1]` because `100` is the value of the first (and only) element of `february.sales`. The fact that this also happens to be the value of the second element of `sales.by.month` is irrelevant. We’ll pick this topic up again shortly (Section [3.10](https://learningstatisticswithr.com/book/introR.html#indexing)).
+
+#### 3.7.4 Altering the elements of a vector
+
+Sometimes you’ll want to change the values stored in a vector. Imagine my surprise when the publisher rings me up to tell me that the sales data for May are wrong. There were actually an additional 25 books sold in May, but there was an error or something so they hadn’t told me about it. How can I fix my `sales.by.month` variable? One possibility would be to assign the whole vector again from the beginning, using `c()`. But that’s a lot of typing. Also, it’s a little wasteful: why should R have to redefine the sales figures for all 12 months, when only the 5th one is wrong? Fortunately, we can tell R to change only the 5th element, using this trick:
+
+```
+sales.by.month[5] <- 25
+sales.by.month
+```
+
+```
+##  [1]   0 100 200  50  25   0   0   0   0   0   0   0
+```
+
+Another way to edit variables is to use the `edit()` or `fix()` functions. I won’t discuss them in detail right now, but you can check them out on your own.
+
+#### 3.7.5 Useful things to know about vectors
+
+Before moving on, I want to mention a couple of other things about vectors. Firstly, you often find yourself wanting to know how many elements there are in a vector (usually because you’ve forgotten). You can use the `length()` function to do this. It’s quite straightforward:
+
+```
+length( x = sales.by.month )
+```
+
+```
+## [1] 12
+```
+
+Secondly, you often want to alter all of the elements of a vector at once. For instance, suppose I wanted to figure out how much money I made in each month. Since I’m earning an exciting $7 per book (no seriously, that’s actually pretty close to what authors get on the very expensive textbooks that you’re expected to purchase), what I want to do is multiply each element in the `sales.by.month` vector by `7`. R makes this pretty easy, as the following example shows:
+
+```
+sales.by.month * 7
+```
+
+```
+##  [1]    0  700 1400  350  175    0    0    0    0    0    0    0
+```
+
+In other words, when you multiply a vector by a single number, all elements in the vector get multiplied. The same is true for addition, subtraction, division and taking powers. So that’s neat. On the other hand, suppose I wanted to know how much money I was making per day, rather than per month. Since not every month has the same number of days, I need to do something slightly different. Firstly, I’ll create two new vectors:
+
+```
+days.per.month <- c(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)
+profit <- sales.by.month * 7
+```
+
+Obviously, the `profit` variable is the same one we created earlier, and the `days.per.month` variable is pretty straightforward. What I want to do is divide every element of `profit` by the _corresponding_ element of `days.per.month`. Again, R makes this pretty easy:
+
+```
+profit / days.per.month
+```
+
+```
+##  [1]  0.000000 25.000000 45.161290 11.666667  5.645161  0.000000  0.000000
+##  [8]  0.000000  0.000000  0.000000  0.000000  0.000000
+```
+
+I still don’t like all those zeros, but that’s not what matters here. Notice that the second element of the output is 25, because R has divided the second element of `profit` (i.e. 700) by the second element of `days.per.month` (i.e. 28). Similarly, the third element of the output is equal to 1400 divided by 31, and so on. We’ll talk more about calculations involving vectors later on (and in particular a thing called the “recycling rule”; Section [7.12.2](https://learningstatisticswithr.com/book/datahandling.html#recycling)), but that’s enough detail for now.
+
+### 3.8 Storing text data
+
+A lot of the time your data will be numeric in nature, but not always. Sometimes your data really needs to be described using text, not using numbers. To address this, we need to consider the situation where our variables store text. To create a variable that stores the word “hello”, we can type this:
+
+```
+greeting <- "hello"
+greeting
+```
+
+```
+## [1] "hello"
+```
+
+When interpreting this, it’s important to recognise that the quote marks here _aren’t_ part of the string itself. They’re just something that we use to make sure that R knows to treat the characters that they enclose as a piece of text data, known as a _**character string**_. In other words, R treats `"hello"` as a string containing the word “hello”; but if I had typed `hello` instead, R would go looking for a variable by that name! You can also use `'hello'` to specify a character string.
+
+Okay, so that’s how we store the text. Next, it’s important to recognise that when we do this, R stores the entire word `"hello"` as a _single_ element: our `greeting` variable is _not_ a vector of five different letters. Rather, it has only the one element, and that element corresponds to the entire character string `"hello"`. To illustrate this, if I actually ask R to find the first element of `greeting`, it prints the whole string:
+
+```
+greeting[1]
+```
+
+```
+## [1] "hello"
+```
+
+Of course, there’s no reason why I can’t create a vector of character strings. For instance, if we were to continue with the example of my attempts to look at the monthly sales data for my book, one variable I might want would include the names of all 12 `months`.[36](https://learningstatisticswithr.com/book/introR.html#fn36) To do so, I could type in a command like this
+
+```
+months <- c("January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", 
+            "December")
+```
+
+This is a _**character vector**_ containing 12 elements, each of which is the name of a month. So if I wanted R to tell me the name of the fourth month, all I would do is this:
+
+```
+months[4]
+```
+
+```
+## [1] "April"
+```
 
