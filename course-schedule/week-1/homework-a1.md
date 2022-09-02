@@ -1,12 +1,12 @@
 ---
-description: Homework Instructions, 4500 words, 3 hours
+description: 450 lines, 3 hours
 ---
 
 # Homework A1
 
 ### HA1 Instructions
 
-Read the following R tutorial.
+Read this tutorial and apply the codes in R.
 
 ### Rules & conventions for naming variables
 

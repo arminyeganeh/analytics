@@ -1,8 +1,12 @@
 ---
-description: Lab A1 Instructions, 450 lines, 3 hour
+description: 150 lines, 1 hour
 ---
 
 # Intro to R & RStudio
+
+### LA1 Instructions
+
+Read this tutorial and apply the codes in R.
 
 ### Installing R
 
