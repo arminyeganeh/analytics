@@ -1,5 +1,5 @@
 ---
-description: Reading Instructions
+description: Reading Instructions, 50 pages, 2 hours
 ---
 
 # Reading

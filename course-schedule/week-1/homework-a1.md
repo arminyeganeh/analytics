@@ -1,5 +1,5 @@
 ---
-description: Instructions to (~1500 words, ~1 hour)
+description: Homework Instructions, 4500 words, 3 hours
 ---
 
 # Homework A1
