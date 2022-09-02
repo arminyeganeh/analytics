@@ -135,51 +135,35 @@ Sometimes you’ll want to change the values stored in a vector. One possibility
 
 Another way to edit variables is to use the `edit()` or `fix()` functions.
 
-#### 3.7.5 Useful things to know about vectors
-
-Before moving on, I want to mention a couple of other things about vectors. Firstly, you often find yourself wanting to know how many elements there are in a vector (usually because you’ve forgotten). You can use the `length()` function to do this. It’s quite straightforward:
+You often find yourself wanting to know how many elements there are in a vector. You can use the `length()` function to do this:
 
 ```
-length( x = sales.by.month )
+> length(x = sales.by.month)
+[1] 12
 ```
 
-```
-## [1] 12
-```
-
-Secondly, you often want to alter all of the elements of a vector at once. For instance, suppose I wanted to figure out how much money I made in each month. Since I’m earning an exciting $7 per book (no seriously, that’s actually pretty close to what authors get on the very expensive textbooks that you’re expected to purchase), what I want to do is multiply each element in the `sales.by.month` vector by `7`. R makes this pretty easy, as the following example shows:
+Secondly, you often want to alter all of the elements of a vector at once. For instance, suppose you wanted to figure out how much money you made each month. You may want to get $7 per book, thus, what you want to do is multiply each element in the `sales.by.month` vector by 7:
 
 ```
-sales.by.month * 7
+> sales.by.month * 7
+[1]    0  700 1400  350  175    0    0    0    0    0    0    0
 ```
 
-```
-##  [1]    0  700 1400  350  175    0    0    0    0    0    0    0
-```
-
-In other words, when you multiply a vector by a single number, all elements in the vector get multiplied. The same is true for addition, subtraction, division and taking powers. So that’s neat. On the other hand, suppose I wanted to know how much money I was making per day, rather than per month. Since not every month has the same number of days, I need to do something slightly different. Firstly, I’ll create two new vectors:
+In other words, when you multiply a vector by a single number, all elements in the vector get multiplied. The same is true for addition, subtraction, division, and taking powers. Suppose you wanted to know how much money was made per day, rather than per month. Since not every month has the same number of days, you need to do something slightly different:
 
 ```
-days.per.month <- c(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)
-profit <- sales.by.month * 7
+> days.per.month <- c(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)
+> profit <- sales.by.month * 7
+> profit / days.per.month
+[1]  0.000000 25.000000 45.161290 11.666667  5.645161  0.000000  0.000000
+[8]  0.000000  0.000000  0.000000  0.000000  0.000000
 ```
 
-Obviously, the `profit` variable is the same one we created earlier, and the `days.per.month` variable is pretty straightforward. What I want to do is divide every element of `profit` by the _corresponding_ element of `days.per.month`. Again, R makes this pretty easy:
+Notice that the second element of the output is 25 because R has divided the second element of `profit` (i.e. 700) by the second element of `days.per.month` (i.e. 28). Similarly, the third element of the output is equal to 1400 divided by 31, and so on.&#x20;
 
-```
-profit / days.per.month
-```
+### Storing text data
 
-```
-##  [1]  0.000000 25.000000 45.161290 11.666667  5.645161  0.000000  0.000000
-##  [8]  0.000000  0.000000  0.000000  0.000000  0.000000
-```
-
-I still don’t like all those zeros, but that’s not what matters here. Notice that the second element of the output is 25, because R has divided the second element of `profit` (i.e. 700) by the second element of `days.per.month` (i.e. 28). Similarly, the third element of the output is equal to 1400 divided by 31, and so on. We’ll talk more about calculations involving vectors later on (and in particular a thing called the “recycling rule”; Section [7.12.2](https://learningstatisticswithr.com/book/datahandling.html#recycling)), but that’s enough detail for now.
-
-### 3.8 Storing text data
-
-A lot of the time your data will be numeric in nature, but not always. Sometimes your data really needs to be described using text, not using numbers. To address this, we need to consider the situation where our variables store text. To create a variable that stores the word “hello”, we can type this:
+A lot of the time your data will be numeric in nature, but not always. Sometimes your data really needs to be described using text, not using numbers. To create a variable that stores the word “hello”, we can type this:
 
 ```
 greeting <- "hello"
