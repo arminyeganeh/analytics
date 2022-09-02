@@ -73,11 +73,11 @@ What’s happening here is that we’ve specified _two_ arguments: the first arg
 [1] 3.14
 ```
 
-Specifying the arguments by name involves more typing, but it’s also a lot easier to read. When specifying the arguments using their names, it doesn’t matter what order you type them in. But if you don’t use the argument names, then you have to input the arguments in the correct order:
+Specifying the arguments by name involves more typing, but it’s easier to read and safer because it doesn’t matter what order you type them in. But if you don’t use the argument names, then you have to input the arguments in the correct order:
 
-<pre><code><strong>round(digits = 2, x = 3.1415)
-</strong>[1] 3.14</code></pre>
+```
+> round(digits = 2, x = 3.1415)
+[1] 3.14
+```
 
-How do you find out what the correct order is? There’s a few different ways, but the easiest one is to look at the help documentation for the function (see Section [4.12](https://learningstatisticswithr.com/book/mechanics.html#help). However, if you’re ever unsure, it’s probably best to actually type in the argument name.
-
-Okay, so that’s the first thing I said you’d need to know: argument names. The second thing you need to know about is default values. Notice that the first time I called the `round()` function I didn’t actually specify the `digits` argument at all, and yet R somehow knew that this meant it should round to the nearest whole number. How did that happen? The answer is that the `digits` argument has a _**default value**_ of `0`, meaning that if you decide not to specify a value for `digits` then R will act as if you had typed `digits = 0`. This is quite handy: the vast majority of the time when you want to round a number you want to round it to the nearest whole number, and it would be pretty annoying to have to specify the `digits` argument every single time. On the other hand, sometimes you actually do want to round to something other than the nearest whole number, and it would be even more annoying if R didn’t allow this! Thus, by having `digits = 0` as the default value, we get the best of both worlds.
+The second thing you need to know about is **default values**. Notice that the first time we called the `round()` function we didn’t actually specify the `digits` argument at all, and yet R somehow knew that this meant it should round to the nearest whole number. How did that happen? The answer is that the `digits` argument has a default value of `0`. This is quite handy: the vast majority of the time when you want to round a number you want to round it to the nearest whole number, and it would be pretty annoying to have to specify the `digits` argument every single time.
