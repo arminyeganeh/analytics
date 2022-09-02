@@ -1,5 +1,5 @@
 ---
-description: Lab A1 Instructions, 1500 words, 1 hour
+description: Lab A1 Instructions, 450 lines, 3 hour
 ---
 
 # Intro to R & RStudio
