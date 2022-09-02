@@ -36,7 +36,7 @@ However, there’s a second way that we can do this, since R also provides the *
 [1] 15
 ```
 
-&#x20;When we use a function to do something, we generally refer to this as **calling** the function, and the values that we type into the function (there can be more than one) are referred to as the **arguments** of that function. One function that we will need to use is the **absolute value function**. Compared to the square root function, it’s extremely simple: it just converts negative numbers to positive numbers, and leaves positive numbers alone. R provides the `abs()` function that you can use for this purpose:
+&#x20;When we use a function to do something, we generally refer to this as **calling** the function, and the values that we type into the function (there can be more than one) are referred to as the **arguments** of that function. One function that we will need to use is the **absolute value function**. Compared to the square root function, it’s extremely simple: it just converts negative numbers to positive numbers and leaves positive numbers alone. R provides the function `abs()` for this purpose:
 
 ```
 > abs(-21)
@@ -50,75 +50,33 @@ R allows us to put functions together and even combine functions with operators:
 [1] 3
 ```
 
-#### Function arguments, their names and their defaults
+### Function arguments, names, and defaults
 
-There’s two more fairly important things that you need to understand about how functions work in R, and that’s the use of “named” arguments, and default values" for arguments. Not surprisingly, that’s not to say that this is the last we’ll hear about how functions work, but they are the last things we desperately need to discuss in order to get you started. To understand what these two concepts are all about, I’ll introduce another function. The `round()` function can be used to round some value to the nearest whole number. For example, I could type this:
-
-```
-round( 3.1415 )
-```
+There are two more fairly important things about functions: named arguments, and default values for arguments. To understand what these two concepts are all about, let's use the function `round()` to round some value to the nearest whole number:
 
 ```
-## [1] 3
+> round(3.1415)
+[1] 3
 ```
 
-Pretty straightforward, really. However, suppose I only wanted to round it to two decimal places: that is, I want to get `3.14` as the output. The `round()` function supports this, by allowing you to input a second argument to the function that specifies the number of decimal places that you want to round the number to. In other words, I could do this:
+Suppose you only wanted to round it to two decimal places, which is `3.14` as the output. The `round()` function supports this, by allowing you to input a second argument to the function that specifies the number of decimal places that you want to round the number to:
 
 ```
-round( 3.14165, 2 )
+> round(3.14165, 2)
+[1] 3.14
 ```
 
-```
-## [1] 3.14
-```
-
-What’s happening here is that I’ve specified _two_ arguments: the first argument is the number that needs to be rounded (i.e., `3.1415`), the second argument is the number of decimal places that it should be rounded to (i.e., `2`), and the two arguments are separated by a comma. In this simple example, it’s quite easy to remember which one argument comes first and which one comes second, but for more complicated functions this is not easy. Fortunately, most R functions make use of _**argument names**_. For the `round()` function, for example the number that needs to be rounded is specified using the `x` argument, and the number of decimal points that you want it rounded to is specified using the `digits` argument. Because we have these names available to us, we can specify the arguments to the function by name. We do so like this:
+What’s happening here is that we’ve specified _two_ arguments: the first argument is the number that needs to be rounded, and the second argument is the number of decimal places that it should be rounded to, and the two arguments are separated by a comma. In this simple example, it’s quite easy to remember which one argument comes first and which one comes second, but for more complicated functions this is not easy. Most R functions make use of **argument names**. For the `round()` function, the number that needs to be rounded is specified using the argument `x` , and the number of decimal points that you want it rounded to is specified using the argument `digits`:
 
 ```
-round( x = 3.1415, digits = 2 )
+> round(x = 3.1415, digits = 2)
+[1] 3.14
 ```
 
-```
-## [1] 3.14
-```
+Specifying the arguments by name involves more typing, but it’s also a lot easier to read. When specifying the arguments using their names, it doesn’t matter what order you type them in. But if you don’t use the argument names, then you have to input the arguments in the correct order:
 
-Notice that this is kind of similar in spirit to variable assignment (Section [3.4](https://learningstatisticswithr.com/book/introR.html#assign)), except that I used `=` here, rather than `<-`. In both cases we’re specifying specific values to be associated with a label. However, there are some differences between what I was doing earlier on when creating variables, and what I’m doing here when specifying arguments, and so as a consequence it’s important that you use `=` in this context.
-
-As you can see, specifying the arguments by name involves a lot more typing, but it’s also a lot easier to read. Because of this, the commands in this book will usually specify arguments by name,[31](https://learningstatisticswithr.com/book/introR.html#fn31) since that makes it clearer to you what I’m doing. However, one important thing to note is that when specifying the arguments using their names, it doesn’t matter what order you type them in. But if you don’t use the argument names, then you have to input the arguments in the correct order. In other words, these three commands all produce the same output…
-
-```
-round( 3.14165, 2 )
-```
-
-```
-## [1] 3.14
-```
-
-```
-round( x = 3.1415, digits = 2 )
-```
-
-```
-## [1] 3.14
-```
-
-```
-round( digits = 2, x = 3.1415 )
-```
-
-```
-## [1] 3.14
-```
-
-but this one does not…
-
-```
-round( 2, 3.14165 )
-```
-
-```
-## [1] 2
-```
+<pre><code><strong>round(digits = 2, x = 3.1415)
+</strong>[1] 3.14</code></pre>
 
 How do you find out what the correct order is? There’s a few different ways, but the easiest one is to look at the help documentation for the function (see Section [4.12](https://learningstatisticswithr.com/book/mechanics.html#help). However, if you’re ever unsure, it’s probably best to actually type in the argument name.
 
