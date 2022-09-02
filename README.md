@@ -42,7 +42,7 @@ By the end of this course, learners will be able to:&#x20;
 
 ### Course Requirements <a href="#instructor" id="instructor"></a>
 
-**Course prerequisites:** The only prerequisite for this class is graduate standing at MSU. The instructor assumes little knowledge of quantitative techniques, although learners should have basic knowledge of mathematics and statistics. The class is quantitatively inclined, but university-level math is not required. Reviewing the following topics is recommended if not being used recently: [College Algebra](https://openstax.org/details/books/college-algebra), [Calculus](https://openstax.org/details/books/calculus-volume-1), and [Introductory Statistics](https://openstax.org/details/books/introductory-statistics).
+**Course prerequisites:** The only prerequisite for this class is graduate standing at MSU. The instructor assumes little knowledge of quantitative techniques, although learners should have basic knowledge of mathematics and statistics. The class is quantitatively inclined, but coding skills and university-level math are not required. Reviewing the following topics is recommended if not being used recently: [College Algebra](https://openstax.org/details/books/college-algebra), [Calculus](https://openstax.org/details/books/calculus-volume-1), and [Introductory Statistics](https://openstax.org/details/books/introductory-statistics).
 
 **Required Text Book:**
 
