@@ -485,28 +485,3 @@ exists( "read.spss" )
 ```
 
 Yep. All good.
-
-#### 4.2.3 Unloading a package
-
-Sometimes, especially after a long session of working with R, you find yourself wanting to get rid of some of those packages that you’ve loaded. The RStudio package panel makes this exactly as easy as loading the package in the first place. Find the entry corresponding to the package you want to unload, and uncheck the box. When you do that for the `foreign` package, you’ll see this command appear on screen:
-
-```
-detach("package:foreign", unload=TRUE)
-```
-
-```
-## Warning: 'foreign' namespace cannot be unloaded:
-##   namespace 'foreign' is imported by 'rio', 'psych' so cannot be unloaded
-```
-
-And the package is unloaded. We can verify this by seeing if the `read.spss()` function still `exists()`:
-
-```
-exists( "read.spss" )
-```
-
-```
-## [1] FALSE
-```
-
-Nope. Definitely gone.
