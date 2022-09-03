@@ -413,15 +413,224 @@ The `y/n/c` part here is short for “yes/no/ cancel”. Type `y` if you want to
 
 <figure><img src="https://learningstatisticswithr.com/book/img/introR/Rstudio_options.png" alt=""><figcaption><p><strong>Figure HA1.3</strong> The RStudio Options window</p></figcaption></figure>
 
-### 3.12 Summary
+## Chapter 4 Additional R concepts
 
-Every book that tries to introduce basic programming ideas to novices has to cover roughly the same topics, and in roughly the same order. Mine is no exception, and so in the grand tradition of doing it just the same way everyone else did it, this chapter covered the following topics:
+> _Form follows function_
+>
+> – Louis Sullivan
 
-* [Getting started](https://learningstatisticswithr.com/book/introR.html#gettingR). We downloaded and installed R and RStudio
-* [Basic commands](https://learningstatisticswithr.com/book/introR.html#arithmetic). We talked a bit about the logic of how R works and in particular how to type commands into the R console (Section @ref(#firstcommand), and in doing so learned how to perform basic calculations using the arithmetic operators `+`, `-`, `*`, `/` and `^`.
-* [Introduction to functions](https://learningstatisticswithr.com/book/introR.html#usingfunctions). We saw several different functions, three that are used to perform numeric calculations (`sqrt()`, `abs()`, `round()`, one that applies to text (`nchar()`; Section [3.8.1](https://learningstatisticswithr.com/book/introR.html#simpletext)), and one that works on any variable (`length()`; Section [3.7.5](https://learningstatisticswithr.com/book/introR.html#veclength)). In doing so, we talked a bit about how argument names work, and learned about default values for arguments. (Section [3.5.1](https://learningstatisticswithr.com/book/introR.html#functionarguments))
-* Introduction to variables. We learned the basic idea behind variables, and how to assign values to variables using the assignment operator `<-` (Section [3.4](https://learningstatisticswithr.com/book/introR.html#assign)). We also learned how to create vectors using the combine function `c()` (Section [3.7](https://learningstatisticswithr.com/book/introR.html#vectors)).
-* Data types. Learned the distinction between numeric, character and logical data; including the basics of how to enter and use each of them. (Sections [3.4](https://learningstatisticswithr.com/book/introR.html#assign) to [3.9](https://learningstatisticswithr.com/book/introR.html#logicals))
-* [Logical operations](https://learningstatisticswithr.com/book/introR.html#logicals). Learned how to use the logical operators `==`, `!=`, `<`, `>`, `<=`, `=>`, `!`, `&` and `|`. And learned how to use logical indexing. (Section [3.10](https://learningstatisticswithr.com/book/introR.html#indexing))
+In Chapter [3](https://learningstatisticswithr.com/book/introR.html#introR) our main goal was to get started in R. As we go through the book we’ll run into a lot of new R concepts, which I’ll explain alongside the relevant data analysis concepts. However, there’s still quite a few things that I need to talk about now, otherwise we’ll run into problems when we start trying to work with data and do statistics. So that’s the goal in this chapter: to build on the introductory content from the last chapter, to get you to the point that we can start using R for statistics. Broadly speaking, the chapter comes in two parts. The first half of the chapter is devoted to the “mechanics” of R: installing and loading packages, managing the workspace, navigating the file system, and loading and saving data. In the second half, I’ll talk more about what kinds of variables exist in R, and introduce three new kinds of variables: factors, data frames and formulas. I’ll finish up by talking a little bit about the help documentation in R as well as some other avenues for finding assistance. In general, I’m not trying to be comprehensive in this chapter, I’m trying to make sure that you’ve got the basic foundations needed to tackle the content that comes later in the book. However, a lot of the topics are revisited in more detail later, especially in Chapters [7](https://learningstatisticswithr.com/book/datahandling.html#datahandling) and [8](https://learningstatisticswithr.com/book/scripting.html#scripting).
 
-We still haven’t arrived at anything that resembles a “data set”, of course. Maybe the next Chapter will get us a bit closer…
+### 4.1 Using comments
+
+Before discussing any of the more complicated stuff, I want to introduce the _**comment**_ character, `#`. It has a simple meaning: it tells R to ignore everything else you’ve written on this line. You won’t have much need of the `#` character immediately, but it’s very useful later on when writing scripts (see Chapter [8](https://learningstatisticswithr.com/book/scripting.html#scripting)). However, while you don’t need to use it, I want to be able to include comments in my R extracts. For instance, if you read this:[42](https://learningstatisticswithr.com/book/mechanics.html#fn42)
+
+```
+seeker <- 3.1415           # create the first variable
+lover <- 2.7183            # create the second variable
+keeper <- seeker * lover   # now multiply them to create a third one
+print( keeper )            # print out the value of 'keeper'
+```
+
+```
+## [1] 8.539539
+```
+
+it’s a lot easier to understand what I’m doing than if I just write this:
+
+```
+seeker <- 3.1415
+lover <- 2.7183
+keeper <- seeker * lover
+print( keeper )    
+```
+
+```
+## [1] 8.539539
+```
+
+You might have already noticed that the code extracts in Chapter [3](https://learningstatisticswithr.com/book/introR.html#introR) included the `#` character, but from now on, you’ll start seeing `#` characters appearing in the extracts, with some human-readable explanatory remarks next to them. These are still perfectly legitimate commands, since R knows that it should ignore the `#` character and everything after it. But hopefully they’ll help make things a little easier to understand.
+
+### 4.2 Installing and loading packages
+
+In this section I discuss R _**packages**_, since almost all of the functions you might want to use in R come in packages. A package is basically just a big collection of functions, data sets and other R objects that are all grouped together under a common name. Some packages are already installed when you put R on your computer, but the vast majority of them of R packages are out there on the internet, waiting for you to download, install and use them.
+
+When I first started writing this book, RStudio didn’t really exist as a viable option for using R, and as a consequence I wrote a very lengthy section that explained how to do package management using raw R commands. It’s not actually terribly hard to work with packages that way, but it’s clunky and unpleasant. Fortunately, we don’t have to do things that way anymore. In this section, I’ll describe how to work with packages using the RStudio tools, because they’re so much simpler. Along the way, you’ll see that whenever you get RStudio to do something (e.g., install a package), you’ll actually see the R commands that get created. I’ll explain them as we go, because I think that helps you understand what’s going on.
+
+However, before we get started, there’s a critical distinction that you need to understand, which is the difference between having a package _**installed**_ on your computer, and having a package _**loaded**_ in R. As of this writing, there are just over 5000 R packages freely available “out there” on the internet.[43](https://learningstatisticswithr.com/book/mechanics.html#fn43) When you install R on your computer, you don’t get all of them: only about 30 or so come bundled with the basic R installation. So right now there are about 30 packages “installed” on your computer, and another 5000 or so that are not installed. So that’s what installed means: it means “it’s on your computer somewhere”. The critical thing to remember is that just because something is on your computer doesn’t mean R can use it. In order for R to be able to _use_ one of your 30 or so installed packages, that package must also be “loaded”. Generally, when you open up R, only a few of these packages (about 7 or 8) are actually loaded. Basically what it boils down to is this:
+
+> A package must be installed before it can be loaded.
+
+> A package must be loaded before it can be used.
+
+This two step process might seem a little odd at first, but the designers of R had very good reasons to do it this way,[44](https://learningstatisticswithr.com/book/mechanics.html#fn44) and you get the hang of it pretty quickly.
+
+#### 4.2.1 The package panel in RStudio
+
+![The packages panel.](https://learningstatisticswithr.com/book/img/mechanics/Rstudiopackages.png)
+
+Figure 4.1: The packages panel.
+
+Right, lets get started. The first thing you need to do is look in the lower right hand panel in RStudio. You’ll see a tab labelled “Packages”. Click on the tab, and you’ll see a list of packages that looks something like Figure [4.1](https://learningstatisticswithr.com/book/mechanics.html#fig:packagepanel). Every row in the panel corresponds to a different package, and every column is a useful piece of information about that package.[45](https://learningstatisticswithr.com/book/mechanics.html#fn45) Going from left to right, here’s what each column is telling you:
+
+* The check box on the far left column indicates whether or not the package is loaded.
+* The one word of text immediately to the right of the check box is the name of the package.
+* The short passage of text next to the name is a brief description of the package.
+* The number next to the description tells you what version of the package you have installed.
+* The little x-mark next to the version number is a button that you can push to uninstall the package from your computer (you almost never need this).
+
+#### 4.2.2 Loading a package
+
+That seems straightforward enough, so let’s try loading and unloading packades. For this example, I’ll use the `foreign` package. The `foreign` package is a collection of tools that are very handy when R needs to interact with files that are produced by other software packages (e.g., SPSS). It comes bundled with R, so it’s one of the ones that you have installed already, but it won’t be one of the ones loaded. Inside the `foreign` package is a function called `read.spss()`. It’s a handy little function that you can use to import an SPSS data file into R, so let’s pretend we want to use it. Currently, the `foreign` package isn’t loaded, so if I ask R to tell me if it knows about a function called `read.spss()` it tells me that there’s no such thing…
+
+```
+exists( "read.spss" )
+```
+
+```
+## [1] FALSE
+```
+
+Now let’s load the package. In RStudio, the process is dead simple: go to the package tab, find the entry for the `foreign` package, and check the box on the left hand side. The moment that you do this, you’ll see a command like this appear in the R console:
+
+```
+library("foreign", lib.loc="/Library/Frameworks/R.framework/Versions/3.0/Resources/library")
+```
+
+The `lib.loc` bit will look slightly different on Macs versus on Windows, because that part of the command is just RStudio telling R where to look to find the installed packages. What I’ve shown you above is the Mac version. On a Windows machine, you’ll probably see something that looks like this:
+
+```
+library("foreign", lib.loc="C:/Program Files/R/R-3.0.2/library")
+```
+
+But actually it doesn’t matter much. The `lib.loc` bit is almost always unnecessary. Unless you’ve taken to installing packages in idiosyncratic places (which is something that you can do if you really want) R already knows where to look. So in the vast majority of cases, the command to load the `foreign` package is just this:
+
+```
+library("foreign")
+```
+
+Throughout this book, you’ll often see me typing in `library()` commands. You don’t actually have to type them in yourself: you can use the RStudio package panel to do all your package loading for you. The only reason I include the `library()` commands sometimes is as a reminder to you to make sure that you have the relevant package loaded. Oh, and I suppose we should check to see if our attempt to load the package actually worked. Let’s see if R now knows about the existence of the `read.spss()` function…
+
+```
+exists( "read.spss" )
+```
+
+```
+## [1] TRUE
+```
+
+Yep. All good.
+
+#### 4.2.3 Unloading a package
+
+Sometimes, especially after a long session of working with R, you find yourself wanting to get rid of some of those packages that you’ve loaded. The RStudio package panel makes this exactly as easy as loading the package in the first place. Find the entry corresponding to the package you want to unload, and uncheck the box. When you do that for the `foreign` package, you’ll see this command appear on screen:
+
+```
+detach("package:foreign", unload=TRUE)
+```
+
+```
+## Warning: 'foreign' namespace cannot be unloaded:
+##   namespace 'foreign' is imported by 'rio', 'psych' so cannot be unloaded
+```
+
+And the package is unloaded. We can verify this by seeing if the `read.spss()` function still `exists()`:
+
+```
+exists( "read.spss" )
+```
+
+```
+## [1] FALSE
+```
+
+Nope. Definitely gone.
+
+#### 4.2.4 A few extra comments
+
+Sections [4.2.2](https://learningstatisticswithr.com/book/mechanics.html#packageload) and [4.2.3](https://learningstatisticswithr.com/book/mechanics.html#packageunload) cover the main things you need to know about loading and unloading packages. However, there’s a couple of other details that I want to draw your attention to. A concrete example is the best way to illustrate. One of the other packages that you already have installed on your computer is the `Matrix` package, so let’s load that one and see what happens:
+
+```
+library( Matrix )
+
+## Loading required package: lattice
+```
+
+This is slightly more complex than the output that we got last time, but it’s not too complicated. The `Matrix` package makes use of some of the tools in the `lattice` package, and R has kept track of this dependency. So when you try to load the `Matrix` package, R recognises that you’re also going to need to have the `lattice` package loaded too. As a consequence, _both_ packages get loaded, and R prints out a helpful little note on screen to tell you that it’s done so.
+
+R is pretty aggressive about enforcing these dependencies. Suppose, for example, I try to unload the `lattice` package while the `Matrix` package is still loaded. This is easy enough to try: all I have to do is uncheck the box next to “lattice” in the packages panel. But if I try this, here’s what happens:
+
+```
+detach("package:lattice", unload=TRUE)
+
+## Error: package `lattice' is required by `Matrix' so will not be detached
+```
+
+R refuses to do it. This can be quite useful, since it stops you from accidentally removing something that you still need. So, if I want to remove both `Matrix` and `lattice`, I need to do it in the correct order
+
+Something else you should be aware of. Sometimes you’ll attempt to load a package, and R will print out a message on screen telling you that something or other has been “masked”. This will be confusing to you if I don’t explain it now, and it actually ties very closely to the whole reason why R forces you to load packages separately from installing them. Here’s an example. Two of the package that I’ll refer to a lot in this book are called `car` and `psych`. The `car` package is short for “Companion to Applied Regression” (which is a really great book, I’ll add), and it has a lot of tools that I’m quite fond of. The `car` package was written by a guy called John Fox, who has written a lot of great statistical tools for social science applications. The `psych` package was written by William Revelle, and it has a lot of functions that are very useful for psychologists in particular, especially in regards to psychometric techniques. For the most part, `car` and `psych` are quite unrelated to each other. They do different things, so not surprisingly almost all of the function names are different. But… there’s one exception to that. The `car` package and the `psych` package _both_ contain a function called `logit()`.[46](https://learningstatisticswithr.com/book/mechanics.html#fn46) This creates a naming conflict. If I load both packages into R, an ambiguity is created. If the user types in `logit(100)`, should R use the `logit()` function in the `car` package, or the one in the `psych` package? The answer is: R uses whichever package you loaded most recently, and it tells you this very explicitly. Here’s what happens when I load the `car` package, and then afterwards load the `psych` package:
+
+```
+library(car)
+library(psych)
+```
+
+The output here is telling you that the `logit` object (i.e., function) in the `car` package is no longer accessible to you. It’s been hidden (or “masked”) from you by the one in the `psych` package.[47](https://learningstatisticswithr.com/book/mechanics.html#fn47)
+
+#### 4.2.5 Downloading new packages
+
+One of the main selling points for R is that there are thousands of packages that have been written for it, and these are all available online. So whereabouts online are these packages to be found, and how do we download and install them? There is a big repository of packages called the “Comprehensive R Archive Network” (CRAN), and the easiest way of getting and installing a new package is from one of the many CRAN mirror sites. Conveniently for us, R provides a function called `install.packages()` that you can use to do this. Even _more_ conveniently, the RStudio team runs its own CRAN mirror and RStudio has a clean interface that lets you install packages without having to learn how to use the `install.packages()` command[48](https://learningstatisticswithr.com/book/mechanics.html#fn48)
+
+Using the RStudio tools is, again, dead simple. In the top left hand corner of the packages panel (Figure [4.1](https://learningstatisticswithr.com/book/mechanics.html#fig:packagepanel)) you’ll see a button called “Install Packages”. If you click on that, it will bring up a window like the one shown in Figure [4.2](https://learningstatisticswithr.com/book/mechanics.html#fig:packageinstalla).
+
+![The package installation dialog box in RStudio](https://learningstatisticswithr.com/book/img/mechanics/installpackage.png)
+
+Figure 4.2: The package installation dialog box in RStudio
+
+There are a few different buttons and boxes you can play with. Ignore most of them. Just go to the line that says “Packages” and start typing the name of the package that you want. As you type, you’ll see a dropdown menu appear (Figure [4.3](https://learningstatisticswithr.com/book/mechanics.html#fig:packageinstallb)), listing names of packages that start with the letters that you’ve typed so far.
+
+![When you start typing, you'll see a dropdown menu suggest a list of possible packages that you might want to install](https://learningstatisticswithr.com/book/img/mechanics/installpackage2.png)
+
+Figure 4.3: When you start typing, you’ll see a dropdown menu suggest a list of possible packages that you might want to install
+
+You can select from this list, or just keep typing. Either way, once you’ve got the package name that you want, click on the install button at the bottom of the window. When you do, you’ll see the following command appear in the R console:
+
+```
+install.packages("psych")
+```
+
+This is the R command that does all the work. R then goes off to the internet, has a conversation with CRAN, downloads some stuff, and installs it on your computer. You probably don’t care about all the details of R’s little adventure on the web, but the `install.packages()` function is rather chatty, so it reports a bunch of gibberish that you really aren’t all that interested in:
+
+```
+trying URL 'http://cran.rstudio.com/bin/macosx/contrib/3.0/psych_1.4.1.tgz'
+Content type 'application/x-gzip' length 2737873 bytes (2.6 Mb)
+opened URL
+==================================================
+downloaded 2.6 Mb
+
+
+The downloaded binary packages are in
+    /var/folders/cl/thhsyrz53g73q0w1kb5z3l_80000gn/T//RtmpmQ9VT3/downloaded_packages
+```
+
+Despite the long and tedious response, all thar really means is “I’ve installed the psych package”. I find it best to humour the talkative little automaton. I don’t actually read any of this garbage, I just politely say “thanks” and go back to whatever I was doing.
+
+#### 4.2.6 Updating R and R packages
+
+Every now and then the authors of packages release updated versions. The updated versions often add new functionality, fix bugs, and so on. It’s generally a good idea to update your packages periodically. There’s an `update.packages()` function that you can use to do this, but it’s probably easier to stick with the RStudio tool. In the packages panel, click on the “Update Packages” button. This will bring up a window that looks like the one shown in Figure [4.4](https://learningstatisticswithr.com/book/mechanics.html#fig:updatepackages). In this window, each row refers to a package that needs to be updated. You can to tell R which updates you want to install by checking the boxes on the left. If you’re feeling lazy and just want to update everything, click the “Select All” button, and then click the “Install Updates” button. R then prints out a _lot_ of garbage on the screen, individually downloading and installing all the new packages. This might take a while to complete depending on how good your internet connection is. Go make a cup of coffee. Come back, and all will be well.
+
+![The RStudio dialog box for updating packages](https://learningstatisticswithr.com/book/img/mechanics/updatepackages.png)
+
+Figure 4.4: The RStudio dialog box for updating packages
+
+About every six months or so, a new version of R is released. You can’t update R from within RStudio (not to my knowledge, at least): to get the new version you can go to the CRAN website and download the most recent version of R, and install it in the same way you did when you originally installed R on your computer. This used to be a slightly frustrating event, because whenever you downloaded the new version of R, you would lose all the packages that you’d downloaded and installed, and would have to repeat the process of re-installing them. This was pretty annoying, and there were some neat tricks you could use to get around this. However, newer versions of R don’t have this problem so I no longer bother explaining the workarounds for that issue.
+
+#### 4.2.7 What packages does this book use?
+
+There are several packages that I make use of in this book. The most prominent ones are:
+
+* `lsr`. This is the _Learning Statistics with R_ package that accompanies this book. It doesn’t have a lot of interesting high-powered tools: it’s just a small collection of handy little things that I think can be useful to novice users. As you get more comfortable with R this package should start to feel pretty useless to you.
+* `psych`. This package, written by William Revelle, includes a lot of tools that are of particular use to psychologists. In particular, there’s several functions that are particularly convenient for producing analyses or summaries that are very common in psych, but less common in other disciplines.
+* `car`. This is the _Companion to Applied Regression_ package, which accompanies the excellent book of the same name by (Fox and Weisberg [2011](https://learningstatisticswithr.com/book/mechanics.html#ref-Fox2011)). It provides a lot of very powerful tools, only some of which we’ll touch in this book.
+
+Besides these three, there are a number of packages that I use in a more limited fashion: `gplots`, `sciplot`, `foreign`, `effects`, `R.matlab`, `gdata`, `lmtest`, and probably one or two others that I’ve missed. There are also a number of packages that I refer to but don’t actually use in this book, such as `reshape`, `compute.es`, `HistData` and `multcomp` among others. Finally, there are a number of packages that provide more advanced tools that I hope to talk about in future versions of the book, such as `sem`, `ez`, `nlme` and `lme4`. In any case, whenever I’m using a function that isn’t in the core packages, I’ll make sure to note this in the text.
