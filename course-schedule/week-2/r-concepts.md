@@ -82,3 +82,123 @@ The downloaded binary packages are in
 This is the R command that does all the work. R then goes off to the internet, has a conversation with CRAN, downloads some stuff, and installs it on your computer. You probably don’t care about all the details of R’s little adventure on the web, but the `install.packages()` function is rather chatty, so it reports a bunch of gibberish that you really aren’t all that interested in, saying “I’ve installed the psych package”.&#x20;
 
 Every now and then the authors of packages release updated versions. The updated versions often add new functionality, fix bugs, and so on. It’s generally a good idea to update your packages periodically. There’s the function `update.packages()`  that you can use to do this, but it’s probably easier to stick with the RStudio tool, using the “Update Packages” button located in the packages panel.&#x20;
+
+### Managing the workspace
+
+Let's create the three variables; `seeker`, `lover`, and `keeper`. These three variables are the contents of your **workspace**, also referred to as the **global environment**. The workspace is a key concept in R, we’ll talk a lot about what it is and how to manage its contents.
+
+```
+seeker <- 3.1415
+lover <- 2.7183
+keeper <- seeker * lover
+print(keeper)
+[1] 8.539539
+```
+
+<figure><img src="https://learningstatisticswithr.com/book/img/mechanics/workspacepanel.png" alt=""><figcaption><p><strong>Figure LA2.2</strong> The RStudio Environment panel</p></figcaption></figure>
+
+The RStudio Environment panel, **Figure LA2.2**, shows you the contents of the workspace. The view shown above is the list view. To switch to the grid view, click on the menu item on the top right that currently reads "List". The first thing that you need to know how to do is to examine the contents of the workspace. If you’re using RStudio, you will probably find that the easiest way to do this is to use the “Environment” panel. If you’re using the command line, then the function `objects()` may come in handy:
+
+```
+objects()
+```
+
+There are also several other functions that you can use, including `ls()` which is pretty much identical to `objects()`, and `ls.str()` which you can use to get a fairly detailed description of all the variables in the workspace. In fact, the package `lsr`  actually includes its own function that you can use for this purpose, called `who()`. The reason for using `who()` is pretty straightforward: The command `objects()` isn’t quite informative enough, because the only thing it prints out is the name of each variable; but the function `ls.str()` is too informative. The function `who()` is a compromise between the two. First, now that we’ve got the `lsr` package installed, we need to load it. The result includes a description of name, class, and size of all objects:
+
+```
+> install.packages("lsr")
+> library(lsr)
+> who()
+##    -- Name --             -- Class --     -- Size --
+##    keep                   numeric         1         
+##    lover                  numeric         1         
+##    seeker                 numeric         1         
+```
+
+### Removing variables from the workspace
+
+There’s no “undo” option for variable removal. Once a variable is removed, it’s gone forever unless you save it to disk. We will see how to do that later, but since we have no need for these variables at all, we can safely get rid of them. In RStudio, the easiest way to remove variables is to use the environment panel. Assuming that you’re in Grid view, check the boxes next to the variables that you want to delete, then click on the Clear button at the top of the panel. When you do this, RStudio will show a dialog box asking you to confirm that you really do want to delete the variables. Suppose you don’t access to RStudio, and you still want to remove variables. This is where the **remove** function `rm()` comes in handy:
+
+```
+rm(seeker, lover)
+```
+
+### Navigating the file system
+
+In this section I describe the basic idea behind file locations and file paths. Regardless of whether you’re using Window, Mac OS or Linux, every file on the computer is assigned a (fairly) human readable address, and every address has the same basic structure: it describes a _path_ that starts from a _root_ location , through as series of _folders_ (or if you’re an old-school computer user, _directories_), and finally ends up at the file.
+
+On a Windows computer the root is the physical drive[51](https://learningstatisticswithr.com/book/mechanics.html#fn51) on which the file is stored, and for most home computers the name of the hard drive that stores all your files is C: and therefore most file names on Windows begin with C:. After that comes the folders, and on Windows the folder names are separated by a `\` symbol. So, the complete path to this book on my Windows computer might be something like this:
+
+```
+C:\Users\danRbook\LSR.pdf
+```
+
+and what that _means_ is that the book is called LSR.pdf, and it’s in a folder called `book` which itself is in a folder called dan which itself is … well, you get the idea. On Linux, Unix and Mac OS systems, the addresses look a little different, but they’re more or less identical in spirit. Instead of using the backslash, folders are separated using a forward slash, and unlike Windows, they don’t treat the physical drive as being the root of the file system. So, the path to this book on my Mac might be something like this:
+
+```
+/Users/dan/Rbook/LSR.pdf
+```
+
+So that’s what we mean by the “path” to a file. The next concept to grasp is the idea of a _**working directory**_ and how to change it. For those of you who have used command line interfaces previously, this should be obvious already. But if not, here’s what I mean. The working directory is just “whatever folder I’m currently looking at”. Suppose that I’m currently looking for files in Explorer (if you’re using Windows) or using Finder (on a Mac). The folder I currently have open is my user directory (i.e., `C:\Users\dan` or `/Users/dan`). That’s my current working directory.
+
+The fact that we can imagine that the program is “in” a particular directory means that we can talk about moving _from_ our current location _to_ a new one. What that means is that we might want to specify a new location in relation to our current location. To do so, we need to introduce two new conventions. Regardless of what operating system you’re using, we use `.` to refer to the current working directory, and `..` to refer to the directory above it. This allows us to specify a path to a new location in relation to our current location, as the following examples illustrate. Let’s assume that I’m using my Windows computer, and my working directory is `C:\Users\danRbook`). The table below shows several addresses in relation to my current one:
+
+| absolute path (i.e., from root) | relative path (i.e. from C:) |
+| ------------------------------- | ---------------------------- |
+| C:\Users\dan                    | ..                           |
+| C:\Users                        | ..\\.. \\                    |
+| C:\Users\danRbook\source        | .\source                     |
+| C:\Users\dan\nerdstuff          | ..\nerdstuff                 |
+
+There’s one last thing I want to call attention to: the `~` directory. I normally wouldn’t bother, but R makes reference to this concept sometimes. It’s quite common on computers that have multiple users to define `~` to be the user’s home directory. On my Mac, for instance, the home directory `~` for the “dan” user is `\Users\dan\`. And so, not surprisingly, it is possible to define other directories in terms of their relationship to the home directory. For example, an alternative way to describe the location of the `LSR.pdf` file on my Mac would be
+
+```
+~Rbook\LSR.pdf
+```
+
+That’s about all you really need to know about file paths. And since this section already feels too long, it’s time to look at how to navigate the file system in R.
+
+#### 4.4.2 Navigating the file system using the R console
+
+In this section I’ll talk about how to navigate this file system from within R itself. It’s not particularly user friendly, and so you’ll probably be happy to know that RStudio provides you with an easier method, and I will describe it in Section [4.4.4](https://learningstatisticswithr.com/book/mechanics.html#nav3). So in practice, you won’t _really_ need to use the commands that I babble on about in this section, but I do think it helps to see them in operation at least once before forgetting about them forever.
+
+Okay, let’s get started. When you want to load or save a file in R it’s important to know what the working directory is. You can find out by using the `getwd()` command. For the moment, let’s assume that I’m using Mac OS or Linux, since there’s some subtleties to Windows. Here’s what happens:
+
+```
+getwd()
+## [1] "/Users/dan"
+```
+
+We can change the working directory quite easily using `setwd()`. The `setwd()` function has only the one argument, `dir`, is a character string specifying a path to a directory, or a path relative to the working directory. Since I’m currently located at `/Users/dan`, the following two are equivalent:
+
+```
+setwd("/Users/dan/Rbook/data")
+setwd("./Rbook/data")
+```
+
+Now that we’re here, we can type `list.files()` command to get a listing of all the files in that directory. Since this is the directory in which I store all of the data files that we’ll use in this book, here’s what we get as the result:
+
+```
+list.files()
+## [1] "afl24.Rdata"             "aflsmall.Rdata"          "aflsmall2.Rdata"        
+## [4] "agpp.Rdata"              "all.zip"                 "annoying.Rdata"         
+## [7] "anscombesquartet.Rdata"  "awesome.Rdata"           "awesome2.Rdata"         
+## [10] "booksales.csv"           "booksales.Rdata"         "booksales2.csv"         
+## [13] "cakes.Rdata"             "cards.Rdata"             "chapek9.Rdata"          
+## [16] "chico.Rdata"             "clinicaltrial_old.Rdata" "clinicaltrial.Rdata"    
+## [19] "coffee.Rdata"            "drugs.wmc.rt.Rdata"      "dwr_all.Rdata"          
+## [22] "effort.Rdata"            "happy.Rdata"             "harpo.Rdata"            
+## [25] "harpo2.Rdata"            "likert.Rdata"            "nightgarden.Rdata"      
+## [28] "nightgarden2.Rdata"      "parenthood.Rdata"        "parenthood2.Rdata"      
+## [31] "randomness.Rdata"        "repeated.Rdata"          "rtfm.Rdata"             
+## [34] "salem.Rdata"             "zeppo.Rdata"
+```
+
+Not terribly exciting, I’ll admit, but it’s useful to know about. In any case, there’s only one more thing I want to make a note of, which is that R also makes use of the home directory. You can find out what it is by using the `path.expand()` function, like this:
+
+```
+path.expand("~")
+## [1] "/Users/dan"
+```
+
+You can change the user directory if you want, but we’re not going to make use of it very much so there’s no reason to. The only reason I’m even bothering to mention it at all is that when you use RStudio to open a file, you’ll see output on screen that defines the path to the file relative to the `~` directory. I’d prefer you not to be confused when you see it.[52](https://learningstatisticswithr.com/book/mechanics.html#fn52)
