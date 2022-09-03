@@ -1,5 +1,5 @@
 ---
-description: 450 lines, 3 hours
+description: Week 1, HA1, 450 lines, 3 hours to complete
 ---
 
 # Homework A1
@@ -90,7 +90,7 @@ The second thing you need to know about is **default values**. Notice that the f
 
 There are a _lot_ of R functions, all of which have their own arguments. You’re probably also worried that you’re going to have to remember all of them! Thankfully, it’s not that bad. In fact, very few data analysts bother to try to remember all the commands. What they really do is use tricks to make their lives easier. The first is to use the internet. If you don’t know how a particular R function works, Google it. Second, you can look up the R help documentation. Third, there are simple tricks that RStudio makes available as follows.
 
-The first thing is the autocomplete ability in RStudio. Start typing the name of the function that you want. RStudio will then display a little window like the one shown in **Figure HA1**. The window has two panels. On the left, there’s a list of variables and functions that start with the typed letters, and some grey text that tells you in which package the variable/function is stored. The panel on the right displays information about the `round()` function. You can see that there are a few things that start with the typed letters. You can use the up and down arrow keys to select the one that you want and hit the Tab or the Enter key. Or, if none of the options look right to you, you can hit the Escape key to make the window go away.
+The first thing is the autocomplete ability in RStudio. Start typing the name of the function that you want. RStudio will then display a little window like the one shown in **Figure HA1.1**. The window has two panels. On the left, there’s a list of variables and functions that start with the typed letters, and some grey text that tells you in which package the variable/function is stored. The panel on the right displays information about the `round()` function. You can see that there are a few things that start with the typed letters. You can use the up and down arrow keys to select the one that you want and hit the Tab or the Enter key. Or, if none of the options look right to you, you can hit the Escape key to make the window go away.
 
 <figure><img src="../../.gitbook/assets/rstudio_autosuggestion.png" alt=""><figcaption><p><strong>Figure HA1.1</strong> RStudio autocomplete</p></figcaption></figure>
 
@@ -400,27 +400,18 @@ Either way, we get the answer we want. Logical indexing is a very basic, yet ver
 
 ### Quitting R
 
-<figure><img src="https://learningstatisticswithr.com/book/img/introR/Rstudio_quit.png" alt=""><figcaption><p><strong>Figure HA1.2</strong>: The RStudio closing dialogbox.</p></figcaption></figure>
+<figure><img src="https://learningstatisticswithr.com/book/img/introR/Rstudio_quit.png" alt=""><figcaption><p><strong>Figure HA1.2</strong> The RStudio closing dialogbox</p></figcaption></figure>
 
-There’s one last thing I should cover in this chapter: how to quit R. When I say this, I’m not trying to imply that R is some kind of pathological addition and that you need to call the R QuitLine or wear patches to control the cravings (although you certainly might argue that there’s something seriously pathological about being addicted to R). I just mean how to exit the program. Assuming you’re running R in the usual way (i.e., through RStudio or the default GUI on a Windows or Mac computer), then you can just shut down the application in the normal way. However, R also has a function, called `q()` that you can use to quit, which is pretty handy if you’re running R in a terminal window.
-
-Regardless of what method you use to quit R, when you do so for the first time R will probably ask you if you want to save the “workspace image”. We’ll talk a lot more about loading and saving data in Section [4.5](https://learningstatisticswithr.com/book/mechanics.html#load), but I figured we’d better quickly cover this now otherwise you’re going to get annoyed when you close R at the end of the chapter. If you’re using RStudio, you’ll see a dialog box that looks like the one shown in Figure [3.5](https://learningstatisticswithr.com/book/introR.html#fig:quitR). If you’re using a text based interface you’ll see this:
+R has a function, called `q()` that you can use to quit, which is pretty handy if you’re running R in a terminal window. Regardless of what method you use to quit R, when you do so for the first time R will probably ask you if you want to save the “workspace image”. If you’re using RStudio, you’ll see a dialog box that looks like the one shown in **Figure HA1.2**. If you’re using a text based interface you’ll see this:
 
 ```
-q()
-
-## Save workspace image? [y/n/c]: 
+> q()
+Save workspace image? [y/n/c]: 
 ```
 
-The `y/n/c` part here is short for “yes / no / cancel”. Type `y` if you want to save, `n` if you don’t, and `c` if you’ve changed your mind and you don’t want to quit after all.
+The `y/n/c` part here is short for “yes/no/ cancel”. Type `y` if you want to save, `n` if you don’t, and `c` if you’ve changed your mind and you don’t want to quit after all. What does this actually _mean_? t R wants to know if you want to save all those variables that you’ve been creating in a “default” data file, which it will automatically reload for you next time you open R. You can change the settings so that it never asks this again. You can do this in RStudio really easily: use the menu system to find the RStudio option; the dialog box that comes up will give you an option to tell R never to whine about this again. See **Figure HA1.3**. On a Mac, you can open this window by going to the “RStudio” menu and selecting “Preferences”. On a Windows machine you go to the “Tools” menu and select “Global Options”. Under the “General” tab you’ll see an option that reads “Save workspace to .Rdata on exit”. By default this is set to “ask”. If you want R to stop asking, change it to “never”.
 
-What does this actually _mean_? What’s going on is that R wants to know if you want to save all those variables that you’ve been creating, so that you can use them later. This sounds like a great idea, so it’s really tempting to type `y` or click the “Save” button. To be honest though, I very rarely do this, and it kind of annoys me a little bit… what R is _really_ asking is if you want it to store these variables in a “default” data file, which it will automatically reload for you next time you open R. And quite frankly, if I’d wanted to save the variables, then I’d have already saved them before trying to quit. Not only that, I’d have saved them to a location of _my_ choice, so that I can find it again later. So I personally never bother with this.
-
-In fact, every time I install R on a new machine one of the first things I do is change the settings so that it never asks me again. You can do this in RStudio really easily: use the menu system to find the RStudio option; the dialog box that comes up will give you an option to tell R never to whine about this again (see Figure [3.6](https://learningstatisticswithr.com/book/introR.html#fig:RStudiooptions). On a Mac, you can open this window by going to the “RStudio” menu and selecting “Preferences”. On a Windows machine you go to the “Tools” menu and select “Global Options”. Under the “General” tab you’ll see an option that reads “Save workspace to .Rdata on exit”. By default this is set to “ask”. If you want R to stop asking, change it to “never”.
-
-![The options window in RStudio. On a Mac, you can open this window by going to the "RStudio" menu and selecting "Preferences". On a Windows machine you go to the "Tools" menu and select "Global Options"](https://learningstatisticswithr.com/book/img/introR/Rstudio\_options.png)
-
-Figure 3.6: The options window in RStudio. On a Mac, you can open this window by going to the “RStudio” menu and selecting “Preferences”. On a Windows machine you go to the “Tools” menu and select “Global Options”
+<figure><img src="https://learningstatisticswithr.com/book/img/introR/Rstudio_options.png" alt=""><figcaption><p><strong>Figure HA1.3</strong> The RStudio Options window</p></figcaption></figure>
 
 ### 3.12 Summary
 

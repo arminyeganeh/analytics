@@ -1,5 +1,5 @@
 ---
-description: 150 lines, 1 hour
+description: Week 1, Lab A1, 150 lines, 1 hour to complete
 ---
 
 # Intro to R & RStudio
