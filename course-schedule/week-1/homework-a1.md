@@ -436,21 +436,17 @@ A package is basically just a big collection of functions, data sets, and other 
 * A package must be installed before it can be loaded.
 * A package must be loaded before it can be used.
 
-In the lower right hand panel in RStudio, you’ll see a tab labelled “Packages”. Click on the tab, and you’ll see a list of packages that looks something like **Figure HA1.4.** Every row in the panel corresponds to a different package, and every column is a useful piece of information about that package.[45](https://learningstatisticswithr.com/book/mechanics.html#fn45) Going from left to right, here’s what each column is telling you:
+In the lower right hand panel in RStudio, you’ll see a tab labelled “Packages”. Click on the tab, and you’ll see a list of packages that looks something like **Figure HA1.4.** Every row in the panel corresponds to a different package, and every column is a useful piece of information about that package. Going from left to right, here’s what each column is telling you:
 
 * The check box on the far left column indicates whether or not the package is loaded.
 * The one word of text immediately to the right of the check box is the name of the package.
 * The short passage of text next to the name is a brief description of the package.
 * The number next to the description tells you what version of the package you have installed.
-* The little x-mark next to the version number is a button that you can push to uninstall the package from your computer (you almost never need this).
+* The little x-mark next to the version number is used to uninstall the package.
 
 <figure><img src="https://learningstatisticswithr.com/book/img/mechanics/Rstudiopackages.png" alt=""><figcaption><p><strong>Figure HA1.4</strong> RStudio's packages panel</p></figcaption></figure>
 
-
-
-#### 4.2.2 Loading a package
-
-That seems straightforward enough, so let’s try loading and unloading packades. For this example, I’ll use the `foreign` package. The `foreign` package is a collection of tools that are very handy when R needs to interact with files that are produced by other software packages (e.g., SPSS). It comes bundled with R, so it’s one of the ones that you have installed already, but it won’t be one of the ones loaded. Inside the `foreign` package is a function called `read.spss()`. It’s a handy little function that you can use to import an SPSS data file into R, so let’s pretend we want to use it. Currently, the `foreign` package isn’t loaded, so if I ask R to tell me if it knows about a function called `read.spss()` it tells me that there’s no such thing…
+Let’s try loading and unloading packades. For this example, I’ll use the `foreign` package. The `foreign` package is a collection of tools that are very handy when R needs to interact with files that are produced by other software packages (e.g., SPSS). It comes bundled with R, so it’s one of the ones that you have installed already, but it won’t be one of the ones loaded. Inside the `foreign` package is a function called `read.spss()`. It’s a handy little function that you can use to import an SPSS data file into R, so let’s pretend we want to use it. Currently, the `foreign` package isn’t loaded, so if I ask R to tell me if it knows about a function called `read.spss()` it tells me that there’s no such thing…
 
 ```
 exists( "read.spss" )
