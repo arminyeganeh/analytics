@@ -276,43 +276,29 @@ Better yet, because it’s kind of tedious to type `TRUE` or `FALSE` over and ov
 
 ### Vectors of logical data
 
-The next thing to mention is that you can store vectors of logical values in exactly the same way that you can store vectors of numbers (Section [3.7](https://learningstatisticswithr.com/book/introR.html#vectors)) and vectors of text data (Section [3.8](https://learningstatisticswithr.com/book/introR.html#text)). Again, we can define them directly via the `c()` function, like this:
+You can store vectors of logical values in the same way that you can store vectors of numbers and text data:
 
 ```
-x <- c(TRUE, TRUE, FALSE)
-x
+> x <- c(TRUE, TRUE, FALSE)
+> x
+[1]  TRUE  TRUE FALSE
 ```
 
-```
-## [1]  TRUE  TRUE FALSE
-```
-
-or you can produce a vector of logicals by applying a logical operator to a vector. This might not make a lot of sense to you, so let’s unpack it slowly. First, let’s suppose we have a vector of numbers (i.e., a “non-logical vector”). For instance, we could use the `sales.by.month` vector that we were using in Section [3.7](https://learningstatisticswithr.com/book/introR.html#vectors). Suppose I wanted R to tell me, for each month of the year, whether I actually sold a book in that month. I can do that by typing this:
+We could use the `sales.by.month` vector and ask R whether any books were sold each month:
 
 ```
-sales.by.month > 0
-```
-
-```
-##  [1] FALSE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE
-## [12] FALSE
-```
-
-and again, I can store this in a vector if I want, as the example below illustrates:
-
-```
-any.sales.this.month <- sales.by.month > 0
+> sales.by.month > 0
+[1] FALSE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE
+[12] FALSE
+> any.sales.this.month <- sales.by.month > 0
 any.sales.this.month
+[1] FALSE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE
+[12] FALSE
 ```
 
-```
-##  [1] FALSE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE
-## [12] FALSE
-```
+In other words, `any.sales.this.month` is a logical vector whose elements are `TRUE` only if the corresponding element of `sales.by.month` is greater than zero.
 
-In other words, `any.sales.this.month` is a logical vector whose elements are `TRUE` only if the corresponding element of `sales.by.month` is greater than zero. For instance, since I sold zero books in January, the first element is `FALSE`.
-
-#### 3.9.5 Applying logical operation to text
+### Applying logical operation to text
 
 In a moment (Section [3.10](https://learningstatisticswithr.com/book/introR.html#indexing)) I’ll show you why these logical operations and logical vectors are so handy, but before I do so I want to very briefly point out that you can apply them to text as well as to logical data. It’s just that we need to be a bit more careful in understanding how R interprets the different operations. In this section I’ll talk about how the equal to operator `==` applies to text, since this is the most important one. Obviously, the not equal to operator `!=` gives the exact opposite answers to `==` so I’m implicitly talking about that one too, but I won’t give specific commands showing the use of `!=`. As for the other operators, I’ll defer a more detailed discussion of this topic to Section [7.8.5](https://learningstatisticswithr.com/book/datahandling.html#logictext2).
 
