@@ -446,42 +446,4 @@ In the lower right hand panel in RStudio, you’ll see a tab labelled “Package
 
 <figure><img src="https://learningstatisticswithr.com/book/img/mechanics/Rstudiopackages.png" alt=""><figcaption><p><strong>Figure HA1.4</strong> RStudio's packages panel</p></figcaption></figure>
 
-Let’s try loading and unloading packades. For this example, I’ll use the `foreign` package. The `foreign` package is a collection of tools that are very handy when R needs to interact with files that are produced by other software packages (e.g., SPSS). It comes bundled with R, so it’s one of the ones that you have installed already, but it won’t be one of the ones loaded. Inside the `foreign` package is a function called `read.spss()`. It’s a handy little function that you can use to import an SPSS data file into R, so let’s pretend we want to use it. Currently, the `foreign` package isn’t loaded, so if I ask R to tell me if it knows about a function called `read.spss()` it tells me that there’s no such thing…
-
-```
-exists( "read.spss" )
-```
-
-```
-## [1] FALSE
-```
-
-Now let’s load the package. In RStudio, the process is dead simple: go to the package tab, find the entry for the `foreign` package, and check the box on the left hand side. The moment that you do this, you’ll see a command like this appear in the R console:
-
-```
-library("foreign", lib.loc="/Library/Frameworks/R.framework/Versions/3.0/Resources/library")
-```
-
-The `lib.loc` bit will look slightly different on Macs versus on Windows, because that part of the command is just RStudio telling R where to look to find the installed packages. What I’ve shown you above is the Mac version. On a Windows machine, you’ll probably see something that looks like this:
-
-```
-library("foreign", lib.loc="C:/Program Files/R/R-3.0.2/library")
-```
-
-But actually it doesn’t matter much. The `lib.loc` bit is almost always unnecessary. Unless you’ve taken to installing packages in idiosyncratic places (which is something that you can do if you really want) R already knows where to look. So in the vast majority of cases, the command to load the `foreign` package is just this:
-
-```
-library("foreign")
-```
-
-Throughout this book, you’ll often see me typing in `library()` commands. You don’t actually have to type them in yourself: you can use the RStudio package panel to do all your package loading for you. The only reason I include the `library()` commands sometimes is as a reminder to you to make sure that you have the relevant package loaded. Oh, and I suppose we should check to see if our attempt to load the package actually worked. Let’s see if R now knows about the existence of the `read.spss()` function…
-
-```
-exists( "read.spss" )
-```
-
-```
-## [1] TRUE
-```
-
 Yep. All good.
