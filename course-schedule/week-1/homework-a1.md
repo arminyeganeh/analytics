@@ -413,71 +413,40 @@ The `y/n/c` part here is short for “yes/no/ cancel”. Type `y` if you want to
 
 <figure><img src="https://learningstatisticswithr.com/book/img/introR/Rstudio_options.png" alt=""><figcaption><p><strong>Figure HA1.3</strong> The RStudio Options window</p></figcaption></figure>
 
-## Chapter 4 Additional R concepts
+### Comments
 
-> _Form follows function_
->
-> – Louis Sullivan
-
-In Chapter [3](https://learningstatisticswithr.com/book/introR.html#introR) our main goal was to get started in R. As we go through the book we’ll run into a lot of new R concepts, which I’ll explain alongside the relevant data analysis concepts. However, there’s still quite a few things that I need to talk about now, otherwise we’ll run into problems when we start trying to work with data and do statistics. So that’s the goal in this chapter: to build on the introductory content from the last chapter, to get you to the point that we can start using R for statistics. Broadly speaking, the chapter comes in two parts. The first half of the chapter is devoted to the “mechanics” of R: installing and loading packages, managing the workspace, navigating the file system, and loading and saving data. In the second half, I’ll talk more about what kinds of variables exist in R, and introduce three new kinds of variables: factors, data frames and formulas. I’ll finish up by talking a little bit about the help documentation in R as well as some other avenues for finding assistance. In general, I’m not trying to be comprehensive in this chapter, I’m trying to make sure that you’ve got the basic foundations needed to tackle the content that comes later in the book. However, a lot of the topics are revisited in more detail later, especially in Chapters [7](https://learningstatisticswithr.com/book/datahandling.html#datahandling) and [8](https://learningstatisticswithr.com/book/scripting.html#scripting).
-
-### 4.1 Using comments
-
-Before discussing any of the more complicated stuff, I want to introduce the _**comment**_ character, `#`. It has a simple meaning: it tells R to ignore everything else you’ve written on this line. You won’t have much need of the `#` character immediately, but it’s very useful later on when writing scripts (see Chapter [8](https://learningstatisticswithr.com/book/scripting.html#scripting)). However, while you don’t need to use it, I want to be able to include comments in my R extracts. For instance, if you read this:[42](https://learningstatisticswithr.com/book/mechanics.html#fn42)
+The **comment character** `#` has a simple meaning: it tells R to ignore everything else you’ve written on this line. You won’t have much need of the `#` character immediately, but it’s very useful later on when writing scripts. For instance, if you read this:
 
 ```
 seeker <- 3.1415           # create the first variable
 lover <- 2.7183            # create the second variable
 keeper <- seeker * lover   # now multiply them to create a third one
-print( keeper )            # print out the value of 'keeper'
+print(keeper)              # print out the value of 'keeper'
+[1] 8.539539
 ```
 
 ```
 ## [1] 8.539539
 ```
 
-it’s a lot easier to understand what I’m doing than if I just write this:
+### Installing and loading packages
 
-```
-seeker <- 3.1415
-lover <- 2.7183
-keeper <- seeker * lover
-print( keeper )    
-```
+A package is basically just a big collection of functions, data sets, and other R objects that are all grouped together under a common name. Some packages are already installed when you put R on your computer, but the vast majority of them of R packages are on the internet. There’s a critical distinction that you need to understand, which is the difference between having a package installed on your computer, and having a package loaded in R. As of this writing, there are just over 5000 R packages freely available “out there” on the internet. When you install R on your computer, about 30 or so come bundled with the basic R installation. So right now there are about 30 packages “installed” on your computer, and another 5000 or so that are not installed. Just because something is on your computer doesn’t mean R can use it. In order for R to be able to use one of your 30 or so installed packages, that package must also be “loaded”. Generally, when you open up R, only a few of these packages are actually loaded. Basically what it boils down to is this:
 
-```
-## [1] 8.539539
-```
+* A package must be installed before it can be loaded.
+* A package must be loaded before it can be used.
 
-You might have already noticed that the code extracts in Chapter [3](https://learningstatisticswithr.com/book/introR.html#introR) included the `#` character, but from now on, you’ll start seeing `#` characters appearing in the extracts, with some human-readable explanatory remarks next to them. These are still perfectly legitimate commands, since R knows that it should ignore the `#` character and everything after it. But hopefully they’ll help make things a little easier to understand.
-
-### 4.2 Installing and loading packages
-
-In this section I discuss R _**packages**_, since almost all of the functions you might want to use in R come in packages. A package is basically just a big collection of functions, data sets and other R objects that are all grouped together under a common name. Some packages are already installed when you put R on your computer, but the vast majority of them of R packages are out there on the internet, waiting for you to download, install and use them.
-
-When I first started writing this book, RStudio didn’t really exist as a viable option for using R, and as a consequence I wrote a very lengthy section that explained how to do package management using raw R commands. It’s not actually terribly hard to work with packages that way, but it’s clunky and unpleasant. Fortunately, we don’t have to do things that way anymore. In this section, I’ll describe how to work with packages using the RStudio tools, because they’re so much simpler. Along the way, you’ll see that whenever you get RStudio to do something (e.g., install a package), you’ll actually see the R commands that get created. I’ll explain them as we go, because I think that helps you understand what’s going on.
-
-However, before we get started, there’s a critical distinction that you need to understand, which is the difference between having a package _**installed**_ on your computer, and having a package _**loaded**_ in R. As of this writing, there are just over 5000 R packages freely available “out there” on the internet.[43](https://learningstatisticswithr.com/book/mechanics.html#fn43) When you install R on your computer, you don’t get all of them: only about 30 or so come bundled with the basic R installation. So right now there are about 30 packages “installed” on your computer, and another 5000 or so that are not installed. So that’s what installed means: it means “it’s on your computer somewhere”. The critical thing to remember is that just because something is on your computer doesn’t mean R can use it. In order for R to be able to _use_ one of your 30 or so installed packages, that package must also be “loaded”. Generally, when you open up R, only a few of these packages (about 7 or 8) are actually loaded. Basically what it boils down to is this:
-
-> A package must be installed before it can be loaded.
-
-> A package must be loaded before it can be used.
-
-This two step process might seem a little odd at first, but the designers of R had very good reasons to do it this way,[44](https://learningstatisticswithr.com/book/mechanics.html#fn44) and you get the hang of it pretty quickly.
-
-#### 4.2.1 The package panel in RStudio
-
-![The packages panel.](https://learningstatisticswithr.com/book/img/mechanics/Rstudiopackages.png)
-
-Figure 4.1: The packages panel.
-
-Right, lets get started. The first thing you need to do is look in the lower right hand panel in RStudio. You’ll see a tab labelled “Packages”. Click on the tab, and you’ll see a list of packages that looks something like Figure [4.1](https://learningstatisticswithr.com/book/mechanics.html#fig:packagepanel). Every row in the panel corresponds to a different package, and every column is a useful piece of information about that package.[45](https://learningstatisticswithr.com/book/mechanics.html#fn45) Going from left to right, here’s what each column is telling you:
+In the lower right hand panel in RStudio, you’ll see a tab labelled “Packages”. Click on the tab, and you’ll see a list of packages that looks something like **Figure HA1.4.** Every row in the panel corresponds to a different package, and every column is a useful piece of information about that package.[45](https://learningstatisticswithr.com/book/mechanics.html#fn45) Going from left to right, here’s what each column is telling you:
 
 * The check box on the far left column indicates whether or not the package is loaded.
 * The one word of text immediately to the right of the check box is the name of the package.
 * The short passage of text next to the name is a brief description of the package.
 * The number next to the description tells you what version of the package you have installed.
 * The little x-mark next to the version number is a button that you can push to uninstall the package from your computer (you almost never need this).
+
+<figure><img src="https://learningstatisticswithr.com/book/img/mechanics/Rstudiopackages.png" alt=""><figcaption><p><strong>Figure HA1.4</strong> RStudio's packages panel</p></figcaption></figure>
+
+
 
 #### 4.2.2 Loading a package
 
