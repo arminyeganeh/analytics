@@ -220,71 +220,57 @@ What we’ve done here is use the **equality operator** `==` to force R to make 
 
 There are several other logical operators that you can use, corresponding to some basic mathematical concepts.
 
-| operation                | operator | example input | answer  |
-| ------------------------ | -------- | ------------- | ------- |
-| less than                | <        | 2 < 3         | `TRUE`  |
-| less than or equal to    | <=       | 2 <= 2        | `TRUE`  |
-| greater than             | >        | 2 > 3         | `FALSE` |
-| greater than or equal to | >=       | 2 >= 2        | `TRUE`  |
-| equal to                 | ==       | 2 == 3        | `FALSE` |
-| not equal to             | !=       | 2 != 3        | `TRUE`  |
+| operation                | operator | example input    | answer  |
+| ------------------------ | -------- | ---------------- | ------- |
+| less than                | <        | 2 < 3            | `TRUE`  |
+| less than or equal to    | <=       | 2 <= 2           | `TRUE`  |
+| greater than             | >        | 2 > 3            | `FALSE` |
+| greater than or equal to | >=       | 2 >= 2           | `TRUE`  |
+| equal to                 | ==       | 2 == 3           | `FALSE` |
+| not equal to             | !=       | 2 != 3           | `TRUE`  |
+| not                      | !        | !(1==1)          | `FALSE` |
+| or                       | \|       | (1==1) \| (2==3) | `TRUE`  |
+| and                      | &        | (1==1) & (2==3)  | `FALSE` |
 
-We’re not quite done yet. There are three more logical operations that are worth knowing about, listed in Table [3.3](https://learningstatisticswithr.com/book/introR.html#tab:logicals2).
-
-| operation | operator | example input    | answer  |
-| --------- | -------- | ---------------- | ------- |
-| not       | !        | !(1==1)          | `FALSE` |
-| or        | \|       | (1==1) \| (2==3) | `TRUE`  |
-| and       | &        | (1==1) & (2==3)  | `FALSE` |
-
-These are the _**not**_ operator `!`, the _**and**_ operator `&`, and the _**or**_ operator `|`. Like the other logical operators, their behaviour is more or less exactly what you’d expect given their names. For instance, if I ask you to assess the claim that “either $$2+2=42+2=4$$ _or_ $$2+2=52+2=5$$” you’d say that it’s true. Since it’s an “either-or” statement, all we need is for one of the two parts to be true. That’s what the `|` operator does:
+For instance, if we ask R to assess the claim that “either $$2+2=4$$ _or_ $$2+2=5$$” R would say that it’s true. Since it’s an “either-or” statement, all we need is for one of the two parts to be true. That’s what the `|` operator does:
 
 ```
-(2+2 == 4) | (2+2 == 5)
+> (2+2 == 4) | (2+2 == 5)
+[1] TRUE
 ```
 
-```
-## [1] TRUE
-```
-
-On the other hand, if I ask you to assess the claim that “both $$2+2=42+2=4$$ _and_ $$2+2=52+2=5$$” you’d say that it’s false. Since this is an _and_ statement we need both parts to be true. And that’s what the `&` operator does:
+On the other hand, if we ask R to assess the claim that “both $$2+2=4$$ _and_ $$2+2=5$$” R would say that it’s false. Since this is an _and_ statement we need both parts to be true. And that’s what the `&` operator does:
 
 ```
-(2+2 == 4) & (2+2 == 5)
+> (2+2 == 4) & (2+2 == 5)
+[1] FALSE
 ```
 
-```
-## [1] FALSE
-```
-
-Finally, there’s the _not_ operator, which is simple but annoying to describe in English. If I ask you to assess my claim that “it is not true that $$2+2=52+2=5$$” then you would say that my claim is true; because my claim is that “$$2+2=52+2=5$$ is false”. And I’m right. If we write this as an R command we get this:
+Finally, there’s the _not_ operator, which is simple but annoying to describe in English. If we ask R to assess the claim that “it is not true that $$2+2=5$$”:
 
 ```
-! (2+2 == 5)
+> ! (2+2 == 5)
+[1] TRUE
+> 2+2 != 5
+[1] TRUE
 ```
 
-```
-## [1] TRUE
-```
-
-In other words, since `2+2 == 5` is a `FALSE` statement, it must be the case that `!(2+2 == 5)` is a `TRUE` one. Essentially, what we’ve really done is claim that “not false” is the same thing as “true”. Obviously, this isn’t really quite right in real life. But R lives in a much more black or white world: for R everything is either true or false. No shades of gray are allowed. We can actually see this much more explicitly, like this:
+Up to this point, we’ve seen _numeric data_ and _character data_. So you might not be surprised to discover that these `TRUE` and `FALSE` values that R has been producing are actually a third kind of data, called _logical data_. When asking R if `2 + 2 == 5` it says `[1] FALSE` in reply, which is information that we can store in variables. For instance, we could create a variable called `two.plus.two.equals.five` which would store R’s opinion:
 
 ```
-! FALSE
+> two.plus.two.equals.five <- 2 + 2 == 5
+> two.plus.two.equals.five
+[1] FALSE
+> two.plus.two.equals.five <- FALSE
+> two.plus.two.equals.five
+[1] FALSE
 ```
 
-```
-## [1] TRUE
-```
-
-Of course, in our $$2+2=52+2=5$$ example, we didn’t really need to use “not” `!` and “equals to” `==` as two separate operators. We could have just used the “not equals to” operator `!=` like this:
+Better yet, because it’s kind of tedious to type `TRUE` or `FALSE` over and over again, R provides you with the case-sensitive shortcuts `T` and `F` :
 
 ```
-2+2 != 5
+> two.plus.two.equals.five <- F
+> two.plus.two.equals.five
+[1] FALSE
 ```
 
-```
-## [1] TRUE
-```
-
-But there are many situations where you really do need to use the `!` operator. We’ll see some later on.[39](https://learningstatisticswithr.com/book/introR.html#fn39)

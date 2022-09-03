@@ -1,8 +1,8 @@
 ---
-description: Reading Instructions, 50 pages, 2 hours
+description: Week 1 Reading Instructions, 50 pages, 2 hours
 ---
 
-# Reading
+# Readings
 
 **Textbook:**
 
