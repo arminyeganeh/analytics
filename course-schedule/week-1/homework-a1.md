@@ -92,7 +92,7 @@ There are a _lot_ of R functions, all of which have their own arguments. You’r
 
 The first thing is the autocomplete ability in RStudio. Start typing the name of the function that you want. RStudio will then display a little window like the one shown in **Figure HA1**. The window has two panels. On the left, there’s a list of variables and functions that start with the typed letters, and some grey text that tells you in which package the variable/function is stored. The panel on the right displays information about the `round()` function. You can see that there are a few things that start with the typed letters. You can use the up and down arrow keys to select the one that you want and hit the Tab or the Enter key. Or, if none of the options look right to you, you can hit the Escape key to make the window go away.
 
-<figure><img src="../../.gitbook/assets/rstudio_autosuggestion.png" alt=""><figcaption><p><strong>Figure HA1:</strong> RStudio autocomplete</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/rstudio_autosuggestion.png" alt=""><figcaption><p><strong>Figure HA1.1</strong> RStudio autocomplete</p></figcaption></figure>
 
 ### Command history
 
@@ -300,50 +300,137 @@ In other words, `any.sales.this.month` is a logical vector whose elements are `T
 
 ### Applying logical operation to text
 
-In a moment (Section [3.10](https://learningstatisticswithr.com/book/introR.html#indexing)) I’ll show you why these logical operations and logical vectors are so handy, but before I do so I want to very briefly point out that you can apply them to text as well as to logical data. It’s just that we need to be a bit more careful in understanding how R interprets the different operations. In this section I’ll talk about how the equal to operator `==` applies to text, since this is the most important one. Obviously, the not equal to operator `!=` gives the exact opposite answers to `==` so I’m implicitly talking about that one too, but I won’t give specific commands showing the use of `!=`. As for the other operators, I’ll defer a more detailed discussion of this topic to Section [7.8.5](https://learningstatisticswithr.com/book/datahandling.html#logictext2).
-
-Okay, let’s see how it works. In one sense, it’s very simple. For instance, I can ask R if the word `"cat"` is the same as the word `"dog"`, like this:
+We can ask R if the word `"cat"` is the same as the word `"dog"`, like this:
 
 ```
 "cat" == "dog"
-```
-
-```
-## [1] FALSE
-```
-
-That’s pretty obvious, and it’s good to know that even R can figure that out. Similarly, R does recognise that a `"cat"` is a `"cat"`:
-
-```
+[1] FALSE
 "cat" == "cat"
+[1] TRUE
 ```
 
-```
-## [1] TRUE
-```
-
-Again, that’s exactly what we’d expect. However, what you need to keep in mind is that R is not at all tolerant when it comes to grammar and spacing. If two strings differ in any way whatsoever, R will say that they’re not equal to each other, as the following examples indicate:
+R is not at all tolerant when it comes to grammar and spacing. If two strings differ in any way whatsoever, R will say that they’re not equal to each other, as the following examples indicate:
 
 ```
 " cat" == "cat"
-```
-
-```
-## [1] FALSE
-```
-
-```
+[1] FALSE
 "cat" == "CAT"
-```
-
-```
-## [1] FALSE
-```
-
-```
+[1] FALSE
 "cat" == "c a t"
+[1] FALSE
 ```
 
+### Indexing vectors
+
+So far, whenever we’ve had to get information out of a vector, all we’ve done is typed something like `months[4]` ; and when we do this R prints out the fourth element of the `months` vector. In this section, we’ll see two additional tricks for getting information out of the vector.
+
+One very useful thing we can do is pull out more than one element at a time. Suppose we wanted the data for February, March and April. We could use the vector `c(2,3,4)` to indicate which elements we want R to pull out. Notice that the order matters here.
+
 ```
-## [1] FALSE
+> sales.by.month[c(2,3,4)]
+[1] 100 200  50
+> sales.by.month[c(4,3,2)]
+[1]  50 200 100
 ```
+
+A second thing to be aware of is that R provides you with handy shortcuts for very common situations. For instance, suppose that we wanted to extract everything from the 2nd month through to the 8th month:
+
+```
+> sales.by.month[c(2,3,4,5,6,7,8)]
+[1] 100 200  50  25   0   0   0
+```
+
+To help make this easier, R lets you use `2:8` as shorthand for `c(2,3,4,5,6,7,8)`, which makes things a lot simpler:
+
+```
+> 2:8
+[1] 2 3 4 5 6 7 8
+> sales.by.month[2:8]
+[1] 100 200  50  25   0   0   0
+```
+
+At this point, we can introduce an extremely useful tool called **logical indexing**. We created a logical vector `any.sales.this.month`, whose elements are `TRUE` for any month in which at least one book was sold, and `FALSE` for all the others. However, that big long list of `TRUE`s and `FALSE`s is a little bit hard to read, so what we’d like to do is to have R select the names of the `months` for any book was sold. Earlier on, we created a vector `months` that contains the names of each of the months. What we need to do is this:
+
+```
+> months[sales.by.month>0]
+[1] "February" "March" "April" "May"
+```
+
+To understand what’s happening here, it’s helpful to notice that `sales.by.month > 0` is the same logical expression that we used to create the `any.sales.this.month` vector in the last section. In fact, we could have just done this:
+
+```
+> months[any.sales.this.month]
+[1] "February" "March" "April" "May"
+> sales.by.month[sales.by.month > 0]
+[1] 100 200  50  25
+```
+
+We can do the same thing with text. Suppose that – to continue the saga of the textbook sales – we later find out that the bookshop only had sufficient stocks for a few months of the year. Early in the year they had `"high"` stocks, which then dropped to `"low"` levels, and in fact for one month they were `"out"` of copies of the book for a while before they were able to replenish them. We might have a variable called `stock.levels` which looks like this:
+
+```
+> stock.levels<-c("high", "high", "low", "out", "out", "high",
+                "high", "high", "high", "high", "high", "high")
+> stock.levels
+[1] "high" "high" "low"  "out"  "out"  "high" "high" "high" "high" "high"
+[11] "high" "high"
+```
+
+Thus, if we want to know the months for which the bookshop was out of book, we could apply the logical indexing trick, but with the character vector `stock.levels`, like this:
+
+```
+> months[stock.levels == "out"]
+[1] "April" "May"
+```
+
+Alternatively, if we want to know when the bookshop was either low on copies or out of copies, we could do this:
+
+```
+> months[stock.levels == "out" | stock.levels == "low"]
+[1] "March" "April" "May"
+```
+
+or this
+
+```
+months[stock.levels != "high" ]
+[1] "March" "April" "May"
+```
+
+Either way, we get the answer we want. Logical indexing is a very basic, yet very powerful way to manipulate data. It does take a bit of practice to become completely comfortable using logical indexing, so it’s a good idea to play around with these sorts of commands. Try creating a few different variables of your own, and then ask yourself questions like “how do I get R to spit out all the elements that are \[blah]”. Practice makes perfect, and it’s only by practicing logical indexing that you’ll perfect the art of yelling frustrated insults at your computer.
+
+### Quitting R
+
+<figure><img src="https://learningstatisticswithr.com/book/img/introR/Rstudio_quit.png" alt=""><figcaption><p><strong>Figure HA1.2</strong>: The RStudio closing dialogbox.</p></figcaption></figure>
+
+There’s one last thing I should cover in this chapter: how to quit R. When I say this, I’m not trying to imply that R is some kind of pathological addition and that you need to call the R QuitLine or wear patches to control the cravings (although you certainly might argue that there’s something seriously pathological about being addicted to R). I just mean how to exit the program. Assuming you’re running R in the usual way (i.e., through RStudio or the default GUI on a Windows or Mac computer), then you can just shut down the application in the normal way. However, R also has a function, called `q()` that you can use to quit, which is pretty handy if you’re running R in a terminal window.
+
+Regardless of what method you use to quit R, when you do so for the first time R will probably ask you if you want to save the “workspace image”. We’ll talk a lot more about loading and saving data in Section [4.5](https://learningstatisticswithr.com/book/mechanics.html#load), but I figured we’d better quickly cover this now otherwise you’re going to get annoyed when you close R at the end of the chapter. If you’re using RStudio, you’ll see a dialog box that looks like the one shown in Figure [3.5](https://learningstatisticswithr.com/book/introR.html#fig:quitR). If you’re using a text based interface you’ll see this:
+
+```
+q()
+
+## Save workspace image? [y/n/c]: 
+```
+
+The `y/n/c` part here is short for “yes / no / cancel”. Type `y` if you want to save, `n` if you don’t, and `c` if you’ve changed your mind and you don’t want to quit after all.
+
+What does this actually _mean_? What’s going on is that R wants to know if you want to save all those variables that you’ve been creating, so that you can use them later. This sounds like a great idea, so it’s really tempting to type `y` or click the “Save” button. To be honest though, I very rarely do this, and it kind of annoys me a little bit… what R is _really_ asking is if you want it to store these variables in a “default” data file, which it will automatically reload for you next time you open R. And quite frankly, if I’d wanted to save the variables, then I’d have already saved them before trying to quit. Not only that, I’d have saved them to a location of _my_ choice, so that I can find it again later. So I personally never bother with this.
+
+In fact, every time I install R on a new machine one of the first things I do is change the settings so that it never asks me again. You can do this in RStudio really easily: use the menu system to find the RStudio option; the dialog box that comes up will give you an option to tell R never to whine about this again (see Figure [3.6](https://learningstatisticswithr.com/book/introR.html#fig:RStudiooptions). On a Mac, you can open this window by going to the “RStudio” menu and selecting “Preferences”. On a Windows machine you go to the “Tools” menu and select “Global Options”. Under the “General” tab you’ll see an option that reads “Save workspace to .Rdata on exit”. By default this is set to “ask”. If you want R to stop asking, change it to “never”.
+
+![The options window in RStudio. On a Mac, you can open this window by going to the "RStudio" menu and selecting "Preferences". On a Windows machine you go to the "Tools" menu and select "Global Options"](https://learningstatisticswithr.com/book/img/introR/Rstudio\_options.png)
+
+Figure 3.6: The options window in RStudio. On a Mac, you can open this window by going to the “RStudio” menu and selecting “Preferences”. On a Windows machine you go to the “Tools” menu and select “Global Options”
+
+### 3.12 Summary
+
+Every book that tries to introduce basic programming ideas to novices has to cover roughly the same topics, and in roughly the same order. Mine is no exception, and so in the grand tradition of doing it just the same way everyone else did it, this chapter covered the following topics:
+
+* [Getting started](https://learningstatisticswithr.com/book/introR.html#gettingR). We downloaded and installed R and RStudio
+* [Basic commands](https://learningstatisticswithr.com/book/introR.html#arithmetic). We talked a bit about the logic of how R works and in particular how to type commands into the R console (Section @ref(#firstcommand), and in doing so learned how to perform basic calculations using the arithmetic operators `+`, `-`, `*`, `/` and `^`.
+* [Introduction to functions](https://learningstatisticswithr.com/book/introR.html#usingfunctions). We saw several different functions, three that are used to perform numeric calculations (`sqrt()`, `abs()`, `round()`, one that applies to text (`nchar()`; Section [3.8.1](https://learningstatisticswithr.com/book/introR.html#simpletext)), and one that works on any variable (`length()`; Section [3.7.5](https://learningstatisticswithr.com/book/introR.html#veclength)). In doing so, we talked a bit about how argument names work, and learned about default values for arguments. (Section [3.5.1](https://learningstatisticswithr.com/book/introR.html#functionarguments))
+* Introduction to variables. We learned the basic idea behind variables, and how to assign values to variables using the assignment operator `<-` (Section [3.4](https://learningstatisticswithr.com/book/introR.html#assign)). We also learned how to create vectors using the combine function `c()` (Section [3.7](https://learningstatisticswithr.com/book/introR.html#vectors)).
+* Data types. Learned the distinction between numeric, character and logical data; including the basics of how to enter and use each of them. (Sections [3.4](https://learningstatisticswithr.com/book/introR.html#assign) to [3.9](https://learningstatisticswithr.com/book/introR.html#logicals))
+* [Logical operations](https://learningstatisticswithr.com/book/introR.html#logicals). Learned how to use the logical operators `==`, `!=`, `<`, `>`, `<=`, `=>`, `!`, `&` and `|`. And learned how to use logical indexing. (Section [3.10](https://learningstatisticswithr.com/book/introR.html#indexing))
+
+We still haven’t arrived at anything that resembles a “data set”, of course. Maybe the next Chapter will get us a bit closer…
