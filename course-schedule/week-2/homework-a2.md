@@ -254,39 +254,26 @@ class(x)
 
 Exciting, no?
 
-
-
 ### Data frames
 
-It’s now time to go back and deal with the somewhat confusing thing that happened in Section [**??**](https://learningstatisticswithr.com/book/mechanics.html#loadingcsv) when we tried to open up a CSV file. Apparently we succeeded in loading the data, but it came to us in a very odd looking format. At the time, I told you that this was a _**data frame**_. Now I’d better explain what that means.
-
-#### 4.8.1 Introducing data frames
-
-In order to understand why R has created this funny thing called a data frame, it helps to try to see what problem it solves. So let’s go back to the little scenario that I used when introducing factors in Section [4.7](https://learningstatisticswithr.com/book/mechanics.html#factors). In that section I recorded the `group` and `gender` for all 9 participants in my study. Let’s also suppose I recorded their ages and their `score` on “Dan’s Terribly Exciting Psychological Test”:
+In order to understand why R has created this funny thing called a data frame, it helps to try to see what problem it solves. So let’s assume we record 9 individuals' test scores:
 
 ```
-age <- c(17, 19, 21, 37, 18, 19, 47, 18, 19)
-score <- c(12, 10, 11, 15, 16, 14, 25, 21, 29)
+> group <- c(1,1,1,2,2,2,3,3,3)
+> gender <- c("M", "M", "M", "M", "M", "F", "F", "F", "F")
+> age <- c(17, 19, 21, 37, 18, 19, 47, 18, 19)
+> score <- c(12, 10, 11, 15, 16, 14, 25, 21, 29)
 ```
 
-Assuming no other variables are in the workspace, if I type `who()` I get this:
+So there are four variables in the workspace, `age`, `gender`, `group` and `score`. And it just so happens that all four of them are the same size (i.e., they’re all vectors with 9 elements). And it just so happens that `age[1]` corresponds to the age of the first person, and `gender[1]` is the gender of that very same person, etc. In other words, we both know that all four of these variables correspond to the _same_ data set, and all four of them are organised in exactly the same way.
+
+However, R _doesn’t_ know this! As far as it’s concerned, there’s no reason why the `age` variable has to be the same length as the `gender` variable; and there’s no particular reason to think that `age[1]` has any special relationship to `gender[1]` any more than it has a special relationship to `gender[4]`. In other words, when we store everything in separate variables like this, R doesn’t know anything about the relationships between things. The data frame fixes this: if we store our variables inside a data frame, we’re telling R to treat these variables as a single, fairly coherent data set.
+
+So how do we create a data frame? One way we’ve already seen: if we import our data from a CSV file, R will store it as a data frame. A second way is to create it directly from some existing variables using the `data.frame()` function. All you have to do is type a list of variables that you want to include in the data frame. The output of the command `data.frame()` is, well, a data frame. So, if we want to store all the four variables in a data frame called `expt` :
 
 ```
-who()
-```
-
-So there are four variables in the workspace, `age`, `gender`, `group` and `score`. And it just so happens that all four of them are the same size (i.e., they’re all vectors with 9 elements). Aaaand it just so happens that `age[1]` corresponds to the age of the first person, and `gender[1]` is the gender of that very same person, etc. In other words, you and I both know that all four of these variables correspond to the _same_ data set, and all four of them are organised in exactly the same way.
-
-However, R _doesn’t_ know this! As far as it’s concerned, there’s no reason why the `age` variable has to be the same length as the `gender` variable; and there’s no particular reason to think that `age[1]` has any special relationship to `gender[1]` any more than it has a special relationship to `gender[4]`. In other words, when we store everything in separate variables like this, R doesn’t know anything about the relationships between things. It doesn’t even really know that these variables actually refer to a proper data set. The data frame fixes this: if we store our variables inside a data frame, we’re telling R to treat these variables as a single, fairly coherent data set.
-
-To see how they do this, let’s create one. So how do we create a data frame? One way we’ve already seen: if we import our data from a CSV file, R will store it as a data frame. A second way is to create it directly from some existing variables using the `data.frame()` function. All you have to do is type a list of variables that you want to include in the data frame. The output of a `data.frame()` command is, well, a data frame. So, if I want to store all four variables from my experiment in a data frame called `expt` I can do so like this:
-
-```
-expt <- data.frame ( age, gender, group, score ) 
-expt 
-```
-
-```
+> expt <- data.frame ( age, gender, group, score ) 
+> expt 
 ##   age gender   group score
 ## 1  17   male group 1    12
 ## 2  19   male group 1    10
@@ -297,66 +284,37 @@ expt
 ## 7  47 female group 3    25
 ## 8  18 female group 3    21
 ## 9  19 female group 3    29
-```
-
-Note that `expt` is a completely self-contained variable. Once you’ve created it, it no longer depends on the original variables from which it was constructed. That is, if we make changes to the original `age` variable, it will _not_ lead to any changes to the age data stored in `expt`.
-
-
-
-#### Pulling out the contents of the data frame using `$`
-
-At this point, our workspace contains only the one variable, a data frame called `expt`. But as we can see when we told R to print the variable out, this data frame contains 4 variables, each of which has 9 observations. So how do we get this information out again? After all, there’s no point in storing information if you don’t use it, and there’s no way to use information if you can’t access it. So let’s talk a bit about how to pull information out of a data frame.
-
-The first thing we might want to do is pull out one of our stored variables, let’s say `score`. One thing you might try to do is ignore the fact that `score` is locked up inside the `expt` data frame. For instance, you might try to print it out like this:
 
 ```
-score
-```
 
-```
-## Error in eval(expr, envir, enclos): object 'score' not found
-```
+Once you’ve created it, it no longer depends on the original variables from which it was constructed. That is if we make changes to the original `age` variable, it will not lead to any changes to the age data stored in `expt`.
 
-This doesn’t work, because R doesn’t go “peeking” inside the data frame unless you explicitly tell it to do so. There’s actually a very good reason for this, which I’ll explain in a moment, but for now let’s just assume R knows what it’s doing. How do we tell R to look inside the data frame? As is always the case with R there are several ways. The simplest way is to use the `$` operator to extract the variable you’re interested in, like this:
+How do we tell R to look inside the data frame? As is always the case with R there are several ways. The simplest way is to use the operator `$` to extract the variable you’re interested in:
 
 ```
 expt$score
+[1] 12 10 11 15 16 14 25 21 29
 ```
 
-```
-## [1] 12 10 11 15 16 14 25 21 29
-```
-
-#### 4.8.3 Getting information about a data frame
-
-One problem that sometimes comes up in practice is that you forget what you called all your variables. Normally you might try to type `objects()` or `who()`, but neither of those commands will tell you what the names are for those variables inside a data frame! One way is to ask R to tell you what the _names_ of all the variables stored in the data frame are, which you can do using the `names()` function:
+One problem that sometimes comes up in practice is that you forget what you called all your variables. Normally you might try to type `objects()` or `who()`, but neither of those commands will tell you what the names are for those variables inside a data frame! One way is to ask R to tell you the names of all the variables stored in the data frame using the function `names()` :
 
 ```
-names(expt)
+> names(expt)
+[1] "age" "gender" "group" "score"
 ```
 
-```
-## [1] "age"    "gender" "group"  "score"
-```
-
-An alternative method is to use the `who()` function, as long as you tell it to look at the variables inside data frames. If you set `expand = TRUE` then it will not only list the variables in the workspace, but it will “expand” any data frames that you’ve got in the workspace, so that you can see what they look like. That is:
+An alternative method is to use the `who()` function, as long as you tell it to look at the variables inside data frames. If you set `expand = TRUE` then it will not only list the variables in the workspace, but it will “expand” any data frames that you’ve got in the workspace so that you can see what they look like. or, since `expand` is the first argument in the `who()` function you can just type `who(TRUE)`:
 
 ```
 who(expand = TRUE)
 ```
 
-or, since `expand` is the first argument in the `who()` function you can just type `who(TRUE)`. I’ll do that a lot in this book.
+### Lists
 
-#### 4.8.4 Looking for more on data frames?
-
-There’s a lot more that can be said about data frames: they’re fairly complicated beasts, and the longer you use R the more important it is to make sure you really understand them. We’ll talk a lot more about them in Chapter [7](https://learningstatisticswithr.com/book/datahandling.html#datahandling).
-
-### 4.9 Lists
-
-The next kind of data I want to mention are _**lists**_. Lists are an extremely fundamental data structure in R, and as you start making the transition from a novice to a savvy R user you will use lists all the time. I don’t use lists very often in this book – not directly – but most of the advanced data structures in R are built from lists (e.g., data frames are actually a specific type of list). Because lists are so important to how R stores things, it’s useful to have a basic understanding of them. Okay, so what is a list, exactly? Like data frames, lists are just “collections of variables.” However, unlike data frames – which are basically supposed to look like a nice “rectangular” table of data – there are no constraints on what kinds of variables we include, and no requirement that the variables have any particular relationship to one another. In order to understand what this actually _means_, the best thing to do is create a list, which we can do using the `list()` function. If I type this as my command:
+The next kind of data we want to mention is a **list**. Lists are an extremely fundamental data structure in R, and as you start making the transition from a novice to a savvy R user you will use lists all the time. Most advanced data structures in R are built from lists (e.g., data frames are actually a specific type of list). Because lists are so important to how R stores things, it’s useful to have a basic understanding of them. Okay, so what is a list, exactly? Like data frames, lists are just “collections of variables.” However, unlike data frames – which are basically supposed to look like a nice “rectangular” table of data – there are no constraints in a list on what kinds of variables we include, and no requirement that the variables have any particular relationship to one another. In order to understand what this actually _means_, the best thing to do is create a list, which we can do using the `list()` function. If I type this as my command:
 
 ```
-Dan <- list( age = 34,
+Dan <- list(age = 34,
             nerd = TRUE,
             parents = c("Joe","Liz") 
 )
@@ -365,51 +323,40 @@ Dan <- list( age = 34,
 R creates a new list variable called `Dan`, which is a bundle of three different variables: `age`, `nerd` and `parents`. Notice, that the `parents` variable is longer than the others. This is perfectly acceptable for a list, but it wouldn’t be for a data frame. If we now print out the variable, you can see the way that R stores the list:
 
 ```
-print( Dan )
+> print( Dan )
+$age
+[1] 34
+
+$nerd
+[1] TRUE
+
+$parents
+[1] "Joe" "Liz"
 ```
 
-```
-## $age
-## [1] 34
-## 
-## $nerd
-## [1] TRUE
-## 
-## $parents
-## [1] "Joe" "Liz"
-```
-
-As you might have guessed from those `$` symbols everywhere, the variables are stored in exactly the same way that they are for a data frame (again, this is not surprising: data frames _are_ a type of list). So you will (I hope) be entirely unsurprised and probably quite bored when I tell you that you can extract the variables from the list using the `$` operator, like so:
+As you might have guessed from those `$` symbols everywhere, the variables are stored in exactly the same way that they are for a data frame (again, this is not surprising: data frames _are_ a type of list). You can extract the variables from the list using the `$` operator, like so:
 
 ```
-Dan$nerd
+> Dan$nerd
+[1] TRUE
 ```
 
-```
-## [1] TRUE
-```
-
-If you need to add new entries to the list, the easiest way to do so is to again use `$`, as the following example illustrates. If I type a command like this
+If you need to add new entries to the list, the easiest way to do so is to again use `$` :
 
 ```
 Dan$children <- "Alex"
 ```
 
-then R creates a new entry to the end of the list called `children`, and assigns it a value of `"Alex"`. If I were now to `print()` this list out, you’d see a new entry at the bottom of the printout. Finally, it’s actually possible for lists to contain other lists, so it’s quite possible that I would end up using a command like `Dan$children$age` to find out how old my son is. Or I could try to remember it myself I suppose.
+then R creates a new entry to the end of the list called `children` and assigns it a value of `"Alex"`. Finally, it’s actually possible for lists to contain other lists, so it’s quite possible that we would end up using `Dan$children$age` to find out how old Dan's son is.&#x20;
 
-### 4.10 Formulas
+### Formulas
 
-The last kind of variable that I want to introduce before finally being able to start talking about statistics is the _**formula**_. Formulas were originally introduced into R as a convenient way to specify a particular type of statistical model (see Chapter [15](https://learningstatisticswithr.com/book/regression.html#regression)) but they’re such handy things that they’ve spread. Formulas are now used in a lot of different contexts, so it makes sense to introduce them early.
-
-Stated simply, a formula object is a variable, but it’s a special type of variable that specifies a relationship between other variables. A formula is specified using the “tilde operator” `~`. A very simple example of a formula is shown below:[62](https://learningstatisticswithr.com/book/mechanics.html#fn62)
+The last kind of variable that we want to see before finally being able to start talking about statistics is **Formula**. Stated simply, a formula object is a variable, but it’s a special type of variable that specifies a relationship between other variables. A formula is specified using the “tilde operator” `~`:
 
 ```
-formula1 <- out ~ pred
-formula1
-```
-
-```
-## out ~ pred
+> formula1 <- out ~ pred
+> formula1
+out ~ pred
 ```
 
 The _precise_ meaning of this formula depends on exactly what you want to do with it, but in broad terms it means “the `out` (outcome) variable, analysed in terms of the `pred` (predictor) variable”. That said, although the simplest and most common form of a formula uses the “one variable on the left, one variable on the right” format, there are others. For instance, the following examples are all reasonably common
