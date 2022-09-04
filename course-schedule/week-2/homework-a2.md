@@ -138,15 +138,15 @@ View(booksales)
 
 The first of these commands is the one that loads the data. The second one will display a pretty table showing the data in RStudio.
 
-#### 4.5.5 Saving a workspace file using `save`
+### Saving a workspace file&#x20;
 
-Not surprisingly, saving data is very similar to loading data. Although RStudio provides a simple way to save files (see below), it’s worth understanding the actual commands involved. There are two commands you can use to do this, `save()` and `save.image()`. If you’re happy to save _all_ of the variables in your workspace into the data file, then you should use `save.image()`. And if you’re happy for R to save the file into the current working directory, all you have to do is this:
+There are two commands you can use to do this, `save()` and `save.image()`. If you’re happy to save _all_ of the variables in your workspace into the data file, then you should use `save.image()`. And if you’re happy for R to save the file into the current working directory, all you do is:
 
 ```
 save.image( file = "myfile.Rdata" )
 ```
 
-Since `file` is the first argument, you can shorten this to `save.image("myfile.Rdata")`; and if you want to save to a different directory, then (as always) you need to be more explicit about specifying the path to the file, just as we discussed in Section [4.4](https://learningstatisticswithr.com/book/mechanics.html#navigation). Suppose, however, I have several variables in my workspace, and I only want to save some of them. For instance, I might have this as my workspace:
+Since `file` is the first argument, you can shorten this to `save.image("myfile.Rdata")`. Suppose, however, you have several variables in the workspace, and you only want to save some of them:
 
 ```
 who()
@@ -154,108 +154,65 @@ who()
 ##   data         data.frame    3 x 2     
 ##   handy        character     1         
 ##   junk         numeric       1        
-```
-
-I want to save `data` and `handy`, but not `junk`. But I don’t want to delete `junk` right now, because I want to use it for something else later on. This is where the `save()` function is useful, since it lets me indicate exactly which variables I want to save. Here is one way I can use the `save` function to solve my problem:
-
-```
 save(data, handy, file = "myfile.Rdata")
 ```
 
-Importantly, you _must_ specify the name of the `file` argument. The reason is that if you don’t do so, R will think that `"myfile.Rdata"` is actually a _variable_ that you want to save, and you’ll get an error message. Finally, I should mention a second way to specify which variables the `save()` function should save, which is to use the `list` argument. You do so like this:
+Finally, a second way to specify which variables the function `save()` should save is to use the `list` argument:
 
 ```
 save.me <- c("data", "handy")   # the variables to be saved
-save( file = "booksales2.Rdata", list = save.me )   # the command to save them
+save(file = "booksales2.Rdata", list = save.me)   # the command to save them
 ```
 
-#### 4.5.6 Saving a workspace file using RStudio
+RStudio allows you to save the workspace pretty easily. In the environment panel, you can see the “save” button. Alternatively, go to the “Session” menu and click on the “Save Workspace As…” option. This will bring up the standard “save” dialog box for your operating system. Pretty straightforward, really.
 
-RStudio allows you to save the workspace pretty easily. In the environment panel (Figures [4.5](https://learningstatisticswithr.com/book/mechanics.html#fig:workspace) and [4.6](https://learningstatisticswithr.com/book/mechanics.html#fig:workspace2)) you can see the “save” button. There’s no text, but it’s the same icon that gets used on every computer everywhere: it’s the one that looks like a floppy disk. You know, those things that haven’t been used in about 20 years. Alternatively, go to the “Session” menu and click on the “Save Workspace As…” option.[56](https://learningstatisticswithr.com/book/mechanics.html#fn56) This will bring up the standard “save” dialog box for your operating system (e.g., on a Mac it’ll look a little bit like the loading dialog box in Figure [4.9](https://learningstatisticswithr.com/book/mechanics.html#fig:fileopen)). Type in the name of the file that you want to save it to, and all the variables in your workspace will be saved to disk. You’ll see an R command like this one
+### Special values
 
-```
-save.image("~/Desktop/Untitled.RData")
-```
+Most likely you’ll see these in situations where you were expecting a number, but there are quite a few other ways you can encounter them. These values are `Inf`, `NaN`, `NA` and `NULL`. These values can crop up in various different places, and it’s important to understand what they mean.
 
-Pretty straightforward, really.
-
-#### 4.5.7 Other things you might want to save
-
-Until now, we’ve talked mostly about loading and saving _data_. Other things you might want to save include:
-
-* _The output_. Sometimes you might also want to keep a copy of all your interactions with R, including everything that you typed in and everything that R did in response. There are some functions that you can use to get R to write its output to a file rather than to print onscreen (e.g., `sink()`), but to be honest, if you do want to save the R output, the easiest thing to do is to use the mouse to select the relevant text in the R console, go to the “Edit” menu in RStudio and select “Copy”. The output has now been copied to the clipboard. Now open up your favourite text editor or word processing software, and paste it. And you’re done. However, this will only save the contents of the console, not the plots you’ve drawn (assuming you’ve drawn some). We’ll talk about saving images later on.
-* _A script_. While it is possible – and sometimes handy – to save the R output as a method for keeping a copy of your statistical analyses, another option that people use a lot (especially when you move beyond simple “toy” analyses) is to write _scripts_. A script is a text file in which you write out all the commands that you want R to run. You can write your script using whatever software you like. In real world data analysis writing scripts is a key skill – and as you become familiar with R you’ll probably find that most of what you do involves scripting rather than typing commands at the R prompt. However, you won’t need to do much scripting initially, so we’ll leave that until Chapter [8](https://learningstatisticswithr.com/book/scripting.html#scripting).
-
-### 4.6 Useful things to know about variables
-
-In Chapter [3](https://learningstatisticswithr.com/book/introR.html#introR) I talked a lot about variables, how they’re assigned and some of the things you can do with them, but there’s a lot of additional complexities. That’s not a surprise of course. However, some of those issues are worth drawing your attention to now. So that’s the goal of this section; to cover a few extra topics. As a consequence, this section is basically a bunch of things that I want to briefly mention, but don’t really fit in anywhere else. In short, I’ll talk about several different issues in this section, which are only loosely connected to one another.
-
-#### 4.6.1 Special values
-
-The first thing I want to mention are some of the “special” values that you might see R produce. Most likely you’ll see them in situations where you were expecting a number, but there are quite a few other ways you can encounter them. These values are `Inf`, `NaN`, `NA` and `NULL`. These values can crop up in various different places, and so it’s important to understand what they mean.
-
-* _Infinity_ (`Inf`). The easiest of the special values to explain is `Inf`, since it corresponds to a value that is infinitely large. You can also have `-Inf`. The easiest way to get `Inf` is to divide a positive number by 0:
+* _Infinity_ (`Inf`). The easiest of the special values to explain is `Inf` since it corresponds to a value that is infinitely large. You can also have `-Inf` :
 
 ```
-1 / 0
+> 1 / 0
+[1] Inf
 ```
 
-```
-## [1] Inf
-```
-
-In most real world data analysis situations, if you’re ending up with infinite numbers in your data, then something has gone awry. Hopefully you’ll never have to see them.
-
-* _Not a Number_ (`NaN`). The special value of `NaN` is short for “not a number”, and it’s basically a reserved keyword that means “there isn’t a mathematically defined number for this”. If you can remember your high school maths, remember that it is conventional to say that $$0/00/0$$ doesn’t have a proper answer: mathematicians would say that $$0/00/0$$ is _undefined_. R says that it’s not a number:
+* _Not a Number_ (`NaN`). This means “there isn’t a mathematically defined number for this”. Mathematicians would say $$0/0$$ is **undefined**. R says that it’s not a number, nevertheless, it’s still treated as a “numeric” value:
 
 ```
- 0 / 0
+> 0 / 0
+[1] NaN
 ```
 
-```
-## [1] NaN
-```
+* _Not available_ (`NA`). `NA` indicates that the value that is “supposed” to be stored here is missing. Note the difference between `NA` and `NaN`. For `NaN`, we really do know what’s supposed to be stored; it’s just that it happens to correspond to something like $$0/0$$ that doesn’t make any sense at all. In contrast, `NA` indicates that we actually don’t know what was supposed to be there. The information is _missing_.
+* _No value_ (`NULL`). The `NULL` value takes this “absence” concept even further. It basically asserts that the variable genuinely has no value whatsoever. This is quite different to both `NaN` and `NA`. For `NaN` we actually know what the value is, because it’s something insane like $$0/0$$. For `NA`, we believe that there is supposed to be a value “out there”, but a dog ate our homework and so we don’t quite know what it is. But for `NULL` we strongly believe that there is _no value at all_.
 
-Nevertheless, it’s still treated as a “numeric” value. To oversimplify, `NaN` corresponds to cases where you asked a proper numerical question that genuinely has _no meaningful answer_.
+### Assigning names to vector elements
 
-* _Not available_ (`NA`). `NA` indicates that the value that is “supposed” to be stored here is missing. To understand what this means, it helps to recognise that the `NA` value is something that you’re most likely to see when analysing data from real world experiments. Sometimes you get equipment failures, or you lose some of the data, or whatever. The point is that some of the information that you were “expecting” to get from your study is just plain missing. Note the difference between `NA` and `NaN`. For `NaN`, we really do know what’s supposed to be stored; it’s just that it happens to correspond to something like $$0/00/0$$ that doesn’t make any sense at all. In contrast, `NA` indicates that we actually don’t know what was supposed to be there. The information is _missing_.
-* _No value_ (`NULL`). The `NULL` value takes this “absence” concept even further. It basically asserts that the variable genuinely has no value whatsoever. This is quite different to both `NaN` and `NA`. For `NaN` we actually know what the value is, because it’s something insane like $$0/00/0$$. For `NA`, we believe that there is supposed to be a value “out there”, but a dog ate our homework and so we don’t quite know what it is. But for `NULL` we strongly believe that there is _no value at all_.
-
-#### 4.6.2 Assigning names to vector elements
-
-One thing that is sometimes a little unsatisfying about the way that R prints out a vector is that the elements come out unlabelled. Here’s what I mean. Suppose I’ve got data reporting the quarterly profits for some company. If I just create a no-frills vector, I have to rely on memory to know which element corresponds to which event. That is:
+One thing about the way that R prints out a vector is that the elements come out unlabelled. Suppose I’ve got data reporting the quarterly profits for some company. That is:
 
 ```
-profit <- c( 3.1, 0.1, -1.4, 1.1 )
+> profit <- c( 3.1, 0.1, -1.4, 1.1 )
+> profit
+[1]  3.1  0.1 -1.4  1.1
+```
+
+You can probably guess that the first element corresponds to the first quarter, the second element to the second quarter, and so on. This is where it can be helpful to assign `names` to each of the elements. Here’s how you do it:
+
+```
+> names(profit) <- c("Q1","Q2","Q3","Q4")
 profit
+Q1   Q2   Q3   Q4 
+3.1  0.1 -1.4  1.1
 ```
 
-```
-## [1]  3.1  0.1 -1.4  1.1
-```
-
-You can probably guess that the first element corresponds to the first quarter, the second element to the second quarter, and so on, but that’s only because I’ve told you the back story and because this happens to be a very simple example. In general, it can be quite difficult. This is where it can be helpful to assign `names` to each of the elements. Here’s how you do it:
-
-```
-names(profit) <- c("Q1","Q2","Q3","Q4")
-profit
-```
-
-```
-##   Q1   Q2   Q3   Q4 
-##  3.1  0.1 -1.4  1.1
-```
-
-This is a slightly odd looking command, admittedly, but it’s not too difficult to follow. All we’re doing is assigning a vector of labels (character strings) to `names(profit)`. You can always delete the names again by using the command `names(profit) <- NULL`. It’s also worth noting that you don’t have to do this as a two stage process. You can get the same result with this command:
+You can always delete the names again by using `names(profit) <- NULL`. It’s also worth noting that you don’t have to do this as a two-stage process:
 
 ```
 profit <- c( "Q1" = 3.1, "Q2" = 0.1, "Q3" = -1.4, "Q4" = 1.1 )
 profit
-```
-
-```
-##   Q1   Q2   Q3   Q4 
-##  3.1  0.1 -1.4  1.1
+Q1   Q2   Q3   Q4 
+3.1  0.1 -1.4  1.1
 ```
 
 The important things to notice are that (a) this does make things much easier to read, but (b) the names at the top aren’t the “real” data. The _value_ of `profit[1]` is still `3.1`; all I’ve done is added a _name_ to `profit[1]` as well. Nevertheless, names aren’t purely cosmetic, since R allows you to pull out particular elements of the vector by referring to their names:
