@@ -17,7 +17,7 @@ Let’s suppose I’m on Windows. As before, I can find out what my current work
 [1] "C:/Users/dan/
 ```
 
-This seems about right, but you might be wondering why R is displaying a Windows path using the wrong type of slash. The answer is slightly complicated, and has to do with the fact that R treats `\` as a special character. To tell R not to treat `\` as a special character requires adding a skip character `\` . If you want to specify the working directory on a Windows computer, you need to use one of the following commands:
+This seems about right, but you might be wondering why R is displaying a Windows path using the wrong type of slash. The answer is slightly complicated and has to do with the fact that R treats `\` as a special character. To tell R not to treat `\` as a special character requires adding a skip character `\` . If you want to specify the working directory on a Windows computer, you need to use one of the following commands:
 
 ```
 > setwd( "C:/Users/dan" )
@@ -254,32 +254,49 @@ class(x)
 
 Exciting, no?
 
-### Factors
 
-Okay, it’s time to start introducing some of the data types that are somewhat more specific to statistics. If you remember back to Chapter [2](https://learningstatisticswithr.com/book/studydesign.html#studydesign), when we assign numbers to possible outcomes, these numbers can mean quite different things depending on what kind of variable we are attempting to measure. In particular, we commonly make the distinction between _nominal_, _ordinal_, _interval_ and _ratio_ scale data. How do we capture this distinction in R? Currently, we only seem to have a single numeric data type. That’s probably not going to be enough, is it?
 
-A little thought suggests that the numeric variable class in R is perfectly suited for capturing ratio scale data. For instance, if I were to measure response time (RT) for five different events, I could store the data in R like this:
+### Data frames
 
-```
-RT <- c(342, 401, 590, 391, 554)
-```
+It’s now time to go back and deal with the somewhat confusing thing that happened in Section [**??**](https://learningstatisticswithr.com/book/mechanics.html#loadingcsv) when we tried to open up a CSV file. Apparently we succeeded in loading the data, but it came to us in a very odd looking format. At the time, I told you that this was a _**data frame**_. Now I’d better explain what that means.
 
-where the data here are measured in milliseconds, as is conventional in the psychological literature. It’s perfectly sensible to talk about “twice the response time”, $$2×RT2×RT$$, or the “response time plus 1 second”, $$RT+1000RT+1000$$, and so both of the following are perfectly reasonable things for R to do:
+#### 4.8.1 Introducing data frames
+
+In order to understand why R has created this funny thing called a data frame, it helps to try to see what problem it solves. So let’s go back to the little scenario that I used when introducing factors in Section [4.7](https://learningstatisticswithr.com/book/mechanics.html#factors). In that section I recorded the `group` and `gender` for all 9 participants in my study. Let’s also suppose I recorded their ages and their `score` on “Dan’s Terribly Exciting Psychological Test”:
 
 ```
-2 * RT
+age <- c(17, 19, 21, 37, 18, 19, 47, 18, 19)
+score <- c(12, 10, 11, 15, 16, 14, 25, 21, 29)
+```
+
+Assuming no other variables are in the workspace, if I type `who()` I get this:
+
+```
+who()
+```
+
+So there are four variables in the workspace, `age`, `gender`, `group` and `score`. And it just so happens that all four of them are the same size (i.e., they’re all vectors with 9 elements). Aaaand it just so happens that `age[1]` corresponds to the age of the first person, and `gender[1]` is the gender of that very same person, etc. In other words, you and I both know that all four of these variables correspond to the _same_ data set, and all four of them are organised in exactly the same way.
+
+However, R _doesn’t_ know this! As far as it’s concerned, there’s no reason why the `age` variable has to be the same length as the `gender` variable; and there’s no particular reason to think that `age[1]` has any special relationship to `gender[1]` any more than it has a special relationship to `gender[4]`. In other words, when we store everything in separate variables like this, R doesn’t know anything about the relationships between things. It doesn’t even really know that these variables actually refer to a proper data set. The data frame fixes this: if we store our variables inside a data frame, we’re telling R to treat these variables as a single, fairly coherent data set.
+
+To see how they do this, let’s create one. So how do we create a data frame? One way we’ve already seen: if we import our data from a CSV file, R will store it as a data frame. A second way is to create it directly from some existing variables using the `data.frame()` function. All you have to do is type a list of variables that you want to include in the data frame. The output of a `data.frame()` command is, well, a data frame. So, if I want to store all four variables from my experiment in a data frame called `expt` I can do so like this:
+
+```
+expt <- data.frame ( age, gender, group, score ) 
+expt 
 ```
 
 ```
-## [1]  684  802 1180  782 1108
+##   age gender   group score
+## 1  17   male group 1    12
+## 2  19   male group 1    10
+## 3  21   male group 1    11
+## 4  37   male group 2    15
+## 5  18   male group 2    16
+## 6  19 female group 2    14
+## 7  47 female group 3    25
+## 8  18 female group 3    21
+## 9  19 female group 3    29
 ```
 
-```
-RT + 1000
-```
-
-```
-## [1] 1342 1401 1590 1391 1554
-```
-
-And to a lesser extent, the “numeric” class is okay for interval scale data, as long as we remember that multiplication and division aren’t terribly interesting for these sorts of variables. That is, if my IQ score is 110 and yours is 120, it’s perfectly okay to say that you’re 10 IQ points smarter than me[59](https://learningstatisticswithr.com/book/mechanics.html#fn59), but it’s not okay to say that I’m only 92% as smart as you are, because intelligence doesn’t have a natural zero.[60](https://learningstatisticswithr.com/book/mechanics.html#fn60) We might even be willing to tolerate the use of numeric variables to represent ordinal scale variables, such as those that you typically get when you ask people to rank order items (e.g., like we do in Australian elections), though as we will see R actually has a built in tool for representing ordinal data (see Section [7.11.2](https://learningstatisticswithr.com/book/datahandling.html#orderedfactors)) However, when it comes to nominal scale data, it becomes completely unacceptable, because almost all of the “usual” rules for what you’re allowed to do with numbers don’t apply to nominal scale data. It is for this reason that R has _**factors**_.
+Note that `expt` is a completely self-contained variable. Once you’ve created it, it no longer depends on the original variables from which it was constructed. That is, if we make changes to the original `age` variable, it will _not_ lead to any changes to the age data stored in `expt`.
