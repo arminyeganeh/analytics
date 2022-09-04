@@ -300,3 +300,326 @@ expt
 ```
 
 Note that `expt` is a completely self-contained variable. Once you’ve created it, it no longer depends on the original variables from which it was constructed. That is, if we make changes to the original `age` variable, it will _not_ lead to any changes to the age data stored in `expt`.
+
+
+
+#### Pulling out the contents of the data frame using `$`
+
+At this point, our workspace contains only the one variable, a data frame called `expt`. But as we can see when we told R to print the variable out, this data frame contains 4 variables, each of which has 9 observations. So how do we get this information out again? After all, there’s no point in storing information if you don’t use it, and there’s no way to use information if you can’t access it. So let’s talk a bit about how to pull information out of a data frame.
+
+The first thing we might want to do is pull out one of our stored variables, let’s say `score`. One thing you might try to do is ignore the fact that `score` is locked up inside the `expt` data frame. For instance, you might try to print it out like this:
+
+```
+score
+```
+
+```
+## Error in eval(expr, envir, enclos): object 'score' not found
+```
+
+This doesn’t work, because R doesn’t go “peeking” inside the data frame unless you explicitly tell it to do so. There’s actually a very good reason for this, which I’ll explain in a moment, but for now let’s just assume R knows what it’s doing. How do we tell R to look inside the data frame? As is always the case with R there are several ways. The simplest way is to use the `$` operator to extract the variable you’re interested in, like this:
+
+```
+expt$score
+```
+
+```
+## [1] 12 10 11 15 16 14 25 21 29
+```
+
+#### 4.8.3 Getting information about a data frame
+
+One problem that sometimes comes up in practice is that you forget what you called all your variables. Normally you might try to type `objects()` or `who()`, but neither of those commands will tell you what the names are for those variables inside a data frame! One way is to ask R to tell you what the _names_ of all the variables stored in the data frame are, which you can do using the `names()` function:
+
+```
+names(expt)
+```
+
+```
+## [1] "age"    "gender" "group"  "score"
+```
+
+An alternative method is to use the `who()` function, as long as you tell it to look at the variables inside data frames. If you set `expand = TRUE` then it will not only list the variables in the workspace, but it will “expand” any data frames that you’ve got in the workspace, so that you can see what they look like. That is:
+
+```
+who(expand = TRUE)
+```
+
+or, since `expand` is the first argument in the `who()` function you can just type `who(TRUE)`. I’ll do that a lot in this book.
+
+#### 4.8.4 Looking for more on data frames?
+
+There’s a lot more that can be said about data frames: they’re fairly complicated beasts, and the longer you use R the more important it is to make sure you really understand them. We’ll talk a lot more about them in Chapter [7](https://learningstatisticswithr.com/book/datahandling.html#datahandling).
+
+### 4.9 Lists
+
+The next kind of data I want to mention are _**lists**_. Lists are an extremely fundamental data structure in R, and as you start making the transition from a novice to a savvy R user you will use lists all the time. I don’t use lists very often in this book – not directly – but most of the advanced data structures in R are built from lists (e.g., data frames are actually a specific type of list). Because lists are so important to how R stores things, it’s useful to have a basic understanding of them. Okay, so what is a list, exactly? Like data frames, lists are just “collections of variables.” However, unlike data frames – which are basically supposed to look like a nice “rectangular” table of data – there are no constraints on what kinds of variables we include, and no requirement that the variables have any particular relationship to one another. In order to understand what this actually _means_, the best thing to do is create a list, which we can do using the `list()` function. If I type this as my command:
+
+```
+Dan <- list( age = 34,
+            nerd = TRUE,
+            parents = c("Joe","Liz") 
+)
+```
+
+R creates a new list variable called `Dan`, which is a bundle of three different variables: `age`, `nerd` and `parents`. Notice, that the `parents` variable is longer than the others. This is perfectly acceptable for a list, but it wouldn’t be for a data frame. If we now print out the variable, you can see the way that R stores the list:
+
+```
+print( Dan )
+```
+
+```
+## $age
+## [1] 34
+## 
+## $nerd
+## [1] TRUE
+## 
+## $parents
+## [1] "Joe" "Liz"
+```
+
+As you might have guessed from those `$` symbols everywhere, the variables are stored in exactly the same way that they are for a data frame (again, this is not surprising: data frames _are_ a type of list). So you will (I hope) be entirely unsurprised and probably quite bored when I tell you that you can extract the variables from the list using the `$` operator, like so:
+
+```
+Dan$nerd
+```
+
+```
+## [1] TRUE
+```
+
+If you need to add new entries to the list, the easiest way to do so is to again use `$`, as the following example illustrates. If I type a command like this
+
+```
+Dan$children <- "Alex"
+```
+
+then R creates a new entry to the end of the list called `children`, and assigns it a value of `"Alex"`. If I were now to `print()` this list out, you’d see a new entry at the bottom of the printout. Finally, it’s actually possible for lists to contain other lists, so it’s quite possible that I would end up using a command like `Dan$children$age` to find out how old my son is. Or I could try to remember it myself I suppose.
+
+### 4.10 Formulas
+
+The last kind of variable that I want to introduce before finally being able to start talking about statistics is the _**formula**_. Formulas were originally introduced into R as a convenient way to specify a particular type of statistical model (see Chapter [15](https://learningstatisticswithr.com/book/regression.html#regression)) but they’re such handy things that they’ve spread. Formulas are now used in a lot of different contexts, so it makes sense to introduce them early.
+
+Stated simply, a formula object is a variable, but it’s a special type of variable that specifies a relationship between other variables. A formula is specified using the “tilde operator” `~`. A very simple example of a formula is shown below:[62](https://learningstatisticswithr.com/book/mechanics.html#fn62)
+
+```
+formula1 <- out ~ pred
+formula1
+```
+
+```
+## out ~ pred
+```
+
+The _precise_ meaning of this formula depends on exactly what you want to do with it, but in broad terms it means “the `out` (outcome) variable, analysed in terms of the `pred` (predictor) variable”. That said, although the simplest and most common form of a formula uses the “one variable on the left, one variable on the right” format, there are others. For instance, the following examples are all reasonably common
+
+```
+formula2 <-  out ~ pred1 + pred2   # more than one variable on the right
+formula3 <-  out ~ pred1 * pred2   # different relationship between predictors 
+formula4 <-  ~ var1 + var2         # a 'one-sided' formula
+```
+
+and there are many more variants besides. Formulas are pretty flexible things, and so different functions will make use of different formats, depending on what the function is intended to do.
+
+### 4.11 Generic functions
+
+There’s one really important thing that I omitted when I discussed functions earlier on in Section [3.5](https://learningstatisticswithr.com/book/introR.html#usingfunctions), and that’s the concept of a _**generic function**_. The two most notable examples that you’ll see in the next few chapters are `summary()` and `plot()`, although you’ve already seen an example of one working behind the scenes, and that’s the `print()` function. The thing that makes generics different from the other functions is that their behaviour changes, often quite dramatically, depending on the `class()` of the input you give it. The easiest way to explain the concept is with an example. With that in mind, lets take a closer look at what the `print()` function actually does. I’ll do this by creating a formula, and printing it out in a few different ways. First, let’s stick with what we know:
+
+```
+my.formula <- blah ~ blah.blah    # create a variable of class "formula"
+print( my.formula )               # print it out using the generic print() function
+```
+
+```
+## blah ~ blah.blah
+```
+
+So far, there’s nothing very surprising here. But there’s actually a lot going on behind the scenes here. When I type `print( my.formula )`, what actually happens is the `print()` function checks the class of the `my.formula` variable. When the function discovers that the variable it’s been given is a formula, it goes looking for a function called `print.formula()`, and then delegates the whole business of printing out the variable to the `print.formula()` function.[63](https://learningstatisticswithr.com/book/mechanics.html#fn63) For what it’s worth, the name for a “dedicated” function like `print.formula()` that exists only to be a special case of a generic function like `print()` is a _**method**_, and the name for the process in which the generic function passes off all the hard work onto a method is called _**method dispatch**_. You won’t need to understand the details at all for this book, but you do need to know the gist of it; if only because a lot of the functions we’ll use are actually generics. Anyway, to help expose a little more of the workings to you, let’s bypass the `print()` function entirely and call the formula method directly:
+
+```
+print.formula( my.formula )       # print it out using the print.formula() method
+
+## Appears to be deprecated
+```
+
+There’s no difference in the output at all. But this shouldn’t surprise you because it was actually the `print.formula()` method that was doing all the hard work in the first place. The `print()` function itself is a lazy bastard that doesn’t do anything other than select which of the methods is going to do the actual printing.
+
+Okay, fair enough, but you might be wondering what would have happened if `print.formula()` didn’t exist? That is, what happens if there isn’t a specific method defined for the class of variable that you’re using? In that case, the generic function passes off the hard work to a “default” method, whose name in this case would be `print.default()`. Let’s see what happens if we bypass the `print()` formula, and try to print out `my.formula` using the `print.default()` function:
+
+```
+print.default( my.formula )      # print it out using the print.default() method
+```
+
+```
+## blah ~ blah.blah
+## attr(,"class")
+## [1] "formula"
+## attr(,".Environment")
+## <environment: R_GlobalEnv>
+```
+
+Hm. You can kind of see that it is trying to print out the same formula, but there’s a bunch of ugly low-level details that have also turned up on screen. This is because the `print.default()` method doesn’t know anything about formulas, and doesn’t know that it’s supposed to be hiding the obnoxious internal gibberish that R produces sometimes.
+
+At this stage, this is about as much as we need to know about generic functions and their methods. In fact, you can get through the entire book without learning any more about them than this, so it’s probably a good idea to end this discussion here.
+
+### 4.12 Getting help
+
+The very last topic I want to mention in this chapter is where to go to find help. Obviously, I’ve tried to make this book as helpful as possible, but it’s not even close to being a comprehensive guide, and there’s thousands of things it doesn’t cover. So where should you go for help?
+
+#### 4.12.1 How to read the help documentation
+
+I have somewhat mixed feelings about the help documentation in R. On the plus side, there’s a lot of it, and it’s very thorough. On the minus side, there’s a lot of it, and it’s very thorough. There’s so much help documentation that it sometimes doesn’t help, and most of it is written with an advanced user in mind. Often it feels like most of the help ﬁles work on the assumption that the reader already understands everything about R except for the speciﬁc topic that it’s providing help for. What that means is that, once you’ve been using R for a long time and are beginning to get a feel for how to use it, the help documentation is awesome. These days, I ﬁnd myself really liking the help ﬁles (most of them anyway). But when I ﬁrst started using R I found it very dense.
+
+To some extent, there’s not much I can do to help you with this. You just have to work at it yourself; once you’re moving away from being a pure beginner and are becoming a skilled user, you’ll start ﬁnding the help documentation more and more helpful. In the meantime, I’ll help as much as I can by trying to explain to you what you’re looking at when you open a help ﬁle. To that end, let’s look at the help documentation for the `load()` function. To do so, I type either of the following:
+
+```
+?load 
+help("load")
+```
+
+When I do that, R goes looking for the help ﬁle for the “load” topic. If it ﬁnds one, Rstudio takes it and displays it in the help panel. Alternatively, you can try a fuzzy search for a help topic
+
+```
+??load 
+help.search("load")
+```
+
+This will bring up a list of possible topics that you might want to follow up in. Regardless, at some point you’ll ﬁnd yourself looking at an actual help ﬁle. And when you do, you’ll see there’s a quite a lot of stuﬀ written down there, and it comes in a pretty standardised format. So let’s go through it slowly, using the “`load`” topic as our example. Firstly, at the very top we see this:
+
+**Reload Saved Datasets**
+
+**Description**
+
+Reload datasets written with the function `save`.
+
+Fairly straightforward. The next section describes how the function is used:
+
+**Usage**
+
+```
+load(file, envir = parent.frame(), verbose = FALSE)
+```
+
+In this instance, the usage section is actually pretty readable. It’s telling you that there are two arguments to the `load()` function: the ﬁrst one is called `file`, and the second one is called `envir`. It’s also telling you that there is a default value for the envir argument; so if the user doesn’t specify what the value of envir should be, then R will assume that `envir = parent.frame()`. In contrast, the file argument has no default value at all, so the user must specify a value for it. So in one sense, this section is very straightforward.
+
+The problem, of course, is that you don’t know what the `parent.frame()` function actually does, so it’s hard for you to know what the `envir = parent.frame()` bit is all about. What you could do is then go look up the help documents for the `parent.frame()` function (and sometimes that’s actually a good idea), but often you’ll ﬁnd that the help documents for those functions are just as dense (if not more dense) than the help ﬁle that you’re currently reading. As an alternative, my general approach when faced with something like this is to skim over it, see if I can make any sense of it. If so, great. If not, I ﬁnd that the best thing to do is ignore it. In fact, the ﬁrst time I read the help ﬁle for the load() function, I had no idea what any of the `envir` related stuﬀ was about. But fortunately I didn’t have to: the default setting here (i.e., `envir = parent.frame()`) is actually the thing you want in about 99% of cases, so it’s safe to ignore it.
+
+Basically, what I’m trying to say is: don’t let the scary, incomprehensible parts of the help ﬁle intimidate you. Especially because there’s often some parts of the help ﬁle that will make sense. Of course, I guarantee you that sometimes this strategy will lead you to make mistakes… often embarrassing mistakes. But it’s still better than getting paralysed with fear.
+
+So, let’s continue on. The next part of the help documentation discusses each of the arguments, and what they’re supposed to do:
+
+**Arguments**
+
+| `file`    | a (readable binary-mode) [connection](https://learningstatisticswithr.com/base/help/connection) or a character string giving the name of the file to load (when [tilde expansion](https://learningstatisticswithr.com/base/help/tilde%20expansion) is done). |
+| --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `envir`   | the environment where the data should be loaded.                                                                                                                                                                                                             |
+| `verbose` | should item names be printed during loading?                                                                                                                                                                                                                 |
+
+Okay, so what this is telling us is that the `file` argument needs to be a string (i.e., text data) which tells R the name of the ﬁle to load. It also seems to be hinting that there’s other possibilities too (e.g., a “binary mode connection”), and you probably aren’t quite sure what “tilde expansion” means[64](https://learningstatisticswithr.com/book/mechanics.html#fn64). But overall, the meaning is pretty clear.
+
+Turning to the `envir` argument, it’s now a little clearer what the Usage section was babbling about. The `envir` argument speciﬁes the name of an environment (see Section 4.3 if you’ve forgotten what environments are) into which R should place the variables when it loads the ﬁle. Almost always, this is a no-brainer: you want R to load the data into the same damn environment in which you’re invoking the `load()` command. That is, if you’re typing `load()` at the R prompt, then you want the data to be loaded into your workspace (i.e., the global environment). But if you’re writing your own function that needs to load some data, you want the data to be loaded inside that function’s private workspace. And in fact, that’s exactly what the `parent.frame()` thing is all about. It’s telling the `load()` function to send the data to the same place that the `load()` command itself was coming from. As it turns out, if we’d just ignored the envir bit we would have been totally safe. Which is nice to know.
+
+Moving on, next up we get a detailed description of what the function actually does:
+
+**Details**
+
+`load` can load **R** objects saved in the current or any earlier format. It can read a compressed file (see [`save`](https://learningstatisticswithr.com/base/help/save)) directly from a file or from a suitable connection (including a call to [`url`](https://learningstatisticswithr.com/base/help/url)).
+
+A not-open connection will be opened in mode `“rb”` and closed after use. Any connection other than a [`gzfile`](https://learningstatisticswithr.com/base/help/gzfile) or [`gzcon`](https://learningstatisticswithr.com/base/help/gzcon) connection will be wrapped in [`gzcon`](https://learningstatisticswithr.com/base/help/gzcon) to allow compressed saves to be handled: note that this leaves the connection in an altered state (in particular, binary-only), and that it needs to be closed explicitly (it will not be garbage-collected).
+
+Only **R** objects saved in the current format (used since **R** 1.4.0) can be read from a connection. If no input is available on a connection a warning will be given, but any input not in the current format will result in a error.
+
+Loading from an earlier version will give a warning about the ‘magic number’: magic numbers `1971:1977` are from **R** < 0.99.0, and `RD[ABX]1` from **R** 0.99.0 to **R** 1.3.1. These are all obsolete, and you are strongly recommended to re-save such files in a current format.
+
+The `verbose` argument is mainly intended for debugging. If it is `TRUE`, then as objects from the file are loaded, their names will be printed to the console. If `verbose` is set to an integer value greater than one, additional names corresponding to attributes and other parts of individual objects will also be printed. Larger values will print names to a greater depth.
+
+Objects can be saved with references to namespaces, usually as part of the environment of a function or formula. Such objects can be loaded even if the namespace is not available: it is replaced by a reference to the global environment with a warning. The warning identifies the first object with such a reference (but there may be more than one).
+
+Then it tells you what the output value of the function is:
+
+**Value**
+
+A character vector of the names of objects created, invisibly.
+
+This is usually a bit more interesting, but since the `load()` function is mainly used to load variables into the workspace rather than to return a value, it’s no surprise that this doesn’t do much or say much. Moving on, we sometimes see a few additional sections in the help ﬁle, which can be diﬀerent depending on what the function is:
+
+**Warning**
+
+Saved **R** objects are binary files, even those saved with `ascii = TRUE`, so ensure that they are transferred without conversion of end of line markers. `load` tries to detect such a conversion and gives an informative error message.
+
+`load(<file>)` replaces all existing objects with the same names in the current environment (typically your workspace, [`.GlobalEnv`](https://learningstatisticswithr.com/base/help/.GlobalEnv)) and hence potentially overwrites important data. It is considerably safer to use `envir =` to load into a different environment, or to [`attach`](https://learningstatisticswithr.com/base/help/attach)`(file)` which `load()`s into a new entry in the [`search`](https://learningstatisticswithr.com/base/help/search) path.
+
+**Note**
+
+`file` can be a UTF-8-encoded filepath that cannot be translated to the current locale.
+
+Yeah, yeah. Warning, warning, blah blah blah. Towards the bottom of the help ﬁle, we see something like this, which suggests a bunch of related topics that you might want to look at. These can be quite helpful:
+
+**See Also**
+
+[`save`](https://learningstatisticswithr.com/base/help/save), [`download.file`](https://learningstatisticswithr.com/base/help/download.file); further [`attach`](https://learningstatisticswithr.com/base/help/attach) as wrapper for `load()`.
+
+For other interfaces to the underlying serialization format, see [`unserialize`](https://learningstatisticswithr.com/base/help/unserialize) and [`readRDS`](https://learningstatisticswithr.com/base/help/readRDS).
+
+Finally, it gives you some examples of how to use the function(s) that the help ﬁle describes. These are supposed to be proper R commands, meaning that you should be able to type them into the console yourself and they’ll actually work. Sometimes it can be quite helpful to try the examples yourself. Anyway, here they are for the “`load`” help ﬁle:
+
+**Examples**
+
+```
+## save all data
+xx <- pi # to ensure there is some data
+save(list = ls(all = TRUE), file= "all.rda")
+rm(xx)
+
+## restore the saved values to the current environment
+local({
+   load("all.rda")
+   ls()
+})
+
+xx <- exp(1:3)
+## restore the saved values to the user's workspace
+load("all.rda") ## which is here *equivalent* to
+## load("all.rda", .GlobalEnv)
+## This however annihilates all objects in .GlobalEnv with the same names !
+xx # no longer exp(1:3)
+rm(xx)
+attach("all.rda") # safer and will warn about masked objects w/ same name in .GlobalEnv
+ls(pos = 2)
+##  also typically need to cleanup the search path:
+detach("file:all.rda")
+
+## clean up (the example):
+unlink("all.rda")
+
+
+## Not run: 
+con <- url("http://some.where.net/R/data/example.rda")
+## print the value to see what objects were created.
+print(load(con))
+close(con) # url() always opens the connection
+
+## End(Not run)
+```
+
+As you can see, they’re pretty dense, and not at all obvious to the novice user. However, they do provide good examples of the various diﬀerent things that you can do with the `load()` function, so it’s not a bad idea to have a look at them, and to try not to ﬁnd them too intimidating.
+
+#### 4.12.2 Other resources
+
+* The Rseek website (www.rseek.org). One thing that I really find annoying about the R help documentation is that it’s hard to search properly. When coupled with the fact that the documentation is dense and highly technical, it’s often a better idea to search or ask online for answers to your questions. With that in mind, the Rseek website is great: it’s an R specific search engine. I find it really useful, and it’s almost always my first port of call when I’m looking around.
+* The R-help mailing list (see [http://www.r-project.org/mail.html](http://www.r-project.org/mail.html) for details). This is the official R help mailing list. It can be very helpful, but it’s _very_ important that you do your homework before posting a question. The list gets a lot of traffic. While the people on the list try as hard as they can to answer questions, they do so for free, and you _really_ don’t want to know how much money they could charge on an hourly rate if they wanted to apply market rates. In short, they are doing you a favour, so be polite. Don’t waste their time asking questions that can be easily answered by a quick search on Rseek (it’s rude), make sure your question is clear, and all of the relevant information is included. In short, read the posting guidelines carefully ([http://www.r-project.org/posting-guide.html](http://www.r-project.org/posting-guide.html)), and make use of the `help.request()` function that R provides to check that you’re actually doing what you’re expected.
+
+### 4.13 Summary
+
+This chapter continued where Chapter [3](https://learningstatisticswithr.com/book/introR.html#introR) left off. The focus was still primarily on introducing basic R concepts, but this time at least you can see how those concepts are related to data analysis:
+
+* [Installing, loading and updating packages](https://learningstatisticswithr.com/book/mechanics.html#packageinstall). Knowing how to extend the functionality of R by installing and using packages is critical to becoming an effective R user
+* Getting around. Section [4.3](https://learningstatisticswithr.com/book/mechanics.html#workspace) talked about how to manage your workspace and how to keep it tidy. Similarly, Section [4.4](https://learningstatisticswithr.com/book/mechanics.html#navigation) talked about how to get R to interact with the rest of the file system.
+* [Loading and saving data](https://learningstatisticswithr.com/book/mechanics.html#load). Finally, we encountered actual data files. Loading and saving data is obviously a crucial skill, one we discussed in Section [4.5](https://learningstatisticswithr.com/book/mechanics.html#load).
+* [Useful things to know about variables](https://learningstatisticswithr.com/book/mechanics.html#useful). In particular, we talked about special values, element names and classes.
+* More complex types of variables. R has a number of important variable types that will be useful when analysing real data. I talked about factors in Section [4.7](https://learningstatisticswithr.com/book/mechanics.html#factors), data frames in Section [4.8](https://learningstatisticswithr.com/book/mechanics.html#dataframes), lists in Section [4.9](https://learningstatisticswithr.com/book/mechanics.html#lists) and formulas in Section [4.10](https://learningstatisticswithr.com/book/mechanics.html#formulas).
+* [Generic functions](https://learningstatisticswithr.com/book/mechanics.html#generics). How is it that some function seem to be able to do lots of different things? Section [4.11](https://learningstatisticswithr.com/book/mechanics.html#generics) tells you how.
+* [Getting help](https://learningstatisticswithr.com/book/mechanics.html#help). Assuming that you’re not looking for counselling, Section [4.12](https://learningstatisticswithr.com/book/mechanics.html#help) covers several possibilities. If you are looking for counselling, well, this book really can’t help you there. Sorry.
+
+Taken together, Chapters [3](https://learningstatisticswithr.com/book/introR.html#introR) and [4](https://learningstatisticswithr.com/book/mechanics.html#mechanics) provide enough of a background that you can finally get started doing some statistics! Yes, there’s a lot more R concepts that you ought to know (and we’ll talk about some of them in Chapters[7](https://learningstatisticswithr.com/book/datahandling.html#datahandling) and[8](https://learningstatisticswithr.com/book/scripting.html#scripting)), but I think that we’ve talked quite enough about programming for the moment. It’s time to see how your experience with programming can be used to do some data analysis…
