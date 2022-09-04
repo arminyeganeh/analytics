@@ -61,9 +61,7 @@ For the most part, packages are quite unrelated to each other as they do differe
 
 One of the main selling points for R is that there are thousands of packages that have been written for it, and these are all available online. There is a big repository of packages called the “Comprehensive R Archive Network” (CRAN), and the easiest way of getting and installing a new package is from one of the many CRAN mirror sites. Conveniently for us, R provides a function called `install.packages()` that you can use to do this. Even _more_ conveniently, the RStudio team runs its own CRAN mirror and RStudio has a clean interface that lets you install packages without having to learn how to use the `install.packages()` command. Using the RStudio tools is, again, dead simple. In the top left-hand corner of the packages panel, you’ll see a button called “Install Packages”. If you click on that, it will bring up a window like the one shown in **Figure LA2.1**.&#x20;
 
-![When you start typing, you'll see a dropdown menu suggest a list of possible packages that you might want to install](https://learningstatisticswithr.com/book/img/mechanics/installpackage2.png)
-
-**Figure LA2.1** Package installation dialogue box&#x20;
+<figure><img src="https://learningstatisticswithr.com/book/img/mechanics/installpackage2.png" alt=""><figcaption><p><strong>Figure LA2.1</strong> Package installation dialogue box</p></figcaption></figure>
 
 You can select from this list, or just keep typing. Either way, once you’ve got the package name that you want, click on the install button at the bottom of the window. When you do, you’ll see the following command appear in the R console:
 
@@ -103,9 +101,9 @@ The RStudio Environment panel, **Figure LA2.2**, shows you the contents of the w
 objects()
 ```
 
-![The RStudio "Environment" panel shows you the contents of the workspace. Compare this "grid" view to the "list" earlier](https://learningstatisticswithr.com/book/img/mechanics/workspacepanel2.png)&#x20;
+&#x20;
 
-**Figure LA2.2** Environment dialogue box in Grid mode
+<figure><img src="https://learningstatisticswithr.com/book/img/mechanics/workspacepanel2.png" alt=""><figcaption><p><strong>Figure LA2.2</strong> Environment dialogue box in Grid mode</p></figcaption></figure>
 
 There are also several other functions that you can use, including `ls()` which is pretty much identical to `objects()`, and `ls.str()` which you can use to get a fairly detailed description of all the variables in the workspace. In fact, the package `lsr`  actually includes its own function that you can use for this purpose, called `who()`. The reason for using `who()` is pretty straightforward: The command `objects()` isn’t quite informative enough, because the only thing it prints out is the name of each variable; but the function `ls.str()` is too informative. The function `who()` is a compromise between the two. First, now that we’ve got the `lsr` package installed, we need to load it. The result includes a description of name, class, and size of all objects:
 
