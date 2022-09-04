@@ -81,21 +81,21 @@ One quite commonly used data format is the humble “comma separated value” fi
 
 <figure><img src="https://learningstatisticswithr.com/book/img/mechanics/booksalescsv.jpg" alt=""><figcaption><p><strong>Figure HA2.2</strong> A CSV file </p></figcaption></figure>
 
-If RStudio were not available to you, the easiest way to open this file would be to use the `read.csv()` function.[54](https://learningstatisticswithr.com/book/mechanics.html#fn54) This function is pretty flexible, and I’ll talk a lot more about it’s capabilities in Section [7.9](https://learningstatisticswithr.com/book/datahandling.html#importing) for more details, but for now there’s only two arguments to the function that I’ll mention:
+If RStudio were not available to you, the easiest way to open this file would be to use the `read.csv()` function. For now there, are two arguments to the function that we will mention:
 
-* `file`. This should be a character string that specifies a path to the file that needs to be loaded. You can use an absolute path or a relative path to do so.
-* `header`. This is a logical value indicating whether or not the first row of the file contains variable names. The default value is `TRUE`.
+* `file` This should be a character string that specifies a path to the file that needs to be loaded. You can use an absolute path or a relative path to do so.
+* `header` This is a logical value indicating whether or not the first row of the file contains variable names. The default value is `TRUE`.
 
-Therefore, to import the CSV file, the command I need is:
-
-```
-books <- read.csv( file = "booksales.csv" )
-```
-
-There are two very important points to notice here. Firstly, notice that I _didn’t_ try to use the `load()` function, because that function is only meant to be used for .Rdata files. If you try to use `load()` on other types of data, you get an error. Secondly, notice that when I imported the CSV file I assigned the result to a variable, which I imaginatively called `books`.[55](https://learningstatisticswithr.com/book/mechanics.html#fn55) file. There’s a reason for this. The idea behind an `.Rdata` file is that it stores a whole workspace. So, if you had the ability to look inside the file yourself you’d see that the data file keeps track of all the variables and their names. So when you `load()` the file, R restores all those original names. CSV files are treated differently: as far as R is concerned, the CSV only stores _one_ variable, but that variable is big table. So when you import that table into the workspace, R expects _you_ to give it a name.] Let’s have a look at what we’ve got:
+Therefore, to import the CSV file, the command we need is:
 
 ```
-print( books )
+books <- read.csv(file = "booksales.csv")
+```
+
+There are two very important points to notice here. Firstly, notice that we didn’t try to use the `load()` function, because that function is only meant to be used for .Rdata files. If you try to use `load()` on other types of data, you get an error. Secondly, notice that when we imported the CSV file we assigned the result to a variable, which we imaginatively called `books` . There’s a reason for this. The idea behind the file `.Rdata` is that it stores a whole workspace. So, if you had the ability to look inside the file yourself you’d see that the data file keeps track of all the variables and their names. So when you `load()` the file, R restores all those original names. CSV files are treated differently: as far as R is concerned, the CSV only stores one variable, but that variable is a big table. So when you import that table into the workspace, R expects you to give it a name. Let’s have a look at what we’ve got:
+
+```
+print(books)
 ```
 
 ```
@@ -114,30 +114,22 @@ print( books )
 ## 12  December   31     0         high
 ```
 
-Clearly, it’s worked, but the format of this output is a bit unfamiliar. We haven’t seen anything like this before. What you’re looking at is a _data frame_, which is a very important kind of variable in R, and one I’ll discuss in Section [4.8](https://learningstatisticswithr.com/book/mechanics.html#dataframes). For now, let’s just be happy that we imported the data and that it looks about right.
+Clearly, it’s worked, but the format of this output is a bit unfamiliar. We haven’t seen anything like this before. What you’re looking at is a _data frame_, which is a very important kind of variable in R.
 
-#### 4.5.4 Importing data from CSV files using RStudio
+### Importing data from CSV files using RStudio
 
-Yet again, it’s easier in RStudio. In the environment panel in RStudio you should see a button called “Import Dataset”. Click on that, and it will give you a couple of options: select the “From Text File…” option, and it will open up a very familiar dialog box asking you to select a file: if you’re on a Mac, it’ll look like the usual Finder window that you use to choose a file; on Windows it looks like an Explorer window. An example of what it looks like on a Mac is shown in Figure [4.9](https://learningstatisticswithr.com/book/mechanics.html#fig:fileopen). I’m assuming that you’re familiar with your own computer, so you should have no problem finding the CSV file that you want to import! Find the one you want, then click on the “Open” button. When you do this, you’ll see a window that looks like the one in Figure [4.10](https://learningstatisticswithr.com/book/mechanics.html#fig:import).
+Yet again, it’s easier in RStudio. In the environment panel in RStudio you should see a button called “Import Dataset”. Click on that, and it will give you a couple of options: select the “From Text File…” option, and it will open up a very familiar dialog box asking you to select a file: if you’re on a Mac, it’ll look like the usual Finder window that you use to choose a file; on Windows it looks like an Explorer window. Assuming that you’re familiar with your own computer, so should have no problem finding the CSV file that you want to import! Find the one you want, then click on the “Open” button. When you do this, you’ll see a window that looks like the one in **Figure HA2.3**. &#x20;
 
-![A dialog box on a Mac asking you to select the CSV file R should try to import. Mac users will recognise this immediately: it's the usual way in which a Mac asks you to find a file. Windows users won't see this: they'll see the usual explorer window that Windows always gives you when it wants you to select a file.](https://learningstatisticswithr.com/book/img/mechanics/openscreen.png)
+<figure><img src="https://learningstatisticswithr.com/book/img/mechanics/import.png" alt=""><figcaption><p><strong>Figure HA2.3</strong> The RStudio window for importing a CSV</p></figcaption></figure>
 
-Figure 4.9: A dialog box on a Mac asking you to select the CSV file R should try to import. Mac users will recognise this immediately: it’s the usual way in which a Mac asks you to find a file. Windows users won’t see this: they’ll see the usual explorer window that Windows always gives you when it wants you to select a file.
+In the top left corner, you need to type the name of the variable you R to create. By default, that will be the same as the file name: our file is called `booksales.csv`, so RStudio suggests the name `booksales`. Immediately below this are a few things that you can tweak to make sure that the data gets imported correctly:
 
-The import data set window is relatively straightforward to understand.
-
-![The RStudio window for importing a CSV file into R](https://learningstatisticswithr.com/book/img/mechanics/import.png)
-
-Figure 4.10: The RStudio window for importing a CSV file into R
-
-In the top left corner, you need to type the name of the variable you R to create. By default, that will be the same as the file name: our file is called `booksales.csv`, so RStudio suggests the name `booksales`. If you’re happy with that, leave it alone. If not, type something else. Immediately below this are a few things that you can tweak to make sure that the data gets imported correctly:
-
-* Heading. Does the first row of the file contain raw data, or does it contain headings for each variable? The `booksales.csv` file has a header at the top, so I selected “yes”.
+* Heading. Does the first row of the file contain raw data, or does it contain headings for each variable? The `booksales.csv` file has a header at the top, so we select “yes”.
 * Separator. What character is used to separate different entries? In most CSV files this will be a comma (it is “comma separated” after all). But you can change this if your file is different.
 * Decimal. What character is used to specify the decimal point? In English speaking countries, this is almost always a period (i.e., `.`). That’s not universally true: many European countries use a comma. So you can change that if you need to.
-* Quote. What character is used to denote a block of text? That’s usually going to be a double quote mark. It is for the `booksales.csv` file, so that’s what I selected.
+* Quote. What character is used to denote a block of text? That’s usually going to be a double quote mark. It is for the `booksales.csv` file, so that’s what we select.
 
-The nice thing about the RStudio window is that it shows you the raw data file at the top of the window, and it shows you a preview of the data at the bottom. If the data at the bottom doesn’t look right, try changing some of the settings on the left hand side. Once you’re happy, click “Import”. When you do, two commands appear in the R console:
+Once you’re happy, click “Import”. When you do, two commands appear in the R console:
 
 ```
 booksales <- read.csv("~/Rbook/data/booksales.csv")
