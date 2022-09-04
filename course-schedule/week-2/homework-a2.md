@@ -201,7 +201,7 @@ You can probably guess that the first element corresponds to the first quarter, 
 
 ```
 > names(profit) <- c("Q1","Q2","Q3","Q4")
-profit
+> profit
 Q1   Q2   Q3   Q4 
 3.1  0.1 -1.4  1.1
 ```
@@ -209,103 +209,52 @@ Q1   Q2   Q3   Q4
 You can always delete the names again by using `names(profit) <- NULL`. It’s also worth noting that you don’t have to do this as a two-stage process:
 
 ```
-profit <- c( "Q1" = 3.1, "Q2" = 0.1, "Q3" = -1.4, "Q4" = 1.1 )
-profit
+> profit <- c( "Q1" = 3.1, "Q2" = 0.1, "Q3" = -1.4, "Q4" = 1.1 )
+> profit
 Q1   Q2   Q3   Q4 
 3.1  0.1 -1.4  1.1
 ```
 
-The important things to notice are that (a) this does make things much easier to read, but (b) the names at the top aren’t the “real” data. The _value_ of `profit[1]` is still `3.1`; all I’ve done is added a _name_ to `profit[1]` as well. Nevertheless, names aren’t purely cosmetic, since R allows you to pull out particular elements of the vector by referring to their names:
+The _value_ of `profit[1]` is still `3.1`. Nevertheless, names aren’t purely cosmetic, since R allows you to pull out particular elements of the vector by referring to their names:
 
 ```
-profit["Q1"]
+> profit["Q1"]
+Q1 
+3.1
 ```
 
-```
-##  Q1 
-## 3.1
-```
+To pull out the names themselves, just type `names(profit)`.
 
-And if I ever need to pull out the names themselves, then I just type `names(profit)`.
+### Variable classes
 
-#### 4.6.3 Variable classes
+As we’ve seen, R allows you to store different kinds of data. In particular, the variables we’ve defined so far have either been character data (text), numeric data, or logical data. Even R is smart enough to know you can’t multiply `"apples"` by `"oranges"`. It knows this because the quote marks are indicators that the variable is supposed to be treated as text, not as a number.
 
-As we’ve seen, R allows you to store different kinds of data. In particular, the variables we’ve defined so far have either been character data (text), numeric data, or logical data.[57](https://learningstatisticswithr.com/book/mechanics.html#fn57) It’s important that we remember what kind of information each variable stores (and even more important that R remembers) since different kinds of variables allow you to do different things to them. For instance, if your variables have numerical information in them, then it’s okay to multiply them together:
-
-```
-x <- 5   # x is numeric
-y <- 4   # y is numeric
-x * y    
-```
-
-```
-## [1] 20
-```
-
-But if they contain character data, multiplication makes no sense whatsoever, and R will complain if you try to do it:
-
-```
-x <- "apples"   # x is character
-y <- "oranges"  # y is character
-x * y           
-```
-
-```
-## Error in x * y: non-numeric argument to binary operator
-```
-
-Even R is smart enough to know you can’t multiply `"apples"` by `"oranges"`. It knows this because the quote marks are indicators that the variable is supposed to be treated as text, not as a number.
-
-This is quite useful, but notice that it means that R makes a big distinction between `5` and `"5"`. Without quote marks, R treats `5` as the number five, and will allow you to do calculations with it. With the quote marks, R treats `"5"` as the textual character five, and doesn’t recognise it as a number any more than it recognises `"p"` or `"five"` as numbers. As a consequence, there’s a big difference between typing `x <- 5` and typing `x <- "5"`. In the former, we’re storing the number `5`; in the latter, we’re storing the character `"5"`. Thus, if we try to do multiplication with the character versions, R gets stroppy:
+This is quite useful, but notice that it means that R makes a big distinction between `5` and `"5"`:
 
 ```
 x <- "5"   # x is character
 y <- "4"   # y is character
-x * y     
+x * y
+## Error in x * y: non-numeric argument to binary operator     
 ```
 
-```
-## Error in x * y: non-numeric argument to binary operator
-```
-
-Okay, let’s suppose that I’ve forgotten what kind of data I stored in the variable `x` (which happens depressingly often). R provides a function that will let us find out. Or, more precisely, it provides _three_ functions: `class()`, `mode()` and `typeof()`. Why the heck does it provide three functions, you might be wondering? Basically, because R actually keeps track of three different kinds of information about a variable:
-
-1. The _**class**_ of a variable is a “high level” classification, and it captures psychologically (or statistically) meaningful distinctions. For instance `"2011-09-12"` and `"my birthday"` are both text strings, but there’s an important difference between the two: one of them is a date. So it would be nice if we could get R to recognise that `"2011-09-12"` is a date, and allow us to do things like add or subtract from it. The class of a variable is what R uses to keep track of things like that. Because the class of a variable is critical for determining what R can or can’t do with it, the `class()` function is very handy.
-2. The _**mode**_ of a variable refers to the format of the information that the variable stores. It tells you whether R has stored text data or numeric data, for instance, which is kind of useful, but it only makes these “simple” distinctions. It can be useful to know about, but it’s not the main thing we care about. So I’m not going to use the `mode()` function very much.[58](https://learningstatisticswithr.com/book/mechanics.html#fn58)
-3. The _**type**_ of a variable is a very low level classification. We won’t use it in this book, but (for those of you that care about these details) this is where you can see the distinction between integer data, double precision numeric, etc. Almost none of you actually will care about this, so I’m not even going to bother demonstrating the `typeof()` function.
-
-For purposes, it’s the `class()` of the variable that we care most about. Later on, I’ll talk a bit about how you can convince R to “coerce” a variable to change from one class to another (Section [7.10](https://learningstatisticswithr.com/book/datahandling.html#coercion)). That’s a useful skill for real world data analysis, but it’s not something that we need right now. In the meantime, the following examples illustrate the use of the `class()` function:
+Okay, let’s suppose that I’ve forgotten what kind of data we stored in the variable `x` (which happens depressingly often). R provides a function that will let us find out. Or, more precisely, it provides _three_ functions: `class()`, `mode()` and `typeof()`. Why the heck does it provide three functions, you might be wondering? Basically, because R actually keeps track of three different kinds of information about a variable. The **class** of a variable is a “high level” classification, and it captures psychologically (or statistically) meaningful distinctions. For instance `"2011-09-12"` and `"my birthday"` are both text strings, but there’s an important difference between the two: one of them is a date:
 
 ```
-x <- "hello world"     # x is text
+> x <- "hello world"
 class(x)
-```
-
-```
-## [1] "character"
-```
-
-```
-x <- TRUE     # x is logical 
+[1] "character"
+x <- TRUE
 class(x)
-```
-
-```
-## [1] "logical"
-```
-
-```
-x <- 100     # x is a number
+[1] "logical"
+x <- 100
 class(x)
-```
-
-```
-## [1] "numeric"
+[1] "numeric"
 ```
 
 Exciting, no?
 
-### 4.7 Factors
+### Factors
 
 Okay, it’s time to start introducing some of the data types that are somewhat more specific to statistics. If you remember back to Chapter [2](https://learningstatisticswithr.com/book/studydesign.html#studydesign), when we assign numbers to possible outcomes, these numbers can mean quite different things depending on what kind of variable we are attempting to measure. In particular, we commonly make the distinction between _nominal_, _ordinal_, _interval_ and _ratio_ scale data. How do we capture this distinction in R? Currently, we only seem to have a single numeric data type. That’s probably not going to be enough, is it?
 
