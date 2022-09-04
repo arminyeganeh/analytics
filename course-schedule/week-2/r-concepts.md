@@ -125,38 +125,32 @@ rm(seeker, lover)
 
 ### Navigating the file system
 
-In this section I describe the basic idea behind file locations and file paths. Regardless of whether you’re using Window, Mac OS or Linux, every file on the computer is assigned a (fairly) human readable address, and every address has the same basic structure: it describes a _path_ that starts from a _root_ location , through as series of _folders_ (or if you’re an old-school computer user, _directories_), and finally ends up at the file.
-
-On a Windows computer the root is the physical drive[51](https://learningstatisticswithr.com/book/mechanics.html#fn51) on which the file is stored, and for most home computers the name of the hard drive that stores all your files is C: and therefore most file names on Windows begin with C:. After that comes the folders, and on Windows the folder names are separated by a `\` symbol. So, the complete path to this book on my Windows computer might be something like this:
+Regardless of whether you’re using Windows, Mac OS, or Linux, every file on the computer is assigned a human-readable address, and every address has the same basic structure: it describes a **path** that starts from a **root**, through a series of **folders** (or if you’re an old-school computer user, directories) and finally ends up at the file. On a Windows computer, the root is the hard drive that stores all your files, C, and most file names on Windows begin with C. After that comes the folders, and on Windows, the folder names are separated by a `\` symbol. So, the complete path to your book on your Windows computer might be something like this:
 
 ```
 C:\Users\danRbook\LSR.pdf
 ```
 
-and what that _means_ is that the book is called LSR.pdf, and it’s in a folder called `book` which itself is in a folder called dan which itself is … well, you get the idea. On Linux, Unix and Mac OS systems, the addresses look a little different, but they’re more or less identical in spirit. Instead of using the backslash, folders are separated using a forward slash, and unlike Windows, they don’t treat the physical drive as being the root of the file system. So, the path to this book on my Mac might be something like this:
+On Linux, Unix, and Mac OS systems, the addresses look a little different, but they’re more or less identical in spirit. Instead of using the backslash, folders are separated using a forward slash, and unlike Windows, they don’t treat the physical drive as being the root of the file system. So, the path to this book on my Mac might be something like this:
 
 ```
 /Users/dan/Rbook/LSR.pdf
 ```
 
-So that’s what we mean by the “path” to a file. The next concept to grasp is the idea of a _**working directory**_ and how to change it. For those of you who have used command line interfaces previously, this should be obvious already. But if not, here’s what I mean. The working directory is just “whatever folder I’m currently looking at”. Suppose that I’m currently looking for files in Explorer (if you’re using Windows) or using Finder (on a Mac). The folder I currently have open is my user directory (i.e., `C:\Users\dan` or `/Users/dan`). That’s my current working directory.
-
-The fact that we can imagine that the program is “in” a particular directory means that we can talk about moving _from_ our current location _to_ a new one. What that means is that we might want to specify a new location in relation to our current location. To do so, we need to introduce two new conventions. Regardless of what operating system you’re using, we use `.` to refer to the current working directory, and `..` to refer to the directory above it. This allows us to specify a path to a new location in relation to our current location, as the following examples illustrate. Let’s assume that I’m using my Windows computer, and my working directory is `C:\Users\danRbook`). The table below shows several addresses in relation to my current one:
+So that’s what we mean by the “path” to a file. The next concept to grasp is the idea of a **working directory** and how to change it. The working path is “whatever folder I’m currently looking at”. Suppose that you are currently looking for files in Explorer (if you’re using Windows) or using Finder (on a Mac). The folder you currently have open is the user path (i.e., `C:\Users\dan` or `/Users/dan`). That’s the current working path. We can talk to R about moving _from_ our current location _to_ a new one. What that means is that we might want to specify a new location in relation to our current location. A relative path refers to a location that is relative to a current path. Relative paths make use of two special symbols, a dot `.` , and a double-dot `..` , which translate into the current path and the parent path. Double dots are used for moving up in the hierarchy. A single dot represents the current path:
 
 | absolute path (i.e., from root) | relative path (i.e. from C:) |
 | ------------------------------- | ---------------------------- |
+| C:\Users\dan\danRbook           | .                            |
 | C:\Users\dan                    | ..                           |
-| C:\Users                        | ..\\.. \\                    |
-| C:\Users\danRbook\source        | .\source                     |
-| C:\Users\dan\nerdstuff          | ..\nerdstuff                 |
+| C:\Users                        | ..\\..                       |
+| C:\Users\dan\danRbook\nerdstuff | .\nerdstuff                  |
 
-There’s one last thing I want to call attention to: the `~` directory. I normally wouldn’t bother, but R makes reference to this concept sometimes. It’s quite common on computers that have multiple users to define `~` to be the user’s home directory. On my Mac, for instance, the home directory `~` for the “dan” user is `\Users\dan\`. And so, not surprisingly, it is possible to define other directories in terms of their relationship to the home directory. For example, an alternative way to describe the location of the `LSR.pdf` file on my Mac would be
+There’s one last thing: the `~` directory. It’s quite common on computers that have multiple users to define `~` to be the user’s home directory. It is possible to define other directories in terms of their relationship to the home directory. For example, an alternative way to describe the location of the `LSR.pdf` file on your Mac would be
 
 ```
-~Rbook\LSR.pdf
+~danRbook\LSR.pdf
 ```
-
-That’s about all you really need to know about file paths. And since this section already feels too long, it’s time to look at how to navigate the file system in R.
 
 #### 4.4.2 Navigating the file system using the R console
 
