@@ -61,7 +61,9 @@ For the most part, packages are quite unrelated to each other as they do differe
 
 One of the main selling points for R is that there are thousands of packages that have been written for it, and these are all available online. There is a big repository of packages called the “Comprehensive R Archive Network” (CRAN), and the easiest way of getting and installing a new package is from one of the many CRAN mirror sites. Conveniently for us, R provides a function called `install.packages()` that you can use to do this. Even _more_ conveniently, the RStudio team runs its own CRAN mirror and RStudio has a clean interface that lets you install packages without having to learn how to use the `install.packages()` command. Using the RStudio tools is, again, dead simple. In the top left-hand corner of the packages panel, you’ll see a button called “Install Packages”. If you click on that, it will bring up a window like the one shown in **Figure LA2.1**.&#x20;
 
-<figure><img src="https://learningstatisticswithr.com/book/img/mechanics/installpackage2.png" alt=""><figcaption><p><strong>Figure LA2.1</strong> The package installation dialog box in RStudio</p></figcaption></figure>
+![When you start typing, you'll see a dropdown menu suggest a list of possible packages that you might want to install](https://learningstatisticswithr.com/book/img/mechanics/installpackage2.png)
+
+**Figure LA2.1** Package installation dialogue box&#x20;
 
 You can select from this list, or just keep typing. Either way, once you’ve got the package name that you want, click on the install button at the bottom of the window. When you do, you’ll see the following command appear in the R console:
 
@@ -95,13 +97,15 @@ print(keeper)
 [1] 8.539539
 ```
 
-<figure><img src="https://learningstatisticswithr.com/book/img/mechanics/workspacepanel.png" alt=""><figcaption><p><strong>Figure LA2.2</strong> The RStudio Environment panel</p></figcaption></figure>
-
 The RStudio Environment panel, **Figure LA2.2**, shows you the contents of the workspace. The view shown above is the list view. To switch to the grid view, click on the menu item on the top right that currently reads "List". The first thing that you need to know how to do is to examine the contents of the workspace. If you’re using RStudio, you will probably find that the easiest way to do this is to use the “Environment” panel. If you’re using the command line, then the function `objects()` may come in handy:
 
 ```
 objects()
 ```
+
+![The RStudio "Environment" panel shows you the contents of the workspace. Compare this "grid" view to the "list" earlier](https://learningstatisticswithr.com/book/img/mechanics/workspacepanel2.png)&#x20;
+
+**Figure LA2.2** Environment dialogue box in Grid mode
 
 There are also several other functions that you can use, including `ls()` which is pretty much identical to `objects()`, and `ls.str()` which you can use to get a fairly detailed description of all the variables in the workspace. In fact, the package `lsr`  actually includes its own function that you can use for this purpose, called `who()`. The reason for using `who()` is pretty straightforward: The command `objects()` isn’t quite informative enough, because the only thing it prints out is the name of each variable; but the function `ls.str()` is too informative. The function `who()` is a compromise between the two. First, now that we’ve got the `lsr` package installed, we need to load it. The result includes a description of name, class, and size of all objects:
 
@@ -152,47 +156,20 @@ There’s one last thing: the `~` directory. It’s quite common on computers th
 ~danRbook\LSR.pdf
 ```
 
-#### 4.4.2 Navigating the file system using the R console
-
-In this section I’ll talk about how to navigate this file system from within R itself. It’s not particularly user friendly, and so you’ll probably be happy to know that RStudio provides you with an easier method, and I will describe it in Section [4.4.4](https://learningstatisticswithr.com/book/mechanics.html#nav3). So in practice, you won’t _really_ need to use the commands that I babble on about in this section, but I do think it helps to see them in operation at least once before forgetting about them forever.
-
-Okay, let’s get started. When you want to load or save a file in R it’s important to know what the working directory is. You can find out by using the `getwd()` command. For the moment, let’s assume that I’m using Mac OS or Linux, since there’s some subtleties to Windows. Here’s what happens:
+When you want to load or save a file in R it’s important to know what the working directory (i.e., path) is. You can find out by using the `getwd()` command. For the moment, let’s assume that we are using Mac OS or Linux. Here’s what happens:
 
 ```
-getwd()
-## [1] "/Users/dan"
+> getwd()
+[1] "/Users/dan"
+> path.expand("~")
+[1] "/Users/dan"
 ```
 
-We can change the working directory quite easily using `setwd()`. The `setwd()` function has only the one argument, `dir`, is a character string specifying a path to a directory, or a path relative to the working directory. Since I’m currently located at `/Users/dan`, the following two are equivalent:
+We can change the working directory quite easily using `setwd()`. The function `setwd()` has only one argument, `dir`, a character string specifying a path to a directory, or a path relative to the working directory. Since we are currently at the directory `/Users/dan` the following two are equivalent:
 
 ```
 setwd("/Users/dan/Rbook/data")
 setwd("./Rbook/data")
 ```
 
-Now that we’re here, we can type `list.files()` command to get a listing of all the files in that directory. Since this is the directory in which I store all of the data files that we’ll use in this book, here’s what we get as the result:
-
-```
-list.files()
-## [1] "afl24.Rdata"             "aflsmall.Rdata"          "aflsmall2.Rdata"        
-## [4] "agpp.Rdata"              "all.zip"                 "annoying.Rdata"         
-## [7] "anscombesquartet.Rdata"  "awesome.Rdata"           "awesome2.Rdata"         
-## [10] "booksales.csv"           "booksales.Rdata"         "booksales2.csv"         
-## [13] "cakes.Rdata"             "cards.Rdata"             "chapek9.Rdata"          
-## [16] "chico.Rdata"             "clinicaltrial_old.Rdata" "clinicaltrial.Rdata"    
-## [19] "coffee.Rdata"            "drugs.wmc.rt.Rdata"      "dwr_all.Rdata"          
-## [22] "effort.Rdata"            "happy.Rdata"             "harpo.Rdata"            
-## [25] "harpo2.Rdata"            "likert.Rdata"            "nightgarden.Rdata"      
-## [28] "nightgarden2.Rdata"      "parenthood.Rdata"        "parenthood2.Rdata"      
-## [31] "randomness.Rdata"        "repeated.Rdata"          "rtfm.Rdata"             
-## [34] "salem.Rdata"             "zeppo.Rdata"
-```
-
-Not terribly exciting, I’ll admit, but it’s useful to know about. In any case, there’s only one more thing I want to make a note of, which is that R also makes use of the home directory. You can find out what it is by using the `path.expand()` function, like this:
-
-```
-path.expand("~")
-## [1] "/Users/dan"
-```
-
-You can change the user directory if you want, but we’re not going to make use of it very much so there’s no reason to. The only reason I’m even bothering to mention it at all is that when you use RStudio to open a file, you’ll see output on screen that defines the path to the file relative to the `~` directory. I’d prefer you not to be confused when you see it.[52](https://learningstatisticswithr.com/book/mechanics.html#fn52)
+We can type `list.files()` command to get a listing of all the files in that directory.
