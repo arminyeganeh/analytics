@@ -152,20 +152,47 @@ There’s one last thing: the `~` directory. It’s quite common on computers th
 ~danRbook\LSR.pdf
 ```
 
-When you want to load or save a file in R it’s important to know what the working directory (i.e., path) is. You can find out by using the `getwd()` command. For the moment, let’s assume that we are using Mac OS or Linux. Here’s what happens:
+#### 4.4.2 Navigating the file system using the R console
+
+In this section I’ll talk about how to navigate this file system from within R itself. It’s not particularly user friendly, and so you’ll probably be happy to know that RStudio provides you with an easier method, and I will describe it in Section [4.4.4](https://learningstatisticswithr.com/book/mechanics.html#nav3). So in practice, you won’t _really_ need to use the commands that I babble on about in this section, but I do think it helps to see them in operation at least once before forgetting about them forever.
+
+Okay, let’s get started. When you want to load or save a file in R it’s important to know what the working directory is. You can find out by using the `getwd()` command. For the moment, let’s assume that I’m using Mac OS or Linux, since there’s some subtleties to Windows. Here’s what happens:
 
 ```
-> getwd()
-[1] "/Users/dan"
-> path.expand("~")
-[1] "/Users/dan"
+getwd()
+## [1] "/Users/dan"
 ```
 
-We can change the working directory quite easily using `setwd()`. The function `setwd()` has only one argument, `dir`, a character string specifying a path to a directory, or a path relative to the working directory. Since we are currently at `/Users/dan`, the following two are equivalent:
+We can change the working directory quite easily using `setwd()`. The `setwd()` function has only the one argument, `dir`, is a character string specifying a path to a directory, or a path relative to the working directory. Since I’m currently located at `/Users/dan`, the following two are equivalent:
 
 ```
 setwd("/Users/dan/Rbook/data")
 setwd("./Rbook/data")
 ```
 
-We can type `list.files()` command to get a listing of all the files in that directory.
+Now that we’re here, we can type `list.files()` command to get a listing of all the files in that directory. Since this is the directory in which I store all of the data files that we’ll use in this book, here’s what we get as the result:
+
+```
+list.files()
+## [1] "afl24.Rdata"             "aflsmall.Rdata"          "aflsmall2.Rdata"        
+## [4] "agpp.Rdata"              "all.zip"                 "annoying.Rdata"         
+## [7] "anscombesquartet.Rdata"  "awesome.Rdata"           "awesome2.Rdata"         
+## [10] "booksales.csv"           "booksales.Rdata"         "booksales2.csv"         
+## [13] "cakes.Rdata"             "cards.Rdata"             "chapek9.Rdata"          
+## [16] "chico.Rdata"             "clinicaltrial_old.Rdata" "clinicaltrial.Rdata"    
+## [19] "coffee.Rdata"            "drugs.wmc.rt.Rdata"      "dwr_all.Rdata"          
+## [22] "effort.Rdata"            "happy.Rdata"             "harpo.Rdata"            
+## [25] "harpo2.Rdata"            "likert.Rdata"            "nightgarden.Rdata"      
+## [28] "nightgarden2.Rdata"      "parenthood.Rdata"        "parenthood2.Rdata"      
+## [31] "randomness.Rdata"        "repeated.Rdata"          "rtfm.Rdata"             
+## [34] "salem.Rdata"             "zeppo.Rdata"
+```
+
+Not terribly exciting, I’ll admit, but it’s useful to know about. In any case, there’s only one more thing I want to make a note of, which is that R also makes use of the home directory. You can find out what it is by using the `path.expand()` function, like this:
+
+```
+path.expand("~")
+## [1] "/Users/dan"
+```
+
+You can change the user directory if you want, but we’re not going to make use of it very much so there’s no reason to. The only reason I’m even bothering to mention it at all is that when you use RStudio to open a file, you’ll see output on screen that defines the path to the file relative to the `~` directory. I’d prefer you not to be confused when you see it.[52](https://learningstatisticswithr.com/book/mechanics.html#fn52)
