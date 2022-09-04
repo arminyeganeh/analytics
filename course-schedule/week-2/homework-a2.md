@@ -359,7 +359,7 @@ The last kind of variable that we want to see before finally being able to start
 out ~ pred
 ```
 
-The _precise_ meaning of this formula depends on exactly what you want to do with it, but in broad terms it means “the `out` (outcome) variable, analysed in terms of the `pred` (predictor) variable”. That said, although the simplest and most common form of a formula uses the “one variable on the left, one variable on the right” format, there are others. For instance, the following examples are all reasonably common
+The _precise_ meaning of this formula depends on exactly what you want to do with it, but in broad terms, it means “the `out` (outcome) variable analyzed in terms of the `pred` (predictor) variable”:
 
 ```
 formula2 <-  out ~ pred1 + pred2   # more than one variable on the right
@@ -367,11 +367,11 @@ formula3 <-  out ~ pred1 * pred2   # different relationship between predictors
 formula4 <-  ~ var1 + var2         # a 'one-sided' formula
 ```
 
-and there are many more variants besides. Formulas are pretty flexible things, and so different functions will make use of different formats, depending on what the function is intended to do.
+Formulas are pretty flexible things, and so different functions will make use of different formats, depending on what the function is intended to do.
 
-### 4.11 Generic functions
+### Generic functions
 
-There’s one really important thing that I omitted when I discussed functions earlier on in Section [3.5](https://learningstatisticswithr.com/book/introR.html#usingfunctions), and that’s the concept of a _**generic function**_. The two most notable examples that you’ll see in the next few chapters are `summary()` and `plot()`, although you’ve already seen an example of one working behind the scenes, and that’s the `print()` function. The thing that makes generics different from the other functions is that their behaviour changes, often quite dramatically, depending on the `class()` of the input you give it. The easiest way to explain the concept is with an example. With that in mind, lets take a closer look at what the `print()` function actually does. I’ll do this by creating a formula, and printing it out in a few different ways. First, let’s stick with what we know:
+Two notable examples of generic function are `summary()` and `plot()`, although you’ve already seen an example of one working behind the scenes, and that’s the `print()` function. The thing that makes generics different from the other functions is that their behavior changes, often quite dramatically, depending on the input `class()` . Let's do this by creating a formula, and printing it out in a few different ways. First, let’s stick with what we know:
 
 ```
 my.formula <- blah ~ blah.blah    # create a variable of class "formula"
@@ -379,15 +379,15 @@ print( my.formula )               # print it out using the generic print() funct
 ```
 
 ```
-## blah ~ blah.blah
+blah ~ blah.blah
 ```
 
-So far, there’s nothing very surprising here. But there’s actually a lot going on behind the scenes here. When I type `print( my.formula )`, what actually happens is the `print()` function checks the class of the `my.formula` variable. When the function discovers that the variable it’s been given is a formula, it goes looking for a function called `print.formula()`, and then delegates the whole business of printing out the variable to the `print.formula()` function.[63](https://learningstatisticswithr.com/book/mechanics.html#fn63) For what it’s worth, the name for a “dedicated” function like `print.formula()` that exists only to be a special case of a generic function like `print()` is a _**method**_, and the name for the process in which the generic function passes off all the hard work onto a method is called _**method dispatch**_. You won’t need to understand the details at all for this book, but you do need to know the gist of it; if only because a lot of the functions we’ll use are actually generics. Anyway, to help expose a little more of the workings to you, let’s bypass the `print()` function entirely and call the formula method directly:
+So far, there’s nothing very surprising here. But there’s actually a lot going on behind the scenes here. When we type `print( my.formula )` what actually happens is the `print()` function checks the class of the `my.formula` variable. When the function discovers that the variable it’s been given is a formula, it goes looking for a function called `print.formula()` and then delegates the whole business of printing out the variable to the `print.formula()` function. Let’s bypass the `print()` function entirely and call the formula method directly:
 
 ```
-print.formula( my.formula )       # print it out using the print.formula() method
+> print.formula( my.formula )       # print it out using the print.formula() method
 
-## Appears to be deprecated
+Appears to be deprecated
 ```
 
 There’s no difference in the output at all. But this shouldn’t surprise you because it was actually the `print.formula()` method that was doing all the hard work in the first place. The `print()` function itself is a lazy bastard that doesn’t do anything other than select which of the methods is going to do the actual printing.
@@ -410,29 +410,16 @@ Hm. You can kind of see that it is trying to print out the same formula, but the
 
 At this stage, this is about as much as we need to know about generic functions and their methods. In fact, you can get through the entire book without learning any more about them than this, so it’s probably a good idea to end this discussion here.
 
-### 4.12 Getting help
+### Getting help
 
-The very last topic I want to mention in this chapter is where to go to find help. Obviously, I’ve tried to make this book as helpful as possible, but it’s not even close to being a comprehensive guide, and there’s thousands of things it doesn’t cover. So where should you go for help?
-
-#### 4.12.1 How to read the help documentation
-
-I have somewhat mixed feelings about the help documentation in R. On the plus side, there’s a lot of it, and it’s very thorough. On the minus side, there’s a lot of it, and it’s very thorough. There’s so much help documentation that it sometimes doesn’t help, and most of it is written with an advanced user in mind. Often it feels like most of the help ﬁles work on the assumption that the reader already understands everything about R except for the speciﬁc topic that it’s providing help for. What that means is that, once you’ve been using R for a long time and are beginning to get a feel for how to use it, the help documentation is awesome. These days, I ﬁnd myself really liking the help ﬁles (most of them anyway). But when I ﬁrst started using R I found it very dense.
-
-To some extent, there’s not much I can do to help you with this. You just have to work at it yourself; once you’re moving away from being a pure beginner and are becoming a skilled user, you’ll start ﬁnding the help documentation more and more helpful. In the meantime, I’ll help as much as I can by trying to explain to you what you’re looking at when you open a help ﬁle. To that end, let’s look at the help documentation for the `load()` function. To do so, I type either of the following:
+So where should you go for help? once you’re moving away from being a pure beginner to becoming a skilled user, you’ll start ﬁnding the help documentation more and more helpful. Let’s look at the help documentation for the `load()` function, using one of the following:
 
 ```
-?load 
-help("load")
+> ?load 
+> help("load")
 ```
 
-When I do that, R goes looking for the help ﬁle for the “load” topic. If it ﬁnds one, Rstudio takes it and displays it in the help panel. Alternatively, you can try a fuzzy search for a help topic
-
-```
-??load 
-help.search("load")
-```
-
-This will bring up a list of possible topics that you might want to follow up in. Regardless, at some point you’ll ﬁnd yourself looking at an actual help ﬁle. And when you do, you’ll see there’s a quite a lot of stuﬀ written down there, and it comes in a pretty standardised format. So let’s go through it slowly, using the “`load`” topic as our example. Firstly, at the very top we see this:
+Firstly, at the very top we see this:
 
 **Reload Saved Datasets**
 
