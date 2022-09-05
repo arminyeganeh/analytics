@@ -377,5 +377,3 @@ So where should you go for help? once you’re moving away from being a pure beg
 > ?load 
 > help("load")
 ```
-
-*
