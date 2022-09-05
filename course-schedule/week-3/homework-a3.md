@@ -46,7 +46,7 @@ $$
 
 ### Interquartile range
 
-The **interquartile range (IQR)** is like the range, but instead of calculating the difference between the biggest and smallest value, it calculates the difference between the 25th quantile and the 75th quantile. Probably you already know what a **quantile** is (they’re more commonly called **percentiles**), but if not: the 10th percentile of a data set is the smallest number $$X$$ such that 10% of the data is less than $$X$$. The median of a data set is its 50th quantile (i.e., percentile!). R actually provides you with a way of calculating quantiles, using the `quantile()` function. Let’s use it to calculate the median AFL winning margin:
+The **interquartile range (IQR)** is like the range, but instead of calculating the difference between the biggest and smallest value, it calculates the difference between the 25th quantile and the 75th quantile. Probably you already know what a **quantile** is (they’re more commonly called **percentiles**), but if not: the 10th percentile of a data set is the smallest number such that 10% of the data is less than that number. The median of a data set is its 50th quantile (i.e., percentile!). R actually provides you with a way of calculating quantiles, using the `quantile()` function. Let’s use it to calculate the median AFL winning margin:
 
 ```
 quantile(x = afl.margins, probs = .5)
@@ -68,7 +68,13 @@ quantile(x = afl.margins, probs = c(.25,.75))
 12.75 50.50
 ```
 
-And, by noting that $$50.5−12.75=37.75$$, we can see that the interquartile range for the 2010 AFL winning margins data is 37.75. Of course, that seems like too much work to do all that typing, so R has a built-in function called `IQR()` that we can use:
+And, by noting that:&#x20;
+
+$$
+50.5 - 12.75 = 37.75
+$$
+
+we can see that the interquartile range for the 2010 AFL winning margins data is 37.75. Of course, that seems like too much work to do all that typing, so R has a built-in function called `IQR()` that we can use:
 
 ```
 IQR(x = afl.margins)
@@ -84,13 +90,19 @@ While it’s obvious how to interpret the range, it’s a little less obvious ho
 
 A different approach is to select a meaningful reference point (usually the mean or the median) and then report the “typical” deviations from that reference point. This leads to two different measures, the “mean absolute deviation (from the mean)” and the “median absolute deviation (from the median)”.&#x20;
 
-Since the previous paragraph might sound a little abstract, let’s go through the **mean absolute deviation** from the mean a little more slowly. One useful thing about this measure is that the name actually tells you exactly how to calculate it. Let’s think about our AFL winning margins data, and once again we’ll start by pretending that there are only 5 games in total, with winning margins of 56, 31, 56, 8, and 32. Since our calculations rely on an examination of the deviation from some reference point, the first thing we need to calculate is the mean, $$\bar{X}$$. For these five observations, our mean is $$\bar{X}=36.6$$. The next step is to convert each of our observations $$X_i$$ into a deviation score. We do this by calculating the difference between $$X_i$$ and $$\bar{X}$$. The next step in the process is to convert these deviations to absolute deviations. We use the absolute value function here because we don’t really care whether the value is higher than the mean or lower than the mean, we’re just interested in how close it is to the mean. Now that we have calculated the absolute deviation score for every observation in the data set, all that we have to do to calculate the mean of these scores:
+Since the previous paragraph might sound a little abstract, let’s go through the **mean absolute deviation** from the mean a little more slowly. One useful thing about this measure is that the name actually tells you exactly how to calculate it. Let’s think about our AFL winning margins data, and once again we’ll start by pretending that there are only 5 games in total, with winning margins of 56, 31, 56, 8, and 32. Since our calculations rely on an examination of the deviation from some reference point, the first thing we need to calculate is the mean. For these five observations, our mean:
+
+$$
+\bar{X} = 36.6
+$$
+
+&#x20;The next step is to convert each of our observations into a deviation score. We do this by calculating the difference between each observation and the mean. The next step in the process is to convert these deviations to absolute deviations. We use the absolute value function here because we don’t really care whether the value is higher than the mean or lower than the mean, we’re just interested in how close it is to the mean. Now that we have calculated the absolute deviation score for every observation in the data set, all that we have to do to calculate the mean of these scores:
 
 $$
 \frac{19.4 + 5.6 + 19.4 + 28.6 + 4.6}{5} = 15.52
 $$
 
-here’s the formula that describes what we just calculated:
+Here’s the formula that describes what we just calculated:
 
 $$
 \mbox{}(X) = \frac{1}{N} \sum_{i = 1}^N |X_i - \bar{X}|
