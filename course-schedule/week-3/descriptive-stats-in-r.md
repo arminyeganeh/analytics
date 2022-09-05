@@ -48,13 +48,13 @@ print(afl.margins)
 [171]   3  28  38  29  10  10
 ```
 
-This output doesn’t make it easy to get a sense of what the data are actually saying. Just “looking at the data” isn’t a terribly effective way of understanding data. In order to get some idea about what’s going on, we need to calculate some descriptive statistics and draw some nice pictures. Since descriptive statistics are the easier of the two topics, we will start with those, but, nevertheless, we will create a histogram of the `afl.margins` data, since it should help get a sense of what the data we are trying to describe actually look like. This histogram was generated using the `hist()` function. We’ll talk a lot more about how to draw histograms. For now, it’s enough to look at the histogram and note that it provides a fairly interpretable representation of the `afl.margins` data.
+Just “looking at the data” isn’t a terribly effective way of understanding data. In order to get some idea about what’s going on, we need to calculate some descriptive statistics and draw some nice pictures. Since descriptive statistics are the easier of the two topics, we will start with those, but, nevertheless, we will create a histogram of the `afl.margins` data, since it should help get a sense of what the data we are trying to describe actually look like. This histogram was generated using the `hist()` function. We’ll talk a lot more about how to draw histograms. For now, it’s enough to look at the histogram and note that it provides a fairly interpretable representation of the `afl.margins` data.
 
 <figure><img src="https://learningstatisticswithr.com/book/lsr_files/figure-html/histogram1-1.png" alt=""><figcaption><p><strong>Figure LA3.1</strong> A histogram of the AFL 2010 winning margin data</p></figcaption></figure>
 
 ### Measures of central tendency
 
-It’s often extremely useful to try to condense the data into a few simple “summary” statistics. In most situations, the first thing that you’ll want to calculate is a measure of **central tendency**. That is, you’d like to know something about the “average” or “middle” of your data lies. The most commonly used measures are the mean, median, and mode; occasionally people will also report a trimmed mean.
+In most situations, the first thing that you’ll want to calculate is a measure of **central tendency**. That is, you’d like to know something about the “average” or “middle” of your data lies. The most commonly used measures are the mean, median, mode, and, occasionally, trimmed mean.
 
 ### The mean
 
@@ -112,13 +112,13 @@ However, since `x` is the first argument to the function, we could have omitted 
 
 ### The median
 
-The second measure of central tendency that people use a lot is the **median**, and it’s even easier to describe than the mean. The median of a set of observations is just the middle value. As before let’s imagine we were interested only in the first 5 AFL winning margins: 56, 31, 56, 8, and 32. To figure out the median, we sort these numbers into ascending order:
+The second measure of central tendency that people use a lot is the **median**, the middle value. As before let’s imagine we were interested only in the first 5 AFL winning margins: 56, 31, 56, 8, and 32. To figure out the median, we sort these numbers into ascending order:
 
 $$
 8,31,32,56,56
 $$
 
-From inspection, it’s obvious that the median value of these 5 observations is 32, since that’s the middle one in the sorted list. But what should we do if we were interested in the first 6 games rather than the first 5?
+From inspection, it’s obvious that the median value of these 5 observations is 32 since that’s the middle one in the sorted list. But what should we do if we were interested in the first 6 games rather than the first 5?
 
 $$
 8,14,31,32,56,56
@@ -157,31 +157,23 @@ which outputs the median value of 30.5.
 
 <figure><img src="https://learningstatisticswithr.com/book/img/descriptives2/meanmedian.png" alt=""><figcaption><p><strong>Figure LA3.2</strong> Interpreting the mean and the median</p></figcaption></figure>
 
-The mean is basically the “center of gravity” of the data set: if you imagine that the histogram of the data is a solid object, then the point on which you could balance it (as if on a see-saw) is the mean. In contrast, the median is the middle observation. Half of the observations are smaller, and half of the observations are larger.
-
-* If your data are nominal scale, you probably shouldn’t be using either the mean or the median. Both the mean and the median rely on the idea that the numbers assigned to values are meaningful. If the numbering scheme is arbitrary, then it’s probably best to use the mode instead.
-* If your data are ordinal scale, you’re more likely to want to use the median than the mean. The median only makes use of the order information in your data. The mean, on the other hand, makes use of the precise numeric values assigned to the observations, so it’s not really appropriate for ordinal data.
-* For interval and ratio scale data, either one is generally acceptable. The mean has the advantage that it uses all the information in the data, which is useful when you don’t have a lot of data, but it’s very sensitive to extreme values.
-
-One consequence is that there are systematic differences between the mean and the median when the histogram is asymmetric (skewed). This is illustrated in **Figure LA3.2**. Notice that the median (right-hand side) is located closer to the “body” of the histogram, whereas the mean (left-hand side) gets dragged towards the “tail” (where the extreme values are). To give a concrete example, suppose Bob (income $50,000), Kate (income $60,000) and Jane (income $65,000) are sitting at a table: the average income at the table is $58,333 and the median income is $60,000. Then Bill sits down with them (income $100,000,000). The average income has now jumped to $25,043,750 but the median rises only to $62,500. If you’re interested in looking at the overall income at the table, the mean might be the right answer; but if you’re interested in what counts as a typical income at the table, the median would be a better choice here.
-
-###
+The mean is basically the “center of gravity” of the data set: if you imagine that the histogram of the data is a solid object, then the point on which you could balance it (as if on a see-saw) is the mean. In contrast, the median is the middle observation. Half of the observations are smaller, and half of the observations are larger. One consequence is that there are systematic differences between the mean and the median when the histogram is asymmetric (skewed). This is illustrated in **Figure LA3.2**. Notice that the median (right-hand side) is located closer to the “body” of the histogram, whereas the mean (left-hand side) gets dragged towards the “tail” (where the extreme values are). To give a concrete example, suppose Bob (income $50,000), Kate (income $60,000) and Jane (income $65,000) are sitting at a table: the average income at the table is $58,333 and the median income is $60,000. Then Bill sits down with them (income $100,000,000). The average income has now jumped to $25,043,750 but the median rises only to $62,500. If you’re interested in looking at the overall income at the table, the mean might be the right answer; but if you’re interested in what counts as a typical income at the table, the median would be a better choice here.
 
 ### Trimmed mean
 
-One of the fundamental rules of applied statistics is that the data are messy. Real life is never simple, and so the data sets that you obtain are never as straightforward as the statistical theory says. This can have awkward consequences. To illustrate, consider this rather strange-looking data set:
+Real life is never simple, and so the data sets that you obtain are never as straightforward as the statistical theory says. To illustrate, consider this rather strange-looking data set:
 
 $$
 -100,2,3,4,5,6,7,8,9,10
 $$
 
-If you were to observe this in a real-life data set, you’d probably suspect that something funny was going on with the value $$−100$$. It’s probably an _**outlier**_, a value that doesn’t really belong with the others. You might consider removing it from the data set entirely. In real life, however, you don’t always get such cut-and-dried examples. For instance, you might get this instead:
+If you were to observe this in a real-life data set, you’d probably suspect that something funny was going on with the value $$−100$$. It’s probably an **outlier**, a value that doesn’t really belong with the others. You might consider removing it from the data set entirely. In real life, however, you don’t always get such cut-and-dried examples. For instance, you might get this instead:
 
 $$
 −15,2,3,4,5,6,7,8,9,12
 $$
 
-The $$−15$$ looks a bit suspicious, but not anywhere near as much as that $$−100$$ did. In this case, it’s a little trickier. It _might_ be a legitimate observation, it might not. When faced with a situation where some of the most extreme-valued observations might not be quite trustworthy, the mean is not necessarily a good measure of central tendency. It is highly **sensitive** to one or two extreme values, and is thus not considered to be a **robust** measure. One remedy that we’ve seen is to use the median. A more general solution is to use a “trimmed mean”.&#x20;
+The $$−15$$ looks a bit suspicious, but not anywhere near as much as that $$−100$$ did. In this case, it’s a little trickier. It might be a legitimate observation, it might not. When faced with a situation where some of the most extreme-valued observations might not be quite trustworthy, the mean is not necessarily a good measure of central tendency. It is highly **sensitive** to one or two extreme values, and is thus not considered to be a **robust** measure. One remedy that we’ve seen is to use the median. A more general solution is to use a “trimmed mean”.&#x20;
 
 To calculate a trimmed mean, what you do is “discard” the most extreme examples on both ends (i.e., the largest and the smallest), and then take the mean of everything else. The goal is to preserve the best characteristics of the mean and the median: just like a median, you aren’t highly influenced by extreme outliers, but like the mean, you “use” more than one of the observations. Generally, we describe a trimmed mean in terms of the percentage of observation on either side that are discarded. So, for instance, a 10% trimmed mean discards the largest 10% of the observations _and_ the smallest 10% of the observations, and then takes the mean of the remaining 80% of the observations.&#x20;
 
@@ -210,79 +202,37 @@ mean( x = dataset, trim = .1)
 
 ### Mode
 
-The mode of a sample is very simple: it is the value that occurs most frequently. To illustrate the mode using the AFL data, let’s examine a different aspect of the data set. Who has played in the most finals? The `afl.finalists` variable is a factor that contains the name of every team that played in any AFL final from 1987-2010, so let’s have a look at it. To do this we will use the `head()` command. `head()` is useful when you’re working with a data frame with a lot of rows since you can use it to tell you how many rows to return. The command below tells R we just want the first 25 rows of the data.frame.
+The mode of a sample is very simple: it is the value that occurs most frequently. To illustrate the mode using the AFL data, let’s examine a different aspect of the data set. Who has played in the most finals? The `afl.finalists` variable is a factor that contains the name of every team that played in any AFL final from 1987-2010, so let’s have a look at it. To do this we will use the `head()` command. `head()` is useful when you’re working with a data frame with a lot of rows since you can use it to tell you how many rows to return. The command below tells R we just want the first 25 rows of the data frame:
 
 ```
 head(afl.finalists, 25)
 ```
 
-```
-##  [1] Hawthorn    Melbourne   Carlton     Melbourne   Hawthorn   
-##  [6] Carlton     Melbourne   Carlton     Hawthorn    Melbourne  
-## [11] Melbourne   Hawthorn    Melbourne   Essendon    Hawthorn   
-## [16] Geelong     Geelong     Hawthorn    Collingwood Melbourne  
-## [21] Collingwood West Coast  Collingwood Essendon    Collingwood
-## 17 Levels: Adelaide Brisbane Carlton Collingwood Essendon ... Western Bulldogs
-```
-
-There are actually 400 entries (aren’t you glad we didn’t print them all?). We _could_ read through all 400, and count the number of occasions on which each team name appears in our list of finalists, thereby producing a _**frequency table**_. However, that would be mindless and boring: exactly the sort of task that computers are great at. So let’s use the `table()` function (discussed in more detail in Section [7.1](https://learningstatisticswithr.com/book/datahandling.html#freqtables)) to do this task for us:
+There are actually 400 entries (aren’t you glad we didn’t print them all?). Let’s use the `table()` function to create a **frequency table**:
 
 ```
-table( afl.finalists )
+table(afl.finalists)
 ```
 
 ```
-## afl.finalists
-##         Adelaide         Brisbane          Carlton      Collingwood 
-##               26               25               26               28 
-##         Essendon          Fitzroy        Fremantle          Geelong 
-##               32                0                6               39 
-##         Hawthorn        Melbourne  North Melbourne    Port Adelaide 
-##               27               28               28               17 
-##         Richmond         St Kilda           Sydney       West Coast 
-##                6               24               26               38 
-## Western Bulldogs 
-##               24
+afl.finalists
+        Adelaide         Brisbane          Carlton      Collingwood 
+              26               25               26               28 
+        Essendon          Fitzroy        Fremantle          Geelong 
+              32                0                6               39 
+        Hawthorn        Melbourne  North Melbourne    Port Adelaide 
+              27               28               28               17 
+        Richmond         St Kilda           Sydney       West Coast 
+               6               24               26               38 
+Western Bulldogs 
+              24
 ```
 
-Now that we have our frequency table, we can just look at it and see that, over the 24 years for which we have data, Geelong has played in more finals than any other team. Thus, the mode of the `finalists` data is `"Geelong"`. The core packages in R don’t have a function for calculating the mode[70](https://learningstatisticswithr.com/book/descriptives.html#fn70). However, I’ve included a function in the `lsr` package that does this. The function is called `modeOf()`, and here’s how you use it:
+Now that we have our frequency table, we can just look at it and see that, over the 24 years for which we have data, Geelong has played in more finals than any other team. Thus, the mode of the `finalists` data is `"Geelong"`. The core packages in R don’t have a function for calculating the mode. There a function called `maxFreq()` that tells you what the modal frequency is:
 
 ```
-modeOf( x = afl.finalists )
-```
-
-```
-## [1] "Geelong"
-```
-
-There’s also a function called `maxFreq()` that tells you what the modal frequency is. If we apply this function to our finalists data, we obtain the following:
-
-```
-maxFreq( x = afl.finalists )
-```
-
-```
-## [1] 39
+maxFreq(x = afl.finalists)
+[1] 39
 ```
 
 Taken together, we observe that Geelong (39 finals) played in more finals than any other team during the 1987-2010 period.
-
-One last point to make with respect to the mode. While it’s generally true that the mode is most often calculated when you have nominal scale data (because means and medians are useless for those sorts of variables), there are some situations in which you really do want to know the mode of an ordinal, interval or ratio scale variable. For instance, let’s go back to thinking about our `afl.margins` variable. This variable is clearly ratio scale (if it’s not clear to you, it may help to re-read Section [2.2](https://learningstatisticswithr.com/book/studydesign.html#scales)), and so in most situations the mean or the median is the measure of central tendency that you want. But consider this scenario… a friend of yours is offering a bet. They pick a football game at random, and (without knowing who is playing) you have to guess the _exact_ margin. If you guess correctly, you win $50. If you don’t, you lose $1. There are no consolation prizes for “almost” getting the right answer. You have to guess exactly the right margin[71](https://learningstatisticswithr.com/book/descriptives.html#fn71) For this bet, the mean and the median are completely useless to you. It is the mode that you should bet on. So, we calculate this modal value
-
-```
-modeOf( x = afl.margins )
-```
-
-```
-## [1] 3
-```
-
-```
-maxFreq( x = afl.margins )
-```
-
-```
-## [1] 8
-```
-
-So the 2010 data suggest you should bet on a 3 point margin, and since this was observed in 8 of the 176 game (4.5% of games) the odds are firmly in your favour.
