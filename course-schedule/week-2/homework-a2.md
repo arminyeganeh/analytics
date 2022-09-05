@@ -388,4 +388,6 @@ library(lsr)
 who()
 ```
 
-``[`https://github.com/djnavarro/psyr/blob/master/data/aflsmall.Rdata`](https://github.com/djnavarro/psyr/blob/master/data/aflsmall.Rdata)``
+{% file src="../../.gitbook/assets/aflsmall.Rdata" %}
+**File** HA2.1
+{% endfile %}
