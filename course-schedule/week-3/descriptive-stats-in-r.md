@@ -10,10 +10,10 @@ Read this tutorial and apply the codes in R.
 
 ### Descriptive statistics
 
-Any time that you get a new data set to look at, one of the first tasks that you have to do is find ways of summarising the data in a compact, easily understood fashion. This is what **descriptive statistics** (as opposed to inferential statistics) is all about. In fact, many people think the term statistics is synonymous with descriptive statistics. Let’s take a moment to get a sense of why we need descriptive statistics. To do this, let’s load the **File HA2.1** `aflsmall.Rdata`, and use the `who()` function in the `lsr` package to see what variables are stored in the file. From now on, let's separate the command block and remove the sign `>` so you can easily copy and paste the codes.
+Any time that you get a new data set to look at, one of the first tasks that you have to do is find ways of summarising the data in a compact, easily understood fashion. This is what **descriptive statistics** (as opposed to inferential statistics) is all about. In fact, many people think the term statistics is synonymous with descriptive statistics. Let’s take a moment to get a sense of why we need descriptive statistics. To do this, let’s load **File LA3.1** `aflsmall.Rdata`, and use the `who()` function in the `lsr` package to see what variables are stored in the file. From now on, let's separate the command block and remove the sign `>` so you can easily copy and paste the codes.
 
 {% file src="../../.gitbook/assets/aflsmall.Rdata" %}
-**File** HA2.1
+**File LA3.1 Australian Football League data**
 {% endfile %}
 
 ```
@@ -50,20 +50,29 @@ print(afl.margins)
 
 This output doesn’t make it easy to get a sense of what the data are actually saying. Just “looking at the data” isn’t a terribly effective way of understanding data. In order to get some idea about what’s going on, we need to calculate some descriptive statistics and draw some nice pictures. Since descriptive statistics are the easier of the two topics, we will start with those, but, nevertheless, we will create a histogram of the `afl.margins` data, since it should help get a sense of what the data we are trying to describe actually look like. This histogram was generated using the `hist()` function. We’ll talk a lot more about how to draw histograms. For now, it’s enough to look at the histogram and note that it provides a fairly interpretable representation of the `afl.margins` data.
 
-\
+<figure><img src="https://learningstatisticswithr.com/book/lsr_files/figure-html/histogram1-1.png" alt=""><figcaption><p><strong>Figure LA3.1</strong> A histogram of the AFL 2010 winning margin data</p></figcaption></figure>
 
+### Measures of central tendency
 
-<figure><img src="https://learningstatisticswithr.com/book/lsr_files/figure-html/histogram1-1.png" alt=""><figcaption></figcaption></figure>
+Drawing pictures of the data is an excellent way to convey the “gist” of what the data is trying to tell you, it’s often extremely useful to try to condense the data into a few simple “summary” statistics. In most situations, the first thing that you’ll want to calculate is a measure of **central tendency**. That is, you’d like to know something about the “average” or “middle” of your data lies. The most commonly used measures are the mean, median, and mode; occasionally people will also report a trimmed mean.
 
-Figure 5.1: A histogram of the AFL 2010 winning margin data (the `afl.margins` variable). As you might expect, the larger the margin the less frequently you tend to see it.
+### The mean
 
-### 5.1 Measures of central tendency
+The **mean** of a set of observations is just a normal, old-fashioned average: add all of the values up, and then divide by the total number of values. The first five AFL margins were 56, 31, 56, 8, and 32, so the mean of these observations is:
 
-Drawing pictures of the data, as I did in Figure [5.1](https://learningstatisticswithr.com/book/descriptives.html#fig:histogram1) is an excellent way to convey the “gist” of what the data is trying to tell you, it’s often extremely useful to try to condense the data into a few simple “summary” statistics. In most situations, the first thing that you’ll want to calculate is a measure of _**central tendency**_. That is, you’d like to know something about the “average” or “middle” of your data lies. The two most commonly used measures are the mean, median and mode; occasionally people will also report a trimmed mean. I’ll explain each of these in turn, and then discuss when each of them is useful.
+$$
+56
++
+31
++
+56
++
+8
++
+32/5
+$$
 
-#### 5.1.1 The mean
-
-The _**mean**_ of a set of observations is just a normal, old-fashioned average: add all of the values up, and then divide by the total number of values. The first five AFL margins were 56, 31, 56, 8 and 32, so the mean of these observations is just:$$56+31+56+8+325=1835=36.6056+31+56+8+325=1835=36.60$$Of course, this definition of the mean isn’t news to anyone: averages (i.e., means) are used so often in everyday life that this is pretty familiar stuff. However, since the concept of a mean is something that everyone already understands, I’ll use this as an excuse to start introducing some of the mathematical notation that statisticians use to describe this calculation, and talk about how the calculations would be done in R.
+this definition of the mean isn’t news to anyone: averages (i.e., means) are used so often in everyday life that this is pretty familiar stuff. However, since the concept of a mean is something that everyone already understands, I’ll use this as an excuse to start introducing some of the mathematical notation that statisticians use to describe this calculation, and talk about how the calculations would be done in R.
 
 The first piece of notation to introduce is $$NN$$, which we’ll use to refer to the number of observations that we’re averaging (in this case $$N=5N=5$$). Next, we need to attach a label to the observations themselves. It’s traditional to use $$XX$$ for this, and to use subscripts to indicate which observation we’re actually talking about. That is, we’ll use $$X1X1$$ to refer to the first observation, $$X2X2$$ to refer to the second observation, and so on, all the way up to $$XNXN$$ for the last one. Or, to say the same thing in a slightly more abstract way, we use $$XiXi$$ to refer to the $$ii$$-th observation. Just to make sure we’re clear on the notation, the following table lists the 5 observations in the `afl.margins` variable, along with the mathematical symbol used to refer to it, and the actual value that the observation corresponds to:
 
