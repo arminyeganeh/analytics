@@ -64,19 +64,7 @@ $$
 \frac{56 + 31 + 56 + 8 + 32}{5} = \frac{183}{5} = 36.60
 $$
 
-This definition of the mean isn’t news to anyone: averages (i.e., means) are used so often in everyday life that this is pretty familiar stuff. However, since the concept of a mean is something that everyone already understands, we’ll use this as an excuse to start introducing some of the mathematical notation that statisticians use to describe this calculation and talk about how the calculations would be done in R.&#x20;
-
-The first piece of notation to introduce is $$N$$, which we’ll use to refer to the number of observations that we’re averaging (in this case $$N=5$$). Next, we need to attach a label to the observations themselves. It’s traditional to use$$X$$ and to use subscripts to indicate which observation we’re actually talking about. That is, we’ll use$$X_1$$ to refer to the first observation, $$X_2$$ to refer to the second observation, and so on, all the way up to $$X_N$$, the last one. Or, to say the same thing in a slightly more abstract way, we use$$X_i$$ to refer to the $$i$$-th observation. Just to make sure we’re clear on the notation, the following table lists the 5 observations in the `afl.margins` variable, along with the mathematical symbol used to refer to it, and the actual value that the observation corresponds to:
-
-| observation            | symbol  | value     |
-| ---------------------- | ------- | --------- |
-| winning margin, game 1 | $$X_1$$ | 56 points |
-| winning margin, game 2 | $$X_2$$ | 31 points |
-| winning margin, game 3 | $$X_3$$ | 56 points |
-| winning margin, game 4 | $$X_4$$ | 8 points  |
-| winning margin, game 5 | $$X_5$$ | 32 points |
-
-Okay, now let’s try to write a formula for the mean. By tradition, we use $$\bar{X}$$ as the notation for the mean. So the calculation for the mean could be expressed using the formula:
+This definition of the mean isn’t news to anyone: averages (i.e., means) are used so often in everyday life that this is pretty familiar stuff. However, since the concept of a mean is something that everyone already understands, we’ll use this as an excuse to start introducing some of the mathematical notation that statisticians use to describe this calculation and talk about how the calculations would be done in R. Okay, now let’s try to write a formula for the mean. By tradition, we use $$\bar{X}$$ as the notation for the mean. So the calculation for the mean could be expressed using the formula:
 
 $$
 \bar{X} = \frac{X_1 + X_2 + ... + X_{N-1} + X_N}{N}
@@ -98,25 +86,25 @@ If you really wanted to, you could do this calculation directly in R. For the fi
 In almost every real-world scenario, you’ve already got the actual numbers stored in a variable of some kind, just like we have with the `afl.margins` variable. Under those circumstances, what you want is a function that will just add up all the values stored in a numeric vector. That’s what the `sum()` function does. If we want to add up all 176 winning margins in the data set, we can do so. If we only want the sum of the first five observations, then we can use square brackets to pull out only the first five elements of the vector:
 
 ```
-sum( afl.margins )
+sum(afl.margins)
 [1] 6213
-sum( afl.margins[1:5] )
+sum(afl.margins[1:5])
 [1] 183
 ```
 
 To calculate the mean, we now tell R to divide the output of this summation by five, so the command that we need to type now becomes the following:
 
 ```
-sum( afl.margins[1:5] ) / 5
+sum(afl.margins[1:5]) / 5
 [1] 36.6
 ```
 
 Although it’s pretty easy to calculate the mean using the `sum()` function, we can do it in an even easier way, since R also provides us with the `mean()` function. To calculate the mean for all 176 games, we would use the following command:
 
 ```
-mean( x = afl.margins )
+mean(x = afl.margins)
 [1] 35.30114
-mean( afl.margins[1:5] )
+mean(afl.margins[1:5])
 [1] 36.6
 ```
 
@@ -124,53 +112,62 @@ However, since `x` is the first argument to the function, we could have omitted 
 
 ### The median
 
-The second measure of central tendency that people use a lot is the _**median**_, and it’s even easier to describe than the mean. The median of a set of observations is just the middle value. As before let’s imagine we were interested only in the first 5 AFL winning margins: 56, 31, 56, 8 and 32. To figure out the median, we sort these numbers into ascending order:$$8,31,32,56,568,31,32,56,56$$From inspection, it’s obvious that the median value of these 5 observations is 32, since that’s the middle one in the sorted list (I’ve put it in bold to make it even more obvious). Easy stuff. But what should we do if we were interested in the first 6 games rather than the first 5? Since the sixth game in the season had a winning margin of 14 points, our sorted list is now$$8,14,31,32,56,568,14,31,32,56,56$$and there are _two_ middle numbers, 31 and 32. The median is defined as the average of those two numbers, which is of course 31.5. As before, it’s very tedious to do this by hand when you’ve got lots of numbers. To illustrate this, here’s what happens when you use R to sort all 176 winning margins. First, I’ll use the `sort()` function (discussed in Chapter [7](https://learningstatisticswithr.com/book/datahandling.html#datahandling)) to display the winning margins in increasing numerical order:
+The second measure of central tendency that people use a lot is the **median**, and it’s even easier to describe than the mean. The median of a set of observations is just the middle value. As before let’s imagine we were interested only in the first 5 AFL winning margins: 56, 31, 56, 8, and 32. To figure out the median, we sort these numbers into ascending order:
+
+$$
+8,31,32,56,56
+$$
+
+From inspection, it’s obvious that the median value of these 5 observations is 32, since that’s the middle one in the sorted list. But what should we do if we were interested in the first 6 games rather than the first 5? Since the sixth game in the season had a winning margin of 14 points, our sorted list is:
+
+$$
+8,14,31,32,56,56
+$$
+
+&#x20;There are two middle numbers, 31 and 32. The median is defined as the average of those two numbers, which is of course 31.5. To illustrate this, here’s what happens when you use R to sort all 176 winning margins:
 
 ```
-sort( x = afl.margins )
-```
-
-```
-##   [1]   0   0   1   1   1   1   2   2   3   3   3   3   3   3   3   3   4
-##  [18]   4   5   6   7   7   8   8   8   8   8   9   9   9   9   9   9  10
-##  [35]  10  10  10  10  11  11  11  12  12  12  13  14  14  15  16  16  16
-##  [52]  16  18  19  19  19  19  19  20  20  20  21  21  22  22  22  23  23
-##  [69]  23  24  24  25  25  26  26  26  26  27  27  28  28  29  29  29  29
-##  [86]  29  29  30  31  32  32  33  35  35  35  35  36  36  36  36  36  36
-## [103]  37  38  38  38  38  38  39  39  40  41  42  43  43  44  44  44  44
-## [120]  44  47  47  47  48  48  48  49  49  50  50  50  50  52  52  53  53
-## [137]  54  54  55  55  55  56  56  56  57  60  61  61  63  64  65  65  66
-## [154]  67  68  70  71  71  72  73  75  75  76  81  82  82  83  84  89  94
-## [171]  95  98 101 104 108 116
-```
-
-The middle values are 30 and 31, so the median winning margin for 2010 was 30.5 points. In real life, of course, no-one actually calculates the median by sorting the data and then looking for the middle value. In real life, we use the median command:
-
-```
-median( x = afl.margins )
+sort(x = afl.margins)
 ```
 
 ```
-## [1] 30.5
+  [1]   0   0   1   1   1   1   2   2   3   3   3   3   3   3   3   3   4
+ [18]   4   5   6   7   7   8   8   8   8   8   9   9   9   9   9   9  10
+ [35]  10  10  10  10  11  11  11  12  12  12  13  14  14  15  16  16  16
+ [52]  16  18  19  19  19  19  19  20  20  20  21  21  22  22  22  23  23
+ [69]  23  24  24  25  25  26  26  26  26  27  27  28  28  29  29  29  29
+ [86]  29  29  30  31  32  32  33  35  35  35  35  36  36  36  36  36  36
+[103]  37  38  38  38  38  38  39  39  40  41  42  43  43  44  44  44  44
+[120]  44  47  47  47  48  48  48  49  49  50  50  50  50  52  52  53  53
+[137]  54  54  55  55  55  56  56  56  57  60  61  61  63  64  65  65  66
+[154]  67  68  70  71  71  72  73  75  75  76  81  82  82  83  84  89  94
+[171]  95  98 101 104 108 116
+```
+
+In real life, we use the median command:
+
+```
+median(x = afl.margins)
+[1] 30.5
 ```
 
 which outputs the median value of 30.5.
 
-#### 5.1.4 Mean or median? What’s the difference?
+### Mean or median? What’s the difference?
 
 ![An illustration of the difference between how the mean and the median should be interpreted. The mean is basically the "centre of gravity" of the data set: if you imagine that the histogram of the data is a solid object, then the point on which you could balance it (as if on a see-saw) is the mean. In contrast, the median is the middle observation. Half of the observations are smaller, and half of the observations are larger.](https://learningstatisticswithr.com/book/img/descriptives2/meanmedian.png)
 
-Figure 5.2: An illustration of the difference between how the mean and the median should be interpreted. The mean is basically the “centre of gravity” of the data set: if you imagine that the histogram of the data is a solid object, then the point on which you could balance it (as if on a see-saw) is the mean. In contrast, the median is the middle observation. Half of the observations are smaller, and half of the observations are larger.
+Figure 5.2: An illustration of the difference between how the mean and the median should be interpreted. The mean is basically the “center of gravity” of the data set: if you imagine that the histogram of the data is a solid object, then the point on which you could balance it (as if on a see-saw) is the mean. In contrast, the median is the middle observation. Half of the observations are smaller, and half of the observations are larger.
 
-Knowing how to calculate means and medians is only a part of the story. You also need to understand what each one is saying about the data, and what that implies for when you should use each one. This is illustrated in Figure [5.2](https://learningstatisticswithr.com/book/descriptives.html#fig:meanmedian) the mean is kind of like the “centre of gravity” of the data set, whereas the median is the “middle value” in the data. What this implies, as far as which one you should use, depends a little on what type of data you’ve got and what you’re trying to achieve. As a rough guide:
+Knowing how to calculate means and medians is only a part of the story. You also need to understand what each one is saying about the data, and what that implies for when you should use each one. What this implies, as far as which one you should use, depends a little on what type of data you’ve got and what you’re trying to achieve. As a rough guide:
 
-* If your data are nominal scale, you probably shouldn’t be using either the mean or the median. Both the mean and the median rely on the idea that the numbers assigned to values are meaningful. If the numbering scheme is arbitrary, then it’s probably best to use the mode (Section [5.1.7](https://learningstatisticswithr.com/book/descriptives.html#mode)) instead.
+* If your data are nominal scale, you probably shouldn’t be using either the mean or the median. Both the mean and the median rely on the idea that the numbers assigned to values are meaningful. If the numbering scheme is arbitrary, then it’s probably best to use the mode instead.
 * If your data are ordinal scale, you’re more likely to want to use the median than the mean. The median only makes use of the order information in your data (i.e., which numbers are bigger), but doesn’t depend on the precise numbers involved. That’s exactly the situation that applies when your data are ordinal scale. The mean, on the other hand, makes use of the precise numeric values assigned to the observations, so it’s not really appropriate for ordinal data.
-* For interval and ratio scale data, either one is generally acceptable. Which one you pick depends a bit on what you’re trying to achieve. The mean has the advantage that it uses all the information in the data (which is useful when you don’t have a lot of data), but it’s very sensitive to extreme values, as we’ll see in Section [5.1.6](https://learningstatisticswithr.com/book/descriptives.html#trimmedmean).
+* For interval and ratio scale data, either one is generally acceptable. Which one you pick depends a bit on what you’re trying to achieve. The mean has the advantage that it uses all the information in the data (which is useful when you don’t have a lot of data), but it’s very sensitive to extreme values.
 
-Let’s expand on that last part a little. One consequence is that there’s systematic differences between the mean and the median when the histogram is asymmetric (skewed; see Section [5.3](https://learningstatisticswithr.com/book/descriptives.html#skewandkurtosis)). This is illustrated in Figure [5.2](https://learningstatisticswithr.com/book/descriptives.html#fig:meanmedian) notice that the median (right hand side) is located closer to the “body” of the histogram, whereas the mean (left hand side) gets dragged towards the “tail” (where the extreme values are). To give a concrete example, suppose Bob (income $50,000), Kate (income $60,000) and Jane (income $65,000) are sitting at a table: the average income at the table is $58,333 and the median income is $60,000. Then Bill sits down with them (income $100,000,000). The average income has now jumped to $25,043,750 but the median rises only to $62,500. If you’re interested in looking at the overall income at the table, the mean might be the right answer; but if you’re interested in what counts as a typical income at the table, the median would be a better choice here.
+Let’s expand on that last part a little. One consequence is that there’s systematic differences between the mean and the median when the histogram is asymmetric (skewed). This is illustrated in Figure [5.2](https://learningstatisticswithr.com/book/descriptives.html#fig:meanmedian) notice that the median (right hand side) is located closer to the “body” of the histogram, whereas the mean (left hand side) gets dragged towards the “tail” (where the extreme values are). To give a concrete example, suppose Bob (income $50,000), Kate (income $60,000) and Jane (income $65,000) are sitting at a table: the average income at the table is $58,333 and the median income is $60,000. Then Bill sits down with them (income $100,000,000). The average income has now jumped to $25,043,750 but the median rises only to $62,500. If you’re interested in looking at the overall income at the table, the mean might be the right answer; but if you’re interested in what counts as a typical income at the table, the median would be a better choice here.
 
-#### 5.1.5 A real life example
+### A real-life example
 
 To try to get a sense of why you need to pay attention to the differences between the mean and the median, let’s consider a real life example. Since I tend to mock journalists for their poor scientific and statistical knowledge, I should give credit where credit is due. This is from an excellent article on the ABC news website[68](https://learningstatisticswithr.com/book/descriptives.html#fn68) 24 September, 2010:
 
