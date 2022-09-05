@@ -1,5 +1,5 @@
 ---
-description: Week 1, Reading Instructions, 50 pages, 2 hours to complete
+description: Week 3, Reading Instructions, 50 pages, 2 hours to complete
 ---
 
 # Readings
@@ -10,5 +10,5 @@ Bekez G. & Kezdi B. (2021). Data Analysis for Business, Economics, and Analysis.
 
 **Chapters:**
 
-* Chapter 3: Exploring Data
-* Chapter 4: Comparing Data
+* Chapter 5: Generalization
+* Chapter 6: Hypothesis testing

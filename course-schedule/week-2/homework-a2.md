@@ -8,7 +8,7 @@ description: Week 2, HA2, 450 lines, 3 hours to complete
 
 Read this tutorial and apply the codes in R.
 
-#### Why do the Windows paths use the wrong slash?
+### Windows paths
 
 Let’s suppose I’m on Windows. As before, I can find out what my current working directory is like this:
 
@@ -377,47 +377,3 @@ So where should you go for help? once you’re moving away from being a pure beg
 > ?load 
 > help("load")
 ```
-
-### Descriptive statistics
-
-Any time that you get a new data set to look at, one of the first tasks that you have to do is find ways of summarising the data in a compact, easily understood fashion. This is what **descriptive statistics** (as opposed to inferential statistics) is all about. In fact, many people think the term statistics is synonymous with descriptive statistics. Let’s take a moment to get a sense of why we need descriptive statistics. To do this, let’s load the **File HA2.1** `aflsmall.Rdata`, and use the `who()` function in the `lsr` package to see what variables are stored in the file. From now on, let's separate the command block and remove the sign `>` so you can easily copy and paste the codes.
-
-{% file src="../../.gitbook/assets/aflsmall.Rdata" %}
-**File** HA2.1
-{% endfile %}
-
-```
-load( "./data/aflsmall.Rdata" )
-library(lsr)
-who()       
-```
-
-```
--- Name --             -- Class --     -- Size --
-afl.finalists          factor          400       
-afl.margins            numeric         176       
-```
-
-There are two variables here, `afl.finalists` and `afl.margins`. These are actually real data, relating to the Australian Football League. The `afl.margins` variable contains the winning margin (number of points) for all 176 home and away games played during the 2010 season. The `afl.finalists` variable contains the names of all 400 teams that played in all 200 finals matches played during the period 1987 to 2010. Let’s have a look at the `afl.margins` variable:
-
-```
-print(afl.margins)
-```
-
-```
-  [1]  56  31  56   8  32  14  36  56  19   1   3 104  43  44  72   9  28
- [18]  25  27  55  20  16  16   7  23  40  48  64  22  55  95  15  49  52
- [35]  50  10  65  12  39  36   3  26  23  20  43 108  53  38   4   8   3
- [52]  13  66  67  50  61  36  38  29   9  81   3  26  12  36  37  70   1
- [69]  35  12  50  35   9  54  47   8  47   2  29  61  38  41  23  24   1
- [86]   9  11  10  29  47  71  38  49  65  18   0  16   9  19  36  60  24
-[103]  25  44  55   3  57  83  84  35   4  35  26  22   2  14  19  30  19
-[120]  68  11  75  48  32  36  39  50  11   0  63  82  26   3  82  73  19
-[137]  33  48   8  10  53  20  71  75  76  54  44   5  22  94  29   8  98
-[154]   9  89   1 101   7  21  52  42  21 116   3  44  29  27  16   6  44
-[171]   3  28  38  29  10  10
-```
-
-This output doesn’t make it easy to get a sense of what the data are actually saying. Just “looking at the data” isn’t a terribly effective way of understanding data. In order to get some idea about what’s going on, we need to calculate some descriptive statistics and draw some nice pictures. Since descriptive statistics are the easier of the two topics, we will start with those, but, nevertheless, we will create a histogram of the `afl.margins` data, since it should help get a sense of what the data we are trying to describe actually look like. This histogram was generated using the `hist()` function. We’ll talk a lot more about how to draw histograms. For now, it’s enough to look at the histogram and note that it provides a fairly interpretable representation of the `afl.margins` data.
-
-<figure><img src="https://learningstatisticswithr.com/book/lsr_files/figure-html/histogram1-1.png" alt=""><figcaption><p><strong>Figure HA2.4</strong> A histogram of the AFL 2010 winning margin data</p></figcaption></figure>
