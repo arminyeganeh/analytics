@@ -135,104 +135,61 @@ aad(X)
 
 ### Variance
 
-Although the mean absolute deviation measure has its uses, it’s not the best measure of variability to use. From a purely mathematical perspective, there are some solid reasons to prefer squared deviations rather than absolute deviations. If we do that, we obtain a measure is called the _**variance**_, which has a lot of really nice statistical properties that I’m going to ignore,[72](https://learningstatisticswithr.com/book/descriptives.html#fn72)(X)$ and $$Var(Y)Var(Y)$$ respectively. Now imagine I want to define a new variable $$ZZ$$ that is the sum of the two, $$Z=X+YZ=X+Y$$. As it turns out, the variance of $$ZZ$$ is equal to $$Var(X)+Var(Y)Var(X)+Var(Y)$$. This is a _very_ useful property, but it’s not true of the other measures that I talk about in this section.] and one massive psychological flaw that I’m going to make a big deal out of in a moment. The variance of a data set $$XX$$ is sometimes written as $$Var(X)Var(X)$$, but it’s more commonly denoted $$s2s2$$ (the reason for this will become clearer shortly). The formula that we use to calculate the variance of a set of observations is as follows:$$Var(X)=1NN∑i=1(Xi−¯X)2Var(X)=1N∑i=1N(Xi−X¯)2$$$$Var(X)=∑Ni=1(Xi−¯X)2NVar(X)=∑i=1N(Xi−X¯)2N$$As you can see, it’s basically the same formula that we used to calculate the mean absolute deviation, except that instead of using “absolute deviations” we use “squared deviations”. It is for this reason that the variance is sometimes referred to as the “mean square deviation”.
+Although the mean absolute deviation measure has its uses, it’s not the best measure of variability to use. From a purely mathematical perspective, there are some solid reasons to prefer squared deviations rather than absolute deviations. If we do that, we obtain a measure called the **variance**, which has a lot of really nice statistical properties. Now imagine we want to define a new variable that is the sum of the two others. The variance of the new variable is equal to the sum of the variances of the two others. This useful property is not true of the other measures of variability.  The formula that we use to calculate the variance of a set of observations is as follows:
 
-Now that we’ve got the basic idea, let’s have a look at a concrete example. Once again, let’s use the first five AFL games as our data. If we follow the same approach that we took last time, we end up with the following table:
+$$
+\mbox{Var}(X) = \frac{1}{N} \sum_{i=1}^N \left( X_i - \bar{X} \right)^2
+$$
 
-| Notation \[English] | $$ii$$ \[which game] | $$XiXi$$ \[value] | $$Xi−¯XXi−X¯$$ \[deviation from mean] | $$(Xi−¯X)2(Xi−X¯)2$$ \[absolute deviation] |
-| ------------------- | -------------------- | ----------------- | ------------------------------------- | ------------------------------------------ |
-|                     | 1                    | 56                | 19.4                                  | 376.36                                     |
-|                     | 2                    | 31                | -5.6                                  | 31.36                                      |
-|                     | 3                    | 56                | 19.4                                  | 376.36                                     |
-|                     | 4                    | 8                 | -28.6                                 | 817.96                                     |
-|                     | 5                    | 32                | -4.6                                  | 21.16                                      |
+As you can see, it’s basically the same formula that we used to calculate the mean absolute deviation, except that instead of using “absolute deviations” we use “squared deviations”. It is for this reason that the variance is sometimes referred to as the **mean square deviation**.
 
-That last column contains all of our squared deviations, so all we have to do is average them. If we do that by typing all the numbers into R by hand…
+We can calculate the variance of a vector of data by using the following command,
 
 ```
-( 376.36 + 31.36 + 376.36 + 817.96 + 21.16 ) / 5
+mean((X - mean(X))^2)
 ```
 
-```
-## [1] 324.64
-```
-
-… we end up with a variance of 324.64. Exciting, isn’t it? For the moment, let’s ignore the burning question that you’re all probably thinking (i.e., what the heck does a variance of 324.64 actually mean?) and instead talk a bit more about how to do the calculations in R, because this will reveal something very weird.
-
-As always, we want to avoid having to type in a whole lot of numbers ourselves. And as it happens, we have the vector `X` lying around, which we created in the previous section. With this in mind, we can calculate the variance of `X` by using the following command,
+Fortunately, R has a built-in function called `var()` which does calculate variances. Let's switch to the full set of 176 games that we’ve got stored in our `afl.margins` vector. First, let’s calculate the variance by using the formula described above and the `var()` function:
 
 ```
-mean( (X - mean(X) )^2)
+mean((afl.margins - mean(afl.margins))^2)
+var(afl.margins)
 ```
 
 ```
-## [1] 324.64
+[1] 675.9718
+[1] 679.8345
 ```
 
-and as usual we get the same answer as the one that we got when we did everything by hand. However, I _still_ think that this is too much typing. Fortunately, R has a built in function called `var()` which does calculate variances. So we could also do this…
+What R is doing is evaluating a slightly different formula to the one I showed you above. Instead of averaging the squared deviations, which requires you to divide by the number of data points, R has chosen to divide by the number of data points minus one:
+
+$$
+\frac{1}{N-1} \sum_{i=1}^N \left( X_i - \bar{X} \right)^2
+$$
+
+The real question is _why?_ There’s a subtle distinction between “describing a sample” and “making guesses about the population from which the sample came”. Regardless of whether you’re describing a sample or drawing inferences about the population, the mean is calculated exactly the same way. Most of the time, however, you’re not terribly interested in the sample _in and of itself_. Rather, the sample exists to tell you something about the world. If so, you’re actually starting to move away from calculating a “sample statistic”, and towards the idea of estimating a “population parameter”. For now, let’s just take it on faith that R knows what it’s doing, and we’ll revisit the question later on when we talk about estimation.
+
+The reason why we haven’t been given a human-friendly interpretation of the variance is that there really isn’t one. This is the most serious problem with the variance. Although it has some elegant mathematical properties that suggest that it really is a fundamental quantity for expressing variation, it’s completely useless if you want to communicate with an actual human. Variances are completely uninterpretable in terms of the original variable! All the numbers have been squared, and they don’t mean anything anymore. This is a huge issue.&#x20;
+
+### Standard deviation
+
+Since you’re a human and not a robot, you’d like to have a measure that is expressed in the same units as the data itself. What should you do? The solution to the problem is obvious: take the square root of the variance, known as the **standard deviation**, also called the **root mean squared deviation**. This solves the problem fairly neatly: while nobody has a clue what “a variance of 324.68 points-squared” really means, it’s much easier to understand “a standard deviation of 18.01 points” since it’s expressed in the original units. Because the standard deviation is equal to the square root of the variance, you probably won’t be surprised to see that the formula is:
+
+$$
+\hat\sigma = \sqrt{ \frac{1}{N-1} \sum_{i=1}^N \left( X_i - \bar{X} \right)^2 }
+$$
+
+The R function that we use to calculate it is `sd()`:
 
 ```
-var(X)
-```
-
-```
-## [1] 405.8
-```
-
-and you get the same… no, wait… you get a completely _different_ answer. That’s just weird. Is R broken? Is this a typo? Is Dan an idiot?
-
-As it happens, the answer is no.[73](https://learningstatisticswithr.com/book/descriptives.html#fn73) It’s not a typo, and R is not making a mistake. To get a feel for what’s happening, let’s stop using the tiny data set containing only 5 data points, and switch to the full set of 176 games that we’ve got stored in our `afl.margins` vector. First, let’s calculate the variance by using the formula that I described above:
-
-```
-mean( (afl.margins - mean(afl.margins) )^2)
-```
-
-```
-## [1] 675.9718
-```
-
-Now let’s use the `var()` function:
-
-```
-var( afl.margins )
+sd(afl.margins) 
 ```
 
 ```
-## [1] 679.8345
+[1] 26.07364
 ```
 
-Hm. These two numbers are very similar this time. That seems like too much of a coincidence to be a mistake. And of course it isn’t a mistake. In fact, it’s very simple to explain what R is doing here, but slightly trickier to explain _why_ R is doing it. So let’s start with the “what”. What R is doing is evaluating a slightly different formula to the one I showed you above. Instead of averaging the squared deviations, which requires you to divide by the number of data points $$NN$$, R has chosen to divide by $$N−1N−1$$. In other words, the formula that R is using is this one\
-$$1N−1N∑i=1(Xi−¯X)21N−1∑i=1N(Xi−X¯)2$$It’s easy enough to verify that this is what’s happening, as the following command illustrates:
-
-```
-sum( (X-mean(X))^2 ) / 4
-```
-
-```
-## [1] 405.8
-```
-
-This is the same answer that R gave us originally when we calculated `var(X)` originally. So that’s the _what_. The real question is _why_ R is dividing by $$N−1N−1$$ and not by $$NN$$. After all, the variance is supposed to be the _mean_ squared deviation, right? So shouldn’t we be dividing by $$NN$$, the actual number of observations in the sample? Well, yes, we should. However, as we’ll discuss in Chapter [10](https://learningstatisticswithr.com/book/estimation.html#estimation), there’s a subtle distinction between “describing a sample” and “making guesses about the population from which the sample came”. Up to this point, it’s been a distinction without a difference. Regardless of whether you’re describing a sample or drawing inferences about the population, the mean is calculated exactly the same way. Not so for the variance, or the standard deviation, or for many other measures besides. What I outlined to you initially (i.e., take the actual average, and thus divide by $$NN$$) assumes that you literally intend to calculate the variance of the sample. Most of the time, however, you’re not terribly interested in the sample _in and of itself_. Rather, the sample exists to tell you something about the world. If so, you’re actually starting to move away from calculating a “sample statistic”, and towards the idea of estimating a “population parameter”. However, I’m getting ahead of myself. For now, let’s just take it on faith that R knows what it’s doing, and we’ll revisit the question later on when we talk about estimation in Chapter [10](https://learningstatisticswithr.com/book/estimation.html#estimation).
-
-Okay, one last thing. This section so far has read a bit like a mystery novel. I’ve shown you how to calculate the variance, described the weird “$$N−1N−1$$” thing that R does and hinted at the reason why it’s there, but I haven’t mentioned the single most important thing… how do you _interpret_ the variance? Descriptive statistics are supposed to describe things, after all, and right now the variance is really just a gibberish number. Unfortunately, the reason why I haven’t given you the human-friendly interpretation of the variance is that there really isn’t one. This is the most serious problem with the variance. Although it has some elegant mathematical properties that suggest that it really is a fundamental quantity for expressing variation, it’s completely useless if you want to communicate with an actual human… variances are completely uninterpretable in terms of the original variable! All the numbers have been squared, and they don’t mean anything anymore. This is a huge issue. For instance, according to the table I presented earlier, the margin in game 1 was “376.36 points-squared higher than the average margin”. This is _exactly_ as stupid as it sounds; and so when we calculate a variance of 324.64, we’re in the same situation. I’ve watched a lot of footy games, and never has anyone referred to “points squared”. It’s _not_ a real unit of measurement, and since the variance is expressed in terms of this gibberish unit, it is totally meaningless to a human.
-
-#### 5.2.5 Standard deviation
-
-Okay, suppose that you like the idea of using the variance because of those nice mathematical properties that I haven’t talked about, but – since you’re a human and not a robot – you’d like to have a measure that is expressed in the same units as the data itself (i.e., points, not points-squared). What should you do? The solution to the problem is obvious: take the square root of the variance, known as the _**standard deviation**_, also called the “root mean squared deviation”, or RMSD. This solves out problem fairly neatly: while nobody has a clue what “a variance of 324.68 points-squared” really means, it’s much easier to understand “a standard deviation of 18.01 points”, since it’s expressed in the original units. It is traditional to refer to the standard deviation of a sample of data as $$ss$$, though “sd” and “std dev.” are also used at times. Because the standard deviation is equal to the square root of the variance, you probably won’t be surprised to see that the formula is:$$s= ⎷1NN∑i=1(Xi−¯X)2s=1N∑i=1N(Xi−X¯)2$$and the R function that we use to calculate it is `sd()`. However, as you might have guessed from our discussion of the variance, what R actually calculates is slightly different to the formula given above. Just like the we saw with the variance, what R calculates is a version that divides by $$N−1N−1$$ rather than $$NN$$. For reasons that will make sense when we return to this topic in [Chapter@refch](mailto:Chapter@refch):estimation I’ll refer to this new quantity as $$^σσ^$$ (read as: “sigma hat”), and the formula for this is$$^σ= ⎷1N−1N∑i=1(Xi−¯X)2σ^=1N−1∑i=1N(Xi−X¯)2$$With that in mind, calculating standard deviations in R is simple:
-
-```
-sd( afl.margins ) 
-```
-
-```
-## [1] 26.07364
-```
-
-Interpreting standard deviations is slightly more complex. Because the standard deviation is derived from the variance, and the variance is a quantity that has little to no meaning that makes sense to us humans, the standard deviation doesn’t have a simple interpretation. As a consequence, most of us just rely on a simple rule of thumb: in general, you should expect 68% of the data to fall within 1 standard deviation of the mean, 95% of the data to fall within 2 standard deviation of the mean, and 99.7% of the data to fall within 3 standard deviations of the mean. This rule tends to work pretty well most of the time, but it’s not exact: it’s actually calculated based on an _assumption_ that the histogram is symmetric and “bell shaped.”[74](https://learningstatisticswithr.com/book/descriptives.html#fn74) As you can tell from looking at the AFL winning margins histogram in Figure [5.1](https://learningstatisticswithr.com/book/descriptives.html#fig:histogram1), this isn’t exactly true of our data! Even so, the rule is approximately correct. As it turns out, 65.3% of the AFL margins data fall within one standard deviation of the mean. This is shown visually in Figure [5.3](https://learningstatisticswithr.com/book/descriptives.html#fig:aflsd).
-
-![An illustration of the standard deviation, applied to the AFL winning margins data. The shaded bars in the histogram show how much of the data fall within one standard deviation of the mean. In this case, 65.3% of the data set lies within this range, which is pretty consistent with the "approximately 68% rule" discussed in the main text.](https://learningstatisticswithr.com/book/lsr\_files/figure-html/aflsd-1.png)
-
-Figure 5.3: An illustration of the standard deviation, applied to the AFL winning margins data. The shaded bars in the histogram show how much of the data fall within one standard deviation of the mean. In this case, 65.3% of the data set lies within this range, which is pretty consistent with the “approximately 68% rule” discussed in the main text.
+Interpreting standard deviations is slightly more complex. Because the standard deviation is derived from the variance, and the variance is a quantity that has little to no meaning that makes sense to us humans, the standard deviation doesn’t have a simple interpretation. As a consequence, most of us just rely on a simple rule of thumb: in general, you should expect 68% of the data to fall within 1 standard deviation of the mean, 95% of the data to fall within 2 standard deviations of the mean, and 99.7% of the data to fall within 3 standard deviations of the mean. This rule tends to work pretty well most of the time, but it’s not exact: it’s actually calculated based on an _assumption_ that the histogram is symmetric and bell-shaped. As you can tell from looking at the AFL winning margins histogram, this isn’t exactly true of our data! Even so, the rule is approximately correct. As it turns out, 65.3% of the AFL margins data fall within one standard deviation of the mean.&#x20;
 
 #### 5.2.6 Median absolute deviation
 
