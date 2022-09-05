@@ -377,3 +377,15 @@ So where should you go for help? once you’re moving away from being a pure beg
 > ?load 
 > help("load")
 ```
+
+## Descriptive statistics
+
+Any time that you get a new data set to look at, one of the first tasks that you have to do is find ways of summarising the data in a compact, easily understood fashion. This is what _**descriptive statistics**_ (as opposed to inferential statistics) is all about. In fact, to many people the term “statistics” is synonymous with descriptive statistics. It is this topic that we’ll consider in this chapter, but before going into any details, let’s take a moment to get a sense of why we need descriptive statistics. To do this, let’s load the `aflsmall.Rdata` file, and use the `who()` function in the `lsr` package to see what variables are stored in the file:
+
+```
+load( "./data/aflsmall.Rdata" )
+library(lsr)
+who()
+```
+
+``[`https://github.com/djnavarro/psyr/blob/master/data/aflsmall.Rdata`](https://github.com/djnavarro/psyr/blob/master/data/aflsmall.Rdata)``
