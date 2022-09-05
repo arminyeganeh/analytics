@@ -1,5 +1,5 @@
 ---
-description: Week 3, Lab A3, 150-250 lines, 1 hour to complete
+description: Week 3, Lab A3, 150 lines, 1 hour to complete
 ---
 
 # Descriptive Stats in R
