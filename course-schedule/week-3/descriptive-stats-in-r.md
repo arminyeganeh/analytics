@@ -10,7 +10,7 @@ Read this tutorial and apply the codes in R.
 
 ### Descriptive statistics
 
-Any time that you get a new data set to look at, one of the first tasks that you have to do is find ways of summarising the data in a compact, easily understood fashion. This is what **descriptive statistics** (as opposed to inferential statistics) is all about. In fact, many people think the term statistics is synonymous with descriptive statistics. Let’s take a moment to get a sense of why we need descriptive statistics. To do this, let’s load **File LA3.1** `aflsmall.Rdata`, and use the `who()` function in the `lsr` package to see what variables are stored in the file. From now on, let's separate the command block and remove the sign `>` so you can easily copy and paste the codes.
+Any time that you get a new data set to look at, one of the first tasks that you have to do is find ways of summarising the data in a compact, easily understood fashion. This is what **descriptive statistics** (as opposed to inferential statistics) is all about. Let’s load **File LA3.1** `aflsmall.Rdata`, and use the `who()` function in the `lsr` package to see what variables are stored in the file. From now on, let's separate the command block and remove the sign `>` so you can easily copy and paste the codes.
 
 {% file src="../../.gitbook/assets/aflsmall.Rdata" %}
 **File LA3.1 Australian Football League data**
@@ -54,7 +54,7 @@ This output doesn’t make it easy to get a sense of what the data are actually 
 
 ### Measures of central tendency
 
-Drawing pictures of the data is an excellent way to convey the “gist” of what the data is trying to tell you, it’s often extremely useful to try to condense the data into a few simple “summary” statistics. In most situations, the first thing that you’ll want to calculate is a measure of **central tendency**. That is, you’d like to know something about the “average” or “middle” of your data lies. The most commonly used measures are the mean, median, and mode; occasionally people will also report a trimmed mean.
+It’s often extremely useful to try to condense the data into a few simple “summary” statistics. In most situations, the first thing that you’ll want to calculate is a measure of **central tendency**. That is, you’d like to know something about the “average” or “middle” of your data lies. The most commonly used measures are the mean, median, and mode; occasionally people will also report a trimmed mean.
 
 ### The mean
 
@@ -64,7 +64,7 @@ $$
 \frac{56 + 31 + 56 + 8 + 32}{5} = \frac{183}{5} = 36.60
 $$
 
-This definition of the mean isn’t news to anyone: averages (i.e., means) are used so often in everyday life that this is pretty familiar stuff. However, since the concept of a mean is something that everyone already understands, we’ll use this as an excuse to start introducing some of the mathematical notation that statisticians use to describe this calculation and talk about how the calculations would be done in R. Okay, now let’s try to write a formula for the mean. By tradition, we use $$\bar{X}$$ as the notation for the mean. So the calculation for the mean could be expressed using the formula:
+By tradition, we use $$\bar{X}$$ as the notation for the mean. So the calculation for the mean could be expressed using the formula:
 
 $$
 \bar{X} = \frac{X_1 + X_2 + ... + X_{N-1} + X_N}{N}
@@ -118,13 +118,13 @@ $$
 8,31,32,56,56
 $$
 
-From inspection, it’s obvious that the median value of these 5 observations is 32, since that’s the middle one in the sorted list. But what should we do if we were interested in the first 6 games rather than the first 5? Since the sixth game in the season had a winning margin of 14 points, our sorted list is:
+From inspection, it’s obvious that the median value of these 5 observations is 32, since that’s the middle one in the sorted list. But what should we do if we were interested in the first 6 games rather than the first 5?
 
 $$
 8,14,31,32,56,56
 $$
 
-&#x20;There are two middle numbers, 31 and 32. The median is defined as the average of those two numbers, which is of course 31.5. To illustrate this, here’s what happens when you use R to sort all 176 winning margins:
+There are two middle numbers, 31 and 32. The median is defined as the average of those two numbers, which is of course 31.5. To illustrate this, here’s what happens when you use R to sort all 176 winning margins:
 
 ```
 sort(x = afl.margins)
@@ -155,21 +155,19 @@ which outputs the median value of 30.5.
 
 ### Mean or median? What’s the difference?
 
-![An illustration of the difference between how the mean and the median should be interpreted. The mean is basically the "centre of gravity" of the data set: if you imagine that the histogram of the data is a solid object, then the point on which you could balance it (as if on a see-saw) is the mean. In contrast, the median is the middle observation. Half of the observations are smaller, and half of the observations are larger.](https://learningstatisticswithr.com/book/img/descriptives2/meanmedian.png)
+<figure><img src="https://learningstatisticswithr.com/book/img/descriptives2/meanmedian.png" alt=""><figcaption><p><strong>Figure LA3.2</strong> Interpreting the mean and the median</p></figcaption></figure>
 
-Figure 5.2: An illustration of the difference between how the mean and the median should be interpreted. The mean is basically the “center of gravity” of the data set: if you imagine that the histogram of the data is a solid object, then the point on which you could balance it (as if on a see-saw) is the mean. In contrast, the median is the middle observation. Half of the observations are smaller, and half of the observations are larger.
-
-Knowing how to calculate means and medians is only a part of the story. You also need to understand what each one is saying about the data, and what that implies for when you should use each one. What this implies, as far as which one you should use, depends a little on what type of data you’ve got and what you’re trying to achieve. As a rough guide:
+The mean is basically the “center of gravity” of the data set: if you imagine that the histogram of the data is a solid object, then the point on which you could balance it (as if on a see-saw) is the mean. In contrast, the median is the middle observation. Half of the observations are smaller, and half of the observations are larger.
 
 * If your data are nominal scale, you probably shouldn’t be using either the mean or the median. Both the mean and the median rely on the idea that the numbers assigned to values are meaningful. If the numbering scheme is arbitrary, then it’s probably best to use the mode instead.
-* If your data are ordinal scale, you’re more likely to want to use the median than the mean. The median only makes use of the order information in your data (i.e., which numbers are bigger), but doesn’t depend on the precise numbers involved. That’s exactly the situation that applies when your data are ordinal scale. The mean, on the other hand, makes use of the precise numeric values assigned to the observations, so it’s not really appropriate for ordinal data.
-* For interval and ratio scale data, either one is generally acceptable. Which one you pick depends a bit on what you’re trying to achieve. The mean has the advantage that it uses all the information in the data (which is useful when you don’t have a lot of data), but it’s very sensitive to extreme values.
+* If your data are ordinal scale, you’re more likely to want to use the median than the mean. The median only makes use of the order information in your data. The mean, on the other hand, makes use of the precise numeric values assigned to the observations, so it’s not really appropriate for ordinal data.
+* For interval and ratio scale data, either one is generally acceptable. The mean has the advantage that it uses all the information in the data, which is useful when you don’t have a lot of data, but it’s very sensitive to extreme values.
 
-Let’s expand on that last part a little. One consequence is that there’s systematic differences between the mean and the median when the histogram is asymmetric (skewed). This is illustrated in Figure [5.2](https://learningstatisticswithr.com/book/descriptives.html#fig:meanmedian) notice that the median (right hand side) is located closer to the “body” of the histogram, whereas the mean (left hand side) gets dragged towards the “tail” (where the extreme values are). To give a concrete example, suppose Bob (income $50,000), Kate (income $60,000) and Jane (income $65,000) are sitting at a table: the average income at the table is $58,333 and the median income is $60,000. Then Bill sits down with them (income $100,000,000). The average income has now jumped to $25,043,750 but the median rises only to $62,500. If you’re interested in looking at the overall income at the table, the mean might be the right answer; but if you’re interested in what counts as a typical income at the table, the median would be a better choice here.
+One consequence is that there are systematic differences between the mean and the median when the histogram is asymmetric (skewed). This is illustrated in **Figure LA3.2**. Notice that the median (right-hand side) is located closer to the “body” of the histogram, whereas the mean (left-hand side) gets dragged towards the “tail” (where the extreme values are). To give a concrete example, suppose Bob (income $50,000), Kate (income $60,000) and Jane (income $65,000) are sitting at a table: the average income at the table is $58,333 and the median income is $60,000. Then Bill sits down with them (income $100,000,000). The average income has now jumped to $25,043,750 but the median rises only to $62,500. If you’re interested in looking at the overall income at the table, the mean might be the right answer; but if you’re interested in what counts as a typical income at the table, the median would be a better choice here.
 
 ### A real-life example
 
-To try to get a sense of why you need to pay attention to the differences between the mean and the median, let’s consider a real life example. Since I tend to mock journalists for their poor scientific and statistical knowledge, I should give credit where credit is due. This is from an excellent article on the ABC news website[68](https://learningstatisticswithr.com/book/descriptives.html#fn68) 24 September, 2010:
+To try to get a sense of why you need to pay attention to the differences between the mean and the median, let’s consider a real-life example. This is from an excellent article on the ABC news website, dated 24 September 2010:
 
 > Senior Commonwealth Bank executives have travelled the world in the past couple of weeks with a presentation showing how Australian house prices, and the key price to income ratios, compare favourably with similar countries. “Housing affordability has actually been going sideways for the last five to six years,” said Craig James, the chief economist of the bank’s trading arm, CommSec.
 
@@ -181,67 +179,58 @@ More excellent news! Except, the article goes on to make the observation that…
 
 > Many analysts say that has led the bank to use misleading figures and comparisons. If you go to page four of CBA’s presentation and read the source information at the bottom of the graph and table, you would notice there is an additional source on the international comparison – Demographia. However, if the Commonwealth Bank had also used Demographia’s analysis of Australia’s house price to income ratio, it would have come up with a figure closer to 9 rather than 5.6 or 4.3
 
-That’s, um, a rather serious discrepancy. One group of people say 9, another says 4-5. Should we just split the difference, and say the truth lies somewhere in between? Absolutely not: this is a situation where there is a right answer and a wrong answer. Demographia are correct, and the Commonwealth Bank is incorrect. As the article points out
+That’s, um, a rather serious discrepancy. One group of people says 9, another says 4-5. Should we just split the difference, and say the truth lies somewhere in between? Absolutely not: this is a situation where there is a right answer and a wrong answer. Demographia is correct, and the Commonwealth Bank is incorrect. As the article points out
 
 > \[An] obvious problem with the Commonwealth Bank’s domestic price to income figures is they compare average incomes with median house prices (unlike the Demographia figures that compare median incomes to median prices). The median is the mid-point, effectively cutting out the highs and lows, and that means the average is generally higher when it comes to incomes and asset prices, because it includes the earnings of Australia’s wealthiest people. To put it another way: the Commonwealth Bank’s figures count Ralph Norris’ multi-million dollar pay packet on the income side, but not his (no doubt) very expensive house in the property price figures, thus understating the house price to income ratio for middle-income Australians.
 
-Couldn’t have put it better myself. The way that Demographia calculated the ratio is the right thing to do. The way that the Bank did it is incorrect. As for why an extremely quantitatively sophisticated organisation such as a major bank made such an elementary mistake, well… I can’t say for sure, since I have no special insight into their thinking, but the article itself does happen to mention the following facts, which may or may not be relevant:
+The way that Demographia calculated the ratio is the right thing to do. The way that the Bank did it is incorrect. The article itself does happen to mention the following facts, which may or may not be relevant:
 
 > \[As] Australia’s largest home lender, the Commonwealth Bank has one of the biggest vested interests in house prices rising. It effectively owns a massive swathe of Australian housing as security for its home loans as well as many small business loans.
 
-My, my.
+**How to Lie with Statistics** is a book written by Darrell Huff in 1954, presenting an introduction to statistics for the general reader. The book is a brief, breezy illustrated volume outlining the misuse of statistics and errors in the interpretation of statistics, and how these errors may create incorrect conclusions.
 
-#### 5.1.6 Trimmed mean
+### Trimmed mean
 
-One of the fundamental rules of applied statistics is that the data are messy. Real life is never simple, and so the data sets that you obtain are never as straightforward as the statistical theory says.[69](https://learningstatisticswithr.com/book/descriptives.html#fn69) This can have awkward consequences. To illustrate, consider this rather strange looking data set:$$−100,2,3,4,5,6,7,8,9,10−100,2,3,4,5,6,7,8,9,10$$If you were to observe this in a real life data set, you’d probably suspect that something funny was going on with the $$−100−100$$ value. It’s probably an _**outlier**_, a value that doesn’t really belong with the others. You might consider removing it from the data set entirely, and in this particular case I’d probably agree with that course of action. In real life, however, you don’t always get such cut-and-dried examples. For instance, you might get this instead:$$−15,2,3,4,5,6,7,8,9,12−15,2,3,4,5,6,7,8,9,12$$The $$−15−15$$ looks a bit suspicious, but not anywhere near as much as that $$−100−100$$ did. In this case, it’s a little trickier. It _might_ be a legitimate observation, it might not.
+One of the fundamental rules of applied statistics is that the data are messy. Real life is never simple, and so the data sets that you obtain are never as straightforward as the statistical theory says. This can have awkward consequences. To illustrate, consider this rather strange-looking data set:
 
-When faced with a situation where some of the most extreme-valued observations might not be quite trustworthy, the mean is not necessarily a good measure of central tendency. It is highly sensitive to one or two extreme values, and is thus not considered to be a _**robust**_ measure. One remedy that we’ve seen is to use the median. A more general solution is to use a “trimmed mean”. To calculate a trimmed mean, what you do is “discard” the most extreme examples on both ends (i.e., the largest and the smallest), and then take the mean of everything else. The goal is to preserve the best characteristics of the mean and the median: just like a median, you aren’t highly influenced by extreme outliers, but like the mean, you “use” more than one of the observations. Generally, we describe a trimmed mean in terms of the percentage of observation on either side that are discarded. So, for instance, a 10% trimmed mean discards the largest 10% of the observations _and_ the smallest 10% of the observations, and then takes the mean of the remaining 80% of the observations. Not surprisingly, the 0% trimmed mean is just the regular mean, and the 50% trimmed mean is the median. In that sense, trimmed means provide a whole family of central tendency measures that span the range from the mean to the median.
+$$
+-100,2,3,4,5,6,7,8,9,10
+$$
 
-For our toy example above, we have 10 observations, and so a 10% trimmed mean is calculated by ignoring the largest value (i.e., `12`) and the smallest value (i.e., `-15`) and taking the mean of the remaining values. First, let’s enter the data
+If you were to observe this in a real-life data set, you’d probably suspect that something funny was going on with the value $$−100$$. It’s probably an _**outlier**_, a value that doesn’t really belong with the others. You might consider removing it from the data set entirely. In real life, however, you don’t always get such cut-and-dried examples. For instance, you might get this instead:
 
-```
-dataset <- c( -15,2,3,4,5,6,7,8,9,12 )
-```
+$$
+−15,2,3,4,5,6,7,8,9,12
+$$
 
-Next, let’s calculate means and medians:
+The $$−15$$ looks a bit suspicious, but not anywhere near as much as that $$−100$$ did. In this case, it’s a little trickier. It _might_ be a legitimate observation, it might not. When faced with a situation where some of the most extreme-valued observations might not be quite trustworthy, the mean is not necessarily a good measure of central tendency. It is highly **sensitive** to one or two extreme values, and is thus not considered to be a **robust** measure. One remedy that we’ve seen is to use the median. A more general solution is to use a “trimmed mean”.&#x20;
 
-```
-mean( x = dataset )
-```
+To calculate a trimmed mean, what you do is “discard” the most extreme examples on both ends (i.e., the largest and the smallest), and then take the mean of everything else. The goal is to preserve the best characteristics of the mean and the median: just like a median, you aren’t highly influenced by extreme outliers, but like the mean, you “use” more than one of the observations. Generally, we describe a trimmed mean in terms of the percentage of observation on either side that are discarded. So, for instance, a 10% trimmed mean discards the largest 10% of the observations _and_ the smallest 10% of the observations, and then takes the mean of the remaining 80% of the observations.&#x20;
 
-```
-## [1] 4.1
-```
+For our toy example above, we have 10 observations, and so a 10% trimmed mean is calculated by ignoring the largest value (i.e., `12`) and the smallest value (i.e., `-15`) and taking the mean of the remaining values:
 
 ```
-median( x = dataset )
+dataset <- c(-15,2,3,4,5,6,7,8,9,12)
+mean(x = dataset)
+median(x = dataset)
 ```
 
 ```
-## [1] 5.5
+[1] 4.1
+[1] 5.5
 ```
 
-That’s a fairly substantial difference, but I’m tempted to think that the mean is being influenced a bit too much by the extreme values at either end of the data set, especially the $$−15−15$$ one. So let’s just try trimming the mean a bit. If I take a 10% trimmed mean, we’ll drop the extreme values on either side, and take the mean of the rest:
+If we take a 10% trimmed mean, we’ll drop the extreme values on either side and take the mean of the rest:
 
 ```
 mean( x = dataset, trim = .1)
 ```
 
 ```
-## [1] 5.5
+[1] 5.5
 ```
 
-which in this case gives exactly the same answer as the median. Note that, to get a 10% trimmed mean you write `trim = .1`, not `trim = 10`. In any case, let’s finish up by calculating the 5% trimmed mean for the `afl.margins` data,
-
-```
-mean( x = afl.margins, trim = .05)  
-```
-
-```
-## [1] 33.75
-```
-
-#### 5.1.7 Mode
+### Mode
 
 The mode of a sample is very simple: it is the value that occurs most frequently. To illustrate the mode using the AFL data, let’s examine a different aspect to the data set. Who has played in the most finals? The `afl.finalists` variable is a factor that contains the name of every team that played in any AFL final from 1987-2010, so let’s have a look at it. To do this we will use the `head()` command. `head()` is useful when you’re working with a data.frame with a lot of rows since you can use it to tell you how many rows to return. There have been a lot of finals in this period so printing afl.finalists using `print(afl.finalists)` will just fill us the screen. The command below tells R we just want the first 25 rows of the data.frame.
 
