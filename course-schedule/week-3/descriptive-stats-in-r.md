@@ -82,75 +82,47 @@ $$
 \bar{X} = \frac{X_1 + X_2 + ... + X_{N-1} + X_N}{N}
 $$
 
-This formula is entirely correct, but it’s terribly long, so we make use of the **summation symbol** $$∑$$ to shorten it. If I want to add up the first five observations, I could write out the sum the long way, $$X1+X2+X3+X4+X5X1+X2+X3+X4+X5$$ or I could use the summation symbol to shorten it to this:$$5∑i=1Xi∑i=15Xi$$Taken literally, this could be read as “the sum, taken over all $$ii$$ values from 1 to 5, of the value $$XiXi$$”. But basically, what it means is “add up the first five observations”. In any case, we can use this notation to write out the formula for the mean, which looks like this:$$¯X=1NN∑i=1XiX¯=1N∑i=1NXi$$
+This formula is entirely correct, but it’s terribly long, so we make use of the **summation symbol** $$∑$$ to shorten it:
 
-In all honesty, I can’t imagine that all this mathematical notation helps clarify the concept of the mean at all. In fact, it’s really just a fancy way of writing out the same thing I said in words: add all the values up, and then divide by the total number of items. However, that’s not really the reason I went into all that detail. My goal was to try to make sure that everyone reading this book is clear on the notation that we’ll be using throughout the book: $$¯XX¯$$ for the mean, $$∑∑$$ for the idea of summation, $$XiXi$$ for the $$ii$$th observation, and $$NN$$ for the total number of observations. We’re going to be re-using these symbols a fair bit, so it’s important that you understand them well enough to be able to “read” the equations, and to be able to see that it’s just saying “add up lots of things and then divide by another thing”.
+$$
+\bar{X} = \frac{1}{N} \sum_{i=1}^N X_i
+$$
 
-#### 5.1.2 Calculating the mean in R
-
-Okay that’s the maths, how do we get the magic computing box to do the work for us? If you really wanted to, you could do this calculation directly in R. For the first 5 AFL scores, do this just by typing it in as if R were a calculator…
+If you really wanted to, you could do this calculation directly in R. For the first 5 AFL scores, do this just by typing it in as if R were a calculator:
 
 ```
 (56 + 31 + 56 + 8 + 32) / 5
+[1] 36.6
 ```
 
-```
-## [1] 36.6
-```
-
-… in which case R outputs the answer 36.6, just as if it were a calculator. However, that’s not the only way to do the calculations, and when the number of observations starts to become large, it’s easily the most tedious. Besides, in almost every real world scenario, you’ve already got the actual numbers stored in a variable of some kind, just like we have with the `afl.margins` variable. Under those circumstances, what you want is a function that will just add up all the values stored in a numeric vector. That’s what the `sum()` function does. If we want to add up all 176 winning margins in the data set, we can do so using the following command:[67](https://learningstatisticswithr.com/book/descriptives.html#fn67)
+In almost every real-world scenario, you’ve already got the actual numbers stored in a variable of some kind, just like we have with the `afl.margins` variable. Under those circumstances, what you want is a function that will just add up all the values stored in a numeric vector. That’s what the `sum()` function does. If we want to add up all 176 winning margins in the data set, we can do so. If we only want the sum of the first five observations, then we can use square brackets to pull out only the first five elements of the vector:
 
 ```
 sum( afl.margins )
-```
-
-```
-## [1] 6213
-```
-
-If we only want the sum of the first five observations, then we can use square brackets to pull out only the first five elements of the vector. So the command would now be:
-
-```
+[1] 6213
 sum( afl.margins[1:5] )
-```
-
-```
-## [1] 183
+[1] 183
 ```
 
 To calculate the mean, we now tell R to divide the output of this summation by five, so the command that we need to type now becomes the following:
 
 ```
 sum( afl.margins[1:5] ) / 5
-```
-
-```
-## [1] 36.6
+[1] 36.6
 ```
 
 Although it’s pretty easy to calculate the mean using the `sum()` function, we can do it in an even easier way, since R also provides us with the `mean()` function. To calculate the mean for all 176 games, we would use the following command:
 
 ```
 mean( x = afl.margins )
-```
-
-```
-## [1] 35.30114
-```
-
-However, since `x` is the first argument to the function, I could have omitted the argument name. In any case, just to show you that there’s nothing funny going on, here’s what we would do to calculate the mean for the first five observations:
-
-```
+[1] 35.30114
 mean( afl.margins[1:5] )
+[1] 36.6
 ```
 
-```
-## [1] 36.6
-```
+However, since `x` is the first argument to the function, we could have omitted the argument name.&#x20;
 
-As you can see, this gives exactly the same answers as the previous calculations.
-
-#### 5.1.3 The median
+### The median
 
 The second measure of central tendency that people use a lot is the _**median**_, and it’s even easier to describe than the mean. The median of a set of observations is just the middle value. As before let’s imagine we were interested only in the first 5 AFL winning margins: 56, 31, 56, 8 and 32. To figure out the median, we sort these numbers into ascending order:$$8,31,32,56,568,31,32,56,56$$From inspection, it’s obvious that the median value of these 5 observations is 32, since that’s the middle one in the sorted list (I’ve put it in bold to make it even more obvious). Easy stuff. But what should we do if we were interested in the first 6 games rather than the first 5? Since the sixth game in the season had a winning margin of 14 points, our sorted list is now$$8,14,31,32,56,568,14,31,32,56,56$$and there are _two_ middle numbers, 31 and 32. The median is defined as the average of those two numbers, which is of course 31.5. As before, it’s very tedious to do this by hand when you’ve got lots of numbers. To illustrate this, here’s what happens when you use R to sort all 176 winning margins. First, I’ll use the `sort()` function (discussed in Chapter [7](https://learningstatisticswithr.com/book/datahandling.html#datahandling)) to display the winning margins in increasing numerical order:
 
