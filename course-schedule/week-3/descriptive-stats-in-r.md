@@ -58,33 +58,31 @@ Drawing pictures of the data is an excellent way to convey the “gist” of wha
 
 ### The mean
 
-The **mean** of a set of observations is just a normal, old-fashioned average: add all of the values up, and then divide by the total number of values. The first five AFL margins were 56, 31, 56, 8, and 32, so the mean of these observations is:
+The **mean** of a set of observations is just a normal, old-fashioned average: add all of the values up, and then divide by the total number of values. The first five AFL margins were 56, 31, 56, 8, and 32, so the mean of these observations is just:
 
 $$
-56
-+
-31
-+
-56
-+
-8
-+
-32/5
+\frac{56 + 31 + 56 + 8 + 32}{5} = \frac{183}{5} = 36.60
 $$
 
-this definition of the mean isn’t news to anyone: averages (i.e., means) are used so often in everyday life that this is pretty familiar stuff. However, since the concept of a mean is something that everyone already understands, I’ll use this as an excuse to start introducing some of the mathematical notation that statisticians use to describe this calculation, and talk about how the calculations would be done in R.
+This definition of the mean isn’t news to anyone: averages (i.e., means) are used so often in everyday life that this is pretty familiar stuff. However, since the concept of a mean is something that everyone already understands, we’ll use this as an excuse to start introducing some of the mathematical notation that statisticians use to describe this calculation and talk about how the calculations would be done in R.&#x20;
 
-The first piece of notation to introduce is $$NN$$, which we’ll use to refer to the number of observations that we’re averaging (in this case $$N=5N=5$$). Next, we need to attach a label to the observations themselves. It’s traditional to use $$XX$$ for this, and to use subscripts to indicate which observation we’re actually talking about. That is, we’ll use $$X1X1$$ to refer to the first observation, $$X2X2$$ to refer to the second observation, and so on, all the way up to $$XNXN$$ for the last one. Or, to say the same thing in a slightly more abstract way, we use $$XiXi$$ to refer to the $$ii$$-th observation. Just to make sure we’re clear on the notation, the following table lists the 5 observations in the `afl.margins` variable, along with the mathematical symbol used to refer to it, and the actual value that the observation corresponds to:
+The first piece of notation to introduce is $$N$$, which we’ll use to refer to the number of observations that we’re averaging (in this case $$N=5$$). Next, we need to attach a label to the observations themselves. It’s traditional to use$$X$$ and to use subscripts to indicate which observation we’re actually talking about. That is, we’ll use$$X_1$$ to refer to the first observation, $$X_2$$ to refer to the second observation, and so on, all the way up to $$X_N$$, the last one. Or, to say the same thing in a slightly more abstract way, we use$$X_i$$ to refer to the $$i$$-th observation. Just to make sure we’re clear on the notation, the following table lists the 5 observations in the `afl.margins` variable, along with the mathematical symbol used to refer to it, and the actual value that the observation corresponds to:
 
-| the observation        | its symbol | the observed value |
-| ---------------------- | ---------- | ------------------ |
-| winning margin, game 1 | $$X1X1$$   | 56 points          |
-| winning margin, game 2 | $$X2X2$$   | 31 points          |
-| winning margin, game 3 | $$X3X3$$   | 56 points          |
-| winning margin, game 4 | $$X4X4$$   | 8 points           |
-| winning margin, game 5 | $$X5X5$$   | 32 points          |
+| observation            | symbol  | value     |
+| ---------------------- | ------- | --------- |
+| winning margin, game 1 | $$X_1$$ | 56 points |
+| winning margin, game 2 | $$X_2$$ | 31 points |
+| winning margin, game 3 | $$X_3$$ | 56 points |
+| winning margin, game 4 | $$X_4$$ | 8 points  |
+| winning margin, game 5 | $$X_5$$ | 32 points |
 
-Okay, now let’s try to write a formula for the mean. By tradition, we use $$¯XX¯$$ as the notation for the mean. So the calculation for the mean could be expressed using the following formula:$$¯X=X1+X2+...+XN−1+XNNX¯=X1+X2+...+XN−1+XNN$$This formula is entirely correct, but it’s terribly long, so we make use of the _**summation symbol**_ $$∑∑$$ to shorten it.[66](https://learningstatisticswithr.com/book/descriptives.html#fn66) If I want to add up the first five observations, I could write out the sum the long way, $$X1+X2+X3+X4+X5X1+X2+X3+X4+X5$$ or I could use the summation symbol to shorten it to this:$$5∑i=1Xi∑i=15Xi$$Taken literally, this could be read as “the sum, taken over all $$ii$$ values from 1 to 5, of the value $$XiXi$$”. But basically, what it means is “add up the first five observations”. In any case, we can use this notation to write out the formula for the mean, which looks like this:$$¯X=1NN∑i=1XiX¯=1N∑i=1NXi$$
+Okay, now let’s try to write a formula for the mean. By tradition, we use $$\bar{X}$$ as the notation for the mean. So the calculation for the mean could be expressed using the formula:
+
+$$
+\bar{X} = \frac{X_1 + X_2 + ... + X_{N-1} + X_N}{N}
+$$
+
+This formula is entirely correct, but it’s terribly long, so we make use of the **summation symbol** $$∑$$ to shorten it. If I want to add up the first five observations, I could write out the sum the long way, $$X1+X2+X3+X4+X5X1+X2+X3+X4+X5$$ or I could use the summation symbol to shorten it to this:$$5∑i=1Xi∑i=15Xi$$Taken literally, this could be read as “the sum, taken over all $$ii$$ values from 1 to 5, of the value $$XiXi$$”. But basically, what it means is “add up the first five observations”. In any case, we can use this notation to write out the formula for the mean, which looks like this:$$¯X=1NN∑i=1XiX¯=1N∑i=1NXi$$
 
 In all honesty, I can’t imagine that all this mathematical notation helps clarify the concept of the mean at all. In fact, it’s really just a fancy way of writing out the same thing I said in words: add all the values up, and then divide by the total number of items. However, that’s not really the reason I went into all that detail. My goal was to try to make sure that everyone reading this book is clear on the notation that we’ll be using throughout the book: $$¯XX¯$$ for the mean, $$∑∑$$ for the idea of summation, $$XiXi$$ for the $$ii$$th observation, and $$NN$$ for the total number of observations. We’re going to be re-using these symbols a fair bit, so it’s important that you understand them well enough to be able to “read” the equations, and to be able to see that it’s just saying “add up lots of things and then divide by another thing”.
 
