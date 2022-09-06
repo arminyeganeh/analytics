@@ -318,29 +318,39 @@ Evidently, there were three drugs: a placebo, something called anxifree, and som
 
 ### Standard scores
 
-The standard score is defined as the number of standard deviations above the mean that my grumpiness score lies. To phrase it in “pseudo-maths” the standard score is calculated like this:$$standard score=raw score−meanstandard deviationstandard score=raw score−meanstandard deviation$$In actual maths, the equation for the $$zz$$-score is$$zi=Xi−¯X^σzi=Xi−X¯σ^$$So, going back to the grumpiness data, we can now transform Dan’s raw grumpiness into a standardised grumpiness score.[77](https://learningstatisticswithr.com/book/descriptives.html#fn77) If the mean is 17 and the standard deviation is 5 then my standardised grumpiness score would be[78](https://learningstatisticswithr.com/book/descriptives.html#fn78)$$z=35−175=3.6z=35−175=3.6$$To interpret this value, recall the rough heuristic that I provided in Section [5.2.5](https://learningstatisticswithr.com/book/descriptives.html#sd), in which I noted that 99.7% of values are expected to lie within 3 standard deviations of the mean. So the fact that my grumpiness corresponds to a $$zz$$ score of 3.6 indicates that I’m very grumpy indeed. Later on, in Section [9.5](https://learningstatisticswithr.com/book/probability.html#normal), I’ll introduce a function called `pnorm()` that allows us to be a bit more precise than this. Specifically, it allows us to calculate a theoretical percentile rank for my grumpiness, as follows:
+The standard score, also known as the **z score**, is defined as the number of standard deviations above the mean where a score lies. To phrase it in “pseudo-maths” the standard score is calculated like this:
+
+$$
+\mbox{standard score} = \frac{\mbox{raw score} - \mbox{mean}}{\mbox{standard deviation}}
+$$
+
+In actual maths, the equation for the standard score is
+
+$$
+z_i = \frac{X_i - \bar{X}}{\hat\sigma}
+$$
+
+Let's say we have a sample including data on grumpiness scores. If Dan's score is 35, the mean is 17, and the standard deviation is 5, then Dan's standardized grumpiness score would be 3.6. To interpret this value, recall the rough heuristic that 99.7% of values are expected to lie within 3 standard deviations of the mean. So the fact that Dan's grumpiness corresponds to a z score of 3.6 indicates that Dan is very grumpy indeed. Later on, we will introduce a function called `pnorm()` that allows us to be a bit more precise than this. Specifically, it allows us to calculate a theoretical percentile rank for grumpiness, as follows:
 
 ```
-pnorm( 3.6 )
+pnorm(3.6)
 ```
 
 ```
-## [1] 0.9998409
+[1] 0.9998409
 ```
 
-At this stage, this command doesn’t make too much sense, but don’t worry too much about it. It’s not important for now. But the output is fairly straightforward: it suggests that I’m grumpier than 99.98% of people. Sounds about right.
+At this stage, this command doesn’t make too much sense, but the output is fairly straightforward: it suggests that Dan is grumpier than 99.98% of people. In addition to allowing you to interpret a raw score in relation to a larger population (and thereby allowing you to make sense of variables that lie on arbitrary scales), standard scores serve a second useful function. Standard scores can be compared to one another in situations where the raw scores can’t. Suppose, for instance, Dan's friend had another questionnaire that measured extraversion using a questionnaire. The overall mean for this measure turns out to be 13, with a standard deviation of 4, and Dan's score is 2. As you can imagine, it doesn’t make a lot of sense to try to compare Dan's raw score of 2 on the extraversion questionnaire to his raw score of 35 on the grumpiness questionnaire. The raw scores for the two variables are “about” fundamentally different things, so this would be like comparing apples to oranges.
 
-In addition to allowing you to interpret a raw score in relation to a larger population (and thereby allowing you to make sense of variables that lie on arbitrary scales), standard scores serve a second useful function. Standard scores can be compared to one another in situations where the raw scores can’t. Suppose, for instance, my friend also had another questionnaire that measured extraversion using a 24 items questionnaire. The overall mean for this measure turns out to be 13 with standard deviation 4; and I scored a 2. As you can imagine, it doesn’t make a lot of sense to try to compare my raw score of 2 on the extraversion questionnaire to my raw score of 35 on the grumpiness questionnaire. The raw scores for the two variables are “about” fundamentally different things, so this would be like comparing apples to oranges.
-
-What about the standard scores? Well, this is a little different. If we calculate the standard scores, we get $$z=(35−17)/5=3.6z=(35−17)/5=3.6$$ for grumpiness and $$z=(2−13)/4=−2.75z=(2−13)/4=−2.75$$ for extraversion. These two numbers _can_ be compared to each other.[79](https://learningstatisticswithr.com/book/descriptives.html#fn79) I’m much less extraverted than most people ($$z=−2.75z=−2.75$$) and much grumpier than most people ($$z=3.6z=3.6$$): but the extent of my unusualness is much more extreme for grumpiness (since 3.6 is a bigger number than 2.75). Because each standardised score is a statement about where an observation falls _relative to its own population_, it _is_ possible to compare standardised scores across completely different variables.
+If we calculate the standard scores, the two numbers can be compared to each other. Dan is much less extraverted than most people and much grumpier than most people, but the extent of his unusualness is much more extreme for grumpiness (since 3.6 is a bigger number than 2.75). Because each standardized score is a statement about where an observation falls relative to its own population, it is possible to compare standardized scores across completely different variables.
 
 ### Correlations
 
-Up to this point we have focused entirely on how to construct descriptive statistics for a single variable. What we haven’t done is talked about how to describe the relationships _between_ variables in the data. To do that, we want to talk mostly about the _**correlation**_ between variables. But first, we need some data.
+Up to this point, we have focused entirely on how to construct descriptive statistics for a single variable. Now, let's talk about how to describe relationships between variables. To do that, we want to talk mostly about **correlation**.
 
-#### 5.7.1 The data
+Let’s turn to a topic close to every parent’s heart: sleep. The following data set is fictitious but based on real events. Suppose we are curious to find out how much Dan's infant son’s sleeping habits affect his mood. Let’s say that Dan can rate his grumpiness very precisely, on a scale from 0 (not at all grumpy) to 100 (grumpy as a very, very grumpy old man). And, let's also assume that Dan has been measuring his grumpiness, sleeping patterns, and his son’s sleeping patterns for 100 days, and, being a nerd, Dan has saved the data as a file called `parenthood.Rdata`:
 
-After spending so much time looking at the AFL data, I’m starting to get bored with sports. Instead, let’s turn to a topic close to every parent’s heart: sleep. The following data set is fictitious, but based on real events. Suppose I’m curious to find out how much my infant son’s sleeping habits affect my mood. Let’s say that I can rate my grumpiness very precisely, on a scale from 0 (not at all grumpy) to 100 (grumpy as a very, very grumpy old man). And, lets also assume that I’ve been measuring my grumpiness, my sleeping patterns and my son’s sleeping patterns for quite some time now. Let’s say, for 100 days. And, being a nerd, I’ve saved the data as a file called `parenthood.Rdata`. If we load the data…
+{% file src="../../.gitbook/assets/parenthood.Rdata" %}
 
 ```
 load( "./data/parenthood.Rdata" )
@@ -356,84 +366,57 @@ who(TRUE)
 ##     $day          integer       100
 ```
 
-… we see that the file contains a single data frame called `parenthood`, which contains four variables `dan.sleep`, `baby.sleep`, `dan.grump` and `day`. If we peek at the data using `head()` out the data, here’s what we get:
+The file contains a single data frame `parenthood`, which contains four variables `dan.sleep`, `baby.sleep`, `dan.grump` , and `day`. If we peek at the data using `head()` out the data, here’s what we get:
 
 ```
 head(parenthood,10)
 ```
 
 ```
-##    dan.sleep baby.sleep dan.grump day
-## 1       7.59      10.18        56   1
-## 2       7.91      11.66        60   2
-## 3       5.14       7.92        82   3
-## 4       7.71       9.61        55   4
-## 5       6.68       9.75        67   5
-## 6       5.99       5.04        72   6
-## 7       8.19      10.45        53   7
-## 8       7.19       8.27        60   8
-## 9       7.40       6.06        60   9
-## 10      6.58       7.09        71  10
-```
-
-Next, I’ll calculate some basic descriptive statistics:
-
-```
-describe( parenthood )
+   dan.sleep baby.sleep dan.grump day
+1       7.59      10.18        56   1
+2       7.91      11.66        60   2
+3       5.14       7.92        82   3
+4       7.71       9.61        55   4
+5       6.68       9.75        67   5
+6       5.99       5.04        72   6
+7       8.19      10.45        53   7
+8       7.19       8.27        60   8
+9       7.40       6.06        60   9
+10      6.58       7.09        71  10
 ```
 
 ```
-##            vars   n  mean    sd median trimmed   mad   min    max range
-## dan.sleep     1 100  6.97  1.02   7.03    7.00  1.09  4.84   9.00  4.16
-## baby.sleep    2 100  8.05  2.07   7.95    8.05  2.33  3.25  12.07  8.82
-## dan.grump     3 100 63.71 10.05  62.00   63.16  9.64 41.00  91.00 50.00
-## day           4 100 50.50 29.01  50.50   50.50 37.06  1.00 100.00 99.00
-##             skew kurtosis   se
-## dan.sleep  -0.29    -0.72 0.10
-## baby.sleep -0.02    -0.69 0.21
-## dan.grump   0.43    -0.16 1.00
-## day         0.00    -1.24 2.90
+summary(parenthood)
 ```
 
-Finally, to give a graphical depiction of what each of the three interesting variables looks like, Figure [5.6](https://learningstatisticswithr.com/book/descriptives.html#fig:parenthood) plots histograms.
+```
+   dan.sleep       baby.sleep       dan.grump          day        
+ Min.   :4.840   Min.   : 3.250   Min.   :41.00   Min.   :  1.00  
+ 1st Qu.:6.293   1st Qu.: 6.425   1st Qu.:57.00   1st Qu.: 25.75  
+ Median :7.030   Median : 7.950   Median :62.00   Median : 50.50  
+ Mean   :6.965   Mean   : 8.049   Mean   :63.71   Mean   : 50.50  
+ 3rd Qu.:7.740   3rd Qu.: 9.635   3rd Qu.:71.00   3rd Qu.: 75.25  
+ Max.   :9.000   Max.   :12.070   Max.   :91.00   Max.   :100.00  
+```
 
-![Histograms for the three interesting variables in the \`parenthood\` data set](https://learningstatisticswithr.com/book/lsr\_files/figure-html/parenthood-1.png)
+One thing to note: just because R can calculate dozens of different statistics doesn’t mean you should report all of them. If we were writing this up for a report, we would pick out those statistics that are of most interest and then put them into a nice, simple table, giving everything “human readable” names. We can draw scatterplots to give us a general sense of how closely related two variables are. Ideally, we might want to say a bit more about it than that. For instance, let’s compare the relationship between `dan.sleep` and `dan.grump` (**Figure HA3.3**) and see the relationship between `baby.sleep` and `dan.grump` (**Figure HA3.4**). **** &#x20;
 
-Figure 5.6: Histograms for the three interesting variables in the `parenthood` data set
+<figure><img src="https://learningstatisticswithr.com/book/lsr_files/figure-html/scatterparent1a-1.png" alt=""><figcaption><p><strong>Figure HA3.3</strong> Scatterplot showing the relationship between <code>dan.sleep</code> and <code>dan.grump</code></p></figcaption></figure>
 
-One thing to note: just because R can calculate dozens of different statistics doesn’t mean you should report all of them. If I were writing this up for a report, I’d probably pick out those statistics that are of most interest to me (and to my readership), and then put them into a nice, simple table like the one in Table [**??**](https://learningstatisticswithr.com/book/descriptives.html#tab:parenthood).[80](https://learningstatisticswithr.com/book/descriptives.html#fn80) Notice that when I put it into a table, I gave everything “human readable” names. This is always good practice. Notice also that I’m not getting enough sleep. This isn’t good practice, but other parents tell me that it’s standard practice.
+<figure><img src="https://learningstatisticswithr.com/book/lsr_files/figure-html/scatterparent1b-1.png" alt=""><figcaption><p><strong>Figure HA3.4</strong> Scatterplot showing the relationship between <code>baby.sleep</code> and <code>dan.grump</code></p></figcaption></figure>
 
-| variable                | min  | max   | mean  | median | std. dev | IQR  |
-| ----------------------- | ---- | ----- | ----- | ------ | -------- | ---- |
-| Dan’s grumpiness        | 41   | 91    | 63.71 | 62     | 10.05    | 14   |
-| Dan’s hours slept       | 4.84 | 9     | 6.97  | 7.03   | 1.02     | 1.45 |
-| Dan’s son’s hours slept | 3.25 | 12.07 | 8.05  | 7.95   | 2.07     | 3.21 |
 
-#### 5.7.2 The strength and direction of a relationship
 
-![Scatterplot showing the relationship between \`dan.sleep\` and \`dan.grump\`](https://learningstatisticswithr.com/book/lsr\_files/figure-html/scatterparent1a-1.png)
+It’s clear that the relationship is qualitatively the same in both cases: more sleep equals less grump! However, it’s also pretty obvious that the relationship between `dan.sleep` and `dan.grump` is stronger than the relationship between `baby.sleep` and `dan.grump`. The plot in **Figure HA3.3** is “neater”. What it feels like is that if you want to predict Dan's mood, it would help you a little bit to know how many hours his son slept, but it’d be more helpful to know how many hours Dan slept.
 
-Figure 5.7: Scatterplot showing the relationship between `dan.sleep` and `dan.grump`
+If we compare the scatterplot of “`baby.sleep` v `dan.grump`” to the scatterplot of “\``baby.sleep` v `dan.sleep`”, the overall strength of the relationship is the same, but the direction is different. If the son sleeps more, Dan gets more sleep (positive relationship, but if the son sleeps more then Dan gets less grumpy (negative relationship).
 
-![Scatterplot showing the relationship between \`baby.sleep\` and \`dan.grump\`](https://learningstatisticswithr.com/book/lsr\_files/figure-html/scatterparent1b-1.png)
+### The correlation coefficient
 
-Figure 5.8: Scatterplot showing the relationship between `baby.sleep` and `dan.grump`
+We can make these ideas a bit more explicit by introducing the idea of a _**correlation coefficient**_ (or, more specifically, Pearson’s correlation coefficient), which is traditionally denoted by r. The correlation coefficient between two variables is a measure that varies from -1 to +1. When r equals -1 it means that we have a perfect negative relationship, and when r is +1 it means we have a perfect positive relationship. When is there no relationship at all? If you look at **Figure HA3.5**, you can see several plots showing what different correlations look like.
 
-We can draw scatterplots to give us a general sense of how closely related two variables are. Ideally though, we might want to say a bit more about it than that. For instance, let’s compare the relationship between `dan.sleep` and `dan.grump` (Figure [5.7](https://learningstatisticswithr.com/book/descriptives.html#fig:scatterparent1a) with that between `baby.sleep` and `dan.grump` (Figure [5.8](https://learningstatisticswithr.com/book/descriptives.html#fig:scatterparent1b). When looking at these two plots side by side, it’s clear that the relationship is _qualitatively_ the same in both cases: more sleep equals less grump! However, it’s also pretty obvious that the relationship between `dan.sleep` and `dan.grump` is _stronger_ than the relationship between `baby.sleep` and `dan.grump`. The plot on the left is “neater” than the one on the right. What it feels like is that if you want to predict what my mood is, it’d help you a little bit to know how many hours my son slept, but it’d be _more_ helpful to know how many hours I slept.
-
-In contrast, let’s consider Figure [5.8](https://learningstatisticswithr.com/book/descriptives.html#fig:scatterparent1b) vs. Figure [5.9](https://learningstatisticswithr.com/book/descriptives.html#fig:scatterparent2). If we compare the scatterplot of “`baby.sleep` v `dan.grump`” to the scatterplot of “\``baby.sleep` v `dan.sleep`”, the overall strength of the relationship is the same, but the direction is different. That is, if my son sleeps more, I get _more_ sleep (positive relationship, but if he sleeps more then I get _less_ grumpy (negative relationship).
-
-![Scatterplot showing the relationship between \`baby.sleep\` and \`dan.sleep\`](https://learningstatisticswithr.com/book/lsr\_files/figure-html/scatterparent2-1.png)
-
-Figure 5.9: Scatterplot showing the relationship between `baby.sleep` and `dan.sleep`
-
-#### 5.7.3 The correlation coefficient
-
-We can make these ideas a bit more explicit by introducing the idea of a _**correlation coefficient**_ (or, more specifically, Pearson’s correlation coefficient), which is traditionally denoted by $$rr$$. The correlation coefficient between two variables $$XX$$ and $$YY$$ (sometimes denoted $$rXYrXY$$), which we’ll define more precisely in the next section, is a measure that varies from $$−1−1$$ to $$11$$. When $$r=−1r=−1$$ it means that we have a perfect negative relationship, and when $$r=1r=1$$ it means we have a perfect positive relationship. When $$r=0r=0$$, there’s no relationship at all. If you look at Figure [5.10](https://learningstatisticswithr.com/book/descriptives.html#fig:corr), you can see several plots showing what different correlations look like.
-
-![Illustration of the effect of varying the strength and direction of a correlation](https://learningstatisticswithr.com/book/lsr\_files/figure-html/corr-1.png)
-
-Figure 5.10: Illustration of the effect of varying the strength and direction of a correlation
+<figure><img src="https://learningstatisticswithr.com/book/lsr_files/figure-html/corr-1.png" alt=""><figcaption><p><strong>Figure HA3.5</strong> The effect of varying the strength and direction of a correlation</p></figcaption></figure>
 
 The formula for the Pearson’s correlation coefficient can be written in several different ways. I think the simplest way to write down the formula is to break it into two steps. Firstly, let’s introduce the idea of a _**covariance**_. The covariance between two variables $$XX$$ and $$YY$$ is a generalisation of the notion of the variance; it’s a mathematically simple way of describing the relationship between two variables that isn’t terribly informative to humans:$$Cov(X,Y)=1N−1N∑i=1(Xi−¯X)(Yi−¯Y)Cov(X,Y)=1N−1∑i=1N(Xi−X¯)(Yi−Y¯)$$Because we’re multiplying (i.e., taking the “product” of) a quantity that depends on $$XX$$ by a quantity that depends on $$YY$$ and then averaging[81](https://learningstatisticswithr.com/book/descriptives.html#fn81), you can think of the formula for the covariance as an “average cross product” between $$XX$$ and $$YY$$. The covariance has the nice property that, if $$XX$$ and $$YY$$ are entirely unrelated, then the covariance is exactly zero. If the relationship between them is positive (in the sense shown in [Figure@reffig](mailto:Figure@reffig):corr) then the covariance is also positive; and if the relationship is negative then the covariance is also negative. In other words, the covariance captures the basic qualitative idea of correlation. Unfortunately, the raw magnitude of the covariance isn’t easy to interpret: it depends on the units in which $$XX$$ and $$YY$$ are expressed, and worse yet, the actual units that the covariance itself is expressed in are really weird. For instance, if $$XX$$ refers to the `dan.sleep` variable (units: hours) and $$YY$$ refers to the `dan.grump` variable (units: grumps), then the units for their covariance are “hours $$××$$ grumps”. And I have no freaking idea what that would even mean.
 
@@ -815,33 +798,6 @@ day           -0.077      0.058     0.006      .
 The two approaches have different strengths and weaknesses. The “pairwise complete” approach has the advantage that it keeps more observations, so you’re making use of more of your data and (as we’ll discuss in tedious detail in Chapter [10](https://learningstatisticswithr.com/book/estimation.html#estimation) and it improves the reliability of your estimated correlation. On the other hand, it means that every correlation in your correlation matrix is being computed from a slightly different set of observations, which can be awkward when you want to compare the different correlations that you’ve got.
 
 So which method should you use? It depends a lot on _why_ you think your values are missing, and probably depends a little on how paranoid you are. For instance, if you think that the missing values were “chosen” completely randomly[86](https://learningstatisticswithr.com/book/descriptives.html#fn86) then you’ll probably want to use the pairwise method. If you think that missing data are a cue to thinking that the whole observation might be rubbish (e.g., someone just selecting arbitrary responses in your questionnaire), but that there’s no pattern to which observations are “rubbish” then it’s probably safer to keep only those observations that are complete. If you think there’s something systematic going on, in that some observations are more likely to be missing than others, then you have a much trickier problem to solve, and one that is beyond the scope of this book.
-
-### 5.9 Summary
-
-Calculating some basic descriptive statistics is one of the very first things you do when analysing real data, and descriptive statistics are much simpler to understand than inferential statistics, so like every other statistics textbook I’ve started with descriptives. In this chapter, we talked about the following topics:
-
-* _Measures of central tendency_. Broadly speaking, central tendency measures tell you where the data are. There’s three measures that are typically reported in the literature: the mean, median and mode. (Section [5.1](https://learningstatisticswithr.com/book/descriptives.html#centraltendency))
-* _Measures of variability_. In contrast, measures of variability tell you about how “spread out” the data are. The key measures are: range, standard deviation, interquartile reange (Section [5.2](https://learningstatisticswithr.com/book/descriptives.html#var))
-* _Getting summaries of variables in R_. Since this book focuses on doing data analysis in R, we spent a bit of time talking about how descriptive statistics are computed in R. (Section [2.8](https://learningstatisticswithr.com/book/studydesign.html#summary) and [5.5](https://learningstatisticswithr.com/book/descriptives.html#groupdescriptives))
-* _Standard scores_. The $$zz$$-score is a slightly unusual beast. It’s not quite a descriptive statistic, and not quite an inference. We talked about it in Section [5.6](https://learningstatisticswithr.com/book/descriptives.html#zscore). Make sure you understand that section: it’ll come up again later.
-* _Correlations_. Want to know how strong the relationship is between two variables? Calculate a correlation. (Section [5.7](https://learningstatisticswithr.com/book/descriptives.html#correl))
-* _Missing data_. Dealing with missing data is one of those frustrating things that data analysts really wish the didn’t have to think about. In real life it can be hard to do well. For the purpose of this book, we only touched on the basics in Section [5.8](https://learningstatisticswithr.com/book/descriptives.html#missing)
-
-In the next section we’ll move on to a discussion of how to draw pictures! Everyone loves a pretty picture, right? But before we do, I want to end on an important point. A traditional first course in statistics spends only a small proportion of the class on descriptive statistics, maybe one or two lectures at most. The vast majority of the lecturer’s time is spent on inferential statistics, because that’s where all the hard stuff is. That makes sense, but it hides the practical everyday importance of choosing good descriptives. With that in mind…
-
-### 5.10 Epilogue: Good descriptive statistics are descriptive!
-
-> _The death of one man is a tragedy. The death of millions is a statistic._
->
-> – Josef Stalin, Potsdam 1945
-
-> _950,000 – 1,200,000_
->
-> – Estimate of Soviet repression deaths, 1937-1938 (Ellman [2002](https://learningstatisticswithr.com/book/descriptives.html#ref-Ellman2002))
-
-Stalin’s infamous quote about the statistical character death of millions is worth giving some thought. The clear intent of his statement is that the death of an individual touches us personally and its force cannot be denied, but that the deaths of a multitude are incomprehensible, and as a consequence mere statistics, more easily ignored. I’d argue that Stalin was half right. A statistic is an abstraction, a description of events beyond our personal experience, and so hard to visualise. Few if any of us can imagine what the deaths of millions is “really” like, but we can imagine one death, and this gives the lone death its feeling of immediate tragedy, a feeling that is missing from Ellman’s cold statistical description.
-
-Yet it is not so simple: without numbers, without counts, without a description of what happened, we have _no chance_ of understanding what really happened, no opportunity event to try to summon the missing feeling. And in truth, as I write this, sitting in comfort on a Saturday morning, half a world and a whole lifetime away from the Gulags, when I put the Ellman estimate next to the Stalin quote a dull dread settles in my stomach and a chill settles over me. The Stalinist repression is something truly beyond my experience, but with a combination of statistical data and those recorded personal histories that have come down to us, it is not entirely beyond my comprehension. Because what Ellman’s numbers tell us is this: over a two year period, Stalinist repression wiped out the equivalent of every man, woman and child currently alive in the city where I live. Each one of those deaths had it’s own story, was it’s own tragedy, and only some of those are known to us now. Even so, with a few carefully chosen statistics, the scale of the atrocity starts to come into focus.
 
 Thus it is no small thing to say that the first task of the statistician and the scientist is to summarise the data, to find some collection of numbers that can convey to an audience a sense of what has happened. This is the job of descriptive statistics, but it’s not a job that can be told solely using the numbers. You are a data analyst, not a statistical software package. Part of your job is to take these _statistics_ and turn them into a _description_. When you analyse data, it is not sufficient to list off a collection of numbers. Always remember that what you’re really trying to do is communicate with a human audience. The numbers are important, but they need to be put together into a meaningful story that your audience can interpret. That means you need to think about framing. You need to think about context. And you need to think about the individual events that your statistics are summarising.
 
