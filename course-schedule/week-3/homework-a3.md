@@ -10,7 +10,7 @@ Read this tutorial and apply the codes in R.
 
 ### Measures of variability
 
-The statistics that we’ve discussed so far all relate to central tendency. That is, they all talk about which values are “in the middle” or “popular” in the data. However, central tendency is not the only type of summary statistic that we want to calculate. The second thing that we really want is a measure of the variability of the data. That is, how “spread out” are the data? How “far” away from the mean or median do the observed values tend to be? We’ll continue to use the `afl.margins` data to discuss several different measures of spread, each with different strengths and weaknesses.
+The statistics that we’ve discussed so far all relate to central tendency. That is, they all talk about which values are “in the middle” or “popular” in the data. The second thing that we really want is a measure of the variability of the data. That is, how “spread out” are the data? How “far” away from the mean or median do the observed values tend to be? We’ll continue to use the `afl.margins` data to discuss several different measures of spread, each with different strengths and weaknesses.
 
 ### Range
 
@@ -96,7 +96,7 @@ $$
 \bar{X} = 36.6
 $$
 
-&#x20;The next step is to convert each of our observations into a deviation score. We do this by calculating the difference between each observation and the mean. The next step in the process is to convert these deviations to absolute deviations. We use the absolute value function here because we don’t really care whether the value is higher than the mean or lower than the mean, we’re just interested in how close it is to the mean. Now that we have calculated the absolute deviation score for every observation in the data set, all that we have to do to calculate the mean of these scores:
+The next step is to convert each of our observations into a deviation score. We do this by calculating the difference between each observation and the mean. The next step in the process is to convert these deviations to absolute deviations. We use the absolute value function here because we don’t really care whether the value is higher than the mean or lower than the mean, we’re just interested in how close it is to the mean. Now that we have calculated the absolute deviation score for every observation in the data set, all that we have to do to calculate the mean of these scores:
 
 $$
 \frac{19.4 + 5.6 + 19.4 + 28.6 + 4.6}{5} = 15.52
@@ -248,7 +248,7 @@ In short, the IQR and the standard deviation are easily the two most common meas
 
 ### Skew and kurtosis
 
-There are two more descriptive statistics that you will sometimes see reported in literature known as skew and kurtosis. In practice, neither one is used anywhere near as frequently as the measures of central tendency and variability that we have been talking about. **Skewness** is basically a measure of asymmetry, and the easiest way to explain it is by drawing some pictures. As **Figure HA3.1** illustrates, if the data tend to have a lot of extremely small values (i.e., the lower tail is “longer” than the upper tail) and not so many extremely large values (left panel), then we say that the data are negatively skewed. On the other hand, if there are more extremely large values than extremely small ones (right panel) we say that the data are positively skewed.
+**Skewness** is basically a measure of asymmetry, and the easiest way to explain it is by drawing some pictures. As **Figure HA3.1** illustrates, if the data tend to have a lot of extremely small values (i.e., the lower tail is “longer” than the upper tail) and not so many extremely large values (left panel), then we say that the data are negatively skewed. On the other hand, if there are more extremely large values than extremely small ones (right panel) we say that the data are positively skewed.
 
 <figure><img src="https://learningstatisticswithr.com/book/lsr_files/figure-html/skewness-1.png" alt=""><figcaption><p><strong>Figure HA3.1</strong> Illustration of skewness</p></figcaption></figure>
 
@@ -266,9 +266,7 @@ $$
 
 ### Getting an overall summary of a variable
 
-Wouldn’t it be nice if R had some helpful functions that would do all these tedious calculations at once? Something like `summary()` or `describe()`, perhaps? The function `summary()` is in the `base` package, so it comes with every installation of R.
-
-The basic idea behind the `summary()` function is that it prints out some useful information about whatever object (i.e., variable, as far as we’re concerned) you specify as the `object` argument. Let’s start by giving it a _numeric_ object:
+The basic idea behind the function `summary()` is that it prints out some useful information about whatever object (i.e., variable, as far as we’re concerned) you specify as the `object` argument. Let’s start by giving it a _numeric_ object:
 
 ```
 summary(object = afl.margins)  
@@ -342,13 +340,11 @@ pnorm(3.6)
 
 At this stage, this command doesn’t make too much sense, but the output is fairly straightforward: it suggests that Dan is grumpier than 99.98% of people. In addition to allowing you to interpret a raw score in relation to a larger population (and thereby allowing you to make sense of variables that lie on arbitrary scales), standard scores serve a second useful function. Standard scores can be compared to one another in situations where the raw scores can’t. Suppose, for instance, Dan's friend had another questionnaire that measured extraversion using a questionnaire. The overall mean for this measure turns out to be 13, with a standard deviation of 4, and Dan's score is 2. As you can imagine, it doesn’t make a lot of sense to try to compare Dan's raw score of 2 on the extraversion questionnaire to his raw score of 35 on the grumpiness questionnaire. The raw scores for the two variables are “about” fundamentally different things, so this would be like comparing apples to oranges.
 
-If we calculate the standard scores, the two numbers can be compared to each other. Dan is much less extraverted than most people and much grumpier than most people, but the extent of his unusualness is much more extreme for grumpiness (since 3.6 is a bigger number than 2.75). Because each standardized score is a statement about where an observation falls relative to its own population, it is possible to compare standardized scores across completely different variables.
+If we calculate the standard scores, the two numbers can be compared to each other. Dan is much less extroverted than most people and much grumpier than most people, but the extent of his unusualness is much more extreme for grumpiness (since 3.6 is a bigger number than 2.75). Because each standardized score is a statement about where an observation falls relative to its own population, it is possible to compare standardized scores across completely different variables.
 
 ### Correlations
 
-Up to this point, we have focused entirely on how to construct descriptive statistics for a single variable. Now, let's talk about how to describe relationships between variables. To do that, we want to talk mostly about **correlation**.
-
-Let’s turn to a topic close to every parent’s heart: sleep. The following data set is fictitious but based on real events. Suppose we are curious to find out how much Dan's infant son’s sleeping habits affect his mood. Let’s say that Dan can rate his grumpiness very precisely, on a scale from 0 (not at all grumpy) to 100 (grumpy as a very, very grumpy old man). And, let's also assume that Dan has been measuring his grumpiness, sleeping patterns, and his son’s sleeping patterns for 100 days, and, being a nerd, Dan has saved the data as a file called `parenthood.Rdata`:
+Now, let's talk about how to describe relationships between variables. To do that, we want to talk mostly about **correlation**. Suppose we are curious to find out how much Dan's infant son’s sleeping habits affect his mood. Let’s say that Dan can rate his grumpiness very precisely, on a scale from 0 (not at all grumpy) to 100 (grumpy as a very, very grumpy old man). And, let's also assume that Dan has been measuring his grumpiness, sleeping patterns, and his son’s sleeping patterns for 100 days, and, being a nerd, Dan has saved the data as a file called `parenthood.Rdata`:
 
 {% file src="../../.gitbook/assets/parenthood.Rdata" %}
 
@@ -498,9 +494,7 @@ The Pearson correlation coefficient is useful for a lot of things, but it does h
 
 One very common situation where the Pearson correlation isn’t quite the right thing to use arises when an increase in one variable really is reflected in an increase in another variable, but the nature of the relationship isn’t necessarily linear. An example of this might be the relationship between effort and reward when studying for an exam. If you put zero effort into learning a subject, then you should expect a grade of 0. However, a little bit of effort will cause a massive improvement: just turning up to lectures means that you learn a fair bit, and if you just turn up to classes and scribble a few things down, your grade might rise to 35%, all without a lot of effort. However, you just don’t get the same effect at the other end of the scale. As everyone knows, it takes _a_ lot more effort to get a grade of 90% than it takes to get a grade of 55%. What this means is that, if I’ve got data looking at study effort and grades, there’s a pretty good chance that Pearson correlations will be misleading.
 
-To illustrate, consider the data plotted in Figure [5.12](https://learningstatisticswithr.com/book/descriptives.html#fig:rankcorrpic), showing the relationship between hours worked and grades received for 10 students. The curious thing about this – highly fictitious – data set is that increasing effort always increases your grade. It might be by a lot or it might be by a little, but the increasing effort will never decrease your grade.&#x20;
-
-###
+To illustrate, consider the data plotted in **Figure HA3.7**, showing the relationship between hours worked and grades received for 10 students. The curious thing about this – highly fictitious – data set is that increasing effort always increases your grade. It might be by a lot or it might be by a little, but the increased effort will never decrease your grade.&#x20;
 
 <figure><img src="https://learningstatisticswithr.com/book/lsr_files/figure-html/rankcorrpic-1.png" alt=""><figcaption><p><strong>Figure HA3.7</strong> The relationship between hours worked and grade received</p></figcaption></figure>
 
