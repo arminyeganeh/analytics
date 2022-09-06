@@ -1,5 +1,5 @@
 ---
-description: Week 2, HA2, 450 lines, 3 hours to complete
+description: Week 2, HA2, 450-600 lines, 3 hours to complete
 ---
 
 # Homework A2

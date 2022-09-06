@@ -1,5 +1,5 @@
 ---
-description: Week 1, HA1, 450 lines, 3 hours to complete
+description: Week 1, HA1, 450-600 lines, 3 hours to complete
 ---
 
 # Homework A1
