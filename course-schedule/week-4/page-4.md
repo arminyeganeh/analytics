@@ -84,7 +84,7 @@ ggplot(data = mpg) +
 
 # Right
 ggplot(data = mpg) + 
-  geom_point(mapping = aes(x = displ, y = hwy, shape = class))Copy
+  geom_point(mapping = aes(x = displ, y = hwy, shape = class))
 ```
 
 ![Figure LA4.4 Mapping class to transparency](https://d33wubrfki0l68.cloudfront.net/f9280bbd15f46cc9d67a8fa30085c147ccee89c4/402ac/visualize\_files/figure-html/unnamed-chunk-9-1.png) ![Figure LA4.5 Mapping class to shape](https://d33wubrfki0l68.cloudfront.net/1ae399aecbf37c65219a1610aa1b9700a6355834/5d06b/visualize\_files/figure-html/unnamed-chunk-9-2.png)
