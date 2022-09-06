@@ -170,3 +170,42 @@ Active participation in class, e.g., by asking and responding to questions, post
 ### Time Commitment ****&#x20;
 
 This is a 3-credit hour course, which means learners should anticipate spending at least 2 hours 30 min a week on class materials, which may include attending lectures or participating in lab activities. Additionally, learners should anticipate another two hours of reading/homework/study time per lecture hour, which in total is six hours a week of reading, working on assigned homework, and studying for exams.
+
+We all have a responsibility to foster and maintain respectful relationships with others and to promote an equitable and supportive workplace environment. Civility does not imply homogeneity or the absence of conflict; intellectual exchange (even heated intellectual exchange) is pivotal to our academic mission. That said, we need to engage in reasoned exchanges that are professional, respectful, and considerate of individuals and their differences. Civility is a hallmark of a healthy intellectual community; bullying has no place in one.
+
+### SPDC Community Code of Conduct
+
+The College’s strategic plan identifies six values that guide both how we carry out our day-to-day activities and our interactions with each other, within and outside the College:
+
+#### **Quality:**
+
+* We value multiple perspectives and solicit diverse viewpoints because a healthy exchange of ideas is a pivotal part of the academic enterprise and increases the quality of our work. We are free to disagree with one another and engage in honest debate, but we do so in a manner that embodies comity.
+* We lead and interact with positivity and sensitivity to power differentials; we use authority responsibly.
+
+#### Inclusiveness:
+
+* We acknowledge power imbalances and take special care to ensure that the viewpoints of all stakeholders are considered.
+* We treat each other with respect.
+* We solicit and are receptive to diverse feedback from each other.
+
+#### Connectivity:
+
+* We recognize that our words and actions have consequences for others. We act to advance, not degrade, each others’ productivity, and dignity.
+* We cultivate honesty, transparency, and open lines of communication.
+* We work to constructively resolve conflict whenever possible, avoiding personal attacks.
+* We extend civility to each other through all forms of communication, including email and social media.
+
+#### Integrity:
+
+* We do not spread untruths or engage in ad hominem attacks.
+* We give credit to those who deserve it.
+
+#### **Creativity:**
+
+* We ask creative and sometimes difficult questions to ensure we promote and defend academic freedom.
+* We innovate to address challenges and overcome barriers.
+
+#### Empowerment:
+
+* We trust each other to lead and complete tasks.
+* We are accountable to ourselves and to each other to maintain the values of the College.
