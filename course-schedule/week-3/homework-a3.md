@@ -191,142 +191,145 @@ sd(afl.margins)
 
 Interpreting standard deviations is slightly more complex. Because the standard deviation is derived from the variance, and the variance is a quantity that has little to no meaning that makes sense to us humans, the standard deviation doesn’t have a simple interpretation. As a consequence, most of us just rely on a simple rule of thumb: in general, you should expect 68% of the data to fall within 1 standard deviation of the mean, 95% of the data to fall within 2 standard deviations of the mean, and 99.7% of the data to fall within 3 standard deviations of the mean. This rule tends to work pretty well most of the time, but it’s not exact: it’s actually calculated based on an _assumption_ that the histogram is symmetric and bell-shaped. As you can tell from looking at the AFL winning margins histogram, this isn’t exactly true of our data! Even so, the rule is approximately correct. As it turns out, 65.3% of the AFL margins data fall within one standard deviation of the mean.&#x20;
 
-#### 5.2.6 Median absolute deviation
+### Median absolute deviation
 
-The last measure of variability that I want to talk about is the _**median absolute deviation**_ (MAD). The basic idea behind MAD is very simple, and is pretty much identical to the idea behind the mean absolute deviation (Section [5.2.3](https://learningstatisticswithr.com/book/descriptives.html#aad)). The difference is that you use the median everywhere. If we were to frame this idea as a pair of R commands, they would look like this:
+The last measure of variability that we want to talk about is the **median absolute deviation**. The basic idea behind MAD is very simple and is pretty much identical to the idea behind the mean absolute deviation. The difference is that you use the median everywhere. If we were to frame this idea as a pair of R commands, they would look like this:
 
 ```
 # mean absolute deviation from the mean:
-mean( abs(afl.margins - mean(afl.margins)) )
-```
-
-```
-## [1] 21.10124
-```
-
-```
+mean(abs(afl.margins - mean(afl.margins)))
 # *median* absolute deviation from the *median*:
-median( abs(afl.margins - median(afl.margins)) )
+median(abs(afl.margins - median(afl.margins)))
 ```
 
 ```
-## [1] 19.5
+[1] 21.10124
+[1] 19.5
 ```
 
-This has a straightforward interpretation: every observation in the data set lies some distance away from the typical value (the median). So the MAD is an attempt to describe a _typical deviation from a typical value_ in the data set. It wouldn’t be unreasonable to interpret the MAD value of 19.5 for our AFL data by saying something like this:
+This has a straightforward interpretation: every observation in the data set lies some distance away from the typical value (the median). So this is an attempt to describe a typical deviation from a typical value in the data set. It wouldn’t be unreasonable to interpret the MAD value of 19.5 for our AFL data by saying something like this:
 
 > The median winning margin in 2010 was 30.5, indicating that a typical game involved a winning margin of about 30 points. However, there was a fair amount of variation from game to game: the MAD value was 19.5, indicating that a typical winning margin would differ from this median value by about 19-20 points.
 
-As you’d expect, R has a built in function for calculating MAD, and you will be shocked no doubt to hear that it’s called `mad()`. However, it’s a little bit more complicated than the functions that we’ve been using previously. If you want to use it to calculate MAD in the exact same way that I have described it above, the command that you need to use specifies two arguments: the data set itself `x`, and a `constant` that I’ll explain in a moment. For our purposes, the constant is 1, so our command becomes
+As you’d expect, R has a built-in function for calculating MAD, and you will be shocked no doubt to hear that it’s called `mad()`. The command that you need to use specifies two arguments: the data set itself and a constant. For our purposes, the constant is 1, so our command becomes
 
 ```
-mad( x = afl.margins, constant = 1 )
-```
-
-```
-## [1] 19.5
-```
-
-Apart from the weirdness of having to type that `constant = 1` part, this is pretty straightforward.
-
-Okay, so what exactly is this `constant = 1` argument? I won’t go into all the details here, but here’s the gist. Although the “raw” MAD value that I’ve described above is completely interpretable on its own terms, that’s not actually how it’s used in a lot of real world contexts. Instead, what happens a lot is that the researcher _actually_ wants to calculate the standard deviation. However, in the same way that the mean is very sensitive to extreme values, the standard deviation is vulnerable to the exact same issue. So, in much the same way that people sometimes use the median as a “robust” way of calculating “something that is like the mean”, it’s not uncommon to use MAD as a method for calculating “something that is like the standard deviation”. Unfortunately, the _raw_ MAD value doesn’t do this. Our raw MAD value is 19.5, and our standard deviation was 26.07. However, what some clever person has shown is that, under certain assumptions[75](https://learningstatisticswithr.com/book/descriptives.html#fn75), you can multiply the raw MAD value by 1.4826 and obtain a number that is directly comparable to the standard deviation. As a consequence, the default value of `constant` is 1.4826, and so when you use the `mad()` command without manually setting a value, here’s what you get:
-
-```
-mad( afl.margins )
+mad(x = afl.margins, constant = 1)
 ```
 
 ```
-## [1] 28.9107
+[1] 19.5
 ```
 
-I should point out, though, that if you want to use this “corrected” MAD value as a robust version of the standard deviation, you really are relying on the assumption that the data are (or at least, are “supposed to be” in some sense) symmetric and basically shaped like a bell curve. That’s really _not_ true for our `afl.margins` data, so in this case I wouldn’t try to use the MAD value this way.
+Okay, so what exactly is this `constant = 1` argument? In the same way that the mean is very sensitive to extreme values, the standard deviation is vulnerable to the exact same issue. So, in much the same way that people sometimes use the median as a “robust” way of calculating “something that is like the mean”, it’s not uncommon to use MAD as a method for calculating “something that is like the standard deviation”. Unfortunately, the _raw_ MAD value doesn’t do this. Our raw MAD value is 19.5, and our standard deviation was 26.07. However, what some clever person has shown is that, under certain assumptions, you can multiply the raw MAD value by 1.4826 and obtain a number that is directly comparable to the standard deviation. As a consequence, the default value of `constant` is 1.4826, and so when you use the `mad()` command without manually setting a value, here’s what you get:
 
-#### 5.2.7 Which measure to use?
+```
+mad(afl.margins)
+```
 
-We’ve discussed quite a few measures of spread (range, IQR, MAD, variance and standard deviation), and hinted at their strengths and weaknesses. Here’s a quick summary:
+```
+[1] 28.9107
+```
 
-* _Range_. Gives you the full spread of the data. It’s very vulnerable to outliers, and as a consequence it isn’t often used unless you have good reasons to care about the extremes in the data.
-* _Interquartile range_. Tells you where the “middle half” of the data sits. It’s pretty robust, and complements the median nicely. This is used a lot.
-* _Mean absolute deviation_. Tells you how far “on average” the observations are from the mean. It’s very interpretable, but has a few minor issues (not discussed here) that make it less attractive to statisticians than the standard deviation. Used sometimes, but not often.
-* _Variance_. Tells you the average squared deviation from the mean. It’s mathematically elegant, and is probably the “right” way to describe variation around the mean, but it’s completely uninterpretable because it doesn’t use the same units as the data. Almost never used except as a mathematical tool; but it’s buried “under the hood” of a very large number of statistical tools.
+If you want to use this “corrected” MAD value as a robust version of the standard deviation, you really are relying on the assumption that the data are symmetric and basically shaped like a bell curve. That’s really _not_ true for our `afl.margins` data, so in this case, we wouldn’t try to use the MAD value this way.
+
+### Which measure to use?
+
+We have discussed quite a few measures of spread (range, IQR, MAD, variance, and standard deviation) and hinted at their strengths and weaknesses. Here’s a quick summary:
+
+* _Range_. Gives you the full spread of the data. It’s very vulnerable to outliers, and as a consequence, it isn’t often used unless you have good reasons to care about the extremes in the data.
+* _Interquartile range_. Tells you where the “middle half” of the data sits. It’s pretty robust and complements the median nicely. This is used a lot.
+* _Mean absolute deviation_. Tells you how far “on average” the observations are from the mean. It’s very interpretable but has a few minor issues (not discussed here) that make it less attractive to statisticians than the standard deviation. Used sometimes, but not often.
+* _Variance_. Tells you the average squared deviation from the mean. It’s mathematically elegant and is probably the “right” way to describe variation around the mean, but it’s completely uninterpretable because it doesn’t use the same units as the data. Almost never used except as a mathematical tool, but it’s buried “under the hood” of a very large number of statistical tools.
 * _Standard deviation_. This is the square root of the variance. It’s fairly elegant mathematically, and it’s expressed in the same units as the data so it can be interpreted pretty well. In situations where the mean is the measure of central tendency, this is the default. This is by far the most popular measure of variation.
-* _Median absolute deviation_. The typical (i.e., median) deviation from the median value. In the raw form it’s simple and interpretable; in the corrected form it’s a robust way to estimate the standard deviation, for some kinds of data sets. Not used very often, but it does get reported sometimes.
+* _Median absolute deviation_. The typical (i.e., median) deviation from the median value. In the raw form, it’s simple and interpretable. In the corrected form it’s a robust way to estimate the standard deviation, for some kinds of data sets. Not used very often, but it does get reported sometimes.
 
-In short, the IQR and the standard deviation are easily the two most common measures used to report the variability of the data; but there are situations in which the others are used. I’ve described all of them in this book because there’s a fair chance you’ll run into most of these somewhere.
+In short, the IQR and the standard deviation are easily the two most common measures used to report the variability of the data.
 
-### 5.3 Skew and kurtosis
+### Skew and kurtosis
 
-There are two more descriptive statistics that you will sometimes see reported in the psychological literature, known as skew and kurtosis. In practice, neither one is used anywhere near as frequently as the measures of central tendency and variability that we’ve been talking about. Skew is pretty important, so you do see it mentioned a fair bit; but I’ve actually never seen kurtosis reported in a scientific article to date.
+There are two more descriptive statistics that you will sometimes see reported in literature known as skew and kurtosis. In practice, neither one is used anywhere near as frequently as the measures of central tendency and variability that we have been talking about. **Skewness** is basically a measure of asymmetry, and the easiest way to explain it is by drawing some pictures. As **Figure HA3.1** illustrates, if the data tend to have a lot of extremely small values (i.e., the lower tail is “longer” than the upper tail) and not so many extremely large values (left panel), then we say that the data are negatively skewed. On the other hand, if there are more extremely large values than extremely small ones (right panel) we say that the data are positively skewed.
 
-```
-## [1] -0.9246796
-```
+<figure><img src="https://learningstatisticswithr.com/book/lsr_files/figure-html/skewness-1.png" alt=""><figcaption><p><strong>Figure HA3.1</strong> Illustration of skewness</p></figcaption></figure>
 
-```
-## [1] -0.00814197
-```
+$$
+\mbox{skewness}(X) = \frac{1}{N \hat{\sigma}^3} \sum_{i=1}^N (X_i - \bar{X})^3
+$$
 
-![An illustration of skewness. On the left we have a negatively skewed data set (skewness $= -.93$), in the middle we have a data set with no skew (technically, skewness $= -.006$), and on the right we have a positively skewed data set (skewness $= .93$).](https://learningstatisticswithr.com/book/lsr\_files/figure-html/skewness-1.png)
+The final measure that is sometimes referred to, though very rarely in practice, is the **kurtosis** of a data set. Put simply, kurtosis is a measure of the “pointiness” of a data set, as illustrated in **Figure HA3.2**. By convention, we say that the “normal curve” (black lines) has zero kurtosis, so the pointiness of a data set is assessed relative to this curve. In this Figure, the data on the left is not pointy enough, so the kurtosis is negative and we call the data platykurtic. The data on the right are too pointy, so the kurtosis is positive and we say that the data is leptokurtic. But the data in the middle are just pointy enough, so we say that it is mesokurtic and has kurtosis zero.
 
-Figure 5.4: An illustration of skewness. On the left we have a negatively skewed data set (skewness $$=−.93=−.93$$), in the middle we have a data set with no skew (technically, skewness $$=−.006=−.006$$), and on the right we have a positively skewed data set (skewness $$=.93=.93$$).
+<figure><img src="https://learningstatisticswithr.com/book/lsr_files/figure-html/kurtosis-1.png" alt=""><figcaption><p><strong>Figure HA3.2</strong> An illustration of kurtosis</p></figcaption></figure>
 
-```
-## [1] 0.9197452
-```
+$$
+\mbox{kurtosis}(X) = \frac{1}{N \hat\sigma^4} \sum_{i=1}^N \left( X_i - \bar{X} \right)^4  - 3
+$$
 
-Since it’s the more interesting of the two, let’s start by talking about the _**skewness**_. Skewness is basically a measure of asymmetry, and the easiest way to explain it is by drawing some pictures. As Figure [5.4](https://learningstatisticswithr.com/book/descriptives.html#fig:skewness) illustrates, if the data tend to have a lot of extreme small values (i.e., the lower tail is “longer” than the upper tail) and not so many extremely large values (left panel), then we say that the data are _negatively skewed_. On the other hand, if there are more extremely large values than extremely small ones (right panel) we say that the data are _positively skewed_. That’s the qualitative idea behind skewness. The actual formula for the skewness of a data set is as follows$$skewness(X)=1N^σ3N∑i=1(Xi−¯X)3skewness(X)=1Nσ^3∑i=1N(Xi−X¯)3$$where $$NN$$ is the number of observations, $$¯XX¯$$ is the sample mean, and $$^σσ^$$ is the standard deviation (the “divide by $$N−1N−1$$” version, that is). Perhaps more helpfully, it might be useful to point out that the `psych` package contains a `skew()` function that you can use to calculate skewness. So if we wanted to use this function to calculate the skewness of the `afl.margins` data, we’d first need to load the package
+### Getting an overall summary of a variable
 
-```
-library( psych )
-```
+Wouldn’t it be nice if R had some helpful functions that would do all these tedious calculations at once? Something like `summary()` or `describe()`, perhaps? The function `summary()` is in the `base` package, so it comes with every installation of R.
 
-which now makes it possible to use the following command:
+The basic idea behind the `summary()` function is that it prints out some useful information about whatever object (i.e., variable, as far as we’re concerned) you specify as the `object` argument. Let’s start by giving it a _numeric_ object:
 
 ```
-skew( x = afl.margins )
+summary(object = afl.margins)  
 ```
 
 ```
-## [1] 0.7671555
+Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+0.00   12.75   30.50   35.30   50.50  116.00
 ```
 
-Not surprisingly, it turns out that the AFL winning margins data is fairly skewed.
+It gives us the minimum and maximum values (i.e., the range), the first and third quartiles (25th and 75th percentiles; i.e., the IQR), the mean, and the median. In other words, it gives us a pretty good collection of descriptive statistics related to the central tendency and the spread of the data. In the context of logical data, the function `summary()` gives us a count of the number of `TRUE` values, the number of `FALSE` values, and the number of missing values (i.e., the `NA`s).&#x20;
 
-The final measure that is sometimes referred to, though very rarely in practice, is the _**kurtosis**_ of a data set. Put simply, kurtosis is a measure of the “pointiness” of a data set, as illustrated in Figure [5.5](https://learningstatisticswithr.com/book/descriptives.html#fig:kurtosis).
+Okay, what about data frames? When you pass a data frame to the `summary()` function, it produces a slightly condensed summary of each variable inside the data frame. To give you a sense of how this can be useful, let’s try this for a new data set, one that you’ve never seen before. The data is stored in the `clinicaltrial.Rdata` . Let’s load it, and see what we’ve got:
 
-```
-## [1] -0.9516587
-```
+{% file src="../../.gitbook/assets/clinicaltrial.Rdata" %}
 
 ```
-## [1] 0.006731404
-```
-
-![An illustration of kurtosis. On the left, we have a "platykurtic" data set (kurtosis = $-.95$), meaning that the data set is "too flat". In the middle we have a "mesokurtic" data set (kurtosis is almost exactly 0), which means that the pointiness of the data is just about right. Finally, on the right, we have a "leptokurtic" data set (kurtosis $= 2.12$) indicating that the data set is "too pointy". Note that kurtosis is measured with respect to a normal curve (black line)](https://learningstatisticswithr.com/book/lsr\_files/figure-html/kurtosis-1.png)
-
-Figure 5.5: An illustration of kurtosis. On the left, we have a “platykurtic” data set (kurtosis = $$−.95−.95$$), meaning that the data set is “too flat”. In the middle we have a “mesokurtic” data set (kurtosis is almost exactly 0), which means that the pointiness of the data is just about right. Finally, on the right, we have a “leptokurtic” data set (kurtosis $$=2.12=2.12$$) indicating that the data set is “too pointy”. Note that kurtosis is measured with respect to a normal curve (black line)
-
-```
-## [1] 2.068523
-```
-
-By convention, we say that the “normal curve” (black lines) has zero kurtosis, so the pointiness of a data set is assessed relative to this curve. In this Figure, the data on the left are not pointy enough, so the kurtosis is negative and we call the data _platykurtic_. The data on the right are too pointy, so the kurtosis is positive and we say that the data is _leptokurtic_. But the data in the middle are just pointy enough, so we say that it is _mesokurtic_ and has kurtosis zero. This is summarised in the table below:
-
-| informal term      | technical name | kurtosis value |
-| ------------------ | -------------- | -------------- |
-| too flat           | platykurtic    | negative       |
-| just pointy enough | mesokurtic     | zero           |
-| too pointy         | leptokurtic    | positive       |
-
-The equation for kurtosis is pretty similar in spirit to the formulas we’ve seen already for the variance and the skewness; except that where the variance involved squared deviations and the skewness involved cubed deviations, the kurtosis involves raising the deviations to the fourth power:[76](https://learningstatisticswithr.com/book/descriptives.html#fn76)$$kurtosis(X)=1N^σ4N∑i=1(Xi−¯X)4−3kurtosis(X)=1Nσ^4∑i=1N(Xi−X¯)4−3$$I know, it’s not terribly interesting to me either. More to the point, the `psych` package has a function called `kurtosi()` that you can use to calculate the kurtosis of your data. For instance, if we were to do this for the AFL margins,
-
-```
-kurtosi( x = afl.margins )
+load( "./data/clinicaltrial.Rdata" )
+who(TRUE)
 ```
 
 ```
-## [1] 0.02962633
+##    -- Name --    -- Class --   -- Size --
+##    clin.trial    data.frame    18 x 3    
+##     $drug        factor        18        
+##     $therapy     factor        18        
+##     $mood.gain   numeric       18
 ```
 
-we discover that the AFL winning margins data are just pointy enough.
+There’s a single data frame called `clin.trial` which contains three variables, `drug`, `therapy` and `mood.gain`. Presumably, this data is from a clinical trial of some kind, in which people were administered different drugs; and the researchers looked to see what the drugs did to their mood. Let’s see if the `summary()` function sheds a little more light on this situation:
 
+```
+summary(clin.trial)
+```
+
+```
+drug         therapy        mood.gain     
+placebo :6   no.therapy:9   Min.   :0.1000  
+anxifree:6   CBT       :9   1st Qu.:0.4250  
+joyzepam:6                  Median :0.8500  
+                            Mean   :0.8833  
+                            3rd Qu.:1.3000  
+                            Max.   :1.8000
+```
+
+Evidently, there were three drugs: a placebo, something called anxifree, and something called joyzepam and there were 6 people administered each drug. There were 9 people treated using cognitive behavioral therapy (CBT) and 9 people who received no psychological treatment. And we can see from looking at the summary of the `mood.gain` variable that most people did show a mood gain, though without knowing what the scale is here it’s hard to say much more than that. Still, that’s not too bad.
+
+### Standard scores
+
+The standard score is defined as the number of standard deviations above the mean that my grumpiness score lies. To phrase it in “pseudo-maths” the standard score is calculated like this:$$standard score=raw score−meanstandard deviationstandard score=raw score−meanstandard deviation$$In actual maths, the equation for the $$zz$$-score is$$zi=Xi−¯X^σzi=Xi−X¯σ^$$So, going back to the grumpiness data, we can now transform Dan’s raw grumpiness into a standardised grumpiness score.[77](https://learningstatisticswithr.com/book/descriptives.html#fn77) If the mean is 17 and the standard deviation is 5 then my standardised grumpiness score would be[78](https://learningstatisticswithr.com/book/descriptives.html#fn78)$$z=35−175=3.6z=35−175=3.6$$To interpret this value, recall the rough heuristic that I provided in Section [5.2.5](https://learningstatisticswithr.com/book/descriptives.html#sd), in which I noted that 99.7% of values are expected to lie within 3 standard deviations of the mean. So the fact that my grumpiness corresponds to a $$zz$$ score of 3.6 indicates that I’m very grumpy indeed. Later on, in Section [9.5](https://learningstatisticswithr.com/book/probability.html#normal), I’ll introduce a function called `pnorm()` that allows us to be a bit more precise than this. Specifically, it allows us to calculate a theoretical percentile rank for my grumpiness, as follows:
+
+```
+pnorm( 3.6 )
+```
+
+```
+## [1] 0.9998409
+```
+
+At this stage, this command doesn’t make too much sense, but don’t worry too much about it. It’s not important for now. But the output is fairly straightforward: it suggests that I’m grumpier than 99.98% of people. Sounds about right.
+
+In addition to allowing you to interpret a raw score in relation to a larger population (and thereby allowing you to make sense of variables that lie on arbitrary scales), standard scores serve a second useful function. Standard scores can be compared to one another in situations where the raw scores can’t. Suppose, for instance, my friend also had another questionnaire that measured extraversion using a 24 items questionnaire. The overall mean for this measure turns out to be 13 with standard deviation 4; and I scored a 2. As you can imagine, it doesn’t make a lot of sense to try to compare my raw score of 2 on the extraversion questionnaire to my raw score of 35 on the grumpiness questionnaire. The raw scores for the two variables are “about” fundamentally different things, so this would be like comparing apples to oranges.
+
+What about the standard scores? Well, this is a little different. If we calculate the standard scores, we get $$z=(35−17)/5=3.6z=(35−17)/5=3.6$$ for grumpiness and $$z=(2−13)/4=−2.75z=(2−13)/4=−2.75$$ for extraversion. These two numbers _can_ be compared to each other.[79](https://learningstatisticswithr.com/book/descriptives.html#fn79) I’m much less extraverted than most people ($$z=−2.75z=−2.75$$) and much grumpier than most people ($$z=3.6z=3.6$$): but the extent of my unusualness is much more extreme for grumpiness (since 3.6 is a bigger number than 2.75). Because each standardised score is a statement about where an observation falls _relative to its own population_, it _is_ possible to compare standardised scores across completely different variables.
