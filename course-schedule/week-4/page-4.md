@@ -104,11 +104,21 @@ Here, the color doesn’t convey information about a variable, but only changes 
 
 * The name of a color as a character string.
 * The size of a point in mm.
-* The shape of a point as a number, as shown in Figure [3.1](https://r4ds.had.co.nz/data-visualisation.html#fig:shapes).
+* The shape of a point as a number, as shown in **Figure LA4.7**.
 
-![R has 25 built in shapes that are identified by numbers. There are some seeming duplicates: for example, 0, 15, and 22 are all squares. The difference comes from the interaction of the \`colour\` and \`fill\` aesthetics. The hollow shapes (0--14) have a border determined by \`colour\`; the solid shapes (15--20) are filled with \`colour\`; the filled shapes (21--24) have a border of \`colour\` and are filled with \`fill\`.](https://d33wubrfki0l68.cloudfront.net/e28a1b57b6622cf67fd8a7e01c6a9955914f8fe9/635be/visualize\_files/figure-html/shapes-1.png)
+<figure><img src="https://d33wubrfki0l68.cloudfront.net/e28a1b57b6622cf67fd8a7e01c6a9955914f8fe9/635be/visualize_files/figure-html/shapes-1.png" alt=""><figcaption><p><strong>Figure LA4.7</strong> Identifying point shapes using numbers</p></figcaption></figure>
 
-Figure 3.1: R has 25 built in shapes that are identified by numbers. There are some seeming duplicates: for example, 0, 15, and 22 are all squares. The difference comes from the interaction of the `colour` and `fill` aesthetics. The hollow shapes (0–14) have a border determined by `colour`; the solid shapes (15–20) are filled with `colour`; the filled shapes (21–24) have a border of `colour` and are filled with `fill`.
+There are some seeming duplicates: for example, 0, 15, and 22 are all squares. The difference comes from the interaction of the `colour` and `fill` aesthetics. The hollow shapes (0–14) have a border determined by `colour`; the solid shapes (15–20) are filled with `colour`; the filled shapes (21–24) have a border of `colour` and are filled with `fill`.
 
+One way to add additional variables is with aesthetics. Another way, particularly useful for categorical variables, is to split your plot into **facets**, subplots that each display one subset of the data.
 
+To facet your plot by a single variable, use `facet_wrap()`. The first argument of `facet_wrap()` should be a formula, which you create with [`~`](https://rdrr.io/r/base/tilde.html) followed by a variable name (here “formula” is the name of a data structure in R, not a synonym for “equation”). The variable that you pass to `facet_wrap()` should be discrete.
+
+```
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy)) + 
+  facet_wrap(~ class, nrow = 2)Copy
+```
+
+![](https://d33wubrfki0l68.cloudfront.net/cfc07b44ca9549597084bb18593c6aa115725240/8843c/visualize\_files/figure-html/unnamed-chunk-12-1.png)
 
