@@ -56,11 +56,11 @@ By the end of this course, learners will be able to:&#x20;
 
 **Recommended Books on Statistics, R, and Python:**
 
-* Navarro, D. (2019) [Learning Stats with R](https://learningstatisticswithr.com/book/)
-* Grolemund, G., & Wickham H. (2022). [R for Data Science](https://r4ds.had.co.nz/)
-* Venables, W. et al. (2022). [An Introduction to R](https://cran.r-project.org/manuals.html)
 * Agresti, A. (2018). Statistical Methods for the Social Sciences.
 * Garson, D. G. (2022). Data Analytics for the Social Sciences.
+* Grolemund, G., & Wickham H. (2022). [R for Data Science](https://r4ds.had.co.nz/)
+* Venables, W. et al. (2022). [An Introduction to R](https://cran.r-project.org/manuals.html)
+* Mckinney, W. (2022). [Python for Data Analysis](https://wesmckinney.com/book/)&#x20;
 
 ### Course Structure
 
