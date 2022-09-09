@@ -44,9 +44,8 @@ By the end of this course, learners will be able to:&#x20;
 
 **Course prerequisites:** The only prerequisite for this class is graduate standing at MSU. The instructor assumes little knowledge of quantitative techniques, although learners should have basic knowledge of mathematics and statistics. The class is quantitatively inclined, but coding skills and university-level math are not required. Reviewing the following topics is recommended if not being used recently: [College Algebra](https://openstax.org/details/books/college-algebra), [Calculus](https://openstax.org/details/books/calculus-volume-1), and [Introductory Statistics](https://openstax.org/details/books/introductory-statistics).
 
-**Recommended Books on Statistics:**
+**Required Text Book:**
 
-* Agresti, A. (2018). Statistical Methods for the Social Sciences.
 * Bekez G. & Kezdi B. (2021). Data Analysis for Business, Economics, and Analysis. &#x20;
 
 **Recommended Books on Real Estate and Analytics:**
@@ -55,12 +54,13 @@ By the end of this course, learners will be able to:&#x20;
 * Levy, R. M. (2019). Introduction to Real Estate Development and Finance.&#x20;
 * Winson-Geideman, K. et al. (2017). Real Estate Analysis in the Information Age.&#x20;
 
-**Recommended Books on R and Python:**
+**Recommended Books on Statistics, R, and Python:**
 
-* Navarro, D. (2019) [Learning Stats with R](https://learningstatisticswithr.com/book/)
+* Agresti, A. (2018). Statistical Methods for the Social Sciences.
+* Garson, D. G. (2022). Data Analytics for the Social Sciences.
 * Grolemund, G., & Wickham H. (2022). [R for Data Science](https://r4ds.had.co.nz/)
 * Venables, W. et al. (2022). [An Introduction to R](https://cran.r-project.org/manuals.html)
-* Garson, D. G. (2022). Data Analytics for the Social Sciences.
+* Mckinney, W. (2022). [Python for Data Analysis](https://wesmckinney.com/book/)&#x20;
 
 ### Course Structure
 
