@@ -1,0 +1,3 @@
+# Statistics
+
+"We use the term "statistics" in the broad sense to refer to methods for obtaining and analyzing data. **Statistics** consists of a body of methods for obtaining and analyzing data. Specifically, statistics provides methods for 1. Design (Planning how to gather data for research studies); 2. Description (Summarizing the data), and 3. Inference (Making predictions based on the data) ... a statistical analysis is classified as descriptive or inferential, according to whether its main purpose is to describe the data or to make predictions. To explain this distinction further, we next define the population and the sample." (Agresti, 2018)

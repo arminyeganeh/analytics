@@ -1,0 +1,14 @@
+# Data Quality
+
+"Garbage in - garbage out. This summarizes the prime importance of data quality. The results of an analysis cannot be better than the data it uses. If our data is useless to answer our question, the results of our analysis are bound to be useless, no matter how fancy a method we apply to it. Conversely, with excellent data, even the simplest methods may deliver very useful results. Sophisticated data analysis may uncover patterns from complicated and messy data but only if the information is there ... Data quality is determined by how the data was born, and data collection affects various aspects of data quality in different ways. For example, the validity of the most important variables tends to be higher in primary sources of data, while coverage tends to be more complete in admin data. However, that's not always the case, and even when it is, we shouldn't think in terms of extremes. Instead, it is best to think of these issues as part of a continuum. " (Bekes, 2021)&#x20;
+
+
+
+| Aspect             | Description                                                                                                                                                                                                      |
+| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Content            | The content of a variable is determined by how it was measured, not by what it was meant to measure. As a consequence, just because a variable is given a particular name, it does not necessarily measure that. |
+| Validity           | The content of a variable (actual content) should be as close as possible to what it is meant to measure (intended content).                                                                                     |
+| Reliability        | Measurement of a variable should be stable, leading to the same value if measured the same way again.                                                                                                            |
+| Comparability      | A variable should be measured the same way for all observations.                                                                                                                                                 |
+| Coverage           | Ideally, observations in the collected dataset should include all of those that were intended to be covered (complete coverage). In practice, they may not (incomplete coverage).                                |
+| Unbiased selection | If coverage is incomplete, the observations that are included should be similar to all observations that were intended to be covered (and, thus, to those that are left uncovered).                              |
