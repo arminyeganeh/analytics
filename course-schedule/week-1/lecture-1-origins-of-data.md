@@ -4,25 +4,41 @@ description: Week 1, Lecture A1.1, 1500 words, 1 hour to complete
 
 # Origins of Data
 
+### Why study data analytics?
+
+"Increasingly many jobs expect knowledge of statistical methods. Every day you are exposed to an explosion of information, from advertising, news reporting, political campaigning, surveys about opinions on controversial issues, and other communications containing statistical arguments. Statistics helps you make sense of this information and better understand the world. You will find concepts from this text helpful in judging the information you will encounter in your everyday life." (Agresti)
+
 ### Data
 
-Data is "factual information, such as measurements or statistics, used as a basis for reasoning, discussion, or calculation." (Merriam-Webster) Data rarely comes in a form that can directly answer our questions.&#x20;
+Data is "factual information, such as measurements or statistics, used as a basis for reasoning, discussion, or calculation." (Merriam-Webster) "Information gathering is at the heart of all sciences, providing the observations used in statistical analyses. The observations gathered on the characteristics of interest are collectively called data." (Agresti) "Data rarely comes in a form that can directly answer our questions." (Bekes)
+
+### Statistics
+
+"In this text, we use the term "statistics" in the broad sense to refer to methods for obtaining and analyzing data. **Statistics** consists of a body of methods for obtaining and analyzing data. Specifically, statistics provides methods for 1. Design (Planning how to gather data for research studies); 2. Description (Summarizing the data), and 3. Inference (Making predictions based on the data) ... a statistical analysis is classified as descriptive or inferential, according to whether its main purpose is to describe the data or to make predictions. To explain this distinction further, we next define the population and the sample." (Agresti)
+
+### Population and Sample
+
+"The entities that a study observes are called the subjects for the study. Usually, the subjects are people, such as in the GSS, but they might instead be families, schools, cities, or companies, for instance ... The **population** is the total set of subjects of interest in a study. A **sample** is the subset of the population on which the study collects data ... The ultimate goal of any study is to learn about populations. But it is almost always necessary, and more practical, to observe only samples from those populations. For example, the GSS and polling organizations such as the Gallup poll usually select samples of about 1000—3000 Americans to collect information about opinions and beliefs of the population of all Americans." (Agresti)
+
+### **Descriptive and inferential statistics**
+
+"Descriptive statistics summarize the information in a collection of data. Descriptive statistics consists of graphs, tables, and numbers such as averages and percentages. The main purpose of descriptive statistics is to reduce the data to simpler and more understandable forms without distorting or losing much information. Although data are usually available only for a sample, descriptive statistics are also useful when data are available for the entire population, such as in a census. By contrast, inferential statistics apply when data are available only for a sample but we want to make a prediction about the entire population. Inferential statistics provide predictions about a population, based on data from a sample of that population." (Agresti)
 
 ### Data analysis
 
-Data analysis is a process. It starts with formulating a question and collecting appropriate data or assessing whether the available data can help answer the question. Then comes cleaning and organizing the data, tedious but essential tasks that affect analysis results as much as any other step in the process. Exploratory data analysis gives context to results and helps us decide the details of the analytical method to be applied. The primary analysis consists of choosing and implementing the method to answer the question, with potential robustness checks. Along the way, correct interpretation and effective presentation of the results are crucial. Carefully crafted data visualization helps us summarize our findings and convey key messages. The final step is to answer the original question, with potential qualifications and directions for future inquiries.
+"Description and inference are the two types of statistical analysis—ways of analyzing the data." (Agresti)
+
+"Data analysis is a process. It starts with formulating a question and collecting appropriate data or assessing whether the available data can help answer the question. Then comes cleaning and organizing the data, tedious but essential tasks that affect the analysis results as much as any other step in the process. Exploratory data analysis gives context to the eventual results and helps us decide on the details of the analytical method to be applied. The main analysis consists of choosing and implementing the method to answer the question, with potential robustness checks. Along the way, correct interpretation and effective presentation of the results are crucial. Carefully crafted data visualization help summarize our findings and convey key messages. The final task is to answer the original question, with potential qualifications and directions for future inquiries." (Bekes)
 
 ### Data table
 
-Data is most straightforward when it comes in the format of a data table. A data table consists of observations (cases) and variables (features). In a data table, each row is a unique observation, and whatever is in a row is information about that specific observation. Columns are variables: column number one is variable number one, column number two is variable number two, etc. A dataset is a broader concept that includes, potentially, multiple data tables with different kinds of information.&#x20;
+"Data is most straightforward to analyze if it forms a single data table. A data table consists of observations and variables. Observations are also known as cases. Variables are also called features. When using the mathematical name for tables, the data table is called the data matrix. A dataset is a broader concept that includes, potentially, multiple data tables with different kinds of information to be used in the same analysis. In a data table, the rows are the observations: each row is a different observation, and whatever is in a row is information about that specific observation. Columns are variables, so that column one is variable one, column two is another variable, and so on." (Bekes)&#x20;
 
-### Data format
+### CSV file
 
-A common file format for data tables is a comma-separated-values file (CSV). CSV files are text files of a data table, in which columns are separated by a character called a delimiter (often a comma or a semicolon).
+"A common file format for data tables is the csv file (for "comma separated values"). csv files are text files of a data table, with rows and columns. Rows are separated by end of line signs; columns are separated by a character called a delimiter (often a comma or a semicolon). Variables are identified by names. The data table may have variable names already, and analysts are free to use those names or rename the variables. Personal taste plays a role here: some prefer short names that are easier to work with in code; others prefer long names that are more informative; yet others prefer variable names that refer to something other than their content (such as the question number in a survey questionnaire). It is good practice to include the names of the variables in the first row of a csv data table. The observations start with the second row and go on until the end of the file. Observations are identified by identifier or ID variables. An observation is identified by a single ID variable, or by a combination of multiple ID variables. ID variables, or their combinations, should uniquely identify each observation. They may be numeric or text containing letters or other characters. They are usually contained in the first column of data tables." (Bekes)&#x20;
 
-Variables are identified by names. The data table may have variable names already, and analysts are free to use those names or rename the variables. Some analysts prefer short names that are easier to work with in code; others prefer long names that are more informative.&#x20;
-
-Observations are identified by single or multiple identifier (ID) variables that uniquely identify each observation. ID variables may be numeric or text containing letters or other characters. ID variables typically come in the first column of data tables. We use the notation&#x20;
+We use the notation&#x20;
 
 $$
 X_i
@@ -32,19 +48,19 @@ to refer to the value of variable x for the i-th observation. i typically refers
 
 ### Data Structures
 
-Observation structures can be **cross-sectional**, **time series**, or **multi-dimensional**. Cross-sectional data belong to the same time and refer to different units, such as different individuals, families, houses, firms, and countries. Ideally, all observations in a cross-sectional dataset are observed at the exact same time. In practice, this often means there have been some time intervals among observations. When that interval is narrow, data analysts treat it as if it were a single point in time.
+"Observations in cross-sectional data, often abbreviated as xsec data, come from the same time, and they refer to different units such as different individuals, families, firms, and countries. Ideally, all observations in a cross-sectional dataset are observed at the exact same time. In practice, this often means a particular time interval. When that interval is narrow, data analysts treat it as if it were a single point in time.
 
-In most cross-sectional data, the order of observations in the dataset does not matter: the first data row may be switched with the second data row, and the information content of the data would be the same. Cross-sectional data has the simplest structure.
+In most cross-sectional data, the ordering of observations in the dataset does not matter: the first data row may be switched with the second data row, and the information content of the data would be the same. Cross-sectional data has the simplest structure. Therefore we introduce most methods and tools of data analysis using cross-sectional data and turn to other data structures later.
 
-Observations in time series data refer to a single unit observed multiple times, e.g., a shop's monthly sales values. In time series data, there is a natural ordering of the observations, which is typically important for the analysis.&#x20;
+Observations in time series data refer to a single unit observed multiple times, such as a shop's monthly sales values. In time series data, there is a natural ordering of the observations, which is typically important for the analysis. A common abbreviation used for time series data is tseries data. We shall discuss the specific features of time series data in Chapter 1 2, where we introduce time series analysis.
 
-Multi-dimensional (panel) data, as its name suggests, has more than one dimension. A common type of panel data has many units, each observed multiple times. Such data is called longitudinal data, or cross-section time series data. Examples include countries observed repeatedly for several years, data on employees of a firm on a monthly basis, or prices of several company stocks observed on many days.
+Multi-dimensional data, as its name suggests, has more than one dimension. It is also called panel data. A common type of panel data has many units, each observed multiple times. Such data is called longitudinal data, or cross-section time series data, abbreviated as Xt data. Examples include countries observed repeatedly for several years, data on employees of a firm on a monthly basis, or prices of several company stocks observed on many days." (Bekes)&#x20;
 
-Multi-dimensional datasets can be represented in table formats in various ways. For Xt data, the most convenient format has one observation representing one unit observed at one time (country-year observations, person-month observations, company-day observations) so that one unit (country, employee, company) is represented by multiple observations. In Xt data tables, observations are identified by two ID variables: one for the cross-sectional units and one for time. Xt data is called balanced if all cross-sectional units have observations for the very same time periods. It is called unbalanced if some cross-sectional units are observed more times than others. We shall discuss other specific features of multi-dimensional data in Chapter 23 where we discuss the analysis of panel data in detail.
+### Aggregated data
 
-Another important feature of data is the level of aggregation of observations. Data with information on people may have observations at different levels: age is at the individual level, home location is at the family level, and real estate prices may be available as averages for zip code areas. Data with information on manufacturing firms may have observations at the level of plants, firms as legal entities (possibly with multiple plants), industries with multiple firms, and so on. Time series data on transactions may have observations for each transaction or for transactions aggregated over some time period.
+"Another important feature of data is the level of aggregation of observations. Data with information on people may have observations at different levels: age is at the individual level, home location is at the family level, and real estate prices may be available as averages for zip code areas.
 
-Sometimes data is available at a level of aggregation that is different from the ideal level. If data is too disaggregated (i.e., by establishments within firms when decisions are made at the firm level), we may want to aggregate all variables to the preferred level. If, however, the data is too aggregated (i.e., industry-level data when we want firm-level data), there isn't much that can be done. Such data miss potentially important information.
+Sometimes data is available at a level of aggregation that is different from the ideal level. If data is too disaggregated (i.e., by establishments within firms when decisions are made at the firm level), we may want to aggregate all variables to the preferred level. If, however, the data is too aggregated (i.e., industry-level data when we want firm-level data), there isn't much that can be done. Such data misses potentially important information. Analyzing such data may uncover interesting patterns, but the discrepancy between the ideal level of aggregation and the available level of aggregation may have important consequences for the results and has to be kept in mind throughout the analysis." (Bekes)&#x20;
 
 ### Data Quality
 
