@@ -1,10 +1,10 @@
 ---
-description: Week 1, Lab A1, 150-250 lines, 1 hour to complete
+description: Lab A1, 150-250 lines, 1 hour to complete
 ---
 
 # Intro to R & RStudio
 
-### LA1 Instructions
+### Instructions
 
 Read this tutorial and apply the codes in R.
 

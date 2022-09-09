@@ -1,10 +1,10 @@
 ---
-description: Week 1, HA1, 450-600 lines, 3 hours to complete
+description: Homework A1, 450-600 lines, 3 hours to complete
 ---
 
-# Homework A1
+# Getting started with R
 
-### HA1 Instructions
+### Instructions
 
 Read this tutorial and apply the codes in R.
 

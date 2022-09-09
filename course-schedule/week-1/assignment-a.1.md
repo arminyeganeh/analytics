@@ -1,8 +1,4 @@
----
-description: Week 1, Reading Instructions, 50 pages, 2 hours to complete
----
-
-# Submission
+# Assignment A.1
 
 **Lecture A1.1** and **Lecture A1.2** summarize the following:&#x20;
 
