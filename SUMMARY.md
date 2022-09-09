@@ -30,7 +30,7 @@
     * [Data Collection Practices](course-schedule/week-1/origins-of-data/data-collection-practices.md)
   * [Preparing Data](course-schedule/week-1/lecture-2-preparing-data.md)
   * [Intro to R & RStudio](course-schedule/week-1/lab.md)
-  * [Getting started with R](course-schedule/week-1/getting-started-with-r.md)
+  * [Getting started with R](course-schedule/week-1/homework-a1.md)
   * [Assignment A.1](course-schedule/week-1/assignment-a.1.md)
   * [References](course-schedule/week-1/readings.md)
   * [FAQs](course-schedule/week-1/faqs.md)
