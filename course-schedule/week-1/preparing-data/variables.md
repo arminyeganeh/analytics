@@ -1,6 +1,6 @@
 # Variables
 
-### Variable
+### Variables
 
 "Any characteristic we can measure for each subject is called a variable. The name reflects that values of the characteristic vary among subjects ... Different subjects may have different values of a variable. Examples of variables are income last year, number of siblings, whether employed, and gender. The values the variable can take form the measurement scale. The valid statistical methods for a variable depend on its measurement scale. We treat a numerical-valued variable such as annual income differently than a variable with a measurement scale consisting of categories, such as (yes, no) for whether employed." (Agresti, 2018)
 
@@ -10,11 +10,5 @@
 
 "We distinguish between categorical and quantitative variables because different statistical methods apply to each type ... For example, the average is a statistical summary for a quantitative variable, because it uses numerical values. It's possible to find the average for a quantitative variable such as income, but not for a categorical variable such as religious affiliation or favorite type of music." (Agresti, 2018)
 
-### Nominal, Ordinal, and Interval Scales of Measurement&#x20;
-
-"For a quantitative variable, the possible numerical values are said to form an interval scale. Interval scales have a specific numerical distance or interval between each pair of levels. Annual income is usually measured on an interval scale. The interval between $40,000 and $30,000, for instance, equals $10,000. We can compare outcomes in terms of how much larger or how much smaller one is than the other. Categorical variables have two types of scales. For the categorical variables mentioned in the previous subsection, the categories are unordered. The scale does not have a "high" or "low" end. The categories are then said to form a nominal scale. For another example, a variable measuring primary mode of transportation to work might use the nominal scale with categories (automobile, bus, subway, bicycle, walk). Although the different categories are often called the levels of the scale, for a nominal variable no level is greater than or smaller than any other level. Names or labels such as "automobile" and "bus" for mode of transportation identify the categories but do not represent different magnitudes. By contrast, each possible value of a quantitative variable is greater than or less than any other possible value. A third type of scale falls, in a sense, between nominal and interval. It consists of categorical scales having a natural ordering of values. The levels form an ordinal scale. Examples are social class (upper, middle, lower), political philosophy (very liberal, slightly liberal, moderate, slightly conservative, very conservative).
-
-### Discrete and Continuous Variables&#x20;
-
-"One other way to classify a variable also helps determine which statistical methods are appropriate for it. This classification refers to the number of values in the measurement scale. A variable is discrete if its possible values form a set of separate numbers, such as 0, 1, 2, ... It is continuous if it can take an infinite continuum of possible real number values." (Agresti, 2018)
+"**Binary variables** are a special case of qualitative variable: they can take on two values. Most often the information represented by binary variables is a yes/no answer to whether the observation belongs to some group. Examples include whether the respondent to a survey is female or not, whether a firm is in the manufacturing sector or not. For the purpose of data analysis, it is best to have them take values 0 or 1, 0 for no, and 1 for yes. Binary variables with 0/1 values are also called **dummy variables** or indicator variables. " (Bekez, 2021)
 
