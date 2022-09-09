@@ -7,7 +7,7 @@
 ## Course Schedule
 
 * [Week 1](course-schedule/week-1/README.md)
-  * [Origins of Data](course-schedule/week-1/origins-of-data/README.md)
+  * [Origins of Data](course-schedule/week-1/lecture-1-origins-of-data.md)
     * [Data analytics](course-schedule/week-1/origins-of-data/data-analytics.md)
     * [Data](course-schedule/week-1/origins-of-data/data.md)
     * [Statistics](course-schedule/week-1/origins-of-data/statistics.md)
