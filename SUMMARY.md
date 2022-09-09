@@ -27,7 +27,7 @@
     * [Linking Data](course-schedule/week-1/origins-of-data/linking-data.md)
     * [Data Collection Issues](course-schedule/week-1/origins-of-data/data-collection-issues.md)
     * [Data Collection Practices](course-schedule/week-1/origins-of-data/data-collection-practices.md)
-  * [Preparing Data](course-schedule/week-1/preparing-data/README.md)
+  * [Preparing Data](course-schedule/week-1/lecture-2-preparing-data.md)
     * [Variables](course-schedule/week-1/preparing-data/variables.md)
     * [Variable scales](course-schedule/week-1/preparing-data/variable-scales.md)
     * [Variables 3](course-schedule/week-1/preparing-data/variables-3.md)
