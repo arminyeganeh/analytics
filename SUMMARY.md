@@ -32,6 +32,7 @@
     * [Variable Classes 2](course-schedule/week-1/preparing-data/variable-classes-2.md)
     * [Variable Scales](course-schedule/week-1/preparing-data/variable-scales.md)
     * [Observation Classes](course-schedule/week-1/preparing-data/observation-classes.md)
+    * [Table Format](course-schedule/week-1/preparing-data/table-format.md)
   * [Intro to R & RStudio](course-schedule/week-1/lab.md)
   * [Getting started with R](course-schedule/week-1/homework-a1.md)
   * [Assignment A.1](course-schedule/week-1/assignment-a.1.md)
