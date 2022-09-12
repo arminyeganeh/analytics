@@ -49,6 +49,7 @@
     * [Probability](course-schedule/week-2/exploring-data/probability.md)
     * [Distribution](course-schedule/week-2/exploring-data/distribution.md)
     * [Extreme Values](course-schedule/week-2/exploring-data/extreme-values.md)
+    * [Good Graphs](course-schedule/week-2/exploring-data/good-graphs.md)
   * [Comparing Data](course-schedule/week-2/comparing-data.md)
     * [Page 2](course-schedule/week-2/comparing-data/page-2.md)
   * [R Concepts](course-schedule/week-2/r-concepts.md)
