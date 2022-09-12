@@ -1,3 +1,3 @@
-# Linking Data
+# Linking Data Tables
 
 "Linking data from different sources can result in valuable datasets. The purpose of linking data is to leverage the advantages of multiple sources while compensating for their disadvantages. Data may be linked individually or in aggregation, e.g., industry-level information linked to firms, zip-code-level information linked to individuals, and so on. In the end, linkages are rarely perfect: there are usually observations that cannot be linked. Therefore, data analysts should assess coverage and selection bias. The variables in the large but inexpensive data may allow uncovering some important patterns, but they may not be enough to gain a deeper understanding of those patterns. Collecting additional data for a subset of the observations may provide valuable insights at extra cost, but keeping this additional data collection small can keep those costs contained." (Bekes, 2021)&#x20;
