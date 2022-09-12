@@ -33,6 +33,8 @@
     * [Observation Classes](course-schedule/week-1/preparing-data/observation-classes.md)
     * [Data Table Format](course-schedule/week-1/preparing-data/data-table-format.md)
     * [Linking Data Tables](course-schedule/week-1/preparing-data/linking-data-tables.md)
+    * [Entity Resolution](course-schedule/week-1/preparing-data/entity-resolution.md)
+    * [Missing Values](course-schedule/week-1/preparing-data/missing-values.md)
   * [Intro to R & RStudio](course-schedule/week-1/lab.md)
   * [Getting started with R](course-schedule/week-1/homework-a1.md)
   * [Assignment A.1](course-schedule/week-1/assignment-a.1.md)
