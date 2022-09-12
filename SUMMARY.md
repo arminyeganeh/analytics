@@ -36,6 +36,7 @@
     * [Entity Resolution](course-schedule/week-1/preparing-data/entity-resolution.md)
     * [Missing Values](course-schedule/week-1/preparing-data/missing-values.md)
     * [Cleaning Data](course-schedule/week-1/preparing-data/cleaning-data.md)
+    * [Reproducible Workflow](course-schedule/week-1/preparing-data/reproducible-workflow.md)
   * [Intro to R & RStudio](course-schedule/week-1/lab.md)
   * [Getting started with R](course-schedule/week-1/homework-a1.md)
   * [Assignment A.1](course-schedule/week-1/assignment-a.1.md)
