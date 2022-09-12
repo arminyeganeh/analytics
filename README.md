@@ -47,8 +47,7 @@ By the end of this course, learners will be able to:&#x20;
 **Recommended Books on Statistics:**
 
 * Agresti, A. (2018). Statistical Methods for the Social Sciences.
-* Bekez G. & Kezdi B. (2021). Data Analysis for Business, Economics, and Analysis.&#x20;
-* Gujarati, D. (2009). Basic Econometrics.&#x20;
+* Bekez G. & Kezdi B. (2021). Data Analysis for Business, Economics, and Analysis. &#x20;
 
 **Recommended Books on Real Estate and Analytics:**
 
