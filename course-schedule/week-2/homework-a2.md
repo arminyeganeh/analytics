@@ -2,7 +2,7 @@
 description: Week 2, HA2, 450-600 lines, 3 hours to complete
 ---
 
-# Working with Data in R
+# Homework A2
 
 ### HA2 Instructions
 
