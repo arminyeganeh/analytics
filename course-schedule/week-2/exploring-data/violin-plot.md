@@ -1,0 +1,3 @@
+# Violin Plot
+
+"A smarter-looking alternative is the violin plot. In essence, the violin plot adds a twist to the box plot by overlaying a density plot on it. Violin plots show the density plot on both sides of the vertical line, but there is no difference between the two sides. In a sense, as with a box plot, we have two sides here purely to achieve a better look. Compared to the traditional box plot, the basic violin plot shows fewer statistics and does not show extreme values. In exchange, it gives a better feel for the shape of the distribution. As there are many complementing features of box plots and violin plots, we advise you to consider both." (Bekes, 2021)

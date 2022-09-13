@@ -2,7 +2,7 @@
 description: Week 1, Reading Instructions, 50 pages, 2 hours to complete
 ---
 
-# Readings
+# References
 
 **Textbook:**
 
