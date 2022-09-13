@@ -69,6 +69,7 @@
     * [Correlation](course-schedule/week-2/comparing-data/correlation.md)
     * [Proxy Variables](course-schedule/week-2/comparing-data/proxy-variables.md)
     * [Variation Sources](course-schedule/week-2/comparing-data/variation-sources.md)
+    * [Bayes' Rule](course-schedule/week-2/comparing-data/bayes-rule.md)
   * [R Concepts](course-schedule/week-2/r-concepts.md)
   * [Working with Data in R](course-schedule/week-2/homework-a2.md)
   * [Assignment A.2](course-schedule/week-2/assignment-a.2.md)
