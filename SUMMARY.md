@@ -65,6 +65,8 @@
     * [The Y and the X](course-schedule/week-2/comparing-data/page-2.md)
     * [Conditioning](course-schedule/week-2/comparing-data/conditioning.md)
     * [Conditional Probabilities](course-schedule/week-2/comparing-data/conditional-probabilities.md)
+    * [Dependence](course-schedule/week-2/comparing-data/dependence.md)
+    * [Correlation](course-schedule/week-2/comparing-data/correlation.md)
   * [R Concepts](course-schedule/week-2/r-concepts.md)
   * [Working with Data in R](course-schedule/week-2/homework-a2.md)
   * [Assignment A.2](course-schedule/week-2/assignment-a.2.md)
