@@ -1,8 +1,8 @@
 ---
-description: Week 3, Lab A3, 150-250 lines, 1 hour to complete
+description: Lab 4, 150-250 lines, 1 hour to complete
 ---
 
-# Graphs in R
+# Graphs in R P.1
 
 ### LA4 Instructions
 
