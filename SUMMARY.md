@@ -47,7 +47,7 @@
     * [Exploratory Analysis](course-schedule/week-2/exploring-data/exploratory-analysis.md)
     * [Frequency](course-schedule/week-2/exploring-data/frequency.md)
     * [Probability](course-schedule/week-2/exploring-data/probability.md)
-    * [Frequency Distribution](course-schedule/week-2/exploring-data/frequency-distribution.md)
+    * [Frequency Distribution](course-schedule/week-2/exploring-data/distribution.md)
     * [Extreme Values](course-schedule/week-2/exploring-data/extreme-values.md)
     * [Central Tendency](course-schedule/week-2/exploring-data/good-graphs.md)
     * [Variability](course-schedule/week-2/exploring-data/variability.md)
