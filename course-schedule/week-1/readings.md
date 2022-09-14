@@ -1,5 +1,5 @@
 ---
-description: Week 1, Reading Instructions, 50 pages, 2 hours to complete
+description: Week 1 materials are from references below.
 ---
 
 # References

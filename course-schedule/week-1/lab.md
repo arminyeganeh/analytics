@@ -1,5 +1,5 @@
 ---
-description: Lab A1, 150-250 lines, 1 hour to complete
+description: Lab 1, 150-250 lines, 1 hour to complete
 ---
 
 # Intro to R & RStudio

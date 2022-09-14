@@ -1,5 +1,5 @@
 ---
-description: Week 2, Lab A2, 150-250 lines, 1 hour to complete
+description: Lab 2, 150-250 lines, 1 hour to complete
 ---
 
 # R Concepts

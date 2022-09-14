@@ -2,16 +2,21 @@
 description: Week 3, Reading Instructions, 50 pages, 2 hours to complete
 ---
 
-# Readings
+# References
 
-**Textbook:**
+Agresti, A. (2018). Statistical Methods for the Social Sciences.
+
+* Chapter 5 Statistical Inference: Estimation
+* Chapter 6 Statistical Inference: Significance Tests
 
 Bekez G. & Kezdi B. (2021). Data Analysis for Business, Economics, and Analysis. &#x20;
 
-**Chapters:**
-
 * Chapter 5: Generalization
 * Chapter 6: Hypothesis testing
+
+Navarro, D. (2019) Learning Stats with R
+
+* Chapter 5 Descriptive Statistics
 
 ### A real-life example
 

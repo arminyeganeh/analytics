@@ -1,5 +1,5 @@
 ---
-description: Homework A1, 450-600 lines, 3 hours to complete
+description: Homework 1, 450-600 lines, 3 hours to complete
 ---
 
 # Getting started with R

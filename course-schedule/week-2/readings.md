@@ -1,5 +1,5 @@
 ---
-description: Week 2, References
+description: Week 2 materials are from references below.
 ---
 
 # References

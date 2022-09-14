@@ -1,8 +1,8 @@
 ---
-description: Week 3, HA3, 450-600 lines, 3 hours to complete
+description: Homework 3, 450-600 lines, 3 hours to complete
 ---
 
-# Homework A3
+# Descriptives in R P.2
 
 ### HA3 Instructions
 
