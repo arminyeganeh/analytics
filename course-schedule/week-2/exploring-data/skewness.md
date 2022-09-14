@@ -1,6 +1,6 @@
 # Skewness
 
-"For symmetric distributions, the median and the mean are identical. For skewed distributions, the mean lies toward the direction of skew (the longer tail) relative to the median"
+"For symmetric distributions, the median and the mean are identical. For skewed distributions, the mean lies toward the direction of skew (the longer tail) relative to the median" (Agresti, 2018)
 
 "If a distribution is highly skewed, the median is usually preferred because it better represents what is typical." (Agresti, 2018)
 
