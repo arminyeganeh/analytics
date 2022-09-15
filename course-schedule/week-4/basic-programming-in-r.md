@@ -288,6 +288,46 @@ doubleMax( 1,2,5 )
 ## [1] 10
 ```
 
+With the exception of primitive functions all R functions have three parts:
+
+* body(): the code inside the function
+* formals(): the list of arguments used to call the function
+* environment(): the mapping of the location(s) of the function’s variables&#x20;
+
+Let’s build a function that calculates the present value (PV) of a single future sum. The equation for a single sum PV is:&#x20;
+
+$$
+PV =\frac{ FV}{(1+r)^n}
+$$
+
+where FV is the future value, r is the interest rate, and n is the number of periods.
+
+```r
+PV <- function(FV, r, n) { 
+PV <- FV / (1 + r)^n 
+round(PV, 2)
+}
+```
+
+To perform the PV() function we can call the arguments in different ways.
+
+<pre class="language-r"><code class="lang-r"># using argument names
+PV(FV = 1000, r = .08, n = 5)
+## [1] 680.58
+
+# same as above but without using names (aka "positional matching")
+<strong>PV(1000, .08, 5)
+</strong>## [1] 680.58
+
+# if using names you can change the order
+PV(r = .08, FV = 1000, n = 5)
+## [1] 680.58
+
+# if not using names you must insert arguments in proper order
+# in this e.g. the function assumes FV = .08, r = 1000, and n = 5
+PV(.08, 1000, 5)
+## [1] 0</code></pre>
+
 ### Implicit loops
 
 In addition to providing the explicit looping structures via `while` and `for`, R also provides a collection of functions for **implicit loops**. These are functions that carry out operations very similar to those that you’d normally use a loop for. However, instead of typing out the whole loop, the whole thing is done with a single command. The main reason why this can be handy is that – due to the way that R is written – these implicit looping functions are usually about to do the same calculations much faster than the corresponding explicit loops. In most applications that beginners might want to undertake, this probably isn’t very important, since most beginners tend to start out working with fairly small data sets and don’t usually need to undertake extremely time-consuming number crunching. However, because you often see these functions referred to in other contexts, it may be useful to very briefly discuss a few of them.
