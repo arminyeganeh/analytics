@@ -385,13 +385,59 @@ good_list(1, 2)
 
 If you want to save a function to be used at other times and within other scripts there are two main ways to do this. One way is to build a package which we do not cover in this course but is discussed in more detail in Hadley Wickhams R Packages book, which is openly available at http://r-pkgs.had.co.nz/. Another option, and the one discussed here, is to save the function in a script. For example, we can save a script that contains the PV() function and save this script as PV.R. If we want to use the PV function in this new script we can simply read in the function by sourcing the script using source("PV.R"). Now, you will notice that we have the PV() function in our global environment and can use it as normal. Note that if you are working in a different directory than where the PV.R file is located you will need to include the proper path to access the relevant directory.
 
+### Implicit loops (Apply family)
+
+In addition to providing the explicit looping structures via `while` and `for`, R also provides a collection of functions for **implicit loops**. These are functions that carry out operations very similar to those that you’d normally use a loop for. However, instead of typing out the whole loop, the whole thing is done with a single command.&#x20;
+
+The apply family consists of vectorized functions, which minimize your need to explicitly create loops. These functions will apply a specified function to a data object, and the primary difference is in the object class to which the function is applied (e.g., list vs. matrix) and the object class that will be returned from the function. The following presents the most common forms of apply functions but realize that additional functions exist.&#x20;
+
+**Pro Tip:** When working with very large data tables, maximizing the use of functions (thus, minimizing Loop and Apply) and maximizing the use of vectors, matrices, and lists (thus, minimizing Data Frames) can significantly reduce processing time.
+
+apply() for Matrices and Data Frames The apply() function is most often used to apply a function to the rows or columns (margins) of matrices or data frames . However, it can be used with general arrays, for example, to take the average of an array of matrices. Using apply() is not faster than using a loop function, but it is highly compact and can be written in one line. The syntax for apply() is as follows where • x is the matrix , dataframe or array • MARGIN is a vector giving the subscripts which the function will be applied over. E.g., for a matrix 1 indicates rows, 2 indicates columns, c(1, 2) indicates rows and columns. • FUN is the function to be applied • … is for any other arguments to be passed to the function
+
+syntax of apply function
+
+apply (x, MARGIN, FUN, …) To provide examples let’s use the mtcars data set provided in R :
+
+<pre class="language-r"><code class="lang-r"># show first few rows of mtcars
+head (mtcars)
+##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+## Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+## Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
+
+# get the mean of each column
+<strong>apply (mtcars, 2, mean)
+</strong>##        mpg        cyl       disp         hp       drat         wt  
+##  20.090625   6.187500 230.721875 146.687500   3.596563   3.217250
+##       qsec         vs         am       gear       carb  
+##  17.848750   0.437500   0.406250   3.687500   2.812500
+
+# get column quantiles (notice the quantile percents as row names) 
+apply (mtcars, 2, quantile, probs = c (0.10, 0.25, 0.50, 0.75, 0.90))
+##        mpg cyl    disp    hp  drat      wt    qsec vs am gear carb
+## 10% 14.340   4  80.610  66.0 3.007 1.95550 15.5340  0  0    3    1
+## 25% 15.425   4 120.825  96.5 3.080 2.58125 16.8925  0  0    3    2
+## 50% 19.200   6 196.300 123.0 3.695 3.32500 17.7100  0  0    4    2
+## 75% 22.800   8 326.000 180.0 3.920 3.61000 18.9000  1  1    4    4
+## 90% 30.090   8 396.000 243.5 4.209 4.04750 19.9900  1  1    5    4</code></pre>
 
 
 
 
-### Implicit loops
 
-In addition to providing the explicit looping structures via `while` and `for`, R also provides a collection of functions for **implicit loops**. These are functions that carry out operations very similar to those that you’d normally use a loop for. However, instead of typing out the whole loop, the whole thing is done with a single command. The main reason why this can be handy is that – due to the way that R is written – these implicit looping functions are usually about to do the same calculations much faster than the corresponding explicit loops. In most applications that beginners might want to undertake, this probably isn’t very important, since most beginners tend to start out working with fairly small data sets and don’t usually need to undertake extremely time-consuming number crunching. However, because you often see these functions referred to in other contexts, it may be useful to very briefly discuss a few of them.
+```
+     
+```
+
+
+
+
+
+
 
 The first and simplest of these functions is `sapply()`. The two most important arguments in this function are `X`, which specifies a vector containing the data, and `FUN`, which specifies the name of a function that should be applied to each element of the data vector. The following example illustrates the basics of how it works:
 
