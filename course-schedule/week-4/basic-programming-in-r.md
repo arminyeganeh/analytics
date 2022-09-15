@@ -328,6 +328,67 @@ PV(r = .08, FV = 1000, n = 5)
 PV(.08, 1000, 5)
 ## [1] 0</code></pre>
 
+Note that when building a function you can also set default values for arguments. In our original PV() we did not provide any default values so if we do not supply all the argument parameters an error will be returned. However, if we set default values then the function will use the stated default if any parameters are missing:
+
+<pre class="language-r"><code class="lang-r"># creating default argument values
+PV &#x3C;- function(FV = 1000, r = .08, n = 5) {
+<strong>PV &#x3C;- FV / (1 + r)^n
+</strong>round(PV, 2)
+}
+
+# function will use default n value
+PV(1000, .08)
+## [1] 680.58
+r
+# specifying a different n value
+PV(1000, .08, 3)
+## [1] 793.83</code></pre>
+
+If a function performs multiple tasks and therefore has multiple results to report then we have to include the c() function inside the function to display all the results. If you do not include the c() function then the function output will only return the last expression:
+
+```r
+good <- function(x, y) {
+ output1 <- 2 * x + y
+ output2 <- x + 2 * y
+ output3 <- 2 * x + 2 * y
+ output4 <- x / y
+ c(output1, output2, output3, output4)
+}
+good(1, 2)
+## [1] 4.0 5.0 6.0 0.5
+```
+
+Furthermore, when we have a function that performs multiple tasks (i.e. computes multiple computations) then it is often useful to save the results in a list.
+
+```r
+good_list <- function(x, y) {
+ output1 <- 2 * x + y
+ output2 <- x + 2 * y
+ output3 <- 2 * x + 2 * y
+ output4 <- x / y
+ c(list(Output1 = output1, Output2 = output2,
+ Output3 = output3, Output4 = output4))
+}
+good_list(1, 2)
+## $Output1
+## [1] 4
+##
+## $Output2
+## [1] 5
+##
+## $Output3
+## [1] 6
+##
+## $Output4
+## [1] 0.5
+```
+
+If you want to save a function to be used at other times and within other scripts there are two main ways to do this. One way is to build a package which we do not cover in this course but is discussed in more detail in Hadley Wickhams R Packages book, which is openly available at http://r-pkgs.had.co.nz/. Another option, and the one discussed here, is to save the function in a script. For example, we can save a script that contains the PV() function and save this script as PV.R. If we want to use the PV function in this new script we can simply read in the function by sourcing the script using source("PV.R"). Now, you will notice that we have the PV() function in our global environment and can use it as normal. Note that if you are working in a different directory than where the PV.R file is located you will need to include the proper path to access the relevant directory.
+
+
+
+
+
 ### Implicit loops
 
 In addition to providing the explicit looping structures via `while` and `for`, R also provides a collection of functions for **implicit loops**. These are functions that carry out operations very similar to those that you’d normally use a loop for. However, instead of typing out the whole loop, the whole thing is done with a single command. The main reason why this can be handy is that – due to the way that R is written – these implicit looping functions are usually about to do the same calculations much faster than the corresponding explicit loops. In most applications that beginners might want to undertake, this probably isn’t very important, since most beginners tend to start out working with fairly small data sets and don’t usually need to undertake extremely time-consuming number crunching. However, because you often see these functions referred to in other contexts, it may be useful to very briefly discuss a few of them.
