@@ -41,9 +41,9 @@ Depending on how you write the script, you can have R repeat several commands, o
 
 ```r
 while (Condition) {
-  Statement 1
-  Statement 2
-  etc.
+Statement 1
+Statement 2
+etc.
 }
 ```
 
@@ -68,10 +68,10 @@ When we run this script, R starts at the top and creates a new variable called x
 The `for` loop is also pretty simple, though not quite as simple as `while` . The basic format of this loop goes like this:
 
 ```r
-  For (var in vector) {
-  Statement 1
-  Statement 2
-  etc.
+For (var in vector) {
+Statement 1
+Statement 2
+etc.
 }   
 ```
 
@@ -165,64 +165,232 @@ In the first block of code (under #set up) all we’re doing is specifying all t
 
 ### Conditional statements
 
-A second kind of flow control that programming languages provide is the ability to evaluate _**conditional statements**_. Unlike loops, which can repeat over and over again, a conditional statement only executes once, but it can switch between different possible commands depending on a CONDITION that is specified by the programmer. The power of these commands is that they allow the program itself to make choices, and in particular, to make different choices depending on the context in which the program is run. The most prominent of example of a conditional statement is the `if` statement, and the accompanying `else` statement. The basic format of an `if` statement in R is as follows:
+A second kind of flow control that programming languages provide is the ability to evaluate **conditional statements**. Unlike loops, which can repeat over and over again, a conditional statement only executes once, but it can switch between different possible commands depending on the condition that is specified by the programmer. The power of these commands is that they allow the program itself to make choices, and in particular, to make different choices depending on the context in which the program is run. The most prominent example of a conditional statement is the `if` and the accompanying `else` statements. The basic format of an `if` statement in R is:
 
-```
-     if ( CONDITION ) {
-        STATEMENT1
-        STATEMENT2
-        ETC
-     }
-```
-
-And the execution of the statement is pretty straightforward. If the CONDITION is true, then R will execute the statements contained in the curly braces. If the CONDITION is false, then it dose not. If you want to, you can extend the `if` statement to include an `else` statement as well, leading to the following syntax:
-
-```
-     if ( CONDITION ) {
-        STATEMENT1
-        STATEMENT2
-        ETC
-     } else {
-        STATEMENT3
-        STATEMENT4
-        ETC
-     }     
-```
-
-As you’d expect, the interpretation of this version is similar. If the CONDITION is true, then the contents of the first block of code (i.e., STATEMENT1, STATEMENT2, ETC) are executed; but if it is false, then the contents of the second block of code (i.e., STATEMENT3, STATEMENT4, ETC) are executed instead.
-
-To give you a feel for how you can use `if` and `else` to do something useful, the example that I’ll show you is a script that prints out a different message depending on what day of the week you run it. We can do this making use of some of the tools that we discussed in Section [7.11.3](https://learningstatisticswithr.com/book/datahandling.html#dates). Here’s the script:
-
-```
-## --- ifelseexample.R
-# find out what day it is...
-today <- Sys.Date()       # pull the date from the system clock
-day <- weekdays( today )  # what day of the week it is_
-
-# now make a choice depending on the day...
-if ( day == "Monday" ) {
-  print( "I don't like Mondays" )
-} else {
-  print( "I'm a happy little automaton" )
+```r
+if (Condition) {
+Statement1
+Statement2
+etc.
 }
 ```
 
+And the execution of the statement is pretty straightforward. If the condition is true, then R will execute the statements contained in the curly braces. If the condition is false, then it dose not. If you want to, you can extend the `if` statement to include an `else` statement as well:
+
 ```
+if (Condition) {
+Statement1
+Statement2
+etc.
+} else {
+Statement3
+Statement4
+etc.
+}     
+```
+
+If the condition is false, then the contents of the second block of code (i.e., Statement3, Statement4, etc) are executed instead. To give you a feel for how you can use `if` and `else` to do something useful, the example is a script that prints out a different message depending on what day of the week you run it:
+
+```r
+## --- ifelseexample.R
+# find out what day it is...
+today <- Sys.Date()       # pull the date from the system clock
+day <- weekdays(today)    # what day of the week it is
+
+# Make a choice depending on the day...
+if (day == "Monday") {
+  print("I don't like Mondays")
+} else {
+  print("I'm a happy little automaton")
+}
 ## [1] "I'm a happy little automaton"
 ```
 
-Since today happens to be a Friday, when I run the script here’s what happens:
+There are other ways of making conditional statements in R. In particular, the `ifelse()` function and the `switch()` functions can be very useful in different contexts.&#x20;
 
 ```
-source(file.path(projecthome,"scripts","ifelseexample.R"))
+library(lsr)
+who()
+```
+
+An important thing to recognise here is that the two internal variables that the `quadruple()` function makes use of, `x` and `y`, stay internal. That is, if we inspect the contents of the workspace,
+
+```
+## [1] 40
 ```
 
 ```
-## [1] "I'm a happy little automaton"
+my.var <- quadruple(10)
+print(my.var)
 ```
 
-There are other ways of making conditional statements in R. In particular, the `ifelse()` function and the `switch()` functions can be very useful in different contexts. However, my main aim in this chapter is to briefly cover the very basics, so I’ll move on.
+And now that we’ve created the `quadruple()` function, we can call it just like any other function And if I want to store the output as a variable, I can do this:
 
-\
+```
+## [1] "function"
+```
 
+```
+class( quadruple )
+```
+
+nothing appears to have happened, but there is a new object created in the workspace called `quadruple`. Not surprisingly, if we ask R to tell us what kind of object it is, it tells us that it is a function:
+
+```
+source(file.path(projecthome,"scripts","functionexample.R"))
+```
+
+When we run this script, as follows
+
+```
+## --- functionexample.R
+quadruple <- function(x) {
+  y <- x*4
+  return(y)
+} 
+```
+
+To give a simple example of this, let’s create a function called `quadruple()` which multiplies its inputs by four. In keeping with the approach taken in the rest of the chapter, I’ll use a script to do this:
+
+What this does is create a function with the name FNAME, which has arguments ARG1, ARG2 and so forth. Whenever the function is called, R executes the statements in the curly braces, and then outputs the contents of VALUE to the user. Note, however, that R does not execute the commands inside the function in the workspace. Instead, what it does is create a temporary local environment: all the internal statements in the body of the function are executed there, so they remain invisible to the user. Only the final results in the VALUE are returned to the workspace.
+
+```
+     FNAME <- function ( ARG1, ARG2, ETC ) {
+        STATEMENT1
+        STATEMENT2
+        ETC
+        return( VALUE )
+     }
+```
+
+In this section I want to talk about functions again. Functions were introduced in Section [3.5](https://learningstatisticswithr.com/book/introR.html#usingfunctions), but you’ve learned a lot about R since then, so we can talk about them in more detail. In particular, I want to show you how to create your own. To stick with the same basic framework that I used to describe loops and conditionals, here’s the syntax that you use to create a function:
+
+### Writing functions
+
+we see everything in our workspace from this chapter including the `quadruple()` function itself, as well as the `my.var` variable that we just created.
+
+Now that we know how to create our own functions in R, it’s probably a good idea to talk a little more about some of the other properties of functions that I’ve been glossing over. To start with, let’s take this opportunity to type the name of the function at the command line without the parentheses:
+
+```
+quadruple
+```
+
+```
+## function(x) {
+##   y <- x*4
+##   return(y)
+## }
+```
+
+As you can see, when you type the name of a function at the command line, R prints out the underlying source code that we used to define the function in the first place. In the case of the `quadruple()` function, this is quite helpful to us – we can read this code and actually see what the function does. For other functions, this is less helpful, as we saw back in Section [3.5](https://learningstatisticswithr.com/book/introR.html#usingfunctions) when we tried typing `citation` rather than `citation()`.
+
+#### 8.4.1 Function arguments revisited
+
+Okay, now that we are starting to get a sense for how functions are constructed, let’s have a look at two, slightly more complicated functions that I’ve created. The source code for these functions is contained within the `functionexample2.R` and `functionexample3.R` scripts. Let’s start by looking at the first one:
+
+```
+## --- functionexample2.R
+pow <- function( x, y = 1) {
+  out <- x^y  # raise x to the power y
+  return( out )
+}
+```
+
+and if we type `source("functionexample2.R")` to load the `pow()` function into our workspace, then we can make use of it. As you can see from looking at the code for this function, it has two arguments `x` and `y`, and all it does is raise `x` to the power of `y`. For instance, this command
+
+```
+pow(x=3, y=2)
+```
+
+```
+## [1] 9
+```
+
+calculates the value of $$3232$$. The interesting thing about this function isn’t what it does, since R already has has perfectly good mechanisms for calculating powers. Rather, notice that when I defined the function, I specified `y=1` when listing the arguments? That’s the default value for `y`. So if we enter a command without specifying a value for `y`, then the function assumes that we want `y=1`:
+
+```
+pow( x=3 )
+```
+
+```
+## [1] 3
+```
+
+However, since I didn’t specify any default value for `x` when I defined the `pow()` function, we always need to input a value for `x`. If we don’t R will spit out an error message.
+
+So now you know how to specify default values for an argument. The other thing I should point out while I’m on this topic is the use of the `...` argument. The `...` argument is a special construct in R which is only used within functions. It is used as a way of matching against multiple user inputs: in other words, `...` is used as a mechanism to allow the user to enter as many inputs as they like. I won’t talk at all about the low-level details of how this works at all, but I will show you a simple example of a function that makes use of it. To that end, consider the following script:
+
+```
+## --- functionexample3.R
+doubleMax <- function( ... ) {  
+  max.val <- max( ... )   # find the largest value in ... 
+  out <- 2 * max.val      # double it
+  return( out )
+}
+```
+
+When we type `source("functionexample3.R")`, R creates the `doubleMax()` function. You can type in as many inputs as you like. The `doubleMax()` function identifies the largest value in the inputs, by passing all the user inputs to the `max()` function, and then doubles it. For example:
+
+```
+doubleMax( 1,2,5 )
+```
+
+```
+## [1] 10
+```
+
+#### 8.4.2 There’s more to functions than this
+
+There’s a lot of other details to functions that I’ve hidden in my description in this chapter. Experienced programmers will wonder exactly how the “scoping rules” work in R,[138](https://learningstatisticswithr.com/book/scripting.html#fn138) or want to know how to use a function to create variables in other environments[139](https://learningstatisticswithr.com/book/scripting.html#fn139), or if function objects can be assigned as elements of a list[140](https://learningstatisticswithr.com/book/scripting.html#fn140) and probably hundreds of other things besides. However, I don’t want to have this discussion get too cluttered with details, so I think it’s best – at least for the purposes of the current book – to stop here.
+
+### 8.5 Implicit loops
+
+There’s one last topic I want to discuss in this chapter. In addition to providing the explicit looping structures via `while` and `for`, R also provides a collection of functions for _**implicit loops**_. What I mean by this is that these are functions that carry out operations very similar to those that you’d normally use a loop for. However, instead of typing out the whole loop, the whole thing is done with a single command. The main reason why this can be handy is that – due to the way that R is written – these implicit looping functions are usually about to do the same calculations much faster than the corresponding explicit loops. In most applications that beginners might want to undertake, this probably isn’t very important, since most beginners tend to start out working with fairly small data sets and don’t usually need to undertake extremely time consuming number crunching. However, because you often see these functions referred to in other contexts, it may be useful to very briefly discuss a few of them.
+
+The first and simplest of these functions is `sapply()`. The two most important arguments to this function are `X`, which specifies a vector containing the data, and `FUN`, which specifies the name of a function that should be applied to each element of the data vector. The following example illustrates the basics of how it works:
+
+```
+words <- c("along", "the", "loom", "of", "the", "land")
+sapply( X = words, FUN = nchar )
+```
+
+```
+## along   the  loom    of   the  land 
+##     5     3     4     2     3     4
+```
+
+Notice how similar this is to the second example of a `for` loop in Section [8.2.2](https://learningstatisticswithr.com/book/scripting.html#for). The `sapply()` function has implicitly looped over the elements of `words`, and for each such element applied the `nchar()` function to calculate the number of letters in the corresponding word.
+
+The second of these functions is `tapply()`, which has three key arguments. As before `X` specifies the data, and `FUN` specifies a function. However, there is also an `INDEX` argument which specifies a grouping variable.[141](https://learningstatisticswithr.com/book/scripting.html#fn141) What the `tapply()` function does is loop over all of the different values that appear in the `INDEX` variable. Each such value defines a group: the `tapply()` function constructs the subset of `X` that corresponds to that group, and then applies the function `FUN` to that subset of the data. This probably sounds a little abstract, so let’s consider a specific example, using the `nightgarden.Rdata` file that we used in Chapter [7](https://learningstatisticswithr.com/book/datahandling.html#datahandling).
+
+```
+gender <- c( "male","male","female","female","male" )
+age <- c( 10,12,9,11,13 )
+tapply( X = age, INDEX = gender, FUN = mean )
+```
+
+```
+##   female     male 
+## 10.00000 11.66667
+```
+
+In this extract, what we’re doing is using `gender` to define two different groups of people, and using their `ages` as the data. We then calculate the `mean()` of the ages, separately for the males and the females. A closely related function is `by()`. It actually does the same thing as `tapply()`, but the output is formatted a bit differently. This time around the three arguments are called `data`, `INDICES` and `FUN`, but they’re pretty much the same thing. An example of how to use the `by()` function is shown in the following extract:
+
+```
+by( data = age, INDICES = gender, FUN = mean )
+```
+
+```
+## gender: female
+## [1] 10
+## -------------------------------------------------------- 
+## gender: male
+## [1] 11.66667
+```
+
+The `tapply()` and `by()` functions are quite handy things to know about, and are pretty widely used. However, although I do make passing reference to the `tapply()` later on, I don’t make much use of them in this book.
+
+Before moving on, I should mention that there are several other functions that work along similar lines, and have suspiciously similar names: `lapply`, `mapply`, `apply`, `vapply`, `rapply` and `eapply`. However, none of these come up anywhere else in this book, so all I wanted to do here is draw your attention to the fact that they exist.
+
+### Nested loops
 
