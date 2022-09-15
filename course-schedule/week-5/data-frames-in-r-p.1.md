@@ -161,4 +161,19 @@ df[ c ("row2", "row3"), ]
 ##      col.1 col.2 col.3    col.4
 ## row2     2    is FALSE 4.200000
 ## row3     3  text  TRUE 3.141593 
+
+# subset for both rows and columns
+df[1:2, c (1, 3)]
+##      col.1 col.3
+## row1     1  TRUE
+## row2     2 FALSE
+
+# use a vector to subset
+v <- c (1, 2, 4)
+df[ , v]
+##      col.1 col.2    col.4
+## row1     1  this 2.500000
+## row2     2    is 4.200000
+## row3     3  text 3.141593
+
 ```
