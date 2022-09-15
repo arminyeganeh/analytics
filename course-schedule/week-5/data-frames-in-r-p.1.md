@@ -109,18 +109,56 @@ Currently, df does not have row names but we can add them with `rownames()` . We
 rownames (df) <- c ("row1", "row2", "row3")
 
 # add/change column names with colnames()
-colnames (df) <- c ("col_1", "col_2", "col_3", "col_4")
+colnames (df) <- c ("col.1", "col.2", "col.3", "col.4")
 
 # adding a comment attribute
 comment (df) <- "adding a comment to a data frame"
 
 attributes(df)
 ## $names
-## [1] "col_1" "col_2" "col_3" "col_4"
+## [1] "col.1" "col.2" "col.3" "col.4"
 ## $class
 ## [1] "data.frame"
 ## $row.names
 ## [1] "row1" "row2" "row3"
 ## $comment
 ## [1] "adding a comment to a data frame" 
+```
+
+### Subsetting data frames&#x20;
+
+Data frames possess the characteristics of both lists and matrices: if you subset with a single vector, they behave like lists and will return the selected columns with all rows; if you subset with two vectors, they behave like matrices and can be subset by row and column:
+
+```r
+df
+##      col.1 col.2 col.3    col.4
+## row1     1  this  TRUE 2.500000
+## row2     2    is FALSE 4.200000
+## row3     3  text  TRUE 3.141593
+
+# subsetting columns like a list
+df[c ("col.2", "col.4")] 
+##      col.2    col.4
+## row1  this 2.500000
+## row2    is 4.200000
+## row3  text 3.141593
+
+# subsetting columns like a matrix
+df[ , c ("col.2", "col.4")]
+##      col.2    col.4
+## row1  this 2.500000
+## row2    is 4.200000
+## row3  text 3.141593
+
+# subsetting by row numbers
+df[2:3, ]
+##      col.1 col.2 col.3    col.4
+## row2     2    is FALSE 4.200000
+## row3     3  text  TRUE 3.141593 
+
+# subsetting by row names
+df[ c ("row2", "row3"), ]
+##      col.1 col.2 col.3    col.4
+## row2     2    is FALSE 4.200000
+## row3     3  text  TRUE 3.141593 
 ```
