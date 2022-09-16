@@ -2,7 +2,7 @@
 description: Lab 3, 150-250 lines, 1 hour to complete
 ---
 
-# Descriptives in R P1
+# Descriptives in R P.1
 
 ### LA3 Instructions
 

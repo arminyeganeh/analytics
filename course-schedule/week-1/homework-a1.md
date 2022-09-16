@@ -2,7 +2,7 @@
 description: Homework 1, 450-600 lines, 3 hours to complete
 ---
 
-# Intro to R & RStudio P2
+# Getting started with R
 
 ### Instructions
 

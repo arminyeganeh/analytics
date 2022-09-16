@@ -2,7 +2,7 @@
 description: Lab 2, 150-250 lines, 1 hour to complete
 ---
 
-# R Concepts P1
+# R Concepts
 
 ### LA2 Instructions
 
