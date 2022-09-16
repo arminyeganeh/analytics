@@ -393,11 +393,19 @@ The apply family consists of vectorized functions, which minimize your need to e
 
 **Pro Tip:** When working with very large data tables, maximizing the use of functions (thus, minimizing Loop and Apply) and maximizing the use of vectors, matrices, and lists (thus, minimizing Data Frames) can significantly reduce processing time.
 
-apply() for Matrices and Data Frames The apply() function is most often used to apply a function to the rows or columns (margins) of matrices or data frames . However, it can be used with general arrays, for example, to take the average of an array of matrices. Using apply() is not faster than using a loop function, but it is highly compact and can be written in one line. The syntax for apply() is as follows where • x is the matrix , dataframe or array • MARGIN is a vector giving the subscripts which the function will be applied over. E.g., for a matrix 1 indicates rows, 2 indicates columns, c(1, 2) indicates rows and columns. • FUN is the function to be applied • … is for any other arguments to be passed to the function
+### apply() for matrices and data frames&#x20;
 
-syntax of apply function
+The function `apply()` is most often used to apply a function to the rows or columns (margins) of matrices or data frames. Using `apply()` is not always faster than using a loop function, but it is highly compact and can be written in one line. The syntax is as follows:
 
-apply (x, MARGIN, FUN, …) To provide examples let’s use the mtcars data set provided in R :
+<pre class="language-r"><code class="lang-r"><strong># syntax of apply function
+</strong>apply (x, MARGIN, FUN, …)</code></pre>
+
+* x is the matrix or dataframe
+* MARGIN is a vector giving the subscripts to which the function will be applied over, e.g., 1 indicates rows, 2 indicates columns, and c(1, 2) indicates rows and columns.
+* FUN is the function to be applied
+* … is for any other arguments to be passed to the function
+
+To provide examples let’s use the data table `mtcars` provided in R :
 
 <pre class="language-r"><code class="lang-r"># show first few rows of mtcars
 head (mtcars)
@@ -423,23 +431,23 @@ apply (mtcars, 2, quantile, probs = c (0.10, 0.25, 0.50, 0.75, 0.90))
 ## 25% 15.425   4 120.825  96.5 3.080 2.58125 16.8925  0  0    3    2
 ## 50% 19.200   6 196.300 123.0 3.695 3.32500 17.7100  0  0    4    2
 ## 75% 22.800   8 326.000 180.0 3.920 3.61000 18.9000  1  1    4    4
-## 90% 30.090   8 396.000 243.5 4.209 4.04750 19.9900  1  1    5    4</code></pre>
+## 90% 30.090   8 396.000 243.5 4.209 4.04750 19.9900  1  1    5    4   </code></pre>
 
+### sapply() for lists… output simplified
 
+The function `lapply()` does the following simple series of operations:
 
+1. it loops over a list, iterating over each element in that list
+2. it applies a function to each element of the list (a function that you specify)
+3. and returns a list (the l is for “list”).
 
+The function `sapply()` behaves similarly to `lapply()`. The only real difference is in the return value. `sapply()` will try to simplify the result of `lapply()` if possible. Essentially, `sapply()` calls `lapply()` on its input and then applies the following algorithm:&#x20;
 
-```
-     
-```
+* If the result is a list where every element is length 1, then a vector is returned
+* If the result is a list where every element is a vector of the same length (> 1), a matrix is returned.&#x20;
+* If neither of the above simplifications can be performed then a list is returned
 
-
-
-
-
-
-
-The first and simplest of these functions is `sapply()`. The two most important arguments in this function are `X`, which specifies a vector containing the data, and `FUN`, which specifies the name of a function that should be applied to each element of the data vector. The following example illustrates the basics of how it works:
+The following example illustrates the basics of how it works:
 
 ```r
 words <- c("along", "the", "loom", "of", "the", "land")
@@ -448,7 +456,44 @@ sapply(X = words, FUN = nchar)
 ##     5     3     4     2     3     4
 ```
 
-The function `sapply()` has implicitly looped over the elements of `words`  and for each such element applied the `nchar()` function to calculate the number of letters in the corresponding word.
+The function `sapply()` has implicitly looped over the elements of `words`  and for each such element applied the `nchar()` function to calculate the number of letters in the corresponding word. To illustrate the differences we can use the previous example using a list with the beaver data and compare the `sapply` and `lapply` outputs:
+
+```r
+# list of R's built-in beaver data
+beaver_data <- list (beaver1 = beaver1, beaver2 = beaver2)
+
+# get the mean of each list item and return as a list
+lapply (beaver_data, function(x) round (apply (x, 2, mean), 2))
+
+## $beaver1
+##    day    time    temp   activ 
+## 346.20 1312.02   36.86    0.05 
+
+## $beaver2
+##    day    time    temp   activ 
+## 307.13 1446.20   37.60    0.62  
+
+# get the mean of each list item and simplify the output
+sapply (beaver_data, function(x) round (apply (x, 2, mean), 2))
+
+##       beaver1 beaver2
+## day    346.20  307.13
+## time  1312.02 1446.20
+## temp    36.86   37.60
+## activ    0.05    0.62
+```
+
+### tapply() for vectors
+
+tapply() is used to apply a function over subsets of a vector . It is primarily used when we have the following circumstances:
+
+1. A dataset that can be broken up into groups (via categorical variables - aka factors )
+2. We desire to break the dataset up into groups
+3. Within each group, we want to apply a function The arguments to tapply() are as follows: • x is a vector • INDEX is a factor or a list of factors (or else they are coerced to factors ) • FUN is a function to be applied • … contains other arguments to be passed FUN • simplify , should we simplify the result?
+
+syntax of tapply function
+
+tapply (x, INDEX, FUN, …, simplify = TRUE)
 
 The second of these functions is `tapply()` which has three key arguments. As before `X` specifies the data, and `FUN` specifies a function. However, there is also an `INDEX` argument, which specifies a grouping variable. What the `tapply()` function does is loop over all of the different values that appear in the `INDEX` variable. Each such value defines a group: the `tapply()` function constructs the subset of `X` that corresponds to that group, and then applies the function `FUN` to that subset of the data:
 
