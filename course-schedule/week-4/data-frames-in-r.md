@@ -83,7 +83,7 @@ length (df)
 ## [1] 2 
 ```
 
-### Creating vectors
+### Creating and managing vectors
 
 The operator `:` can be used to create a vector of integers between two specified numbers or the function `c()` can be used to create vectors of objects by concatenating elements together:
 
