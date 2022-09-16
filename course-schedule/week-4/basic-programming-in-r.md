@@ -4,7 +4,7 @@ description: Homework 4, Reading Instructions, 50 pages, 2 hours to complete
 
 # Basic Programming in R
 
-### Scripts
+### Writing scripts
 
 The idea behind a script is that, instead of typing your commands into the R console one at a time, you write them all in a text file. Then, once you’ve finished writing them and saved the text file, you can get R to execute all the commands in your file by using the function `source()` . Suppose you start out with a data set `myrawdata.csv`. What you want is a single document – let’s call it `mydataanalysis.R` – that stores all of the commands that you’ve used in order to do your data analysis ... Then, later on, instead of typing in all those commands again, you’d just tell R to run all of the commands that are stored in `mydataanalysis.R`. Also, in order to help you make sense of all those commands, what you’d want is the ability to add some notes or _comments_ within the file, so that anyone reading the document themselves would be able to understand what each of the commands actually does. But these comments wouldn’t get in the way: when you try to get R to run `mydataanalysis.R` it would be smart enough would recognize that these comments are for the benefit of humans, and so it would ignore them. Later on, you could tweak a few of the commands inside the file so that you can adapt an old analysis to be able to handle a new problem. And you could email your friends and colleagues a copy of this file so that they can reproduce your analysis themselves.
 
@@ -328,11 +328,126 @@ PV(r = .08, FV = 1000, n = 5)
 PV(.08, 1000, 5)
 ## [1] 0</code></pre>
 
-### Implicit loops
+Note that when building a function you can also set default values for arguments. In our original PV() we did not provide any default values so if we do not supply all the argument parameters an error will be returned. However, if we set default values then the function will use the stated default if any parameters are missing:
 
-In addition to providing the explicit looping structures via `while` and `for`, R also provides a collection of functions for **implicit loops**. These are functions that carry out operations very similar to those that you’d normally use a loop for. However, instead of typing out the whole loop, the whole thing is done with a single command. The main reason why this can be handy is that – due to the way that R is written – these implicit looping functions are usually about to do the same calculations much faster than the corresponding explicit loops. In most applications that beginners might want to undertake, this probably isn’t very important, since most beginners tend to start out working with fairly small data sets and don’t usually need to undertake extremely time-consuming number crunching. However, because you often see these functions referred to in other contexts, it may be useful to very briefly discuss a few of them.
+<pre class="language-r"><code class="lang-r"># creating default argument values
+PV &#x3C;- function(FV = 1000, r = .08, n = 5) {
+<strong>PV &#x3C;- FV / (1 + r)^n
+</strong>round(PV, 2)
+}
 
-The first and simplest of these functions is `sapply()`. The two most important arguments in this function are `X`, which specifies a vector containing the data, and `FUN`, which specifies the name of a function that should be applied to each element of the data vector. The following example illustrates the basics of how it works:
+# function will use default n value
+PV(1000, .08)
+## [1] 680.58
+r
+# specifying a different n value
+PV(1000, .08, 3)
+## [1] 793.83</code></pre>
+
+If a function performs multiple tasks and therefore has multiple results to report then we have to include the c() function inside the function to display all the results. If you do not include the c() function then the function output will only return the last expression:
+
+```r
+good <- function(x, y) {
+ output1 <- 2 * x + y
+ output2 <- x + 2 * y
+ output3 <- 2 * x + 2 * y
+ output4 <- x / y
+ c(output1, output2, output3, output4)
+}
+good(1, 2)
+## [1] 4.0 5.0 6.0 0.5
+```
+
+Furthermore, when we have a function that performs multiple tasks (i.e. computes multiple computations) then it is often useful to save the results in a list.
+
+```r
+good_list <- function(x, y) {
+ output1 <- 2 * x + y
+ output2 <- x + 2 * y
+ output3 <- 2 * x + 2 * y
+ output4 <- x / y
+ c(list(Output1 = output1, Output2 = output2,
+ Output3 = output3, Output4 = output4))
+}
+good_list(1, 2)
+## $Output1
+## [1] 4
+##
+## $Output2
+## [1] 5
+##
+## $Output3
+## [1] 6
+##
+## $Output4
+## [1] 0.5
+```
+
+If you want to save a function to be used at other times and within other scripts there are two main ways to do this. One way is to build a package which we do not cover in this course but is discussed in more detail in Hadley Wickhams R Packages book, which is openly available at http://r-pkgs.had.co.nz/. Another option, and the one discussed here, is to save the function in a script. For example, we can save a script that contains the PV() function and save this script as PV.R. If we want to use the PV function in this new script we can simply read in the function by sourcing the script using source("PV.R"). Now, you will notice that we have the PV() function in our global environment and can use it as normal. Note that if you are working in a different directory than where the PV.R file is located you will need to include the proper path to access the relevant directory.
+
+### Implicit loops (Apply family)
+
+In addition to providing the explicit looping structures via `while` and `for`, R also provides a collection of functions for **implicit loops**. These are functions that carry out operations very similar to those that you’d normally use a loop for. However, instead of typing out the whole loop, the whole thing is done with a single command.&#x20;
+
+The apply family consists of vectorized functions, which minimize your need to explicitly create loops. These functions will apply a specified function to a data object, and the primary difference is in the object class to which the function is applied (e.g., list vs. matrix) and the object class that will be returned from the function. The following presents the most common forms of apply functions but realize that additional functions exist.&#x20;
+
+**Pro Tip:** When working with very large data tables, maximizing the use of functions (thus, minimizing Loop and Apply) and maximizing the use of vectors, matrices, and lists (thus, minimizing Data Frames) can significantly reduce processing time.
+
+### apply() for matrices and data frames&#x20;
+
+The function `apply()` is most often used to apply a function to the rows or columns (margins) of matrices or data frames. Using `apply()` is not always faster than using a loop function, but it is highly compact and can be written in one line. The syntax is as follows:
+
+<pre class="language-r"><code class="lang-r"><strong># syntax of apply function
+</strong>apply (x, MARGIN, FUN, …)</code></pre>
+
+* x is the matrix or dataframe
+* MARGIN is a vector giving the subscripts to which the function will be applied over, e.g., 1 indicates rows, 2 indicates columns, and c(1, 2) indicates rows and columns.
+* FUN is the function to be applied
+* … is for any other arguments to be passed to the function
+
+To provide examples let’s use the data table `mtcars` provided in R :
+
+<pre class="language-r"><code class="lang-r"># show first few rows of mtcars
+head (mtcars)
+##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+## Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+## Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
+
+# get the mean of each column
+<strong>apply (mtcars, 2, mean)
+</strong>##        mpg        cyl       disp         hp       drat         wt  
+##  20.090625   6.187500 230.721875 146.687500   3.596563   3.217250
+##       qsec         vs         am       gear       carb  
+##  17.848750   0.437500   0.406250   3.687500   2.812500
+
+# get column quantiles (notice the quantile percents as row names) 
+apply (mtcars, 2, quantile, probs = c (0.10, 0.25, 0.50, 0.75, 0.90))
+##        mpg cyl    disp    hp  drat      wt    qsec vs am gear carb
+## 10% 14.340   4  80.610  66.0 3.007 1.95550 15.5340  0  0    3    1
+## 25% 15.425   4 120.825  96.5 3.080 2.58125 16.8925  0  0    3    2
+## 50% 19.200   6 196.300 123.0 3.695 3.32500 17.7100  0  0    4    2
+## 75% 22.800   8 326.000 180.0 3.920 3.61000 18.9000  1  1    4    4
+## 90% 30.090   8 396.000 243.5 4.209 4.04750 19.9900  1  1    5    4   </code></pre>
+
+### sapply() for lists… output simplified
+
+The function `lapply()` does the following simple series of operations:
+
+1. it loops over a list, iterating over each element in that list
+2. it applies a function to each element of the list (a function that you specify)
+3. and returns a list (the l is for “list”).
+
+The function `sapply()` behaves similarly to `lapply()`. The only real difference is in the return value. `sapply()` will try to simplify the result of `lapply()` if possible. Essentially, `sapply()` calls `lapply()` on its input and then applies the following algorithm:&#x20;
+
+* If the result is a list where every element is length 1, then a vector is returned
+* If the result is a list where every element is a vector of the same length (> 1), a matrix is returned.&#x20;
+* If neither of the above simplifications can be performed then a list is returned
+
+The following example illustrates the basics of how it works:
 
 ```r
 words <- c("along", "the", "loom", "of", "the", "land")
@@ -341,7 +456,44 @@ sapply(X = words, FUN = nchar)
 ##     5     3     4     2     3     4
 ```
 
-The function `sapply()` has implicitly looped over the elements of `words`  and for each such element applied the `nchar()` function to calculate the number of letters in the corresponding word.
+The function `sapply()` has implicitly looped over the elements of `words`  and for each such element applied the `nchar()` function to calculate the number of letters in the corresponding word. To illustrate the differences we can use the previous example using a list with the beaver data and compare the `sapply` and `lapply` outputs:
+
+```r
+# list of R's built-in beaver data
+beaver_data <- list (beaver1 = beaver1, beaver2 = beaver2)
+
+# get the mean of each list item and return as a list
+lapply (beaver_data, function(x) round (apply (x, 2, mean), 2))
+
+## $beaver1
+##    day    time    temp   activ 
+## 346.20 1312.02   36.86    0.05 
+
+## $beaver2
+##    day    time    temp   activ 
+## 307.13 1446.20   37.60    0.62  
+
+# get the mean of each list item and simplify the output
+sapply (beaver_data, function(x) round (apply (x, 2, mean), 2))
+
+##       beaver1 beaver2
+## day    346.20  307.13
+## time  1312.02 1446.20
+## temp    36.86   37.60
+## activ    0.05    0.62
+```
+
+### tapply() for vectors
+
+tapply() is used to apply a function over subsets of a vector . It is primarily used when we have the following circumstances:
+
+1. A dataset that can be broken up into groups (via categorical variables - aka factors )
+2. We desire to break the dataset up into groups
+3. Within each group, we want to apply a function The arguments to tapply() are as follows: • x is a vector • INDEX is a factor or a list of factors (or else they are coerced to factors ) • FUN is a function to be applied • … contains other arguments to be passed FUN • simplify , should we simplify the result?
+
+syntax of tapply function
+
+tapply (x, INDEX, FUN, …, simplify = TRUE)
 
 The second of these functions is `tapply()` which has three key arguments. As before `X` specifies the data, and `FUN` specifies a function. However, there is also an `INDEX` argument, which specifies a grouping variable. What the `tapply()` function does is loop over all of the different values that appear in the `INDEX` variable. Each such value defines a group: the `tapply()` function constructs the subset of `X` that corresponds to that group, and then applies the function `FUN` to that subset of the data:
 
