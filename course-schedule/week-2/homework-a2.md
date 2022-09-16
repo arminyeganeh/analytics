@@ -2,7 +2,7 @@
 description: Homework 2, 450-600 lines, 3 hours to complete
 ---
 
-# Working with Data in R
+# R Concepts P2
 
 ### HA2 Instructions
 
