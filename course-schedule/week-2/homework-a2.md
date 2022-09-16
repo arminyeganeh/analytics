@@ -2,7 +2,7 @@
 description: Homework 2, 450-600 lines, 3 hours to complete
 ---
 
-# Working with Data in R
+# Managing Files in R
 
 ### HA2 Instructions
 
@@ -38,9 +38,9 @@ At the top of the file panel you see some text that says “Home > Rbook > data�
 
 There are several different types of files that are likely to be relevant to us when doing data analysis. There are three in particular that are especially important from the perspective of this book:
 
-* _Workspace files_ are those with a .Rdata file extension. This is the standard kind of file that R uses to store data and variables. They’re called “workspace files” because you can use them to save your whole workspace.
-* _Comma separated value (CSV) files_ are those with a .csv file extension. These are just regular old text files, and they can be opened with almost any software. It’s quite typical for people to store data in CSV files, precisely because they’re so simple.
-* _Script files_ are those with a .R file extension. These aren’t data files at all; rather, they’re used to save a collection of commands that you want R to execute later. They’re just text files, but we won’t make use of them now.
+* _Workspace files_ are those with a **.Rdata file extension**. This is the standard kind of file that R uses to store data and variables. They’re called “workspace files” because you can use them to save your whole workspace.
+* _Comma separated value (CSV) files_ are those with a **.csv file extension**. These are just regular old text files, and they can be opened with almost any software. It’s quite typical for people to store data in CSV files, precisely because they’re so simple.
+* _Script files_ are those with a **.R file extension**. These aren’t data files at all; rather, they’re used to save a collection of commands that you want R to execute later. They’re just text files, but we won’t make use of them now.
 
 There are also several other kinds of data file that you might want to import into R. For instance, you might want to open Microsoft Excel spreadsheets (.xlsx files), or data files that have been saved in the native file formats for other statistics software, such as SPSS, SAS, Minitab, Stata or Systat. Finally, you might have to handle databases.
 
@@ -73,6 +73,25 @@ Okay, so how do we open an .Rdata file using the RStudio file panel? All we have
 
 ```
 > load("~/Rbook/data/booksales.Rdata")
+```
+
+The workspace environment will also list your user-defined objects such as vectors, matrices, data frames, lists, and functions. To identify or remove the objects (i.e. vectors, data frames, user-defined functions, etc.) in your current R environment:
+
+```r
+# list all objects
+ls()
+
+# identify if an R object with a given name is present
+exists("object_name")
+
+# remove defined object from the environment
+rm ("object_name")
+
+# you can remove multiple objects by using the c() function
+rm(c("object1", "object2"))
+
+# basically removes everything in the working environment -- use with caution!
+rm(list = ls() )
 ```
 
 ### Importing data from CSV files
@@ -116,7 +135,7 @@ print(books)
 
 Clearly, it’s worked, but the format of this output is a bit unfamiliar. We haven’t seen anything like this before. What you’re looking at is a _data frame_, which is a very important kind of variable in R.
 
-### Importing data from CSV files using RStudio
+### Importing data from CSV files
 
 Yet again, it’s easier in RStudio. In the environment panel in RStudio you should see a button called “Import Dataset”. Click on that, and it will give you a couple of options: select the “From Text File…” option, and it will open up a very familiar dialog box asking you to select a file: if you’re on a Mac, it’ll look like the usual Finder window that you use to choose a file; on Windows it looks like an Explorer window. Assuming that you’re familiar with your own computer, so should have no problem finding the CSV file that you want to import! Find the one you want, then click on the “Open” button. When you do this, you’ll see a window that looks like the one in **Figure HA2.3**. &#x20;
 
@@ -137,6 +156,38 @@ View(booksales)
 ```
 
 The first of these commands is the one that loads the data. The second one will display a pretty table showing the data in RStudio.
+
+`read.table()` is a multipurpose work-horse function in base R for importing data. The functions `read.csv()` and `read.delim()` are special cases of `read.table()` in which the defaults have been adjusted for efficiency. Compared to the equivalent base functions, functions in the package `readr` are around 10× faster. `read_csv()` maintains the full variable name (whereas read.csv eliminates any spaces in variable names and fills it with ‘.’).
+
+### Importing data from Excel files
+
+With Excel still being the spreadsheet software of choice its important to be able to effi ciently import and export data from these files. Often, R users will simply resort to exporting the Excel file as a CSV file and then import into R using `read.csv`; however, this is far from efficient. To import data directly from Excel you can use two different packages: xlsx and readxl. To import the Excel data we simply use the function read.xlsx():
+
+```r
+library (xlsx)
+# read in first worksheet using a sheet name
+read.xlsx ("mydata.xlsx", sheetName = "Sheet1")
+
+# read in first worksheet using a sheet index
+read.xlsx ("mydata.xlsx", sheetIndex = 1)
+
+# read in all data below the second line
+read.xlsx ("mydata.xlsx", sheetName = "Sheet3", startRow = 3)
+
+# read in a range of rows
+read.xlsx ("mydata.xlsx", sheetName = "Sheet3", rowIndex = 3:5)
+
+# read in data and change class type
+mydata_sheet1.2 <- read.xlsx ("mydata.xlsx", sheetName = "Sheet1",
+                              stringsAsFactors = FALSE,
+                              colClasses = c ("double", "character",
+                                              "logical"))
+
+# changing the keepFormula to TRUE will display the equations
+read.xlsx ("mydata.xlsx", sheetName = "Sheet4", keepFormulas = TRUE)  
+```
+
+
 
 ### Saving a workspace file&#x20;
 
