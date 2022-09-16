@@ -145,7 +145,166 @@ attributes (l2)
 ## [1] "item1" "item2" "item3"
 ```
 
-We can also add comments to lists. As previously mentioned, comments act as a note to the user without changing how the object behaves. With lists, we can add a general comment to the list using comment() and we can also add comments to specifi c list items with attr()
+We can also add comments to lists. As previously mentioned, comments act as a note to the user without changing how the object behaves. With lists, we can add a general comment to the list using comment() and we can also add comments to specific list items with `attr()`:
+
+```r
+# adding a general comment to list l2 with comment ()
+comment (l2) <- "This is a comment on a list"
+str (l2)
+## List of 3
+## $ item1: int [1:3] 1 2 3
+## $ item2: chr [1:5] "a" "b" "c" "d" …
+## $ item3: logi [1:4] TRUE FALSE TRUE TRUE
+## - attr(*, "comment")= chr "This is a comment on a list"
+
+attributes (l2)
+## $names
+## [1] "item1" "item2" "item3"
+##
+## $comment
+## [1] "This is a comment on a list"
+# adding a comment to a specific list item with attr ()
+
+attr (l2, "item2") <- "Comment for item2"
+str (l2)
+## List of 3
+## $ item1: int [1:3] 1 2 3
+## $ item2: chr [1:5] "a" "b" "c" "d" …
+## $ item3: logi [1:4] TRUE FALSE TRUE TRUE
+## - attr(*, "comment")= chr "This is a comment on a list"
+## - attr(*, "item2")= chr "Comment for item2"
+
+attributes (l2)
+## $names
+## [1] "item1" "item2" "item3"
+##
+## $comment
+## [1] "This is a comment on a list"
+##
+## $item2
+## [1] "Comment for item2" 
+```
+
+### Subsetting lists
+
+To subset lists, we can utilize the operator single bracket `[ ]` , double brackets `[[ ]]` , or dollar sign `$` . Each approach provides a specific purpose and can be combined in different ways to achieve the following subsetting objectives:
+
+* Subset list and preserve output as a list
+* Subset list and simplify output
+* Subset list to get elements out of a list
+* Subset list with a nested list
+
+### Subsetting lists and preserving output as a list
+
+To extract one or more list items while preserving1 the output in list format use the \[ ] operator:
+
+```r
+# extract first list item
+l2[1]
+## $item1
+## [1] 1 2 3
+
+# same as above but using the item's name
+l2["item1"]
+## $item1
+## [1] 1 2 3
+
+# extract multiple list items
+l2[ c (1,3)]
+## $item1
+## [1] 1 2 3
+##
+## $item3
+## [1] TRUE FALSE TRUE TRUE
+
+# same as above but using the items' names
+l2[ c ("item1", "item3")]
+## $item1
+## [1] 1 2 3
+##
+## $item3
+## [1] TRUE FALSE TRUE TRUE
+```
+
+### Subsetting lists and simplifying outputs
+
+To extract one or more list items while simplifying the output, use the operator `[[ ]]` or `$`:
+
+```r
+# extract first list item and simplify to a vector
+l2[[1]]
+## [1] 1 2 3
+
+# same as above but using the item's name
+l2[["item1"]]
+## [1] 1 2 3
+
+# same as above but using the $ operator
+l2$item1
+## [1] 1 2 3
+```
+
+One thing that differentiates the operator `[[` from `$` is that `[[` can be used with computed indices. The operator `$` can only be used with literal names.
+
+### Subsetting lists to take elements out of a list
+
+To extract individual elements out of a specific list item, combine the operator `[[` or `$` with `[` :
+
+```r
+# extract the third element from the second list item
+l2[[2]][3]
+## [1] "c"
+
+# same as above but using the item's name
+l2[["item2"]][3]
+## [1] "c"
+
+# same as above but using the $ operator
+l2$item2[3]
+## [1] "c"
+```
+
+### Subsetting lists with a nested list
+
+If you have nested lists you can expand the ideas above to extract items and elements. We’ll use the following list `l3` which has a nested list in `item2`.
+
+```r
+l3 <- list (item1 = 1:3,
+            item2 = list (item2a = letters[1:5],
+                          item3b = c (T, F, T, T)))
+str (l3)
+## List of 2
+## $ item1: int [1:3] 1 2 3
+## $ item2:List of 2
+## ..$ item2a: chr [1:5] "a" "b" "c" "d" …
+## ..$ item3b: logi [1:4] TRUE FALSE TRUE TRUE
+```
+
+If the goal is to subset `l3` to extract the nested list item item2a from item2, we can perform this in multiple ways.
+
+```r
+# preserve the output as a list
+l3[[2]][1]
+## $item2a
+## [1] "a" "b" "c" "d" "e"
+
+# same as above but simplify the output
+l3[[2]][[1]]
+## [1] "a" "b" "c" "d" "e"
+
+# same as above with names
+l3[["item2"]][["item2a"]]
+## [1] "a" "b" "c" "d" "e"
+
+# same as above with `$` operator
+l3$item2$item2a
+## [1] "a" "b" "c" "d" "e"
+# extract individual element from a nested list item
+l3[[2]][[1]][3]
+## [1] "c" 
+```
+
+
 
 
 
