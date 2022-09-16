@@ -1,14 +1,155 @@
 ---
-description: Lab 4, 150-250 lines, 1 hour to complete
+description: Homework 4, 450-600 lines, 3 hours to complete
 ---
 
 # Data Structures in R P2
 
 ### Creating and managing lists
 
+A list is an R structure that allows you to combine elements of different types and lengths. This can include a list embedded within a list. Many statistical outputs are provided as a list as well; therefore, it is critical to understand how to work with lists. In this section, we will illustrate how to create lists, add additional elements to preexisting lists, add attributes to lists, and subset lists.
+
+### Creating lists
+
+To create a list we can use the function `list()`. Note how each of the four list items below is of different classes (integer, character, logical, and numeric) and different lengths.
+
+```r
+l <- list (1:3, "a", c (TRUE, FALSE, TRUE), c (2.5, 4.2))
+str (l)
+## List of 4
+## $ : int [1:3] 1 2 3
+## $ : chr "a"
+## $ : logi [1:3] TRUE FALSE TRUE
+## $ : num [1:2] 2.5 4.2
+# a list containing a list
+
+l <- list (1:3, list (letters[1:5], c (TRUE, FALSE, TRUE)))
+str (l)
+## List of 2
+## $ : int [1:3] 1 2 3
+## $ :List of 2
+## ..$ : chr [1:5] "a" "b" "c" "d" …
+## ..$ : logi [1:3] TRUE FALSE TRUE
+```
+
+### Adding on to lists
+
+To add additional list components to a list we can leverage the functions `list()` and `append()`:
+
+```r
+l1 <- list (1:3, "a", c (TRUE, FALSE, TRUE))
+str (l1)
+## List of 3
+## $ : int [1:3] 1 2 3
+## $ : chr "a"
+## $ : logi [1:3] TRUE FALSE TRUE
+```
+
+If we add the new elements with `list()` it will create a list of two components, component 1 will be a nested list of the original list, and component 2 will be the new elements added:
+
+```r
+l2 <- list (l1, c (2.5, 4.2))
+str (l2)
+## List of 2
+## $ :List of 3
+## ..$ : int [1:3] 1 2 3
+## ..$ : chr "a"
+## ..$ : logi [1:3] TRUE FALSE TRUE
+## $ : num [1:2] 2.5 4.2 
+```
+
+To simply add a fourth list component without creating nested lists we use the function `append()`:
+
+```r
+l3 <- append (l1, list ( c (2.5, 4.2)))
+str (l3)
+## List of 4
+## $ : int [1:3] 1 2 3
+## $ : chr "a"
+## $ : logi [1:3] TRUE FALSE TRUE
+## $ : num [1:2] 2.5 4.2
+```
+
+Alternatively, we can also add a new list component by utilizing the ‘$’ sign and naming the new item:
+
+```r
+l3$item4 <- "new list item"
+str (l3)
+## List of 5
+## $ : int [1:3] 1 2 3
+## $ : chr "a"
+## $ : logi [1:3] TRUE FALSE TRUE
+## $ : num [1:2] 2.5 4.2
+## $ item4: chr "new list item"
+```
+
+To add individual elements to a specific list component we need to introduce some subsetting.
+
+```r
+str (l1)
+## List of 3
+## $ : int [1:3] 1 2 3
+## $ : chr "a"
+## $ : logi [1:3] TRUE FALSE TRUE
+```
+
+To add additional values to a list item you need to subset for that specific list item and then you can use the c() function to add the additional elements to that list item:
+
+```r
+l1[[1]] <- c (l1[[1]], 4:6)
+str (l1)
+## List of 3
+## $ : int [1:6] 1 2 3 4 5 6
+## $ : chr "a"
+## $ : logi [1:3] TRUE FALSE TRUE
+
+l1[[2]] <- c (l1[[2]], c ("b", "c", "d"))
+str (l1)
+## List of 3
+## $ : int [1:6] 1 2 3 4 5 6
+## $ : chr [1:4] "a" "b" "c" "d"
+## $ : logi [1:3] TRUE FALSE TRUE 
+```
+
+### Adding attributes to lists
+
+The attributes that you can add to lists include names, general comments, and specific list item comments. Currently, our l1 list has no attributes:
+
+```
+attributes (l1)
+## NULL
+```
+
+We can add names to lists in two ways. First, we can use names() to assign names to list items in a pre-existing list. Second, we can add names to a list when we are creating a list.
+
+```r
+# adding names to a pre-existing list
+names (l1) <- c ("item1", "item2", "item3")
+str (l1)
+## List of 3
+## $ item1: int [1:6] 1 2 3 4 5 6
+## $ item2: chr [1:4] "a" "dding" "to a" "list"
+## $ item3: logi [1:3] TRUE FALSE TRUE
+attributes (l1)
+## $names
+## [1] "item1" "item2" "item3"
+
+# adding names when creating lists
+l2 <- list (item1 = 1:3, item2 = letters[1:5], item3 = c (T, F, T, T))
+str (l2)
+## List of 3
+## $ item1: int [1:3] 1 2 3
+## $ item2: chr [1:5] "a" "b" "c" "d" …
+## $ item3: logi [1:4] TRUE FALSE TRUE TRUE
+attributes (l2)
+## $names
+## [1] "item1" "item2" "item3"
+```
+
+We can also add comments to lists. As previously mentioned, comments act as a note to the user without changing how the object behaves. With lists, we can add a general comment to the list using comment() and we can also add comments to specifi c list items with attr()
 
 
-### Creating and managing dataframes
+
+### Creating and managing data frames
 
 A data frame is the most common way of storing data in R and, generally, is the data structure most often used for data analyses. Under the hood, a data frame is a list of equal-length vectors . Each element of the list can be thought of as a column and the length of each element of the list is the number of rows. As a result, data frames can store different classes of objects in each column (i.e. numeric, character, factor). In essence, the easiest way to think of a data frame is as an Excel worksheet that contains columns of different types of data but are all of equal length rows. In this chapter I will illustrate how to create data frames , add additional elements to pre- existing data frames , add attributes to data frames , and subset data frames .
 
