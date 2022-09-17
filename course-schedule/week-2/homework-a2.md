@@ -12,16 +12,16 @@ Read this tutorial and apply the codes in R.
 
 Let’s suppose I’m on Windows. As before, I can find out what my current working directory is like this:
 
-```
-> getwd()
-[1] "C:/Users/dan/
+```r
+getwd()
+## [1] "C:/Users/dan/
 ```
 
 This seems about right, but you might be wondering why R is displaying a Windows path using the wrong type of slash. The answer is slightly complicated and has to do with the fact that R treats `\` as a special character. To tell R not to treat `\` as a special character requires adding a skip character `\` . If you want to specify the working directory on a Windows computer, you need to use one of the following commands:
 
-```
-> setwd( "C:/Users/dan" )
-> setwd( "C:\\Users\\dan" )
+```r
+setwd( "C:/Users/dan" )
+setwd( "C:\\Users\\dan" )
 ```
 
 The Files panel shown in **Figure HA2.1** is a decent file browser, which can be used to set the working directory and even delete, rename, and load files.
@@ -30,8 +30,8 @@ The Files panel shown in **Figure HA2.1** is a decent file browser, which can be
 
 At the top of the file panel you see some text that says “Home > Rbook > data”, which means the list below shows files are stored in that directory. To change the R working directory using the file panel click on the button “More”. This will bring up a little menu, and one of the options will be “Set as Working Directory”. If you select that option, then R really will change the working directory. You can tell that it has done so because a command like this appears in the console:
 
-```
-> setwd("~/Rbook/data")
+```r
+setwd("~/Rbook/data")
 ```
 
 ### Loading and saving data
@@ -52,27 +52,27 @@ When we used the `list.files()` command to list the contents of the `/Users/dan/
 
 Using the absolute file path, the command would look like this:
 
-```
-> load( file = "/Users/dan/Rbook/data/booksales.Rdata" )
+```r
+load( file = "/Users/dan/Rbook/data/booksales.Rdata" )
 ```
 
 but this is pretty lengthy. Given that the working directory is `/Users/dan/Rbook/data`, we could use a relative file path, like so:
 
-```
-> load(file = "../data/booksales.Rdata")
+```r
+load(file = "../data/booksales.Rdata")
 ```
 
 However, the preference is usually to change the working directory first and then load the file:
 
-```
-> setwd("../data")         # move to the data directory
-> load("booksales.Rdata")  # load the data
+```r
+setwd("../data")         # move to the data directory
+load("booksales.Rdata")  # load the data
 ```
 
 Okay, so how do we open an .Rdata file using the RStudio file panel? All we have to do is to click on the file name. RStudio brings up a little dialog box asking to confirm that we do want to load this file. The following command then turns up in the console:
 
-```
-> load("~/Rbook/data/booksales.Rdata")
+```r
+load("~/Rbook/data/booksales.Rdata")
 ```
 
 The workspace environment will also list your user-defined objects such as vectors, matrices, data frames, lists, and functions. To identify or remove the objects (i.e. vectors, data frames, user-defined functions, etc.) in your current R environment:
@@ -107,17 +107,17 @@ If RStudio were not available to you, the easiest way to open this file would be
 
 Therefore, to import the CSV file, the command we need is:
 
-```
+```r
 books <- read.csv(file = "booksales.csv")
 ```
 
 There are two very important points to notice here. Firstly, notice that we didn’t try to use the `load()` function, because that function is only meant to be used for .Rdata files. If you try to use `load()` on other types of data, you get an error. Secondly, notice that when we imported the CSV file we assigned the result to a variable, which we imaginatively called `books` . There’s a reason for this. The idea behind the file `.Rdata` is that it stores a whole workspace. So, if you had the ability to look inside the file yourself you’d see that the data file keeps track of all the variables and their names. So when you `load()` the file, R restores all those original names. CSV files are treated differently: as far as R is concerned, the CSV only stores one variable, but that variable is a big table. So when you import that table into the workspace, R expects you to give it a name. Let’s have a look at what we’ve got:
 
-```
+```r
 print(books)
 ```
 
-```
+```r
 ##        Month Days Sales Stock.Levels
 ## 1    January   31     0         high
 ## 2   February   28   100         high
@@ -150,7 +150,7 @@ In the top left corner, you need to type the name of the variable you R to creat
 
 Once you’re happy, click “Import”. When you do, two commands appear in the R console:
 
-```
+```r
 booksales <- read.csv("~/Rbook/data/booksales.csv")
 View(booksales)
 ```
@@ -194,13 +194,13 @@ data_gov <- read.csv (url)
 
 There are two commands you can use to do this, `save()` and `save.image()`. If you’re happy to save _all_ of the variables in your workspace into the data file, then you should use `save.image()`. And if you’re happy for R to save the file into the current working directory, all you do is:
 
-```
+```r
 save.image( file = "myfile.Rdata" )
 ```
 
 Since `file` is the first argument, you can shorten this to `save.image("myfile.Rdata")`. Suppose, however, you have several variables in the workspace, and you only want to save some of them:
 
-```
+```r
 who()
 ##   -- Name --   -- Class --   -- Size --
 ##   data         data.frame    3 x 2     
@@ -211,7 +211,7 @@ save(data, handy, file = "myfile.Rdata")
 
 Finally, a second way to specify which variables the function `save()` should save is to use the `list` argument:
 
-```
+```r
 save.me <- c("data", "handy")   # the variables to be saved
 save(file = "booksales2.Rdata", list = save.me)   # the command to save them
 ```
@@ -247,16 +247,16 @@ Most likely you’ll see these in situations where you were expecting a number, 
 
 * _Infinity_ (`Inf`). The easiest of the special values to explain is `Inf` since it corresponds to a value that is infinitely large. You can also have `-Inf` :
 
-```
-> 1 / 0
-[1] Inf
+```r
+1 / 0
+## [1] Inf
 ```
 
 * _Not a Number_ (`NaN`). This means “there isn’t a mathematically defined number for this”. Mathematicians would say $$0/0$$ is **undefined**. R says that it’s not a number, nevertheless, it’s still treated as a “numeric” value:
 
-```
-> 0 / 0
-[1] NaN
+```r
+0 / 0
+## [1] NaN
 ```
 
 * _Not available_ (`NA`). `NA` indicates that the value that is “supposed” to be stored here is missing. Note the difference between `NA` and `NaN`. For `NaN`, we really do know what’s supposed to be stored; it’s just that it happens to correspond to something like $$0/0$$ that doesn’t make any sense at all. In contrast, `NA` indicates that we actually don’t know what was supposed to be there. The information is _missing_.
@@ -266,36 +266,36 @@ Most likely you’ll see these in situations where you were expecting a number, 
 
 One thing about the way that R prints out a vector is that the elements come out unlabelled. Suppose I’ve got data reporting the quarterly profits for some company. That is:
 
-```
-> profit <- c( 3.1, 0.1, -1.4, 1.1 )
-> profit
-[1]  3.1  0.1 -1.4  1.1
+```r
+profit <- c( 3.1, 0.1, -1.4, 1.1 )
+profit
+## [1]  3.1  0.1 -1.4  1.1
 ```
 
 You can probably guess that the first element corresponds to the first quarter, the second element to the second quarter, and so on. This is where it can be helpful to assign `names` to each of the elements. Here’s how you do it:
 
-```
-> names(profit) <- c("Q1","Q2","Q3","Q4")
-> profit
-Q1   Q2   Q3   Q4 
-3.1  0.1 -1.4  1.1
+```r
+names(profit) <- c("Q1","Q2","Q3","Q4")
+profit
+## Q1   Q2   Q3   Q4 
+## 3.1  0.1 -1.4  1.1
 ```
 
 You can always delete the names again by using `names(profit) <- NULL`. It’s also worth noting that you don’t have to do this as a two-stage process:
 
-```
-> profit <- c( "Q1" = 3.1, "Q2" = 0.1, "Q3" = -1.4, "Q4" = 1.1 )
-> profit
-Q1   Q2   Q3   Q4 
-3.1  0.1 -1.4  1.1
+```r
+profit <- c( "Q1" = 3.1, "Q2" = 0.1, "Q3" = -1.4, "Q4" = 1.1 )
+profit
+## Q1   Q2   Q3   Q4 
+## 3.1  0.1 -1.4  1.1
 ```
 
 The _value_ of `profit[1]` is still `3.1`. Nevertheless, names aren’t purely cosmetic, since R allows you to pull out particular elements of the vector by referring to their names:
 
-```
-> profit["Q1"]
-Q1 
-3.1
+```r
+profit["Q1"]
+## Q1 
+## 3.1
 ```
 
 To pull out the names themselves, just type `names(profit)`.
@@ -306,7 +306,7 @@ As we’ve seen, R allows you to store different kinds of data. In particular, t
 
 This is quite useful, but notice that it means that R makes a big distinction between `5` and `"5"`:
 
-```
+```r
 x <- "5"   # x is character
 y <- "4"   # y is character
 x * y
@@ -315,16 +315,18 @@ x * y
 
 Okay, let’s suppose that I’ve forgotten what kind of data we stored in the variable `x` (which happens depressingly often). R provides a function that will let us find out. Or, more precisely, it provides _three_ functions: `class()`, `mode()` and `typeof()`. Why the heck does it provide three functions, you might be wondering? Basically, because R actually keeps track of three different kinds of information about a variable. The **class** of a variable is a “high level” classification, and it captures psychologically (or statistically) meaningful distinctions. For instance `"2011-09-12"` and `"my birthday"` are both text strings, but there’s an important difference between the two: one of them is a date:
 
-```
-> x <- "hello world"
+```r
+x <- "hello world"
 class(x)
-[1] "character"
+## [1] "character"
+
 x <- TRUE
 class(x)
-[1] "logical"
+## [1] "logical"
+
 x <- 100
 class(x)
-[1] "numeric"
+## [1] "numeric"
 ```
 
 Exciting, no?
@@ -333,11 +335,11 @@ Exciting, no?
 
 In order to understand why R has created this funny thing called a data frame, it helps to try to see what problem it solves. So let’s assume we record 9 individuals' test scores:
 
-```
-> group <- c(1,1,1,2,2,2,3,3,3)
-> gender <- c("M", "M", "M", "M", "M", "F", "F", "F", "F")
-> age <- c(17, 19, 21, 37, 18, 19, 47, 18, 19)
-> score <- c(12, 10, 11, 15, 16, 14, 25, 21, 29)
+```r
+group <- c(1,1,1,2,2,2,3,3,3)
+gender <- c("M", "M", "M", "M", "M", "F", "F", "F", "F")
+age <- c(17, 19, 21, 37, 18, 19, 47, 18, 19)
+score <- c(12, 10, 11, 15, 16, 14, 25, 21, 29)
 ```
 
 So there are four variables in the workspace, `age`, `gender`, `group` and `score`. And it just so happens that all four of them are the same size (i.e., they’re all vectors with 9 elements). And it just so happens that `age[1]` corresponds to the age of the first person, and `gender[1]` is the gender of that very same person, etc. In other words, we both know that all four of these variables correspond to the _same_ data set, and all four of them are organised in exactly the same way.
@@ -346,9 +348,9 @@ However, R _doesn’t_ know this! As far as it’s concerned, there’s no reaso
 
 So how do we create a data frame? One way we’ve already seen: if we import our data from a CSV file, R will store it as a data frame. A second way is to create it directly from some existing variables using the `data.frame()` function. All you have to do is type a list of variables that you want to include in the data frame. The output of the command `data.frame()` is, well, a data frame. So, if we want to store all the four variables in a data frame called `expt` :
 
-```
-> expt <- data.frame ( age, gender, group, score ) 
-> expt 
+```r
+expt <- data.frame ( age, gender, group, score ) 
+expt 
 ##   age gender   group score
 ## 1  17   male group 1    12
 ## 2  19   male group 1    10
@@ -366,16 +368,16 @@ Once you’ve created it, it no longer depends on the original variables from wh
 
 How do we tell R to look inside the data frame? As is always the case with R there are several ways. The simplest way is to use the operator `$` to extract the variable you’re interested in:
 
-```
+```r
 expt$score
-[1] 12 10 11 15 16 14 25 21 29
+## [1] 12 10 11 15 16 14 25 21 29
 ```
 
 One problem that sometimes comes up in practice is that you forget what you called all your variables. Normally you might try to type `objects()` or `who()`, but neither of those commands will tell you what the names are for those variables inside a data frame! One way is to ask R to tell you the names of all the variables stored in the data frame using the function `names()` :
 
-```
-> names(expt)
-[1] "age" "gender" "group" "score"
+```r
+names(expt)
+## [1] "age" "gender" "group" "score"
 ```
 
 An alternative method is to use the `who()` function, as long as you tell it to look at the variables inside data frames. If you set `expand = TRUE` then it will not only list the variables in the workspace, but it will “expand” any data frames that you’ve got in the workspace so that you can see what they look like. or, since `expand` is the first argument in the `who()` function you can just type `who(TRUE)`:
@@ -388,7 +390,7 @@ who(expand = TRUE)
 
 The next kind of data we want to mention is a **list**. Lists are an extremely fundamental data structure in R, and as you start making the transition from a novice to a savvy R user you will use lists all the time. Most advanced data structures in R are built from lists (e.g., data frames are actually a specific type of list). Because lists are so important to how R stores things, it’s useful to have a basic understanding of them. Okay, so what is a list, exactly? Like data frames, lists are just “collections of variables.” However, unlike data frames – which are basically supposed to look like a nice “rectangular” table of data – there are no constraints in a list on what kinds of variables we include, and no requirement that the variables have any particular relationship to one another. In order to understand what this actually _means_, the best thing to do is create a list, which we can do using the `list()` function. If I type this as my command:
 
-```
+```r
 Dan <- list(age = 34,
             nerd = TRUE,
             parents = c("Joe","Liz") 
@@ -397,23 +399,23 @@ Dan <- list(age = 34,
 
 R creates a new list variable called `Dan`, which is a bundle of three different variables: `age`, `nerd` and `parents`. Notice, that the `parents` variable is longer than the others. This is perfectly acceptable for a list, but it wouldn’t be for a data frame. If we now print out the variable, you can see the way that R stores the list:
 
-```
-> print( Dan )
+```r
+print( Dan )
 $age
-[1] 34
+## [1] 34
 
 $nerd
-[1] TRUE
+## [1] TRUE
 
 $parents
-[1] "Joe" "Liz"
+## [1] "Joe" "Liz"
 ```
 
 As you might have guessed from those `$` symbols everywhere, the variables are stored in exactly the same way that they are for a data frame (again, this is not surprising: data frames _are_ a type of list). You can extract the variables from the list using the `$` operator, like so:
 
 ```
-> Dan$nerd
-[1] TRUE
+Dan$nerd
+## [1] TRUE
 ```
 
 If you need to add new entries to the list, the easiest way to do so is to again use `$` :
@@ -428,15 +430,15 @@ then R creates a new entry to the end of the list called `children` and assigns 
 
 The last kind of variable that we want to see before finally being able to start talking about statistics is **Formula**. Stated simply, a formula object is a variable, but it’s a special type of variable that specifies a relationship between other variables. A formula is specified using the “tilde operator” `~`:
 
-```
-> formula1 <- out ~ pred
-> formula1
-out ~ pred
+```r
+formula1 <- out ~ pred
+formula1
+## out ~ pred
 ```
 
 The _precise_ meaning of this formula depends on exactly what you want to do with it, but in broad terms, it means “the `out` (outcome) variable analyzed in terms of the `pred` (predictor) variable”:
 
-```
+```r
 formula2 <-  out ~ pred1 + pred2   # more than one variable on the right
 formula3 <-  out ~ pred1 * pred2   # different relationship between predictors 
 formula4 <-  ~ var1 + var2         # a 'one-sided' formula
@@ -448,7 +450,7 @@ Formulas are pretty flexible things, and so different functions will make use of
 
 So where should you go for help? once you’re moving away from being a pure beginner to becoming a skilled user, you’ll start ﬁnding the help documentation more and more helpful. You can look at the help documentation for the `load()` function using one of the following:
 
-```
-> ?load 
-> help("load")
+```r
+?load 
+help("load")
 ```
