@@ -222,9 +222,9 @@ RStudio allows you to save the workspace pretty easily. In the environment panel
 
 Although getting data into R is essential, getting data out of R can be just as important. This section will cover how to export data to text files and Excel files and save R data objects.&#x20;
 
-To export df to a CSV fi le we can use write.csv() . Additional arguments allow you to exclude row and column names, specify what to use for missing values , add or remove quotations around character strings , etc.
+To export the data table `df` to a CSV file we can use `write.csv()`. Additional arguments allow you to exclude row and column names, specify what to use for missing values, add or remove quotations around character strings, etc.
 
-```
+```r
 # write to a csv file
 write.csv (df, file = "export_csv")
 
@@ -233,9 +233,13 @@ write.csv (df, file = "/folder/subfolder/subsubfolder/export_csv")
 
 # write to a csv file with added arguments
 write.csv (df, file = "export_csv", row.names = FALSE, na = "MISSING!")
+
+# write to a tab delimited text files
+write.delim (df, file = "export_txt")
+
+# provides same results as read.delim
+write.table (df, file = "export_txt", sep="\t")
 ```
-
-
 
 ### Special values
 
