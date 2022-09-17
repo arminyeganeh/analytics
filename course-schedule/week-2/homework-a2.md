@@ -161,33 +161,34 @@ The first of these commands is the one that loads the data. The second one will 
 
 ### Importing data from Excel files
 
-With Excel still being the spreadsheet software of choice its important to be able to effi ciently import and export data from these files. Often, R users will simply resort to exporting the Excel file as a CSV file and then import into R using `read.csv`; however, this is far from efficient. To import data directly from Excel you can use two different packages: xlsx and readxl. To import the Excel data we simply use the function read.xlsx():
+With Excel still being the spreadsheet software of choice, it is important to be able to efficiently import and export data from these files. Often, R users will simply resort to exporting the Excel file as a CSV file and then import into R using `read.csv`; however, this is far from efficient. To import data directly from Excel you can use the package readxl. The available arguments allow you to change the data as you import it. Some examples are provided:
 
 ```r
-library (xlsx)
-# read in first worksheet using a sheet name
-read.xlsx ("mydata.xlsx", sheetName = "Sheet1")
+library (readxl)
+mydata <- read_excel ("mydata.xlsx", sheet = "Sheet5")
 
-# read in first worksheet using a sheet index
-read.xlsx ("mydata.xlsx", sheetIndex = 1)
-
-# read in all data below the second line
-read.xlsx ("mydata.xlsx", sheetName = "Sheet3", startRow = 3)
-
-# read in a range of rows
-read.xlsx ("mydata.xlsx", sheetName = "Sheet3", rowIndex = 3:5)
-
-# read in data and change class type
-mydata_sheet1.2 <- read.xlsx ("mydata.xlsx", sheetName = "Sheet1",
-                              stringsAsFactors = FALSE,
-                              colClasses = c ("double", "character",
-                                              "logical"))
-
-# changing the keepFormula to TRUE will display the equations
-read.xlsx ("mydata.xlsx", sheetName = "Sheet4", keepFormulas = TRUE)  
+# change variable names by skipping the first row
+# and using col_names to set the new names
+read_excel ("mydata.xlsx", sheet = "Sheet5", skip = 1,
+            col_names = paste ("Var", 1:5))
+            
+# sometimes missing values are set as a sentinel value
+# rather than just left blank - (i.e. "999")
+# we can change these to missing values with na argument
+read_excel ("mydata.xlsx", sheet = "Sheet6", na = "999")
 ```
 
+### Importing tabular and Excel files stored online
 
+A quick perusal of Data.gov illustrates nearly 188,510 examples. In fact, we can provide our first example of importing online tabular data by downloading the Data.gov CSV file that lists all the federal agencies that supply data to Data.gov.
+
+```r
+# the url for the online CSV
+url <- "Enter the url for the online CSV here"
+
+# use read.csv to import
+data_gov <- read.csv (url)
+```
 
 ### Saving a workspace file&#x20;
 
@@ -216,6 +217,25 @@ save(file = "booksales2.Rdata", list = save.me)   # the command to save them
 ```
 
 RStudio allows you to save the workspace pretty easily. In the environment panel, you can see the “save” button. Alternatively, go to the “Session” menu and click on the “Save Workspace As…” option. This will bring up the standard “save” dialog box for your operating system. Pretty straightforward, really.
+
+### Exporting data
+
+Although getting data into R is essential, getting data out of R can be just as important. This section will cover how to export data to text files and Excel files and save R data objects.&#x20;
+
+To export df to a CSV fi le we can use write.csv() . Additional arguments allow you to exclude row and column names, specify what to use for missing values , add or remove quotations around character strings , etc.
+
+```
+# write to a csv file
+write.csv (df, file = "export_csv")
+
+# write to a csv and save in a different directory
+write.csv (df, file = "/folder/subfolder/subsubfolder/export_csv")
+
+# write to a csv file with added arguments
+write.csv (df, file = "export_csv", row.names = FALSE, na = "MISSING!")
+```
+
+
 
 ### Special values
 

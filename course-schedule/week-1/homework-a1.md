@@ -2,7 +2,7 @@
 description: Homework 1, 450-600 lines, 3 hours to complete
 ---
 
-# Intro to R & RStudio P2
+# Getting started with R
 
 ### Instructions
 
@@ -429,7 +429,20 @@ print(keeper)              # print out the value of 'keeper'
 ## [1] 8.539539
 ```
 
+### Installing and loading packages
 
+A package is basically just a big collection of functions, data sets, and other R objects that are all grouped together under a common name. Some packages are already installed when you put R on your computer, but the vast majority of them of R packages are on the internet. There’s a critical distinction that you need to understand, which is the difference between having a package installed on your computer, and having a package loaded in R. As of this writing, there are just over 5000 R packages freely available “out there” on the internet. When you install R on your computer, about 30 or so come bundled with the basic R installation. So right now there are about 30 packages “installed” on your computer, and another 5000 or so that are not installed. Just because something is on your computer doesn’t mean R can use it. In order for R to be able to use one of your 30 or so installed packages, that package must also be “loaded”. Generally, when you open up R, only a few of these packages are actually loaded. Basically what it boils down to is this:
+
+* A package must be installed before it can be loaded.
+* A package must be loaded before it can be used.
+
+In the lower right hand panel in RStudio, you’ll see a tab labelled “Packages”. Click on the tab, and you’ll see a list of packages that looks something like **Figure HA1.4.** Every row in the panel corresponds to a different package, and every column is a useful piece of information about that package. Going from left to right, here’s what each column is telling you:
+
+* The check box on the far left column indicates whether or not the package is loaded.
+* The one word of text immediately to the right of the check box is the name of the package.
+* The short passage of text next to the name is a brief description of the package.
+* The number next to the description tells you what version of the package you have installed.
+* The little x-mark next to the version number is used to uninstall the package.
 
 <figure><img src="https://learningstatisticswithr.com/book/img/mechanics/Rstudiopackages.png" alt=""><figcaption><p><strong>Figure HA1.4</strong> RStudio's packages panel</p></figcaption></figure>
 

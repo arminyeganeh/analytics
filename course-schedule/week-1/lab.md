@@ -2,7 +2,7 @@
 description: Lab 1, 150-250 lines, 1 hour to complete
 ---
 
-# Intro to R & RStudio P1
+# Intro to R & RStudio
 
 ### Instructions
 
@@ -34,7 +34,7 @@ When you visit the RStudio website, find and download **RStudio Desktop**. After
 
 ### RStudio Interface
 
-After installing, you can start R by opening RStudio. To illustrate what RStudio looks like, **Figure LA1** shows a screenshot of an R session in progress. There could be very small differences in RStudio's appearance between Mac and Windows systems. The upper-left area — called script editor, source, or program — is where you type, edit, and run R scripts. The bottom-left area — called R console — is where you see the execution of the script. You can code directly in this window but your code cannot be saved. It is best to use this window when you are simply performing calculator-type functions. This is also where your outputs will be presented when you run code in your script. In the top-right area, the environment pane, you see the objects and values created and used in the program, as well as other relevant information. The bottom-right area is where you have access to multiple additional tabs, which will be discussed later in detail.
+After installing, you can start R by opening RStudio. To illustrate what RStudio looks like, **Figure LA1** shows a screenshot of an R session in progress. There could be very small differences in RStudio's appearance between Mac and Windows systems. The upper-left area — called script, source, or program — is where you type, edit, and run R scripts. The bottom-left area — called R console — is where you see the execution of the script. In the top-right area, the environment pane, you see the objects and values created and used in the program, as well as other relevant information. The bottom-right area is where you have access to multiple additional tabs, which will be discussed later in detail.
 
 <figure><img src="../../.gitbook/assets/rstudio_interface.png" alt=""><figcaption><p><strong>Figure LA1:</strong> RStudio with 4 panes</p></figcaption></figure>
 
