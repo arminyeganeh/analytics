@@ -31,13 +31,45 @@ source("hello.R")
 
 And just like that, you’ve written your first program R. It really is that simple. When writing up your data analysis as a script, one thing that is generally a good idea is to include a lot of comments in the code. That way, if someone else tries to read it (or if you come back to it several days, weeks, months or years later) they can figure out what’s going on.
 
+### Syntax
+
+The maximum number of characters on a single line of code should be 80 or less. If you are using RStudio you can have a margin displayed so you know when you need to break to a new line. 6 This allows your code to be printed on a normal 8.5 × 11 page with a reasonably sized font. Also, when indenting your code use two spaces rather than using tabs. The only exception is if a line break occurs inside parentheses. In this case, align the wrapped line with the first character inside the parenthesis:
+
+```r
+super_long_name <- seq(ymd_hm("2015-1-1 0:00"),
+                       ymd_hm("2015-1-1 12:00"),
+                       by = "hour")
+```
+
+Proper spacing within your code also helps with readability. Place spaces around all infi x operators ( = , + , - , <- , etc.). The same rule applies when using = in function calls. Always put a space after a comma, and never before.
+
+```r
+# Good
+average <- mean (feet / 12 + inches, na.rm = TRUE)
+
+# Bad
+average<-mean(feet/12+inches,na.rm=TRUE)
+```
+
+There’s a small exception to this rule: : , :: and ::: don’t need spaces around them.
+
+```r
+# Good
+x <- 1:10
+base::get
+
+# Bad
+x <- 1 : 10
+base :: get
+```
+
 ### Loops
 
 Depending on how you write the script, you can have R repeat several commands, or skip over different commands, and so on. This topic is referred to as **flow control**, and the first concept to discuss in this respect is the idea of a **loop**. The basic idea is very simple: a loop is a block of code (i.e., a sequence of commands) that R will execute over and over again until some termination criterion is met. Looping is a very powerful idea. There are three different ways to construct a loop in R, based on the `while`, `for` and `repeat` functions. We will only discuss the first two in this course.
 
 ### While loop
 
-`while`  is simple. The basic format of the loop looks like this:
+`while` is simple. The basic format of the loop looks like this:
 
 ```r
 while (Condition) {
@@ -49,7 +81,7 @@ etc.
 
 The code corresponding to Condition needs to produce a logical value, either `TRUE` or `FALSE`. Whenever R encounters the statement `while` , it checks to see if the condition is `TRUE`. If it is, then R goes on to execute all of the commands inside the curly brackets, proceeding from top to bottom as usual. However, when it gets to the bottom of those statements, it moves back up to `while` . This continues endlessly until at some point the condition turns out to be `FALSE`. Once that happens, R jumps to the bottom of the loop (i.e., to the character `}` ) and then continues on with whatever commands appear next in the script.
 
-To start with, let’s keep things simple, and use `while`  to calculate the smallest multiple of 17 that is greater than or equal to 1000. The point is to show how to write a `while` loop.&#x20;
+To start with, let’s keep things simple, and use `while` to calculate the smallest multiple of 17 that is greater than or equal to 1000. The point is to show how to write a `while` loop.
 
 ```r
 ## --- whileexample.R
@@ -87,7 +119,7 @@ for (i in 1:3) {
 ## [1] "hello"
 ```
 
-This is the simplest example of a `for` loop. The vector of possible values for the `i` variable just corresponds to the numbers from 1 to 3.&#x20;
+This is the simplest example of a `for` loop. The vector of possible values for the `i` variable just corresponds to the numbers from 1 to 3.
 
 However, there’s nothing that stops you from using something non-numeric as the vector of possible values, as the following example illustrates. This time around, we’ll use a character vector to control our loop, which in this case will be a vector of `words`. And what we will do in the loop is get R to convert the word to upper case letters, calculate the length of the word, and print it out. Here’s the script:
 
@@ -161,7 +193,7 @@ cat("total payments made", total.paid, "\n" )
 ## total payments made 569600
 ```
 
-In the first block of code (under #set up) all we’re doing is specifying all the variables that define the problem. The statement `while`  tells R that it needs to keep looping until the balance reaches zero (or less, since it might be that the final payment of $1600 pushes the balance below zero). Then, inside the body of the loop, we have two different blocks of code. In the first bit, we do all the number crunching. Firstly we increase the value month by 1. Next, the bank charges the interest, so the balance goes up. Then, the couple makes their monthly payment and the balance goes down. Finally, we keep track of the total amount of money that the couple has paid so far, by adding the payments to the running tally. After having done all this number crunching, we tell R to issue the couple with a monthly statement, which just indicates how many months they’ve been paying the loan and how much money they still owe the bank.&#x20;
+In the first block of code (under #set up) all we’re doing is specifying all the variables that define the problem. The statement `while` tells R that it needs to keep looping until the balance reaches zero (or less, since it might be that the final payment of $1600 pushes the balance below zero). Then, inside the body of the loop, we have two different blocks of code. In the first bit, we do all the number crunching. Firstly we increase the value month by 1. Next, the bank charges the interest, so the balance goes up. Then, the couple makes their monthly payment and the balance goes down. Finally, we keep track of the total amount of money that the couple has paid so far, by adding the payments to the running tally. After having done all this number crunching, we tell R to issue the couple with a monthly statement, which just indicates how many months they’ve been paying the loan and how much money they still owe the bank.
 
 ### Conditional statements
 
@@ -206,7 +238,7 @@ if (day == "Monday") {
 ## [1] "I'm a happy little automaton"
 ```
 
-There are other ways of making conditional statements in R. In particular, the `ifelse()` function and the `switch()` functions can be very useful in different contexts.&#x20;
+There are other ways of making conditional statements in R. In particular, the `ifelse()` function and the `switch()` functions can be very useful in different contexts.
 
 ### Writing functions
 
@@ -242,7 +274,7 @@ print(my.var)
 ## [1] 40
 ```
 
-When you type the name of a function at the command line, R prints out the underlying source code that we used to define the function in the first place. In the case of the `quadruple()` function, this is quite helpful to us – we can read this code and actually see what the function does.&#x20;
+When you type the name of a function at the command line, R prints out the underlying source code that we used to define the function in the first place. In the case of the `quadruple()` function, this is quite helpful to us – we can read this code and actually see what the function does.
 
 Now, let’s have a look at two slightly more complicated functions. Let’s start by looking at the first one:
 
@@ -254,7 +286,7 @@ return(out)
 }
 ```
 
-As you can see from looking at the code for this function, it has two arguments `x` and `y`, and all it does is raise `x` to the power of `y`:&#x20;
+As you can see from looking at the code for this function, it has two arguments `x` and `y`, and all it does is raise `x` to the power of `y`:
 
 ```r
 pow(x=3, y=2)
@@ -268,7 +300,7 @@ pow(x=3)
 ## [1] 3
 ```
 
-However, since we didn’t specify any default value for `x` when we defined the `pow()` function, we always need to input a value for `x`. If we don’t R will spit out an error message.&#x20;
+However, since we didn’t specify any default value for `x` when we defined the `pow()` function, we always need to input a value for `x`. If we don’t R will spit out an error message.
 
 The argument `...` is a special construct in R which is only used within functions. It is used as a way of matching against multiple user inputs: in other words, `...` is used as a mechanism to allow the user to enter as many inputs as they like. Consider the following script:
 
@@ -292,9 +324,9 @@ With the exception of primitive functions all R functions have three parts:
 
 * body(): the code inside the function
 * formals(): the list of arguments used to call the function
-* environment(): the mapping of the location(s) of the function’s variables&#x20;
+* environment(): the mapping of the location(s) of the function’s variables
 
-Let’s build a function that calculates the present value (PV) of a single future sum. The equation for a single sum PV is:&#x20;
+Let’s build a function that calculates the present value (PV) of a single future sum. The equation for a single sum PV is:
 
 $$
 PV =\frac{ FV}{(1+r)^n}
@@ -387,18 +419,20 @@ If you want to save a function to be used at other times and within other script
 
 ### Implicit loops (Apply family)
 
-In addition to providing the explicit looping structures via `while` and `for`, R also provides a collection of functions for **implicit loops**. These are functions that carry out operations very similar to those that you’d normally use a loop for. However, instead of typing out the whole loop, the whole thing is done with a single command.&#x20;
+In addition to providing the explicit looping structures via `while` and `for`, R also provides a collection of functions for **implicit loops**. These are functions that carry out operations very similar to those that you’d normally use a loop for. However, instead of typing out the whole loop, the whole thing is done with a single command.
 
-The apply family consists of vectorized functions, which minimize your need to explicitly create loops. These functions will apply a specified function to a data object, and the primary difference is in the object class to which the function is applied (e.g., list vs. matrix) and the object class that will be returned from the function. The following presents the most common forms of apply functions but realize that additional functions exist.&#x20;
+The apply family consists of vectorized functions, which minimize your need to explicitly create loops. These functions will apply a specified function to a data object, and the primary difference is in the object class to which the function is applied (e.g., list vs. matrix) and the object class that will be returned from the function. The following presents the most common forms of apply functions but realize that additional functions exist.
 
 **Pro Tip:** When working with very large data tables, maximizing the use of functions (thus, minimizing Loop and Apply) and maximizing the use of vectors, matrices, and lists (thus, minimizing Data Frames) can significantly reduce processing time.
 
-### apply() for matrices and data frames&#x20;
+### apply() for matrices and data frames
 
 The function `apply()` is most often used to apply a function to the rows or columns (margins) of matrices or data frames. Using `apply()` is not always faster than using a loop function, but it is highly compact and can be written in one line. The syntax is as follows:
 
-<pre class="language-r"><code class="lang-r"><strong># syntax of apply function
-</strong>apply (x, MARGIN, FUN, …)</code></pre>
+```r
+# syntax of apply function
+apply (x, MARGIN, FUN, …)
+```
 
 * x is the matrix or dataframe
 * MARGIN is a vector giving the subscripts to which the function will be applied over, e.g., 1 indicates rows, 2 indicates columns, and c(1, 2) indicates rows and columns.
@@ -441,10 +475,10 @@ The function `lapply()` does the following simple series of operations:
 2. it applies a function to each element of the list (a function that you specify)
 3. and returns a list (the l is for “list”).
 
-The function `sapply()` behaves similarly to `lapply()`. The only real difference is in the return value. `sapply()` will try to simplify the result of `lapply()` if possible. Essentially, `sapply()` calls `lapply()` on its input and then applies the following algorithm:&#x20;
+The function `sapply()` behaves similarly to `lapply()`. The only real difference is in the return value. `sapply()` will try to simplify the result of `lapply()` if possible. Essentially, `sapply()` calls `lapply()` on its input and then applies the following algorithm:
 
 * If the result is a list where every element is length 1, then a vector is returned
-* If the result is a list where every element is a vector of the same length (> 1), a matrix is returned.&#x20;
+* If the result is a list where every element is a vector of the same length (> 1), a matrix is returned.
 * If neither of the above simplifications can be performed then a list is returned
 
 The following example illustrates the basics of how it works:
@@ -456,7 +490,7 @@ sapply(X = words, FUN = nchar)
 ##     5     3     4     2     3     4
 ```
 
-The function `sapply()` has implicitly looped over the elements of `words`  and for each such element applied the `nchar()` function to calculate the number of letters in the corresponding word. To illustrate the differences we can use the previous example using a list with the beaver data and compare the `sapply` and `lapply` outputs:
+The function `sapply()` has implicitly looped over the elements of `words` and for each such element applied the `nchar()` function to calculate the number of letters in the corresponding word. To illustrate the differences we can use the previous example using a list with the beaver data and compare the `sapply` and `lapply` outputs:
 
 ```r
 # list of R's built-in beaver data
@@ -521,4 +555,3 @@ The `tapply()` and `by()` functions are quite handy things to know about, and ar
 Before moving on, I should mention that there are several other functions that work along similar lines, and have suspiciously similar names: `lapply`, `mapply`, `apply`, `vapply`, `rapply` and `eapply`. However, none of these come up anywhere else in this book, so all I wanted to do here is draw your attention to the fact that they exist.
 
 ### Nested loops
-
