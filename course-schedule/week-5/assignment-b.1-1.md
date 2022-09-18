@@ -37,22 +37,22 @@ head (long, 15)
 ## Source: local data frame [15 x 4]
 ##
 ## Group Year Quarter Revenue
-## (int) (int) (fctr) (int)
-## 1 1 2006 Qtr.1 15
-## 2 1 2007 Qtr.1 12
-## 3 1 2008 Qtr.1 22
-## 4 1 2009 Qtr.1 10
-## 5 2 2006 Qtr.1 12
-## 6 2 2007 Qtr.1 16
-## 7 2 2008 Qtr.1 13
-## 8 2 2009 Qtr.1 23
-## 9 3 2006 Qtr.1 11
-## 10 3 2007 Qtr.1 13
-## 11 3 2008 Qtr.1 17
-## 12 3 2009 Qtr.1 14
-## 13 1 2006 Qtr.2 16
-## 14 1 2007 Qtr.2 13
-## 15 1 2008 Qtr.2 22
+##  (int) (int) (fctr) (int)
+## 1    1  2006  Qtr.1    15
+## 2    1  2007  Qtr.1    12
+## 3    1  2008  Qtr.1    22
+## 4    1  2009  Qtr.1    10
+## 5    2  2006  Qtr.1    12
+## 6    2  2007  Qtr.1    16
+## 7    2  2008  Qtr.1    13
+## 8    2  2009  Qtr.1    23
+## 9    3  2006  Qtr.1    11
+## 10   3  2007  Qtr.1    13
+## 11   3  2008  Qtr.1    17
+## 12   3  2009  Qtr.1    14
+## 13   1  2006  Qtr.2    16
+## 14   1  2007  Qtr.2    13
+## 15   1  2008  Qtr.2    22
 ```
 
 It’s important to note that there is fl exibility in how you specify the columns you would like to gather. These all produce the same results:
@@ -75,20 +75,37 @@ back2wide
 ## Source: local data frame [12 x 6]
 ##
 ## Group Year Qtr.1 Qtr.2 Qtr.3 Qtr.4
-## (int) (int) (int) (int) (int) (int)
-## 1 1 2006 15 16 19 17
-## 2 1 2007 12 13 27 23
-## 3 1 2008 22 22 24 20
-## 4 1 2009 10 14 20 16
-## 5 2 2006 12 13 25 18
-## 6 2 2007 16 14 21 19
-## 7 2 2008 13 11 29 15
-## 8 2 2009 23 20 26 20
-## 9 3 2006 11 12 22 16
-## 10 3 2007 13 11 27 21
-## 11 3 2008 17 12 23 19
-## 12 3 2009 14 9 31 24
+##  (int) (int) (int) (int) (int) (int)
+## 1    1  2006    15    16    19    17
+## 2    1  2007    12    13    27    23
+## 3    1  2008    22    22    24    20
+## 4    1  2009    10    14    20    16
+## 5    2  2006    12    13    25    18
+## 6    2  2007    16    14    21    19
+## 7    2  2008    13    11    29    15
+## 8    2  2009    23    20    26    20
+## 9    3  2006    11    12    22    16
+## 10   3  2007    13    11    27    21
+## 11   3  2008    17    12    23    19
+## 12   3  2009    14     9    31    24
 ```
+
+### Splitting a single column into multiple columns
+
+Many times a single column variable will capture multiple variables or even parts of a variable you just don’t care about. This is exemplified in the following data frame `messy_df`. Here, the variable `Grp_Ind` combines an individual variable `(a, b, c)` with the group variable `(1, 2, 3`. The variable `Yr_Mo` combines a year variable with a month variable, etc. In each case, there may be a purpose for separating parts of these columns into separate variables.
+
+```r
+messy_df
+##   Grp_Ind    Yr_Mo       City_State Extra_variable
+## 1     1.a 2006_Jan      Dayton (OH)   XX01person_1
+## 2     1.b 2006_Feb Grand Forks (ND)   XX02person_2
+## 3     1.c 2006_Mar       Fargo (ND)   XX03person_3
+## 4     2.a 2007_Jan   Rochester (MN)   XX04person_4
+```
+
+This can be accomplished using the function `separate()` which turns a single character column into multiple columns. Additional arguments provide some flexibility with separating columns.
+
+### Combining multiple columns into a single column
 
 
 
