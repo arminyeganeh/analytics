@@ -107,5 +107,60 @@ This can be accomplished using the function `separate()` which turns a single ch
 
 ### Combining multiple columns into a single column
 
+Similarly, there are times when we would like to combine the values of two variables. As a compliment to `separate()` the function `unite()` is a convenient function to paste together multiple variable values into one. Consider the following data frame that has separate date variables. To perform time series analysis or for visualization, we may desire to have a single date column.
+
+```r
+expenses <- data.frame(Year=c(2015,2015,2015,2015),
+                       Month=c(01,02,02,03),
+                       Day=c(01,05,22,10),
+                       Expense=c(500,90,250,325))
+```
+
+To perform time series analysis or for visualizations, we may desire to have a single date column. We can accomplish this by uniting these columns into one variable with `unite()`.
+
+```
+# default separator when uniting is "_"
+expenses %>% unite (col = "Date", c (Year, Month, Day))
+
+##        Date Expense
+## 1  2015_1_1     500
+## 2  2015_2_5      90
+## 3 2015_2_22     250
+## 4 2015_3_10     325
+
+# specify sep argument to change the separator
+expenses %>% unite (col = "Date", c (Year, Month, Day), sep = "-")
+
+##        Date Expense
+## 1  2015-1-1     500
+## 2  2015-2-5      90
+## 3 2015-2-22     250
+## 4 2015-3-10     325 
 
 
+```
+
+### Transforming data with `dplyr`
+
+Transforming data can include filtering, summarizing, and ordering data by different means. This also includes combining disparate data sets, creating new variables, and many other manipulation tasks. Although many fundamental data transformation and manipulation functions exist in R, historically they have been a bit convoluted and lacked a consistent and cohesive code structure. Consequently, Hadley Wickham developed the popular package `dplyr` to make these data processing tasks more efficient along with a syntax that is consistent and easier to remember and read.
+
+`dplyr` originates in the popular package `plyr` also produced by Hadley Wickham. `plyr` covers data transformation and manipulation for a range of data structures (data frames, lists, arrays) whereas `dplyr` is focused on the transformation and manipulation of data frames. `dplyr` offers far more functionality than we cover in this section. We cover the seven primary functions of `dplyr` for data transformation and manipulation. The full list of capabilities can be found in the highly recommended `dplyr` reference manual. Also, similar to `tidyr`, the package `dplyr` has the operator `%>%` baked into its functionality.
+
+For most of these examples, we will use the following census data, which includes the K-12 public school expenditures by state. This data frame currently is 50 × 16 and includes expenditure data for 14 unique years (50 states and has data through the year 2011). Here I only show you a subset of the data.
+
+```
+##   Division      State   X1980    X1990    X2000    X2001    X2002   X2003
+## 1        6    Alabama 1146713  2275233  4176082  4354794  4444390  4657643
+## 2        9     Alaska  377947   828051  1183499  1229036  1284854  1326226
+## 3        8    Arizona  949753  2258660  4288739  4846105  5395814  5892227
+## 4        7   Arkansas  666949  1404545  2380331  2505179  2822877  2923401
+## 5        9 California 9172158 21485782 38129479 42908787 46265544 47983402
+## 6        8   Colorado 1243049  2451833  4401010  4758173  5151003  5551506
+##      X2004     X2005    X2006    X2007    X2008    X2009    X2010    X2011
+## 1  4812479   5164406  5699076  6245031  6832439  6683843  6670517  6592925
+## 2  1354846   1442269  1529645  1634316  1918375  2007319  2084019  2201270
+## 3  6071785   6579957  7130341  7815720  8403221  8726755  8482552  8340211
+## 4  3109644   3546999  3808011  3997701  4156368  4240839  4459910  4578136
+## 5 49215866  50918654 53436103 57352599 61570555 60080929 58248662 57526835
+## 6  5666191   5994440  6368289  6579053  7338766  7187267  7429302  7409462
+```
