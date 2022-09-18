@@ -164,3 +164,64 @@ For most of these examples, we will use the following census data, which include
 ## 5 49215866  50918654 53436103 57352599 61570555 60080929 58248662 57526835
 ## 6  5666191   5994440  6368289  6579053  7338766  7187267  7429302  7409462
 ```
+
+### Selecting variables of interest
+
+When working with a sizable data frame, often we desire to only assess specific variables. The function `select()`  allows you to select and/or rename variables. Let’s say our goal is to only assess the five most recent years worth of expenditure data. Applying the function `select()` we can select only the variables of concern.
+
+```
+sub_exp <- expenditures %>% select (Division, State, X2007:X2011) 
+
+# for brevity only display the first 6 rows
+head (sub_exp)
+##     Division      State    X2007    X2008    X2009    X2010    X2011
+## 1          6    Alabama  6245031  6832439  6683843  6670517  6592925
+## 2          9     Alaska  1634316  1918375  2007319  2084019  2201270
+## 3          8    Arizona  7815720  8403221  8726755  8482552  8340211
+## 4          7   Arkansas  3997701  4156368  4240839  4459910  4578136
+## 5          9 California 57352599 61570555 60080929 58248662 57526835
+## 6          8   Colorado  6579053  7338766  7187267  7429302  7409462 
+```
+
+We can also apply some of the special functions within `select()`. For instance, we can select all variables that start with ‘X’ (The command `?select` shows available functions):
+
+```
+expenditures %>%
+select (starts_with ("X")) %>%
+head()
+ 
+## X1980 X1990 X2000 X2001 X2002 X2003 X2004 X2005
+## 1 1146713 2275233 4176082 4354794 4444390 4657643 4812479 5164406
+## 2 377947 828051 1183499 1229036 1284854 1326226 1354846 1442269
+## 3 949753 2258660 4288739 4846105 5395814 5892227 6071785 6579957
+## 4 666949 1404545 2380331 2505179 2822877 2923401 3109644 3546999
+## 5 9172158 21485782 38129479 42908787 46265544 47983402 49215866 50918654
+## 6 1243049 2451833 4401010 4758173 5151003 5551506 5666191 5994440
+## X2006 X2007 X2008 X2009 X2010 X2011
+## 1 5699076 6245031 6832439 6683843 6670517 6592925
+## 2 1529645 1634316 1918375 2007319 2084019 2201270
+## 3 7130341 7815720 8403221 8726755 8482552 8340211
+## 4 3808011 3997701 4156368 4240839 4459910 4578136
+## 5 53436103 57352599 61570555 60080929 58248662 57526835
+## 6 6368289 6579053 7338766 7187267 7429302 7409462
+```
+
+You can also deselect variables by using “-” prior to their name or function. The following produces the inverse of the functions above:
+
+```
+expenditures %>% select (-X1980:-X2006)
+expenditures %>% select (- starts_with ("X")) 
+```
+
+And for convenience, you can rename the selected variables with two options:
+
+```
+# select and rename a single column
+expenditures %>% select (Yr_1980 = X1980)
+
+# Select and rename the multiple variables with an "X" prefix:
+expenditures %>% select (Yr_ = starts_with ("X"))
+
+# keep all variables and rename a single variable
+expenditures %>% rename (`2011` = X2011) 
+```
