@@ -1,5 +1,5 @@
 ---
-description: Week 3, Reading Instructions, 50 pages, 2 hours to complete
+description: Lab 5, 150-250 lines, 1 hour to complete
 ---
 
 # Simplifying R with %>%
@@ -74,4 +74,5 @@ mtcars %>%
 ## 3 8 15.10
 ```
 
-This final option which integrates %>% operators makes for more efficient and legible code. It is efficient in that it doesn’t save unnecessary objects (as in option 2) and performs as effectively (as both options 1 and 2) but makes your code more readable in the process. It is legible in that you can read this as you would read normal prose (**we read the %>% as “ and then”**) - “take `mtcars` and then filter and then group by and then summarize and then arrange .”
+This final option which integrates %>% operators makes for more efficient and legible code. It is efficient in that it doesn’t save unnecessary objects (as in option 2) and performs as effectively (as both options 1 and 2) but makes your code more readable in the process. It is legible in that you can read this as you would read normal prose (**we read the %>% as “ and then”**) - “take `mtcars` and then `filter` and then `group_by` and then `summarize` and then `arrange`.”
+
