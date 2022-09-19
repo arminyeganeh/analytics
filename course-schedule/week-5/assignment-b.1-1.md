@@ -381,5 +381,140 @@ sub_exp %>%
 ## 9      9  15540681  15468173
 ```
 
+Now we’re starting to see some differences pop out. How about we compare states within a Division? We can start to apply multiple functions we’ve learned so far to get the 5 year average for each state within Division 3.
 
+```r
+library (tidyr)
 
+sub_exp %>%
+  gather (Year, Expenditure, X2007:X2011) %>% # turn wide data to long
+  filter (Division == 3) %>%                  # only assess Division 3
+  group_by (State) %>%                        # summarize data by state
+  summarise (Mean = mean (Expenditure),       # calculate mean & SD
+             SD = sd (Expenditure))
+
+## Source: local data frame [5 x 3]
+##
+## State Mean SD
+## (chr) (dbl) (dbl)
+## 1 Illinois 22989317 1867527.7
+## 2 Indiana 9613775 238971.6
+## 3 Michigan 17059665 180245.0
+## 4 Ohio 19264329 705930.2
+## 5 Wisconsin 9678256 507461.2
+```
+
+There are several built-in summary functions in `dplyr` as displayed below. You can also build in your own functions as well.
+
+* Center: mean(), median()
+* Spread: sd(), IQR(), mad()
+* Range: min(), max(), quantile()
+* Position: first(), last(), nth()
+* Count: n(), n\_distinct()
+* Logical: any(), all()
+
+### Arranging variables by value
+
+Sometimes we wish to view observations in rank order for a particular variable(s). The function `arrange()` allows us to order data by variables in ascending or descending order. Let’s say we want to assess the average expenditures by division. We could apply the function `arrange()` at the end to order the divisions from lowest to highest expenditure for 2011. This makes it easier to see the significant differences between Divisions 8, 4, 1, and 6 as compared to Divisions 5, 7, 9, 3, and 2.
+
+```r
+sub_exp %>%
+  group_by (Division) %>%
+  summarise (Mean_2010 = mean (X2010, na.rm = TRUE),
+             Mean_2011 = mean (X2011, na.rm = TRUE)) %>%
+  arrange (Mean_2011)
+  
+## Source: local data frame [9 x 3]
+## Division Mean_2010 Mean_2011
+##    (int)     (dbl)    (dbl)
+## 1      8   3894003  3882159
+## 2      4   4672332  4672687
+## 3      1   5121003  5222277
+## 4      6   6161967  6267490
+## 5      5  10975194 11023526
+## 6      7  14916843 15000139
+## 7      9  15540681 15468173
+## 8      3  16322489 16270159
+## 9      2  32415457 32877923
+```
+
+We can also apply a descending argument to rank order from highest to lowest. The following shows the same data but in descending order by applying `desc()` within the function `arrange()`.
+
+```r
+sub_exp %>%
+ group_by (Division) %>%
+ summarise (Mean_2010 = mean (X2010, na.rm = TRUE),
+ Mean_2011 = mean (X2011, na.rm = TRUE)) %>%
+ arrange (desc (Mean_2011))
+ 
+## Source: local data frame [9 x 3]
+##
+## Division Mean_2010 Mean_2011
+##    (int)    (dbl)    (dbl)
+## 1      2 32415457 32877923
+## 2      3 16322489 16270159
+## 3      9 15540681 15468173
+## 4      7 14916843 15000139
+## 5      5 10975194 11023526
+## 6      6  6161967  6267490
+## 7      1  5121003  5222277
+## 8      4  4672332  4672687
+## 9      8  3894003  3882159
+```
+
+### Joining data sets
+
+Often we have separate data frames that can have common and differing variables for similar observations and we wish to join these data frames together. `dplyr` offers multiple joining functions (`xxx_join()`) that provide alternative ways to join data frames:
+
+* inner\_join()
+* left\_join()
+* right\_join()
+* full\_join()
+* semi\_join()
+* anti\_join()
+
+Our public education expenditure data represents then-year dollars. To make any accurate assessments of longitudinal trends and comparisons we need to adjust for inflation. I have the following data frame which provides inflation adjustment factors for base-year 2012 dollars.
+
+```
+##        Year Annual  Inflation
+##   28   2007 207.342 0.9030811
+##   29   2008 215.303 0.9377553
+##   30   2009 214.537 0.9344190
+##   31   2010 218.056 0.9497461
+##   32   2011 224.939 0.9797251
+##   33   2012 229.594 1.0000000 
+```
+
+To join to the expenditure data I obviously need to get my expenditure data in the proper form that allows me to join these two data frames. I can apply the following functions to accomplish this:
+
+```
+long_exp <- sub_exp %>%
+ gather (Year, Expenditure, X2007:X2011) %>%
+ separate (Year, into= c ("x", "Year"), sep = "X") %>%
+ select (-x) %>%
+ mutate (Year = as.numeric (Year))
+
+head (long_exp)
+##   Division      State Year Expenditure
+## 1        6    Alabama 2007     6245031
+## 2        9     Alaska 2007     1634316
+## 3        8    Arizona 2007     7815720
+## 4        7   Arkansas 2007     3997701
+## 5        9 California 2007    57352599
+## 6        8   Colorado 2007     6579053
+```
+
+I can now apply the function `left_join()` to join the inflation data to the expenditure data. This aligns the data in both data frames by the Year variable and then joins the remaining inflation data to the expenditure data frame as new variables.
+
+```r
+join_exp <- long_exp %>% left_join (inflation)
+head (join_exp)
+
+##   Division      State Year Expenditure  Annual Inflation
+## 1        6    Alabama 2007     6245031 207.342 0.9030811
+## 2        9     Alaska 2007     1634316 207.342 0.9030811
+## 3        8    Arizona 2007     7815720 207.342 0.9030811
+## 4        7   Arkansas 2007     3997701 207.342 0.9030811
+## 5        9 California 2007    57352599 207.342 0.9030811
+## 6        8   Colorado 2007     6579053 207.342 0.9030811
+```
