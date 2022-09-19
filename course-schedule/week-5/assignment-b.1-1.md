@@ -225,3 +225,92 @@ expenditures %>% select (Yr_ = starts_with ("X"))
 # keep all variables and rename a single variable
 expenditures %>% rename (`2011` = X2011) 
 ```
+
+### Filtering rows
+
+Filtering data is a common task to identify/select observations in which a particular variable matches a specific value/condition. The function `filter()` provides this capability. Continuing with our data `sub_exp` which includes only the recent 5 years' worth of expenditures, we can filter by `Division`:
+
+```r
+sub_exp %>% filter (Division == 3)
+
+##     Division     State    X2007    X2008    X2009    X2010    X2011
+## 1          3  Illinois 20326591 21874484 23495271 24695773 24554467
+## 2          3   Indiana  9497077  9281709  9680895  9921243  9687949
+## 3          3  Michigan 17013259 17053521 17217584 17227515 16786444
+## 4          3      Ohio 18251361 18892374 19387318 19801670 19988921
+## 5          3 Wisconsin  9029660  9366134  9696228  9966244 10333016
+```
+
+We can apply multiple logic rules in the function `filter()` such as:
+
+```
+< Less than                    != Not equal to
+> Greater than                 %in% Group membership
+== Equal to                    is.na is NA
+<= Less than or equal to       !is.na is not NA
+>= Greater than or equal to    &,|,! Boolean operators
+```
+
+For instance, we can filter for Division 3 and expenditures in 2011 that were greater than $10B. This results in Indiana being excluded since it falls within division 3 and its expenditures were < $10B (FYI—the raw census data are reported in units of $1000)
+
+```r
+# Raw census data are in units of $1000
+sub_exp %>% filter (Division == 3, X2011 > 10000000)
+
+##   Division     State    X2007    X2008    X2009    X2010    X2011
+## 1        3  Illinois 20326591 21874484 23495271 24695773 24554467
+## 2        3  Michigan 17013259 17053521 17217584 17227515 16786444
+## 3        3      Ohio 18251361 18892374 19387318 19801670 19988921
+## 4        3 Wisconsin  9029660  9366134  9696228  9966244 10333016
+```
+
+There are additional filtering and subsetting functions that are quite useful:
+
+```r
+# remove duplicate rows
+sub_exp %>% distinct ()
+
+# random sample, 50% sample size without replacement
+sub_exp %>% sample_frac (size = 0.5, replace = FALSE)
+
+# random sample of 10 rows with replacement
+sub_exp %>% sample_n (size = 10, replace = TRUE)
+
+# select rows 3-5
+sub_exp %>% slice (3:5)
+
+# select top n entries - in this case ranks variable X2011 and selects
+
+# the rows with the top 5 values
+sub_exp %>% top_n (n = 5, wt = X2011) 
+```
+
+Grouping data by categorical variables
+
+Often, observations are nested within groups or categories and our goal is to perform statistical analysis both at the observation level and also at the group level. The function `group_by()` allows us to create these categorical groupings.&#x20;
+
+The function `group_by()` is a silent function in which no observable manipulation of the data is performed as a result of applying the function. Rather, the only change you’ll notice is when you print the data frame you will notice underneath the source information and prior to the actual data frame, an indicator of what variable the data is grouped by will be provided. In the example that follows you’ll notice that we grouped by `Division` and there are nine categories for this variable. The real magic of the function `group_by()` comes when we perform summary statistics which we will cover shortly.
+
+```
+group.exp <- sub_exp %>% group_by (Division) 
+
+group.exp
+## Source: local data frame [50 x 7]
+## Groups: Division [9]
+##
+## Division       State    X2007    X2008    X2009    X2010    X2011
+##    (int)       (chr)    (int)    (int)    (int)    (int)    (int)
+## 1      6     Alabama  6245031  6832439  6683843  6670517  6592925
+## 2      9      Alaska  1634316  1918375  2007319  2084019  2201270
+## 3      8     Arizona  7815720  8403221  8726755  8482552  8340211
+## 4      7    Arkansas  3997701  4156368  4240839  4459910  4578136
+## 5      9  California 57352599 61570555 60080929 58248662 57526835
+## 6      8    Colorado  6579053  7338766  7187267  7429302  7409462
+## 7      1 Connecticut  7855459  8336789  8708294  8853337  9094036
+## 8      5    Delaware  1437707  1489594  1518786  1549812  1613304
+## 9      5     Florida 22887024 24224114 23328028 23349314 23870090
+## 10     5     Georgia 14828715 16030039 15976945 15730409 15527907
+## ..     …           …        …        …        …        …        … 
+
+
+```
