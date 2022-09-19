@@ -291,7 +291,7 @@ Often, observations are nested within groups or categories and our goal is to pe
 
 The function `group_by()` is a silent function in which no observable manipulation of the data is performed as a result of applying the function. Rather, the only change you’ll notice is when you print the data frame you will notice underneath the source information and prior to the actual data frame, an indicator of what variable the data is grouped by will be provided. In the example that follows you’ll notice that we grouped by `Division` and there are nine categories for this variable. The real magic of the function `group_by()` comes when we perform summary statistics which we will cover shortly.
 
-```
+```r
 group.exp <- sub_exp %>% group_by (Division) 
 
 group.exp
@@ -312,5 +312,74 @@ group.exp
 ## 10     5     Georgia 14828715 16030039 15976945 15730409 15527907
 ## ..     …           …        …        …        …        …        … 
 
+# we can ungroup our data with
+ungroup (group.exp)
+## Source: local data frame [50 x 7]
+##
+## Division       State    X2007    X2008    X2009    X2010    X2011
+##    (int)       (chr)    (int)    (int)    (int)    (int)    (int)
+## 1      6     Alabama  6245031  6832439  6683843  6670517  6592925
+## 2      9      Alaska  1634316  1918375  2007319  2084019  2201270
+## 3      8     Arizona  7815720  8403221  8726755  8482552  8340211
+## 4      7    Arkansas  3997701  4156368  4240839  4459910  4578136
+## 5      9  California 57352599 61570555 60080929 58248662 57526835
+## 6      8    Colorado  6579053  7338766  7187267  7429302  7409462
+## 7      1 Connecticut  7855459  8336789  8708294  8853337  9094036
+## 8      5    Delaware  1437707  1489594  1518786  1549812  1613304
+## 9      5     Florida 22887024 24224114 23328028 23349314 23870090
+## 10     5     Georgia 14828715 16030039 15976945 15730409 15527907
+## ..     …           …        …        …        …        …        … 
+
 
 ```
+
+### Performing summary statistics on variables
+
+Obviously, the goal of all this data wrangling is to be able to perform statistical analysis on our data. The function `summarise()` allows us to perform the majority of summary statistics when performing exploratory data analysis. Let’s get the mean expenditure value across all states in 2011:
+
+```
+sub_exp %>% summarise (Mean_2011 = mean (X2011))
+## Mean_2011
+## 1 10513678
+```
+
+Not too bad, let’s get some more summary stats:
+
+```
+sub_exp %>% summarise (Min = min (X2011, na.rm = TRUE),
+                       Median = median (X2011, na.rm = TRUE),
+                       Mean = mean (X2011, na.rm = TRUE),
+                       Var = var (X2011, na.rm = TRUE),
+                       SD = sd (X2011, na.rm = TRUE),
+                       Max = max (X2011, na.rm = TRUE),
+                       N = n ())
+ 
+##    Min     Median  Mean     Var         SD       Max      N
+## 1  1049772 6527404 10513678 1.48619e+14 12190938 57526835 50
+```
+
+This information is useful, but being able to compare summary statistics at multiple levels is when you really start to gather some insights. This is where the function `group_by()` comes in. First, let’s group by `Division` and see how the different regions compare across years 2010 and 2011.
+
+```r
+sub_exp %>%
+  group_by (Division)%>%
+  summarise (Mean_2010 = mean (X2010, na.rm = TRUE),
+             Mean_2011 = mean (X2011, na.rm = TRUE))
+             
+## Source: local data frame [9 x 3]
+##
+## Division Mean_2010 Mean_2011
+##    (int)     (dbl)     (dbl)
+## 1      1   5121003   5222277
+## 2      2  32415457  32877923
+## 3      3  16322489  16270159
+## 4      4   4672332   4672687
+## 5      5  10975194  11023526
+## 6      6   6161967   6267490
+## 7      7  14916843  15000139
+## 8      8   3894003   3882159
+## 9      9  15540681  15468173
+```
+
+
+
