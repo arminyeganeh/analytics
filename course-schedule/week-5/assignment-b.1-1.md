@@ -1,5 +1,5 @@
 ---
-description: Lab 5, 150-250 lines, 1 hour to complete
+description: Homework 5, 450-600 lines, 3 hours to complete
 ---
 
 # Transforming Data in R
