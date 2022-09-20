@@ -518,3 +518,177 @@ head (join_exp)
 ## 5        9 California 2007    57352599 207.342 0.9030811
 ## 6        8   Colorado 2007     6579053 207.342 0.9030811
 ```
+
+To illustrate the other joining methods we can use the a and b data frames as follows:
+
+```r
+a<-data.frame(x1=c("A","B","C"),
+              x2=c(1,2,3))
+b<-data.frame(x1=c("A","B","D"),
+              x2=c(TRUE,FALSE,TRUE))
+a
+## x1 x2
+## 1 A 1
+## 2 B 2
+## 3 C 3
+b
+## x1 x2
+## 1 A TRUE
+## 2 B FALSE
+## 3 D TRUE
+
+# include all of a, and join matching rows of b
+left_join (a, b, by = "x1")
+## x1 x2.x x2.y
+## 1 A 1 TRUE
+## 2 B 2 FALSE
+## 3 C 3 NA
+
+# include all of b, and join matching rows of a
+right_join (a, b, by = "x1")
+## x1 x2.x x2.y
+## 1 A 1 TRUE
+## 2 B 2 FALSE
+## 3 D NA TRUE
+# join data, retain only matching rows in both data frames
+
+inner_join (a, b, by = "x1")
+## x1 x2.x x2.y
+## 1 A 1 TRUE
+## 2 B 2 FALSE
+# join data, retain all values, all rows
+
+full_join (a, b, by = "x1")
+## x1 x2.x x2.y
+## 1 A 1 TRUE
+## 2 B 2 FALSE
+## 3 C 3 NA
+## 4 D NA TRUE
+# keep all rows in a that have a match in b
+
+semi_join (a, b, by = "x1")
+## x1 x2
+## 1 A 1
+## 2 B 2
+# keep all rows in a that do not have a match in b
+
+anti_join (a, b, by = "x1")
+## x1 x2
+## 1 C 3
+```
+
+There are additional `dplyr` functions for merging data sets worth exploring:
+
+```r
+intersect (y, z) # Rows that appear in both y and z
+union (y, z)     # Rows that appear in either or both y and z
+setdiff (y, z)   # Rows that appear in y but not z
+bind_rows (y, z) # Append z to y as new rows
+bind_cols (y, z) # Append z to y as new columns
+```
+
+### Creating new variables
+
+Often we want to create a new variable that is a function of the current variables in our data frame or we may just want to add a new variable that is external to our existing variables. The function `mutate()` allows us to add new variables while preserving the existing variables. If we go back to our previous dataframe `join_exp` remember that we joined inflation rates to our non-inflation adjusted expenditures for public schools. The dataframe looks like:
+
+```
+##   Division      State Year Expenditure  Annual Inflation
+## 1        6    Alabama 2007     6245031 207.342 0.9030811
+## 2        9     Alaska 2007     1634316 207.342 0.9030811
+## 3        8    Arizona 2007     7815720 207.342 0.9030811
+## 4        7   Arkansas 2007     3997701 207.342 0.9030811
+## 5        9 California 2007    57352599 207.342 0.9030811
+## 6        8   Colorado 2007     6579053 207.342 0.9030811
+```
+
+If we wanted to adjust our annual expenditures for inflation we can use `mutate()` to create a new inflation-adjusted cost variable which we will name `Adj_Exp`:
+
+```r
+inflation_adj <- join_exp %>% mutate (Adj_Exp = Expenditure / Inflation)
+head (inflation_adj)
+
+##   Division      State Year Expenditure  Annual Inflation  Adj_Exp
+## 1        6    Alabama 2007     6245031 207.342 0.9030811  6915249
+## 2        9     Alaska 2007     1634316 207.342 0.9030811  1809711
+## 3        8    Arizona 2007     7815720 207.342 0.9030811  8654505
+## 4        7   Arkansas 2007     3997701 207.342 0.9030811  4426735
+## 5        9 California 2007    57352599 207.342 0.9030811 63507696
+## 6        8   Colorado 2007     6579053 207.342 0.9030811  7285119
+```
+
+Let's say we wanted to create a variable that rank-orders state-level expenditures (inflation-adjusted) for the year 2010 from the highest level of expenditures to the lowest.
+
+```
+rank_exp <- inflation_adj %>%
+  filter (Year == 2010) %>%
+  arrange ( desc (Adj_Exp)) %>%
+  mutate (Rank = 1: length (Adj_Exp))
+ 
+head (rank_exp)
+##   Division      State Year Expenditure  Annual Inflation  Adj_Exp Rank
+## 1        9 California 2010    58248662 218.056 0.9497461 61330774    1
+## 2        2   New York 2010    50251461 218.056 0.9497461 52910417    2
+## 3        7      Texas 2010    42621886 218.056 0.9497461 44877138    3
+## 4        3   Illinois 2010    24695773 218.056 0.9497461 26002501    4
+## 5        2 New Jersey 2010    24261392 218.056 0.9497461 25545135    5
+## 6        5    Florida 2010    23349314 218.056 0.9497461 24584797    6
+```
+
+If you wanted to assess the percent change in cost for a particular state you can use the `lag()` function within the function `mutate()`:
+
+```
+inflation_adj %>%
+  filter (State == "Ohio") %>%
+  mutate (Perc_Chg = (Adj_Exp - lag (Adj_Exp)) / lag (Adj_Exp))
+  
+## Division State Year Expenditure  Annual Inflation  Adj_Exp     Perc_Chg
+## 1      3  Ohio 2007    18251361 207.342 0.9030811 20210102           NA
+## 2      3  Ohio 2008    18892374 215.303 0.9377553 20146378 -0.003153057
+## 3      3  Ohio 2009    19387318 214.537 0.9344190 20747992  0.029862103
+## 4      3  Ohio 2010    19801670 218.056 0.9497461 20849436  0.004889357
+## 5      3  Ohio 2011    19988921 224.939 0.9797251 20402582 -0.021432441
+```
+
+You could also look at what percent of all US expenditures each state made up in 2011. In this case, we use `mutate()` to take each state’s inflation-adjusted expenditure and divide it by the sum of the entire inflation-adjusted expenditure column. We also apply a second function that provides the cumulative percent in rank order. This shows that in 2011, the top 8 states with the highest expenditures represented over 50 % of the total U.S. expenditures in K-12 public schools (The non-inflation adjusted Expenditure, Annual & Inflation columns are removed so that the columns don’t wrap on the screen view):
+
+```
+cum_pct <- inflation_adj %>%
+  filter (Year == 2011) %>%
+  arrange ( desc (Adj_Exp)) %>%
+  mutate (Pct_of_Total = Adj_Exp/ sum (Adj_Exp),
+          Cum_Perc = cumsum (Pct_of_Total)) %>%
+  select (-Expenditure, -Annual, -Inflation) 
+  
+head (cum_pct, 8)
+
+##   Division State Year  Adj_Exp Pct_of_Total  Cum_Perc
+## 1 9   California 2011 58717324   0.10943237 0.1094324
+## 2 2     New York 2011 52575244   0.09798528 0.2074177
+## 3 7        Texas 2011 43751346   0.08154005 0.2889577
+## 4 3     Illinois 2011 25062609   0.04670957 0.3356673
+## 5 5      Florida 2011 24364070   0.04540769 0.3810750
+## 6 2   New Jersey 2011 24128484   0.04496862 0.4260436
+## 7 2 Pennsylvania 2011 23971218   0.04467552 0.4707191
+## 8 3         Ohio 2011 20402582   0.03802460 0.5087437  
+```
+
+An alternative to `mutate()` is `transmute()` which creates a new variable and then drops the other variables. In essence, it allows you to create a new data frame with only the new variables created. We can perform the same string of functions as above but this time use `transmute()` to only keep the newly created variables.
+
+```
+inflation_adj %>%
+ filter (Year == 2011) %>%
+ arrange ( desc (Adj_Exp)) %>%
+ transmute (Pct_of_Total = Adj_Exp/ sum (Adj_Exp),
+ Cum_Perc = cumsum (Pct_of_Total)) %>%
+ head ()
+
+## Pct_of_Total Cum_Perc
+## 1 0.10943237 0.1094324
+## 2 0.09798528 0.2074177
+## 3 0.08154005 0.2889577
+## 4 0.04670957 0.3356673
+## 5 0.04540769 0.3810750
+## 6 0.04496862 0.4260436
+```
+
+Lastly, you can apply the `summarise` and `mutate` functions to multiple columns by using `across()` .
