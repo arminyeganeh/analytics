@@ -8,10 +8,6 @@ description: Assignment 1, 450-600 lines, 3 hours to complete
 
 1. Read the following section on R Markdown.
 2. Create your CV. The title should be your name, and you should include headings for (at least) education or employment. Each of the sections should include a bulleted list of jobs/degrees. Highlight the year in bold.
-3. Using the R Markdown quick reference, figure out how to:
-   1. Add a footnote.
-   2. Add a horizontal rule.
-   3. Add a block quote.
 
 ### Introduction
 
