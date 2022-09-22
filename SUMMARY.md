@@ -39,7 +39,7 @@
     * [Reproducible Workflow](course-schedule/week-1/preparing-data/reproducible-workflow.md)
   * [Intro to R & RStudio P1](course-schedule/week-1/lab.md)
   * [Intro to R & RStudio P2](course-schedule/week-1/homework-a1.md)
-  * [Assignment A.1](course-schedule/week-1/assignment-a.1.md)
+  * [R Markdown](course-schedule/week-1/assignment-a.1.md)
   * [References](course-schedule/week-1/readings.md)
   * [FAQs](course-schedule/week-1/faqs.md)
 * [Week 2](course-schedule/week-2/README.md)

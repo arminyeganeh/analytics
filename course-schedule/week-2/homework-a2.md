@@ -1,5 +1,5 @@
 ---
-description: Homework 2, 450-600 lines, 3 hours to complete
+description: Reading 2, 450-600 lines, 3 hours to complete
 ---
 
 # Managing Files in R

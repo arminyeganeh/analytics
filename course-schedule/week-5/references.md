@@ -1,5 +1,5 @@
 ---
-description: Week 3, Reading Instructions, 50 pages, 2 hours to complete
+description: 'Week 5 materials are from the references cited here:'
 ---
 
 # References
