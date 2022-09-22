@@ -1,8 +1,8 @@
 ---
-description: Homework 3, 450-600 lines, 3 hours to complete
+description: Reading 3, 450-600 lines, 3 hours to complete
 ---
 
-# Descriptives in R P.2
+# Descriptives in R P2
 
 ### HA3 Instructions
 

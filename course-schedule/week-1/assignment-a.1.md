@@ -12,7 +12,6 @@ description: Assignment 1, 450-600 lines, 3 hours to complete
    1. Add a footnote.
    2. Add a horizontal rule.
    3. Add a block quote.
-4. Copy and paste the contents of `diamond-sizes.Rmd` from [https://github.com/hadley/r4ds/tree/master/rmarkdown](https://github.com/hadley/r4ds/tree/master/rmarkdown) in to a local R markdown document. Check that you can run it, then add text after the frequency polygon that describes its most striking features.
 
 ### Introduction
 
@@ -75,16 +74,15 @@ When you open an `.Rmd`, you get a notebook interface where code and output are 
 
 To produce a complete report containing all text, code, and results, click `Knit` or press `Cmd/Ctrl + Shift + K`. You can also do this programmatically with `rmarkdown::render("1-example.Rmd")`. This will display the report in the viewer pane, and create a self-contained HTML file that you can share with others.&#x20;
 
-To get started with your own `.Rmd` file, select _File > New File > R Markdown…_ in the menubar. RStudio will launch a wizard that you can use to pre-populate your file with useful content that reminds you how the key features of R Markdown work. The following sections dive into the three components of an R Markdown document in more details: the header, the markdown text, and the code chunks.
+To get started with your own `.Rmd` file, select _File > New File > R Markdown…_ in the menubar. RStudio will launch a wizard that you can use to pre-populate your file with useful content that reminds you how the key features of R Markdown work. The following sections dive into the three components of an R Markdown document in more detail: the header, the markdown text, and the code chunks.
 
 ### Text formatting with Markdown
 
-Prose in `.Rmd` files is written in Markdown, a lightweight set of conventions for formatting plain text files. Markdown is designed to be easy to read and easy to write. It is also very easy to learn. The guide below shows how to use Pandoc’s Markdown, a slightly extended version of Markdown that R Markdown understands.
+Markdown is designed to be easy to read, easy to write, and easy to learn. The guide below shows how to use Pandoc’s Markdown, a slightly extended version that R Markdown understands:
 
 ```
 Text formatting 
 ------------------------------------------------------------
-
 *italic*  or _italic_
 **bold**   __bold__
 `code`
@@ -92,40 +90,31 @@ superscript^2^ and subscript~2~
 
 Headings
 ------------------------------------------------------------
-
 # 1st Level Header
-
 ## 2nd Level Header
-
 ### 3rd Level Header
 
 Lists
 ------------------------------------------------------------
+* Unordered list item 1
+* Item 2
+   + Item 2a
+   + Item 2b
 
-*   Bulleted list item 1
+1. Ordered list item 1
+2. Item 2
+3. Item 3
+    + Item 3a
+    + Item 3b
 
-*   Item 2
-
-    * Item 2a
-
-    * Item 2b
-
-1.  Numbered list item 1
-
-1.  Item 2. The numbers are incremented automatically in the output.
-
-Links and images
+Links and Images on the web or local files in the same directory
 ------------------------------------------------------------
-
 <http://example.com>
-
 [linked phrase](http://example.com)
-
 ![optional caption text](path/to/img.png)
 
 Tables 
 ------------------------------------------------------------
-
 First Header  | Second Header
 ------------- | -------------
 Content Cell  | Content Cell
@@ -134,60 +123,40 @@ Content Cell  | Content CellCopy
 
 The best way to learn these is simply to try them out. It will take a few days, but soon they will become second nature, and you won’t need to think about them. If you forget, you can get to a handy reference sheet with _Help > Markdown Quick Reference_.
 
-####
-
-### 27.4 Code chunks
+### Code chunks
 
 To run code inside an R Markdown document, you need to insert a chunk. There are three ways to do so:
 
-1. The keyboard shortcut Cmd/Ctrl + Alt + I
-2. The “Insert” button icon in the editor toolbar.
-3. By manually typing the chunk delimiters ` ```{r} ` and ` ``` `.
+* By manually typing the chunk delimiters ` ```{r} ` and ` ``` `
+* The keyboard shortcut Cmd/Ctrl + Alt + I
+* The “Insert” button icon in the editor toolbar
 
-Obviously, I’d recommend you learn the keyboard shortcut. It will save you a lot of time in the long run!
+The keyboard shortcut will save you a lot of time in the long run. You can continue to run the code using the keyboard shortcut `Cmd/Ctrl + Enter`. However, chunks get a new keyboard shortcut: `Cmd/Ctrl + Shift + Enter`, which runs all the code in the chunk. Think of a chunk as a function. A chunk should be relatively self-contained and focused around a single task. The following sections describe the chunk header, which consists of ` ```{r ` followed by an optional chunk name, followed by comma separated options, followed by `}`. Next comes your R code and the chunk end is indicated by a final ` ``` `.
 
-You can continue to run the code using the keyboard shortcut that by now (I hope!) you know and love: Cmd/Ctrl + Enter. However, chunks get a new keyboard shortcut: Cmd/Ctrl + Shift + Enter, which runs all the code in the chunk. Think of a chunk like a function. A chunk should be relatively self-contained, and focussed around a single task.
-
-The following sections describe the chunk header which consists of ` ```{r `, followed by an optional chunk name, followed by comma separated options, followed by `}`. Next comes your R code and the chunk end is indicated by a final ` ``` `.
-
-#### 27.4.1 Chunk name
+### Chunk name
 
 Chunks can be given an optional name: ` ```{r by-name} `. This has three advantages:
 
 1.  You can more easily navigate to specific chunks using the drop-down code navigator in the bottom-left of the script editor:
 
     ![](https://d33wubrfki0l68.cloudfront.net/6fcddff214345601f998805adce94ab0e21d8615/2a098/screenshots/rmarkdown-chunk-nav.png)
-2. Graphics produced by the chunks will have useful names that make them easier to use elsewhere. More on that in [other important options](https://r4ds.had.co.nz/graphics-for-communication.html#other-important-options).
-3. You can set up networks of cached chunks to avoid re-performing expensive computations on every run. More on that below.
+2. Graphics produced by the chunks will have useful names that make them easier to use elsewhere.&#x20;
+3. You can set up networks of cached chunks to avoid re-performing expensive computations on every run.
 
-There is one chunk name that imbues special behaviour: `setup`. When you’re in a notebook mode, the chunk named setup will be run automatically once, before any other code is run.
+There is one chunk name that imbues special behavior: `setup`. When you’re in notebook mode, the chunk named setup will be run automatically once, before any other code is run.
 
-#### 27.4.2 Chunk options
+### Chunk options
 
-Chunk output can be customised with **options**, arguments supplied to chunk header. Knitr provides almost 60 options that you can use to customize your code chunks. Here we’ll cover the most important chunk options that you’ll use frequently. You can see the full list at [http://yihui.name/knitr/options/](http://yihui.name/knitr/options/).
+Chunk output can be customized with **options**, arguments supplied to the chunk header. Knitr provides almost 60 options that you can use to customize your code chunks. Here we’ll cover the most important chunk options that you’ll use frequently. You can see the full list at [here](https://yihui.org/knitr/options/). The most important set of options controls if your code block is executed and what results are inserted in the finished report:
 
-The most important set of options controls if your code block is executed and what results are inserted in the finished report:
-
-* `eval = FALSE` prevents code from being evaluated. (And obviously if the code is not run, no results will be generated). This is useful for displaying example code, or for disabling a large block of code without commenting each line.
+* `eval = FALSE` prevents code from being evaluated. This is useful for displaying example code, or for disabling a large block of code without commenting on each line.
 * `include = FALSE` runs the code, but doesn’t show the code or results in the final document. Use this for setup code that you don’t want cluttering your report.
 * `echo = FALSE` prevents code, but not the results from appearing in the finished file. Use this when writing reports aimed at people who don’t want to see the underlying R code.
 * `message = FALSE` or `warning = FALSE` prevents messages or warnings from appearing in the finished file.
 * `results = 'hide'` hides printed output; `fig.show = 'hide'` hides plots.
-* `error = TRUE` causes the render to continue even if code returns an error. This is rarely something you’ll want to include in the final version of your report, but can be very useful if you need to debug exactly what is going on inside your `.Rmd`. It’s also useful if you’re teaching R and want to deliberately include an error. The default, `error = FALSE` causes knitting to fail if there is a single error in the document.
+* `error = TRUE` causes the render to continue even if the code returns an error. This is rarely something you’ll want to include in the final version of your report but can be very useful if you need to debug exactly what is going on inside your `.Rmd`. It’s also useful if you’re teaching R and want to deliberately include an error. The default, `error = FALSE` causes knitting to fail if there is a single error in the document.
 
-The following table summarises which types of output each option suppresses:
-
-| Option              | Run code | Show code | Output | Plots | Messages | Warnings |
-| ------------------- | -------- | --------- | ------ | ----- | -------- | -------- |
-| `eval = FALSE`      | -        |           | -      | -     | -        | -        |
-| `include = FALSE`   |          | -         | -      | -     | -        | -        |
-| `echo = FALSE`      |          | -         |        |       |          |          |
-| `results = "hide"`  |          |           | -      |       |          |          |
-| `fig.show = "hide"` |          |           |        | -     |          |          |
-| `message = FALSE`   |          |           |        |       | -        |          |
-| `warning = FALSE`   |          |           |        |       |          | -        |
-
-#### 27.4.3 Table
+### Table
 
 By default, R Markdown prints data frames and matrices as you’d see them in the console:
 
@@ -206,88 +175,38 @@ If you prefer that data be displayed with additional formatting you can use the 
 ```
 knitr::kable(
   mtcars[1:5, ], 
-  caption = "A knitr kable."
-)Copy
+  caption = "A knitr table"
+)
 ```
 
-|                   |  mpg | cyl | disp |  hp | drat |    wt |  qsec | vs | am | gear | carb |
-| ----------------- | ---: | --: | ---: | --: | ---: | ----: | ----: | -: | -: | ---: | ---: |
-| Mazda RX4         | 21.0 |   6 |  160 | 110 | 3.90 | 2.620 | 16.46 |  0 |  1 |    4 |    4 |
-| Mazda RX4 Wag     | 21.0 |   6 |  160 | 110 | 3.90 | 2.875 | 17.02 |  0 |  1 |    4 |    4 |
-| Datsun 710        | 22.8 |   4 |  108 |  93 | 3.85 | 2.320 | 18.61 |  1 |  1 |    4 |    1 |
-| Hornet 4 Drive    | 21.4 |   6 |  258 | 110 | 3.08 | 3.215 | 19.44 |  1 |  0 |    3 |    1 |
-| Hornet Sportabout | 18.7 |   8 |  360 | 175 | 3.15 | 3.440 | 17.02 |  0 |  0 |    3 |    2 |
+<figure><img src="../../.gitbook/assets/A knitr table.png" alt=""><figcaption><p>A knitr table</p></figcaption></figure>
 
-Read the documentation for [`?knitr::kable`](https://rdrr.io/pkg/knitr/man/kable.html) to see the other ways in which you can customise the table. For even deeper customisation, consider the **xtable**, **stargazer**, **pander**, **tables**, and **ascii** packages. Each provides a set of tools for returning formatted tables from R code.
+You can read the documentation [`?knitr::kable`](https://rdrr.io/pkg/knitr/man/kable.html) to see the other customization ways.
 
-There is also a rich set of options for controlling how figures are embedded. You’ll learn about these in [saving your plots](https://r4ds.had.co.nz/graphics-for-communication.html#saving-your-plots).
+### Global options
 
-#### 27.4.4 Caching
-
-Normally, each knit of a document starts from a completely clean slate. This is great for reproducibility, because it ensures that you’ve captured every important computation in code. However, it can be painful if you have some computations that take a long time. The solution is `cache = TRUE`. When set, this will save the output of the chunk to a specially named file on disk. On subsequent runs, knitr will check to see if the code has changed, and if it hasn’t, it will reuse the cached results.
-
-The caching system must be used with care, because by default it is based on the code only, not its dependencies. For example, here the `processed_data` chunk depends on the `raw_data` chunk:
-
-````
-```{r raw_data}
-rawdata <- readr::read_csv("a_very_large_file.csv")
-```
-
-```{r processed_data, cache = TRUE}
-processed_data <- rawdata %>% 
-  filter(!is.na(import_var)) %>% 
-  mutate(new_variable = complicated_transformation(x, y, z))
-```Copy
-````
-
-Caching the `processed_data` chunk means that it will get re-run if the dplyr pipeline is changed, but it won’t get rerun if the `read_csv()` call changes. You can avoid that problem with the `dependson` chunk option:
-
-````
-```{r processed_data, cache = TRUE, dependson = "raw_data"}
-processed_data <- rawdata %>% 
-  filter(!is.na(import_var)) %>% 
-  mutate(new_variable = complicated_transformation(x, y, z))
-```Copy
-````
-
-`dependson` should contain a character vector of _every_ chunk that the cached chunk depends on. Knitr will update the results for the cached chunk whenever it detects that one of its dependencies have changed.
-
-Note that the chunks won’t update if `a_very_large_file.csv` changes, because knitr caching only tracks changes within the `.Rmd` file. If you want to also track changes to that file you can use the `cache.extra` option. This is an arbitrary R expression that will invalidate the cache whenever it changes. A good function to use is [`file.info()`](https://rdrr.io/r/base/file.info.html): it returns a bunch of information about the file including when it was last modified. Then you can write:
-
-````
-```{r raw_data, cache.extra = file.info("a_very_large_file.csv")}
-rawdata <- readr::read_csv("a_very_large_file.csv")
-```Copy
-````
-
-As your caching strategies get progressively more complicated, it’s a good idea to regularly clear out all your caches with [`knitr::clean_cache()`](https://rdrr.io/pkg/knitr/man/clean\_cache.html).
-
-I’ve used the advice of [David Robinson](https://twitter.com/drob/status/738786604731490304) to name these chunks: each chunk is named after the primary object that it creates. This makes it easier to understand the `dependson` specification.
-
-#### 27.4.5 Global options
-
-As you work more with knitr, you will discover that some of the default chunk options don’t fit your needs and you want to change them. You can do this by calling `knitr::opts_chunk$set()` in a code chunk. For example, when writing books and tutorials I set:
+As you work more, you will discover that some of the default chunk options don’t fit your needs and you want to change them. You can do this by calling `knitr::opts_chunk$set()` in a code chunk. For example, when writing books and tutorials set:
 
 ```
 knitr::opts_chunk$set(
   comment = "#>",
   collapse = TRUE
-)Copy
+)
 ```
 
-This uses my preferred comment formatting, and ensures that the code and output are kept closely entwined. On the other hand, if you were preparing a report, you might set:
+This uses my preferred comment formatting and ensures that the code and output are kept closely entwined. On the other hand, if you were preparing a report, you might set:
 
 ```
 knitr::opts_chunk$set(
   echo = FALSE
-)Copy
+)
 ```
 
-That will hide the code by default, so only showing the chunks you deliberately choose to show (with `echo = TRUE`). You might consider setting `message = FALSE` and `warning = FALSE`, but that would make it harder to debug problems because you wouldn’t see any messages in the final document.
+That will hide the code by default to only show the chunks you deliberately choose to show (with `echo = TRUE`). You might consider setting `message = FALSE` and `warning = FALSE`, but that would make it harder to debug problems because you wouldn’t see any messages in the final document.
 
-#### 27.4.6 Inline code
+### Inline code
 
-There is one other way to embed R code into an R Markdown document: directly into the text, with: `` `r ` ``. This can be very useful if you mention properties of your data in the text. For example, in the example document I used at the start of the chapter I had:
+There is one other way to embed R code into an R Markdown document: directly into the text, with: `` `r ` ``. This can be very useful if you mention the properties of your data in the text. For example, in the example document I used at the start of the chapter I had:
 
 > We have data about `` `r nrow(diamonds)` `` diamonds. Only `` `r nrow(diamonds) - nrow(smaller)` `` are larger than 2.5 carats. The distribution of the remainder is shown below:
 
@@ -302,23 +221,8 @@ comma <- function(x) format(x, digits = 2, big.mark = ",")
 comma(3452345)
 #> [1] "3,452,345"
 comma(.12358124331)
-#> [1] "0.12"Copy
+#> [1] "0.12"
 ```
-
-#### 27.4.7 Exercises
-
-1. Add a section that explores how diamond sizes vary by cut, colour, and clarity. Assume you’re writing a report for someone who doesn’t know R, and instead of setting `echo = FALSE` on each chunk, set a global option.
-2. Download `diamond-sizes.Rmd` from [https://github.com/hadley/r4ds/tree/master/rmarkdown](https://github.com/hadley/r4ds/tree/master/rmarkdown). Add a section that describes the largest 20 diamonds, including a table that displays their most important attributes.
-3. Modify `diamonds-sizes.Rmd` to use `comma()` to produce nicely formatted output. Also include the percentage of diamonds that are larger than 2.5 carats.
-4. Set up a network of chunks where `d` depends on `c` and `b`, and both `b` and `c` depend on `a`. Have each chunk print [`lubridate::now()`](http://lubridate.tidyverse.org/reference/now.html), set `cache = TRUE`, then verify your understanding of caching.
-
-### 27.5 Troubleshooting
-
-Troubleshooting R Markdown documents can be challenging because you are no longer in an interactive R environment, and you will need to learn some new tricks. The first thing you should always try is to recreate the problem in an interactive session. Restart R, then “Run all chunks” (either from Code menu, under Run region), or with the keyboard shortcut Ctrl + Alt + R. If you’re lucky, that will recreate the problem, and you can figure out what’s going on interactively.
-
-If that doesn’t help, there must be something different between your interactive environment and the R markdown environment. You’re going to need to systematically explore the options. The most common difference is the working directory: the working directory of an R Markdown is the directory in which it lives. Check the working directory is what you expect by including [`getwd()`](https://rdrr.io/r/base/getwd.html) in a chunk.
-
-Next, brainstorm all the things that might cause the bug. You’ll need to systematically check that they’re the same in your R session and your R markdown session. The easiest way to do that is to set `error = TRUE` on the chunk causing the problem, then use [`print()`](https://rdrr.io/r/base/print.html) and [`str()`](https://rdrr.io/r/utils/str.html) to check that settings are as you expect.
 
 ### 27.6 YAML header
 
@@ -436,7 +340,7 @@ csl: apa.cslCopy
 
 As with the bibliography field, your csl file should contain a path to the file. Here I assume that the csl file is in the same directory as the .Rmd file. A good place to find CSL style files for common bibliography styles is [http://github.com/citation-style-language/styles](http://github.com/citation-style-language/styles).
 
-### 27.7 Learning more
+### Learning more
 
 R Markdown is still relatively young, and is still growing rapidly. The best place to stay on top of innovations is the official R Markdown website: [http://rmarkdown.rstudio.com](http://rmarkdown.rstudio.com/).
 

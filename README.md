@@ -54,11 +54,12 @@ By the end of this course, learners will be able to:&#x20;
 
 * Brett, D. L. (2019). Real Estate Market Analysis: Trends, Methods, and Information Sources. &#x20;
 * Levy, R. M. (2019). Introduction to Real Estate Development and Finance.&#x20;
-* Winson-Geideman, K. et al. (2017). Real Estate Analysis in the Information Age.&#x20;
+* Winson-Geideman, K. et al. (2017). Real Estate Analysis in the Information Age (R)&#x20;
 
-**Recommended Books on R and Python:**
+**Recommended Books on R:**
 
 * Navarro, D. (2019) [Learning Stats with R](https://learningstatisticswithr.com/book/)
+* Boehmke, B. (2016) Data Wrangling with R
 * Grolemund, G., & Wickham H. (2022). [R for Data Science](https://r4ds.had.co.nz/)
 * Venables, W. et al. (2022). [An Introduction to R](https://cran.r-project.org/manuals.html)
 * Garson, D. G. (2022). Data Analytics for the Social Sciences.

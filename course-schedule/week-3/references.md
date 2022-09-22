@@ -1,5 +1,5 @@
 ---
-description: Week 3 materials are from references below.
+description: 'Week 3 materials are from the references cited here:'
 ---
 
 # References

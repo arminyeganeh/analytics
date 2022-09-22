@@ -1,5 +1,5 @@
 ---
-description: Homework 1, 450-600 lines, 3 hours to complete
+description: Reading 1, 450-600 lines, 3 hours to complete
 ---
 
 # Intro to R & RStudio P2
