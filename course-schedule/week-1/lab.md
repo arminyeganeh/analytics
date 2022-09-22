@@ -6,7 +6,7 @@ description: Lab 1, 150-250 lines, 1 hour to complete
 
 ### Instructions
 
-Read this tutorial and apply the codes in R.
+Read this tutorial and apply the codes in R. No submission is required.
 
 ### Installing R
 

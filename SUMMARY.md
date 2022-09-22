@@ -74,7 +74,7 @@
     * [Variation Sources](course-schedule/week-2/comparing-data/variation-sources.md)
   * [R Basics](course-schedule/week-2/r-concepts.md)
   * [Managing Files in R](course-schedule/week-2/homework-a2.md)
-  * [Assignment A.2](course-schedule/week-2/assignment-a.2.md)
+  * [Demographic Analysis](course-schedule/week-2/assignment-a.2.md)
   * [References](course-schedule/week-2/readings.md)
   * [FAQs](course-schedule/week-2/faqs.md)
 * [Week 3](course-schedule/week-3/README.md)

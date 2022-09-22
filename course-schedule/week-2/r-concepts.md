@@ -4,9 +4,9 @@ description: Lab 2, 150-250 lines, 1 hour to complete
 
 # R Basics
 
-### LA2 Instructions
+### Instructions
 
-Read this tutorial and apply the codes in R.
+Read this tutorial and apply the codes in R. No submission is required.
 
 ### Installing and loading packages
 

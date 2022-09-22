@@ -4,9 +4,9 @@ description: Reading 2, 450-600 lines, 3 hours to complete
 
 # Managing Files in R
 
-### HA2 Instructions
+### Instructions
 
-Read this tutorial and apply the codes in R.
+Read this tutorial and apply the codes in R. No submission is required.
 
 ### Windows paths
 

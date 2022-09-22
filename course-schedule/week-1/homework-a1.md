@@ -6,7 +6,7 @@ description: Reading 1, 450-600 lines, 3 hours to complete
 
 ### Instructions
 
-Read this tutorial and apply the codes in R.
+Read this tutorial and apply the codes in R. No submission is required.
 
 ### Rules & conventions for naming variables
 
