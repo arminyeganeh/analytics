@@ -4,6 +4,16 @@ description: Assignment 1, 450-600 lines, 3 hours to complete
 
 # R Markdown
 
+### Assignment description:
+
+1. Read the following section on R Markdown.
+2. Create your CV. The title should be your name, and you should include headings for (at least) education or employment. Each of the sections should include a bulleted list of jobs/degrees. Highlight the year in bold.
+3. Using the R Markdown quick reference, figure out how to:
+   1. Add a footnote.
+   2. Add a horizontal rule.
+   3. Add a block quote.
+4. Copy and paste the contents of `diamond-sizes.Rmd` from [https://github.com/hadley/r4ds/tree/master/rmarkdown](https://github.com/hadley/r4ds/tree/master/rmarkdown) in to a local R markdown document. Check that you can run it, then add text after the frequency polygon that describes its most striking features.
+
 ### Introduction
 
 R Markdown provides a unified authoring framework for data science, combining your code, its results, and your prose commentary. R Markdown documents are fully reproducible and support dozens of output formats, like HTML, PDF, Word, etc.
@@ -22,9 +32,9 @@ R Markdown integrates a number of R packages and external tools. This means that
 
 ### R Markdown basics
 
-To get started with an `.Rmd` file, select _File > New File > R Markdown…_ in the menubar. RStudio will launch a wizard that you can use to pre-populate your file with useful content that reminds you how the key features of R Markdown work. Hit the button `OK` . You will see a template R Markdown script. Click on the button Knit (or press Cmd/Ctrl + Shift + Enter) to knit and save the file on your desktop. Now open the saved file to see what is saved and compare it with the R Markdown script. &#x20;
+To get started with an `.Rmd` file, select _File > New File > R Markdown…_ in the menubar. RStudio will launch a wizard that you can use to pre-populate your file with useful content that reminds you how the key features of R Markdown work. Hit the button `OK` . You will see a template R Markdown script. Click on the button `Knit` (or press `Cmd/Ctrl + Shift + Enter`) to knit and save the file on your desktop. Now open the saved file to see what is saved and compare it with the R Markdown script. &#x20;
 
-This is a sample R Markdown file, a plain text file that has the extension `.Rmd`:
+This is another sample R Markdown file, a plain text file that has the extension `.Rmd`:
 
 ````
 ---
@@ -53,38 +63,21 @@ smaller %>%
 ```
 ````
 
-Copy this code
-
 It contains three important types of content:
 
 1. An (optional) **YAML header** surrounded by `---`s.
-2. **Chunks** of R code surrounded by ` ``` `.
+2. **Chunks** of R code surrounded by ` ``` `. The symbol `` ` `` is called acute, back quote, accent, etc.
 3. Text mixed with simple text formatting like `# heading` and `_italics_`.
 
-When you open an `.Rmd`, you get a notebook interface where code and output are interleaved. You can run each code chunk by clicking the Run icon (it looks like a play button at the top of the chunk), or by pressing Cmd/Ctrl + Shift + Enter. RStudio executes the code and displays the results inline with the code:
+When you open an `.Rmd`, you get a notebook interface where code and output are interleaved. You can run each code chunk by clicking the icon `Run` (a play button at the top of the chunk) or by pressing `Cmd/Ctrl + Shift + Enter`. RStudio executes the code and displays the results inline with the code:
 
-![](https://d33wubrfki0l68.cloudfront.net/853becd7fc7d20e3a63f52b23f522d6f0d06e066/88250/rmarkdown/diamond-sizes-notebook.png)
+<figure><img src="https://d33wubrfki0l68.cloudfront.net/853becd7fc7d20e3a63f52b23f522d6f0d06e066/88250/rmarkdown/diamond-sizes-notebook.png" alt=""><figcaption><p>Running code chunks in R Markdown file</p></figcaption></figure>
 
-To produce a complete report containing all text, code, and results, click “Knit” or press Cmd/Ctrl + Shift + K. You can also do this programmatically with [`rmarkdown::render("1-example.Rmd")`](https://rdrr.io/pkg/rmarkdown/man/render.html). This will display the report in the viewer pane, and create a self-contained HTML file that you can share with others.
+To produce a complete report containing all text, code, and results, click `Knit` or press `Cmd/Ctrl + Shift + K`. You can also do this programmatically with `rmarkdown::render("1-example.Rmd")`. This will display the report in the viewer pane, and create a self-contained HTML file that you can share with others.&#x20;
 
-![](https://d33wubrfki0l68.cloudfront.net/bd9201291793647e2187bf21af706afac255b2aa/28e87/rmarkdown/diamond-sizes-report.png)
+To get started with your own `.Rmd` file, select _File > New File > R Markdown…_ in the menubar. RStudio will launch a wizard that you can use to pre-populate your file with useful content that reminds you how the key features of R Markdown work. The following sections dive into the three components of an R Markdown document in more details: the header, the markdown text, and the code chunks.
 
-When you **knit** the document, R Markdown sends the .Rmd file to **knitr**, [http://yihui.name/knitr/](http://yihui.name/knitr/), which executes all of the code chunks and creates a new markdown (.md) document which includes the code and its output. The markdown file generated by knitr is then processed by **pandoc**, [http://pandoc.org/](http://pandoc.org/), which is responsible for creating the finished file. The advantage of this two step workflow is that you can create a very wide range of output formats, as you’ll learn about in [R markdown formats](https://r4ds.had.co.nz/r-markdown-formats.html#r-markdown-formats).
-
-![](https://d33wubrfki0l68.cloudfront.net/61d189fd9cdf955058415d3e1b28dd60e1bd7c9b/9791d/images/rmarkdownflow.png)
-
-To get started with your own `.Rmd` file, select _File > New File > R Markdown…_ in the menubar. RStudio will launch a wizard that you can use to pre-populate your file with useful content that reminds you how the key features of R Markdown work.
-
-The following sections dive into the three components of an R Markdown document in more details: the markdown text, the code chunks, and the YAML header.
-
-#### 27.2.1 Exercises
-
-1. Create a new notebook using _File > New File > R Notebook_. Read the instructions. Practice running the chunks. Verify that you can modify the code, re-run it, and see modified output.
-2. Create a new R Markdown document with _File > New File > R Markdown…_ Knit it by clicking the appropriate button. Knit it by using the appropriate keyboard short cut. Verify that you can modify the input and see the output update.
-3. Compare and contrast the R notebook and R markdown files you created above. How are the outputs similar? How are they different? How are the inputs similar? How are they different? What happens if you copy the YAML header from one to the other?
-4. Create one new R Markdown document for each of the three built-in formats: HTML, PDF and Word. Knit each of the three documents. How does the output differ? How does the input differ? (You may need to install LaTeX in order to build the PDF output — RStudio will prompt you if this is necessary.)
-
-### 27.3 Text formatting with Markdown
+### Text formatting with Markdown
 
 Prose in `.Rmd` files is written in Markdown, a lightweight set of conventions for formatting plain text files. Markdown is designed to be easy to read and easy to write. It is also very easy to learn. The guide below shows how to use Pandoc’s Markdown, a slightly extended version of Markdown that R Markdown understands.
 
@@ -141,14 +134,7 @@ Content Cell  | Content CellCopy
 
 The best way to learn these is simply to try them out. It will take a few days, but soon they will become second nature, and you won’t need to think about them. If you forget, you can get to a handy reference sheet with _Help > Markdown Quick Reference_.
 
-#### 27.3.1 Exercises
-
-1. Practice what you’ve learned by creating a brief CV. The title should be your name, and you should include headings for (at least) education or employment. Each of the sections should include a bulleted list of jobs/degrees. Highlight the year in bold.
-2. Using the R Markdown quick reference, figure out how to:
-   1. Add a footnote.
-   2. Add a horizontal rule.
-   3. Add a block quote.
-3. Copy and paste the contents of `diamond-sizes.Rmd` from [https://github.com/hadley/r4ds/tree/master/rmarkdown](https://github.com/hadley/r4ds/tree/master/rmarkdown) in to a local R markdown document. Check that you can run it, then add text after the frequency polygon that describes its most striking features.
+####
 
 ### 27.4 Code chunks
 
