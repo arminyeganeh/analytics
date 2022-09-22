@@ -224,89 +224,9 @@ comma(.12358124331)
 #> [1] "0.12"
 ```
 
-### 27.6 YAML header
+### Bibliographies and citations
 
-You can control many other “whole document” settings by tweaking the parameters of the YAML header. You might wonder what YAML stands for: it’s “yet another markup language”, which is designed for representing hierarchical data in a way that’s easy for humans to read and write. R Markdown uses it to control many details of the output. Here we’ll discuss two: document parameters and bibliographies.
-
-#### 27.6.1 Parameters
-
-R Markdown documents can include one or more parameters whose values can be set when you render the report. Parameters are useful when you want to re-render the same report with distinct values for various key inputs. For example, you might be producing sales reports per branch, exam results by student, or demographic summaries by country. To declare one or more parameters, use the `params` field.
-
-This example uses a `my_class` parameter to determine which class of cars to display:
-
-````
----
-output: html_document
-params:
-  my_class: "suv"
----
-
-```{r setup, include = FALSE}
-library(ggplot2)
-library(dplyr)
-
-class <- mpg %>% filter(class == params$my_class)
-```
-
-# Fuel economy for `r params$my_class`s
-
-```{r, message = FALSE}
-ggplot(class, aes(displ, hwy)) + 
-  geom_point() + 
-  geom_smooth(se = FALSE)
-```Copy
-````
-
-As you can see, parameters are available within the code chunks as a read-only list named `params`.
-
-You can write atomic vectors directly into the YAML header. You can also run arbitrary R expressions by prefacing the parameter value with `!r`. This is a good way to specify date/time parameters.
-
-```
-params:
-  start: !r lubridate::ymd("2015-01-01")
-  snapshot: !r lubridate::ymd_hms("2015-01-01 12:30:00")Copy
-```
-
-In RStudio, you can click the “Knit with Parameters” option in the Knit dropdown menu to set parameters, render, and preview the report in a single user friendly step. You can customise the dialog by setting other options in the header. See [http://rmarkdown.rstudio.com/developer\_parameterized\_reports.html#parameter\_user\_interfaces](http://rmarkdown.rstudio.com/developer\_parameterized\_reports.html#parameter\_user\_interfaces) for more details.
-
-Alternatively, if you need to produce many such parameterised reports, you can call [`rmarkdown::render()`](https://rdrr.io/pkg/rmarkdown/man/render.html) with a list of `params`:
-
-```
-rmarkdown::render("fuel-economy.Rmd", params = list(my_class = "suv"))Copy
-```
-
-This is particularly powerful in conjunction with `purrr:pwalk()`. The following example creates a report for each value of `class` found in `mpg`. First we create a data frame that has one row for each class, giving the `filename` of the report and the `params`:
-
-```
-reports <- tibble(
-  class = unique(mpg$class),
-  filename = stringr::str_c("fuel-economy-", class, ".html"),
-  params = purrr::map(class, ~ list(my_class = .))
-)
-reports
-#> # A tibble: 7 x 3
-#>   class   filename                  params          
-#>   <chr>   <chr>                     <list>          
-#> 1 compact fuel-economy-compact.html <named list [1]>
-#> 2 midsize fuel-economy-midsize.html <named list [1]>
-#> 3 suv     fuel-economy-suv.html     <named list [1]>
-#> 4 2seater fuel-economy-2seater.html <named list [1]>
-#> 5 minivan fuel-economy-minivan.html <named list [1]>
-#> 6 pickup  fuel-economy-pickup.html  <named list [1]>
-#> # … with 1 more rowCopy
-```
-
-Then we match the column names to the argument names of `render()`, and use purrr’s **parallel** walk to call `render()` once for each row:
-
-```
-reports %>% 
-  select(output_file = filename, params) %>% 
-  purrr::pwalk(rmarkdown::render, input = "fuel-economy.Rmd")Copy
-```
-
-#### 27.6.2 Bibliographies and Citations
-
-Pandoc can automatically generate citations and a bibliography in a number of styles. To use this feature, specify a bibliography file using the `bibliography` field in your file’s header. The field should contain a path from the directory that contains your .Rmd file to the file that contains the bibliography file:
+Pandoc can automatically generate citations and a bibliography in a number of styles. To use this feature, specify a bibliography file using the `bibliography` field in your file’s header. The field should contain a path from the directory that contains your `.Rmd` file to the file that contains the bibliography file:
 
 ```
 bibliography: rmarkdown.bibCopy
@@ -314,7 +234,7 @@ bibliography: rmarkdown.bibCopy
 
 You can use many common bibliography formats including BibLaTeX, BibTeX, endnote, medline.
 
-To create a citation within your .Rmd file, use a key composed of ‘@’ + the citation identifier from the bibliography file. Then place the citation in square brackets. Here are some examples:
+To create a citation within your `.Rmd` file, use a key composed of ‘@’ + the citation identifier from the bibliography file. Then place the citation in square brackets. Here are some examples:
 
 ```
 Separate multiple citations with a `;`: Blah blah [@smith04; @doe99].
@@ -329,7 +249,7 @@ Add a `-` before the citation to suppress the author's name:
 Smith says blah [-@smith04].Copy
 ```
 
-When R Markdown renders your file, it will build and append a bibliography to the end of your document. The bibliography will contain each of the cited references from your bibliography file, but it will not contain a section heading. As a result it is common practice to end your file with a section header for the bibliography, such as `# References` or `# Bibliography`.
+When R Markdown renders your file, it will build and append a bibliography to the end of your document. The bibliography will contain each of the cited references from your bibliography file, but it will not contain a section heading. As a result, it is common practice to end your file with a section header for the bibliography, such as `# References` or `# Bibliography`.
 
 You can change the style of your citations and bibliography by referencing a CSL (citation style language) file in the `csl` field:
 
@@ -342,11 +262,7 @@ As with the bibliography field, your csl file should contain a path to the file.
 
 ### Learning more
 
-R Markdown is still relatively young, and is still growing rapidly. The best place to stay on top of innovations is the official R Markdown website: [http://rmarkdown.rstudio.com](http://rmarkdown.rstudio.com/).
+R Markdown is still relatively young and is still growing rapidly. The best place to stay on top of innovations is the official R Markdown website: [http://rmarkdown.rstudio.com](http://rmarkdown.rstudio.com/). Collaboration is a vital part of modern data science, and you can make your life much easier by using version control tools, like Git and GitHub. Free resources that will teach you about Git include:
 
-There are two important topics that we haven’t covered here: collaboration, and the details of accurately communicating your ideas to other humans. Collaboration is a vital part of modern data science, and you can make your life much easier by using version control tools, like Git and GitHub. We recommend two free resources that will teach you about Git:
-
-1. “Happy Git with R”: a user friendly introduction to Git and GitHub from R users, by Jenny Bryan. The book is freely available online: [http://happygitwithr.com](http://happygitwithr.com/)
+1. “Happy Git with R”: a user-friendly introduction to Git and GitHub from R users, by Jenny Bryan. The book is freely available online: [http://happygitwithr.com](http://happygitwithr.com/)
 2. The “Git and GitHub” chapter of _R Packages_, by Hadley. You can also read it for free online: [http://r-pkgs.had.co.nz/git.html](http://r-pkgs.had.co.nz/git.html).
-
-I have also not touched on what you should actually write in order to clearly communicate the results of your analysis. To improve your writing, I highly recommend reading either [_Style: Lessons in Clarity and Grace_](https://amzn.com/0134080416) by Joseph M. Williams & Joseph Bizup, or [_The Sense of Structure: Writing from the Reader’s Perspective_](https://amzn.com/0205296327) by George Gopen. Both books will help you understand the structure of sentences and paragraphs, and give you the tools to make your writing more clear. (These books are rather expensive if purchased new, but they’re used by many English classes so there are plenty of cheap second-hand copies). George Gopen also has a number of short articles on writing at [https://www.georgegopen.com/the-litigation-articles.html](https://www.georgegopen.com/the-litigation-articles.html). They are aimed at lawyers, but almost everything applies to data scientists too.
