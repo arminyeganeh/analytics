@@ -6,9 +6,7 @@ description: Assignment 2, 450-600 lines, 3 hours to complete
 
 ### Instructions
 
-**Submission:** Using Google Maps or any resource of your choice, find a 5-10 acre site to develop a multifamily residential project in a town, county, or city of interest in the US. Use the following template to describe your chosen site and neighborhood using R Markdown in a PDF format.
-
-**Hints:** Make sure images are in the same directory as `Rmd.` using `getwd()` and `setwd()` .
+**Submission:** Using Google Maps or any resource of your choice, find a 5-10 acre site to develop a multifamily residential project in a town, county, or city of interest in the US. Use the following template to describe and justify your chosen site and neighborhood using R Markdown in a PDF format. **Hints:** Images should be located in the same directory as `Rmd.` using `getwd()` and `setwd()` . **Rubric:** The selected site should include all the service categories described in the template in close proximity. &#x20;
 
 {% code overflow="wrap" %}
 ```
@@ -110,7 +108,7 @@ The Lexington County Leisure Center and the Wellness Center, both run by the
 Lexington County Recreation & Aging Commission, are located on Park Road at US
 378. 
 
-Site Description- Notes and Conclusions
+**Site visit notes and conclusions**
 The site visit of the Subject Property and surrounding area was conducted on February
 22, 2014. No environmental concerns were apparent. There are no road or infrastructure improvements planned or under construction at this time near the Site.
 The local perception of crime should not be a factor in the marketability of the proposed project. Positive attributes of the site and location are its proximity to major shopping, medical services, employment, and schools. There are no negative attributes of the Site that were apparent. There is good visibility of the Site from Northwood Drive. Access to the Site is from Northwood Drive.
