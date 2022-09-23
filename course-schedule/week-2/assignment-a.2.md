@@ -10,7 +10,7 @@ description: Assignment 2, 450-600 lines, 3 hours to complete
 
 {% code overflow="wrap" %}
 ```
-## Neighborhood/Site Description
+## Site Description
 ### Student's Full Name
 ### Date
 
