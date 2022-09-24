@@ -44,7 +44,7 @@ The surrounding properties are as follows:
 ![Adjacent single-family homes and undeveloped area to the West of the site on Cherokee Trail.](C:/Users/Dan/Analytics/West.png){width=50%}
 
 ### Neighborhood services
-**Shopping centers** 
+**Convenience, general merchandise, and grocery shopping service** 
 The nearest convenience shopping is a Hess Express convenience store/gas station
 located at the intersection of US 378 and North Lake Drive. Valero convenience
 store/gas station is located on US 378 at Caughman Road.
