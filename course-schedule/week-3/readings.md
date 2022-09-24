@@ -6,7 +6,7 @@ description: Assignment 3, 450-600 lines, 3 hours to complete
 
 ### Instructions
 
-The purpose of this assignment is to create a Distance Table for the neighborhood services identified in the Site Description assignment using the following template. **Rubric:** Include all the service categories described in the template in close proximity. Submit the R Markdown in a PDF format by the due date. **Hint:** Follow the tasks described below.
+**Objective:** This objective of this assignment is to familiarize learners with batch geocoding with R and Google Geocoding API. Geocoding refers to providing geographical coordinates corresponding to a location address. **Submission:** Create a Distance Table for the neighborhood services identified in the Site Description assignment using the following template. **Rubric:** Include all the service categories described in the template in close proximity. Submit the R Markdown in a PDF format by the due date. **Hint:** Follow the tasks described below.
 
 | Service       | Name              | Address | Latitude | Longitude | Distance |
 | ------------- | ----------------- | ------- | -------- | --------- | -------- |
@@ -37,13 +37,13 @@ The purpose of this assignment is to create a Distance Table for the neighborhoo
 |               | Merchandise 1     |         |          |           |          |
 |               | Merchandise 2     |         |          |           |          |
 
-#### Task 1
+#### Task 1: Create the distance table
 
-Using Google, detect the addresses of the neighborhood services identified in the Site Description assignment and record the addresses in R Markdown using the following sample code block:
+Use Google to detect the addresses of the neighborhood services and record the addresses in a data frame in an R Markdown file. The following code can assist:
 
 ````r
 ```{r services, echo=FALSE}
-# Create a data frame for services 
+# Create a data frame, including columns for services, names, and addresses 
 table<-data.frame(service=c("Dining",
                             "Dining",
                             "Dining",
@@ -69,17 +69,16 @@ table<-data.frame(service=c("Dining",
                             "3401 Bruin Ln, Blacksburg, VA 24060",
                             "1030 Pamplin Hall, Blacksburg, VA 24061"))
 
+# Add columns for latitude, longitude, and distance 
 table['latitude']<-NA
 table['longitude']<-NA
 table['distance']<-NA
 ```
 ````
 
-&#x20;and fill out the following Distance Table in R Markdown.&#x20;
+#### Task 2: Obtain a Geocoding API from Google
 
-* [ ] Images should be located in the same directory as `Rmd.` using `getwd()` and `setwd()` .&#x20;
-
-****
+Geocoding can be simply achieved in R using the function `geocode()` of the package `ggmap`. The geocode function uses Google Geocoding API to turn addresses from text to latitude and longitude pairs.&#x20;
 
 | Service       | Name              | Address | Latitude | Longitude | Distance |
 | ------------- | ----------------- | ------- | -------- | --------- | -------- |
