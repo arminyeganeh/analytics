@@ -6,7 +6,7 @@ description: Assignment 3, 450-600 lines, 3 hours to complete
 
 ### Instructions
 
-**Objective:** This objective of this assignment is to familiarize learners with batch geocoding with R and Google Geocoding API. Geocoding refers to providing geographical coordinates corresponding to a location address. **Submission:** Create a Distance Table for the neighborhood services identified in the Site Description assignment using the following template. **Rubric:** Include all the service categories described in the template in close proximity. Submit the R Markdown in a PDF format by the due date. **Hint:** Follow the tasks described below.
+**Objective:** This objective of this assignment is to familiarize learners with batch geocoding with R and Google Geocoding API. Geocoding refers to providing geographical coordinates corresponding to a location on earth. **Submission:** Create a Distance Table for the neighborhood services identified in the Site Description assignment using the following template. **Rubric:** Include all the service categories described in the template in close proximity. Submit the R Markdown in a PDF format by the due date. **Hint:** Follow the tasks described below.
 
 | Service       | Name              | Address | Latitude | Longitude | Distance |
 | ------------- | ----------------- | ------- | -------- | --------- | -------- |

@@ -6,7 +6,7 @@ description: Assignment 2, 450-600 lines, 3 hours to complete
 
 ### Instructions
 
-**Objective:** This objective of this assignment is to familiarize learners with site location and neighborhood factors that determine an optimal site for residential development. **Submission:** Using Google Maps or any resource of your choice, find a 5-10 acre site to develop a multifamily residential project in a town, county, or city of interest in the US. Use the following template to describe and justify your chosen site and neighborhood in R Markdown. **Rubric:** The selected site should include all the service categories described in the template in close proximity. Submit the R Markdown in a PDF format by the due date. **Hint:** Images should be located in the same directory as `Rmd.` using `getwd()` and `setwd()` .&#x20;
+**Submission:** Using Google Maps or any resource of your choice, find a 5-10 acre site to develop a multifamily residential project in a town, county, or city of interest in the US. Use the following template to describe and justify your chosen site and neighborhood in R Markdown in a PDF format. **Hints:** Images should be located in the same directory as `Rmd.` using `getwd()` and `setwd()` . **Rubric:** The selected site should include all the service categories described in the template in close proximity. Submit the PDF file by the due date.
 
 {% code overflow="wrap" %}
 ```
@@ -44,7 +44,7 @@ The surrounding properties are as follows:
 ![Adjacent single-family homes and undeveloped area to the West of the site on Cherokee Trail.](C:/Users/Dan/Analytics/West.png){width=50%}
 
 ### Neighborhood services
-**Convenience, general merchandise, and grocery shopping service** 
+**Shopping centers** 
 The nearest convenience shopping is a Hess Express convenience store/gas station
 located at the intersection of US 378 and North Lake Drive. Valero convenience
 store/gas station is located on US 378 at Caughman Road.
