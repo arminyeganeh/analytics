@@ -78,33 +78,36 @@ table['distance']<-NA
 
 #### Task 2: Obtain a Geocoding API from Google
 
-Geocoding can be simply achieved in R using the function `geocode()` of the package `ggmap`. The geocode function uses Google Geocoding API to turn addresses from text to latitude and longitude pairs.&#x20;
+Geocoding can be simply achieved in R using the function `geocode()` of the package `ggmap`. The geocode function uses Google Geocoding API to turn addresses from text to latitude and longitude pairs. Geographic coordinates are used to place markers or position the map. This API also converts geographic coordinates into an address (reverse geocoding). However, the Google Geocoding API service requires individual sign-up and billing enablement. The billing enablement is a bit downer, but, the number of addresses in this assignment is far below the limit at which pricing starts, which means this assignment can be performed at zero cost. To obtain your individual API:
 
-| Service       | Name              | Address | Latitude | Longitude | Distance |
-| ------------- | ----------------- | ------- | -------- | --------- | -------- |
-| Dining        | Fast food 1       |         |          |           |          |
-|               | Fast food 2       |         |          |           |          |
-|               | Restaurant 1      |         |          |           |          |
-|               | Restaurant 2      |         |          |           |          |
-| Education     | Public library    |         |          |           |          |
-|               | Elementary school |         |          |           |          |
-|               | High school       |         |          |           |          |
-|               | College           |         |          |           |          |
-| Finance       | Bank 1            |         |          |           |          |
-|               | Bank 2            |         |          |           |          |
-| Fire fighting | Fire station      |         |          |           |          |
-| Healthcare    | Hospital          |         |          |           |          |
-|               | Medical care 1    |         |          |           |          |
-|               | Medical care 2    |         |          |           |          |
-|               | Pharmacy 1        |         |          |           |          |
-|               | Pharmacy 2        |         |          |           |          |
-| Recreation    | Recreation 1      |         |          |           |          |
-|               | Recreation 2      |         |          |           |          |
-| Security      | Police station    |         |          |           |          |
-| Shipping      | Postal service 1  |         |          |           |          |
-|               | Postal service 2  |         |          |           |          |
-| Shopping      | Convenience 1     |         |          |           |          |
-|               | Grocery 1         |         |          |           |          |
-|               | Grocery 2         |         |          |           |          |
-|               | Merchandise 1     |         |          |           |          |
-|               | Merchandise 2     |         |          |           |          |
+* [ ] Visit [https://console.cloud.google.com](https://console.cloud.google.com) and create a new project
+* [ ] Navigate to APIs & Services and search for and enable Google Geocoding API.
+* [ ] Register your credit card information and obtain a Google Geocoding API key.
+
+#### Task 3: Geocoding in R with the package `ggmap`
+
+Once the API key is obtained, Google to detect the addresses of the neighborhood services and record the addresses in a data frame in an R Markdown file. The following code can assist:
+
+````r
+```{r services, echo=FALSE}
+# Install and load the packages "ggmap" and "ggplot2"
+install.packages("ggmap")
+install.packages("ggplot2")
+
+library("ggmap")
+library("ggplot2")
+
+#Set Google Geocoding API Key
+ggmap::register_google(key="PASTE YOUR Google Geocoding API KEY HERE")
+
+#Test Google Geocoding API Key
+test<-geocode("Google Building 40, 1600 Amphitheatre Pkwy, Mountain View, CA 94043")
+
+test
+## A tibble: 1 x 2
+##  lon   lat
+##  <dbl> <dbl>
+##1 -122.  37.4
+````
+
+The result of the function `geocode` of the package `ggmap` is a tibble.&#x20;
