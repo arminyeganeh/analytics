@@ -89,7 +89,7 @@ Geocoding can be simply achieved in R using the function `geocode()` of the pack
 Once the API key is obtained, Google to detect the addresses of the neighborhood services and record the addresses in a data frame in an R Markdown file. The following code can assist:
 
 ````r
-```{r services, echo=FALSE}
+```{geocoding test, echo=FALSE}
 # Install and load the packages "ggmap" and "ggplot2"
 install.packages("ggmap")
 install.packages("ggplot2")
@@ -101,7 +101,7 @@ library("ggplot2")
 ggmap::register_google(key="PASTE YOUR Google Geocoding API KEY HERE")
 
 #Test Google Geocoding API Key
-test<-geocode("Google Building 40, 1600 Amphitheatre Pkwy, Mountain View, CA 94043")
+test<- geocode("Google Building 40, 1600 Amphitheatre Pkwy, Mountain View, CA 94043")
 
 test
 ## A tibble: 1 x 2
@@ -110,4 +110,18 @@ test
 ##1 -122.  37.4
 ````
 
-The result of the function `geocode` of the package `ggmap` is a tibble.&#x20;
+The result of the function `geocode` of the package `ggmap` is a tibble. Therefore, what we called `test` in the code block above, is a tibble, a modern reimagining of the data frame. For simplicity, let's treat it as a data frame. The following code block is a loop, using which we can geocode all the addresses in the data frame `table` that we have already created. After running this code, you should be able to see the coordinates of the addresses added to the data frame columns `latitude` and `longitude`.
+
+````
+```{geocoding addresses, echo=FALSE}
+
+for (i in 1:nrow(table)) {
+test<-geocode(table$address[i])
+table$longitude[i]<-test$'lon'[1]
+table$latitude[i]<-test$'lat'[1]
+}
+```
+````
+
+#### Task 4: Computing distances
+
