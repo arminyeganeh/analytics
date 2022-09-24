@@ -6,7 +6,7 @@ description: Assignment 2, 450-600 lines, 3 hours to complete
 
 ### Instructions
 
-**Submission:** Using Google Maps or any resource of your choice, find a 5-10 acre site to develop a multifamily residential project in a town, county, or city of interest in the US. Use the following template to describe and justify your chosen site and neighborhood in R Markdown in a PDF format. **Hints:** Images should be located in the same directory as `Rmd.` using `getwd()` and `setwd()` . **Rubric:** The selected site should include all the service categories described in the template in close proximity. Submit the PDF file by the due date.
+**Submission:** Using Google Maps or any resource of your choice, find a 5-10 acre site to develop a multifamily residential project in a town, county, or city of interest in the US. Use the following template to describe and justify your chosen site and neighborhood in R Markdown. **Rubric:** The selected site should include all the service categories described in the template in close proximity. Submit the R Markdown in a PDF format by the due date. **Hint:** Images should be located in the same directory as `Rmd.` using `getwd()` and `setwd()` .&#x20;
 
 {% code overflow="wrap" %}
 ```

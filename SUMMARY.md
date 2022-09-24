@@ -82,7 +82,7 @@
   * [Hypothesis testing](course-schedule/week-3/hypothesis-testing.md)
   * [Descriptives in R P1](course-schedule/week-3/descriptive-stats-in-r.md)
   * [Descriptives in R P2](course-schedule/week-3/homework-a3.md)
-  * [Distance Chart](course-schedule/week-3/readings.md)
+  * [Distance Table](course-schedule/week-3/readings.md)
   * [References](course-schedule/week-3/references.md)
   * [FAQs](course-schedule/week-3/faqs.md)
 * [Week 4](course-schedule/week-4/README.md)
