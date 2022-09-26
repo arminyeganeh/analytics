@@ -6,43 +6,43 @@ description: Assignment 3, 450-600 lines, 3 hours to complete
 
 ### Instructions
 
-**Objective:** This objective of this assignment is to familiarize learners with batch geocoding with R and Google Geocoding API. Geocoding refers to providing geographical coordinates corresponding to a location on earth. **Submission:** Create a Distance Table for the neighborhood services identified in the Site Description assignment using the following template. **Rubric:** Include all the service categories described in the template in close proximity. Submit the R Markdown in a PDF format by the due date. **Hint:** Follow the tasks described below.
+**Objective:** This objective of this assignment is to familiarize learners with batch geocoding and measuring distances in R. Geocoding refers to providing geographical coordinates corresponding to a location on earth. **Submission:** Create a Distance Table for the neighborhood services identified in the Site Description assignment using the following template. **Rubric:** Include all the service categories described in the template in close proximity. Submit the R Markdown in a PDF format by the due date. **Hint:** Follow the tasks described below.
 
-| Service       | Name              | Address | Latitude | Longitude | Distance |
-| ------------- | ----------------- | ------- | -------- | --------- | -------- |
-| Dining        | Fast food 1       |         |          |           |          |
-|               | Fast food 2       |         |          |           |          |
-|               | Restaurant 1      |         |          |           |          |
-|               | Restaurant 2      |         |          |           |          |
-| Education     | Public library    |         |          |           |          |
-|               | Elementary school |         |          |           |          |
-|               | High school       |         |          |           |          |
-|               | College           |         |          |           |          |
-| Finance       | Bank 1            |         |          |           |          |
-|               | Bank 2            |         |          |           |          |
-| Fire fighting | Fire station      |         |          |           |          |
-| Healthcare    | Hospital          |         |          |           |          |
-|               | Medical care 1    |         |          |           |          |
-|               | Medical care 2    |         |          |           |          |
-|               | Pharmacy 1        |         |          |           |          |
-|               | Pharmacy 2        |         |          |           |          |
-| Recreation    | Recreation 1      |         |          |           |          |
-|               | Recreation 2      |         |          |           |          |
-| Security      | Police station    |         |          |           |          |
-| Shipping      | Postal service 1  |         |          |           |          |
-|               | Postal service 2  |         |          |           |          |
-| Shopping      | Convenience 1     |         |          |           |          |
-|               | Grocery 1         |         |          |           |          |
-|               | Grocery 2         |         |          |           |          |
-|               | Merchandise 1     |         |          |           |          |
-|               | Merchandise 2     |         |          |           |          |
+| Service       | Name              | Address | Lat | Lon | Distance |   |
+| ------------- | ----------------- | ------- | --- | --- | -------- | - |
+| Dining        | Fast food 1       |         |     |     |          |   |
+|               | Fast food 2       |         |     |     |          |   |
+|               | Restaurant 1      |         |     |     |          |   |
+|               | Restaurant 2      |         |     |     |          |   |
+| Education     | Public library    |         |     |     |          |   |
+|               | Elementary school |         |     |     |          |   |
+|               | High school       |         |     |     |          |   |
+|               | College           |         |     |     |          |   |
+| Finance       | Bank 1            |         |     |     |          |   |
+|               | Bank 2            |         |     |     |          |   |
+| Fire fighting | Fire station      |         |     |     |          |   |
+| Healthcare    | Hospital          |         |     |     |          |   |
+|               | Medical care 1    |         |     |     |          |   |
+|               | Medical care 2    |         |     |     |          |   |
+|               | Pharmacy 1        |         |     |     |          |   |
+|               | Pharmacy 2        |         |     |     |          |   |
+| Recreation    | Recreation 1      |         |     |     |          |   |
+|               | Recreation 2      |         |     |     |          |   |
+| Security      | Police station    |         |     |     |          |   |
+| Shipping      | Postal service 1  |         |     |     |          |   |
+|               | Postal service 2  |         |     |     |          |   |
+| Shopping      | Convenience 1     |         |     |     |          |   |
+|               | Grocery 1         |         |     |     |          |   |
+|               | Grocery 2         |         |     |     |          |   |
+|               | Merchandise 1     |         |     |     |          |   |
+|               | Merchandise 2     |         |     |     |          |   |
 
 #### Task 1: Create the distance table
 
 Use Google to detect the addresses of the neighborhood services and record the addresses in a data frame in an R Markdown file. The following code can assist:
 
 ````r
-```{r services, echo=FALSE}
+```{r services, echo=TRUE}
 # Create a data frame, including columns for services, names, and addresses 
 table<-data.frame(service=c("Dining",
                             "Dining",
@@ -73,6 +73,7 @@ table<-data.frame(service=c("Dining",
 table['latitude']<-NA
 table['longitude']<-NA
 table['distance']<-NA
+table['walkingtime']<-NA
 ```
 ````
 
@@ -86,7 +87,7 @@ Geocoding can be simply achieved in R using the function `geocode()` of the pack
 
 #### Task 3: Geocoding in R with the package `ggmap`
 
-Once the API key is obtained, Google to detect the addresses of the neighborhood services and record the addresses in a data frame in an R Markdown file. The following code can assist:
+Geographic coordinates are used to place markers or position the map.&#x20;
 
 ````r
 ```{geocoding test, echo=FALSE}
@@ -112,7 +113,7 @@ test
 
 The result of the function `geocode` of the package `ggmap` is a tibble. Therefore, what we called `test` in the code block above, is a tibble, a modern reimagining of the data frame. For simplicity, let's treat it as a data frame. The following code block is a loop, using which we can geocode all the addresses in the data frame `table` that we have already created. After running this code, you should be able to see the coordinates of the addresses added to the data frame columns `latitude` and `longitude`.
 
-````
+````r
 ```{geocoding addresses, echo=FALSE}
 
 for (i in 1:nrow(table)) {
@@ -123,5 +124,9 @@ table$latitude[i]<-test$'lat'[1]
 ```
 ````
 
-#### Task 4: Computing distances
+#### Task 4: Computing distances in R using the package `gmapsdistance`
 
+Geographic coordinates are used to place markers or position the map.&#x20;
+
+```r
+```
