@@ -161,18 +161,14 @@ for (i in 1:nrow(table)) {
   table$walkingtime[i]<-distance.mat$Time[1]/60
 }
 
-# If needed, use the package dplyr to round decimals in multiple columns. 
-# If needed, export the results in a CSV format.
+# Use the package dplyr to round decimals in multiple columns. 
 install.packages("dplyr")
 library(dplyr)
-write.csv(table %>% 
-          mutate(across(where(is.numeric), round, 2)),
-          "table.csv", 
-          row.names = FALSE)
+table %>% mutate(across(where(is.numeric), round, 2))
 ```
 ````
 
-Hopefully, this was not complicated. In the next assignment, we will map the coordinates. You can learn more about the packages used here by reading reference manuals:
+Hopefully, this was not too complicated. In the next assignment, we will create maps using the service coordinates. You can learn more about the spatial analysis packages used here by reading reference manuals:
 
 * [geosphere](https://cran.r-project.org/web/packages/geosphere/geosphere.pdf)
 * [ggmap](https://cran.r-project.org/web/packages/ggmap/ggmap.pdf)
