@@ -161,11 +161,10 @@ for (i in 1:nrow(table)) {
   table$walkingtime[i]<-distance.mat$Time[1]/60
 }
 
-# If needed, use the package dplyr to round the decimals of multiple columns. 
+# If needed, use the package dplyr to round decimals in multiple columns. 
 # If needed, export the results in a CSV format.
+install.packages("dplyr")
 library(dplyr)
-
-# Round at first decimal with a mixed df
 write.csv(table %>% 
           mutate(across(where(is.numeric), round, 2)),
           "table.csv", 
@@ -173,6 +172,8 @@ write.csv(table %>%
 ```
 ````
 
-Hopefully, this was not complicated. In the next assignment, we will map the coordinates. You can learn more about the packages used here by reading their documentation:
+Hopefully, this was not complicated. In the next assignment, we will map the coordinates. You can learn more about the packages used here by reading reference manuals:
 
-*
+* [geosphere](https://cran.r-project.org/web/packages/geosphere/geosphere.pdf)
+* [ggmap](https://cran.r-project.org/web/packages/ggmap/ggmap.pdf)
+* [gmapsdistance](https://cran.r-project.org/web/packages/gmapsdistance/gmapsdistance.pdf)
