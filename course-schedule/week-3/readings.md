@@ -86,6 +86,8 @@ Geocoding can be simply achieved in R using the function `geocode()` of the pack
 * [ ] Navigate to APIs & Services and search for and enable Google Geocoding API.
 * [ ] Register your credit card information and obtain a Google Geocoding API key.
 
+Once generated, your key will be saved in the Credentials section and its usage will be shown in the Metrics section. Remember not to share this key publicly!
+
 #### Task 3: Geocoding in R with the package `ggmap`
 
 Geographic coordinates are used to place markers or position the map.&#x20;
