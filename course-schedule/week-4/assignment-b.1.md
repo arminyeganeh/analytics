@@ -19,9 +19,10 @@ Open a new R Markdown file and check to see if the data frame `table` which you 
 
 install.packages("ggrepel") # This package helps create professional map labels
 
-library("ggplot2")
 library("ggmap")
+library("ggplot2")
 library("ggrepel")
+
 
 
 ````
