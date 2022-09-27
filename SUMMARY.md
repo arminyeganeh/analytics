@@ -90,7 +90,7 @@
   * [Complex Patterns](course-schedule/week-4/complex-patterns.md)
   * [Data Structures in R P1](course-schedule/week-4/data-frames-in-r.md)
   * [Data Structures in R P2](course-schedule/week-4/data-structures-in-r-p2.md)
-  * [Geocoding & Mapping](course-schedule/week-4/assignment-b.1.md)
+  * [Mapping](course-schedule/week-4/assignment-b.1.md)
   * [References](course-schedule/week-4/references.md)
   * [FAQs](course-schedule/week-4/faqs.md)
 * [Week 5](course-schedule/week-5/README.md)
