@@ -39,7 +39,7 @@ description: Assignment 3, 450-600 lines, 3 hours to complete
 
 #### Task 1: Create the distance table
 
-Use Google to detect the addresses of the neighborhood services and record the addresses in a data frame in an R Markdown file. The following code can assist:
+Open a new R Markdown file. You can use `rm(list = ls())` on the first line to clean all the objects stored in the Environment, which helps reduce potential errors at the end of the session. Use Google to detect the addresses of the neighborhood services and record the addresses in a data frame in an R Markdown file. The following code can assist:
 
 ````r
 ```{services, echo=TRUE}
@@ -168,7 +168,7 @@ table %>% mutate(across(where(is.numeric), round, 2))
 ```
 ````
 
-Hopefully, this was not too complicated. In the next assignment, we will create maps using the service coordinates. You can learn more about the spatial analysis packages used here by reading reference manuals:
+When knitting your table, chances are that you get the error message "object not found". If so, use the command `rm(list = ls())` on the first line to clean the Environment and re-run all the codes. Hopefully, this was not too complicated. In the next assignment, we will create maps using the service coordinates. You can learn more about the spatial analysis packages used here by reading reference manuals:
 
 * [geosphere](https://cran.r-project.org/web/packages/geosphere/geosphere.pdf)
 * [ggmap](https://cran.r-project.org/web/packages/ggmap/ggmap.pdf)
