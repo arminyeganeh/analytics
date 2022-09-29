@@ -39,7 +39,7 @@ description: Assignment 3, 450-600 lines, 3 hours to complete
 
 #### Task 1: Create the distance table
 
-Use Google to detect the addresses of the neighborhood services and record the addresses in a data frame in an R Markdown file. The following code can assist:
+Open a new R Markdown file. You can use `rm(list = ls())` on the first line to clean all the objects stored in the Environment, which helps reduce potential errors at the end of the session. Use Google to detect the addresses of the neighborhood services and record the addresses in a data frame in an R Markdown file. The following code can assist:
 
 ````r
 ```{services, echo=TRUE}
@@ -85,6 +85,8 @@ Geocoding can be simply achieved in R using the function `geocode()` of the pack
 * [ ] Visit [https://console.cloud.google.com](https://console.cloud.google.com) and create a new project
 * [ ] Navigate to APIs & Services and search for and enable Google Geocoding API.
 * [ ] Register your credit card information and obtain a Google Geocoding API key.
+
+Once generated, your key will be saved in the Credentials section and its usage will be shown in the Metrics section. Remember not to share this key publicly!
 
 #### Task 3: Geocoding in R with the package `ggmap`
 
@@ -161,6 +163,9 @@ for (i in 1:nrow(table)) {
   table$walkingtime[i]<-distance.mat$Time[1]/60
 }
 
+# Let's save the table for future use in csv format
+write.csv(table, "table.csv")
+ 
 # Use the package dplyr to round decimals in multiple columns. 
 install.packages("dplyr")
 library(dplyr)
@@ -168,7 +173,7 @@ table %>% mutate(across(where(is.numeric), round, 2))
 ```
 ````
 
-Hopefully, this was not too complicated. In the next assignment, we will create maps using the service coordinates. You can learn more about the spatial analysis packages used here by reading reference manuals:
+When knitting your table, chances are that you get the error message "object not found". If so, use the command `rm(list = ls())` on the first line to clean the Environment and re-run all the codes. Hopefully, this was not too complicated. In the next assignment, we will create maps using the service coordinates. You can learn more about the spatial analysis packages used here by reading reference manuals:
 
 * [geosphere](https://cran.r-project.org/web/packages/geosphere/geosphere.pdf)
 * [ggmap](https://cran.r-project.org/web/packages/ggmap/ggmap.pdf)

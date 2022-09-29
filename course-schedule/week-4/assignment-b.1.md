@@ -13,7 +13,7 @@ description: Week 3, Reading Instructions, 50 pages, 2 hours to complete
 The package `ggmap` can be used jointly with `ggplot2` to map spatial data in R.  Open a new R Markdown file and check to see if the data frame `table` which you created previously is shown in the Environment panel. The following template can assist you in mapping:
 
 ````r
-```{services, echo=FALSE}
+```{project site, echo=FALSE}
 
 install.packages("ggrepel") # This package creates professional map labels
 
@@ -33,7 +33,7 @@ site <- data.frame(service = NA,
 # Record a quick neighborhood map using the function qmplot of ggmap
 neighborhood <- qmplot(longitude,
                        latitude,
-                       data = rbind(table,site),
+                       data = rbind(table, site),
                        maptype = "roadmap",
                        source = "google",
                        color = I("red"))
@@ -73,35 +73,30 @@ To obtain your site's shapefile:
 * [ ] Visit [https://www.census.gov/](https://www.census.gov/) and search the page "Cartographic Boundary Files - Shapefile"
 * [ ] The first search result is typically the page we are looking for. Click to open the page.
 * [ ] Scroll down to find the Census Tracts drop-down menu.
-* [ ] Click on your selected site's state and a zip file will start to download.&#x20;
+* [ ] Click on the state where the site is located and a zip file will start to download.&#x20;
 * [ ] Move the downloaded zip file to your R Markdown working directory.&#x20;
 * [ ] If you do not remember the working directory, find it using `getwd()` .&#x20;
 
 ````r
-```{services, echo=FALSE}
+```{market area, echo=FALSE}
 
-install.packages("ggrepel") # This package creates professional map labels
-
+install.packages("sf") # We use package Simple Features to read shapefiles into R
+                          
 library("ggmap")
 library("ggplot2")
 library("ggrepel")
+library("sf")
 
-# Record project site for mapping
-site <- data.frame(service = NA,
-                   name = 'Project Site',
-                   address = 'PASTE YOUR SITE ADRESS HERE',
-                   latitude = PASTE YOUR SITE LAT HERE,
-                   longitude = PASTE YOUR SITE LON HERE,
-                   distance = NA,
-                   walkingtime = NA)
+# Unzip the Census Tract zipped shapefile
+unzip("PASTE YOUR FILE NAME HERE.zip")
+state <- read_sf("PASTE YOUR FILE NAME HERE.shp")
+names(state) <- tolower(names(state))             # Convert column names to lower case
 
-# Record a quick neighborhood map using the function qmplot of ggmap
-neighborhood <- qmplot(longitude,
-                       latitude,
-                       data = rbind(table,site),
-                       maptype = "roadmap",
-                       source = "google",
-                       color = I("red"))
+# Subset the state file using the city/county FIPS code
+# Find FIPS code here: https://www.census.gov/library/reference/code-lists/ansi.html
+county <- state[state$countyfp == "PASTE YOUR CITY/COUNTY FIPS CODE HERE",]
+
+
 ```
 ````
 
