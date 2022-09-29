@@ -62,3 +62,39 @@ neighborhood +                            # Create the base neighborhood map
 ```
 ````
 
+#### Task 2: Map the market area
+
+The primary market area for any new residential community is defined as the geographic area from which future residents of the community would primarily be drawn and in which competitive housing alternatives are located. Housing market analysts may also define and analyze a secondary market area. The approximate boundaries of the market areas are typically defined using Census-defined administrative boundaries and the primary market boundary distances from the subject site are typically less than 10 miles.
+
+The US Census Bureau administrative zones can be mapped using cartographic boundary files with the shapefile (.shp) format. A shapefile is a simple, nontopological format for storing the geometric location and attribute information of geographic features. Geographic features in a shapefile can be represented by points, lines, or polygons (areas). The workspace containing shapefiles may also contain dBASE tables, which can store additional attributes that can be joined to a shapefile's features.
+
+The package `ggmap` can be used jointly with `ggplot2` to map spatial data in R.  Open a new R Markdown file and check to see if the data frame `table` which you created previously is shown in the Environment panel. The following template can assist you in mapping:
+
+````r
+```{services, echo=FALSE}
+
+install.packages("ggrepel") # This package creates professional map labels
+
+library("ggmap")
+library("ggplot2")
+library("ggrepel")
+
+# Record project site for mapping
+site <- data.frame(service = NA,
+                   name = 'Project Site',
+                   address = 'PASTE YOUR SITE ADRESS HERE',
+                   latitude = PASTE YOUR SITE LAT HERE,
+                   longitude = PASTE YOUR SITE LON HERE,
+                   distance = NA,
+                   walkingtime = NA)
+
+# Record a quick neighborhood map using the function qmplot of ggmap
+neighborhood <- qmplot(longitude,
+                       latitude,
+                       data = rbind(table,site),
+                       maptype = "roadmap",
+                       source = "google",
+                       color = I("red"))
+```
+````
+
