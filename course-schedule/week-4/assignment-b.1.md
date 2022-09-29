@@ -21,6 +21,9 @@ library("ggmap")
 library("ggplot2")
 library("ggrepel")
 
+# If not in the environment, load the data frame table saved as CSV 
+table <- read.csv("table.csv"); table <- tab[-1]  
+
 # Record project site for mapping
 site <- data.frame(service = NA,
                    name = 'Project Site',
@@ -80,7 +83,7 @@ To obtain your site's shapefile:
 ````r
 ```{market area, echo=FALSE}
 
-install.packages("sf") # We use package Simple Features to read shapefiles into R
+install.packages("sf") # Use the package Simple Features to read shapefiles into R
                           
 library("ggmap")
 library("ggplot2")
@@ -96,6 +99,25 @@ names(state) <- tolower(names(state))             # Convert column names to lowe
 # Find FIPS code here: https://www.census.gov/library/reference/code-lists/ansi.html
 county <- state[state$countyfp == "PASTE YOUR CITY/COUNTY FIPS CODE HERE",]
 
+install.packages('rgdal')
+library(rgdal)
+
+basemap <- get_map('Montgomery County, VA', source="stamen", maptype="terrain", zoom = 10)
+
+market <- readOGR(".","cb_2018_51_tract_500k")
+market <- market[market$COUNTYFP=='121',]
+market <- spTransform(market, CRS("+proj=longlat +datum=WGS84"))
+market <- fortify(market)
+
+marketmap <- ggmap(basemap)+
+             geom_polygon(aes(x=long, y=lat, group=group), 
+                          fill='grey', 
+                          size=.2,
+                          color='green', 
+                          data= market, 
+                          alpha=.5)
+
+marketmap
 
 ```
 ````
