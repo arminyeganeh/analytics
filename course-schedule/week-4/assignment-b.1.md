@@ -59,5 +59,6 @@ neighborhood +                            # Create the base neighborhood map
            colour = 'darkblue',
            shape = 15,
            size = 3)
-       
+```
 ````
+
