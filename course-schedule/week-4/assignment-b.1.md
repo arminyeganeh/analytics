@@ -68,7 +68,14 @@ The primary market area for any new residential community is defined as the geog
 
 The US Census Bureau administrative zones can be mapped using cartographic boundary files with the shapefile (.shp) format. A shapefile is a simple, nontopological format for storing the geometric location and attribute information of geographic features. Geographic features in a shapefile can be represented by points, lines, or polygons (areas). The workspace containing shapefiles may also contain dBASE tables, which can store additional attributes that can be joined to a shapefile's features.
 
-The package `ggmap` can be used jointly with `ggplot2` to map spatial data in R.  Open a new R Markdown file and check to see if the data frame `table` which you created previously is shown in the Environment panel. The following template can assist you in mapping:
+To obtain your site's shapefile:
+
+* [ ] Visit [https://www.census.gov/](https://www.census.gov/) and search the page "Cartographic Boundary Files - Shapefile"
+* [ ] The first search result is typically the page we are looking for. Click to open the page.
+* [ ] Scroll down to find the Census Tracts drop-down menu.
+* [ ] Click on your selected site's state and a zip file will start to download.&#x20;
+* [ ] Move the downloaded zip file to your R Markdown working directory.&#x20;
+* [ ] If you do not remember the working directory, find it using `getwd()` .&#x20;
 
 ````r
 ```{services, echo=FALSE}
