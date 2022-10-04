@@ -147,7 +147,7 @@ If a student needs adaptations or accommodations because of a disability (learni
 
 ### Communication&#x20;
 
-Assignments and class information will be posted on the class website. For other matters, please email the instructor, including the course title in the subject line.&#x20;
+Assignments and class information will be posted on the class website. Questions and discussions will be posted on the discussion board. The instructor will monitor the board and reply within two days in the absence of crowdsourced insight. This is usually better than emailing because discussion and answers may benefit everyone. For other matters, please email the instructor, including the course title in the subject line.&#x20;
 
 ### Course Changes
 
