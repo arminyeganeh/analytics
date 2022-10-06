@@ -6,11 +6,11 @@ description: Assignment 1, 450-600 lines, 3 hours to complete
 
 ## R Markdown
 
-#### Instructions
+### Instructions
 
 **Submission:** After reading the following tutorial, create your CV using R Markdown in a PDF format. The title should be your name, and you should include headings for education or employment. Each of the sections should include a bulleted list of jobs/degrees. Highlight the years in bold.
 
-#### Introduction
+### Introduction
 
 R Markdown provides a unified authoring framework for data science, combining your code, its results, and your prose commentary. R Markdown documents are fully reproducible and support dozens of output formats, like HTML, PDF, Word, etc.
 
@@ -26,7 +26,7 @@ R Markdown integrates a number of R packages and external tools. This means that
 * R Markdown Cheat Sheet: _Help > Cheatsheets > R Markdown Cheat Sheet_,
 * R Markdown Reference Guide: _Help > Cheatsheets > R Markdown Reference Guide_.
 
-#### R Markdown basics
+### R Markdown basics
 
 To get started with an `.Rmd` file, select _File > New File > R Markdown…_ in the menubar. RStudio will launch a wizard that you can use to pre-populate your file with useful content that reminds you how the key features of R Markdown work. Hit the button `OK` . You will see a template R Markdown script. Click on the button `Knit` (or press `Cmd/Ctrl + Shift + Enter`) to knit and save the file on your desktop. Now open the saved file to see what is saved and compare it with the R Markdown script.
 
@@ -73,7 +73,7 @@ To produce a complete report containing all text, code, and results, click `Knit
 
 To get started with your own `.Rmd` file, select _File > New File > R Markdown…_ in the menubar. RStudio will launch a wizard that you can use to pre-populate your file with useful content that reminds you how the key features of R Markdown work. The following sections dive into the three components of an R Markdown document in more detail: the header, the markdown text, and the code chunks.
 
-#### Text formatting with Markdown
+### Text formatting with Markdown
 
 Markdown is designed to be easy to read, easy to write, and easy to learn. The guide below shows how to use Pandoc’s Markdown, a slightly extended version that R Markdown understands:
 
@@ -120,7 +120,7 @@ Content Cell  | Content CellCopy
 
 The best way to learn these is simply to try them out. It will take a few days, but soon they will become second nature, and you won’t need to think about them. If you forget, you can get to a handy reference sheet with _Help > Markdown Quick Reference_.
 
-#### Code chunks
+### Code chunks
 
 To run code inside an R Markdown document, you need to insert a chunk. There are three ways to do so:
 
@@ -130,19 +130,19 @@ To run code inside an R Markdown document, you need to insert a chunk. There are
 
 The keyboard shortcut will save you a lot of time in the long run. You can continue to run the code using the keyboard shortcut `Cmd/Ctrl + Enter`. However, chunks get a new keyboard shortcut: `Cmd/Ctrl + Shift + Enter`, which runs all the code in the chunk. Think of a chunk as a function. A chunk should be relatively self-contained and focused around a single task. The following sections describe the chunk header, which consists of ` ```{r ` followed by an optional chunk name, followed by comma separated options, followed by `}`. Next comes your R code and the chunk end is indicated by a final ` ``` `.
 
-#### Chunk name
+### Chunk name
 
 Chunks can be given an optional name: ` ```{r by-name} `. This has three advantages:
 
 1.  You can more easily navigate to specific chunks using the drop-down code navigator in the bottom-left of the script editor:
 
-    ![](https://d33wubrfki0l68.cloudfront.net/6fcddff214345601f998805adce94ab0e21d8615/2a098/screenshots/rmarkdown-chunk-nav.png)
+    ![Drop-down code navigator](https://d33wubrfki0l68.cloudfront.net/6fcddff214345601f998805adce94ab0e21d8615/2a098/screenshots/rmarkdown-chunk-nav.png)
 2. Graphics produced by the chunks will have useful names that make them easier to use elsewhere.
 3. You can set up networks of cached chunks to avoid re-performing expensive computations on every run.
 
 There is one chunk name that imbues special behavior: `setup`. When you’re in notebook mode, the chunk named setup will be run automatically once, before any other code is run.
 
-#### Chunk options
+### Chunk options
 
 Chunk output can be customized with **options**, arguments supplied to the chunk header. Knitr provides almost 60 options that you can use to customize your code chunks. Here we’ll cover the most important chunk options that you’ll use frequently. You can see the full list at [here](https://yihui.org/knitr/options/). The most important set of options controls if your code block is executed and what results are inserted in the finished report:
 
@@ -153,7 +153,7 @@ Chunk output can be customized with **options**, arguments supplied to the chunk
 * `results = 'hide'` hides printed output; `fig.show = 'hide'` hides plots.
 * `error = TRUE` causes the render to continue even if the code returns an error. This is rarely something you’ll want to include in the final version of your report but can be very useful if you need to debug exactly what is going on inside your `.Rmd`. It’s also useful if you’re teaching R and want to deliberately include an error. The default, `error = FALSE` causes knitting to fail if there is a single error in the document.
 
-#### Table
+### Table
 
 By default, R Markdown prints data frames and matrices as you’d see them in the console:
 
@@ -178,7 +178,7 @@ knitr::kable(
 
 You can read the documentation [`?knitr::kable`](https://rdrr.io/pkg/knitr/man/kable.html) to see the other customization ways.
 
-#### Global options
+### Global options
 
 As you work more, you will discover that some of the default chunk options don’t fit your needs and you want to change them. You can do this by calling `knitr::opts_chunk$set()` in a code chunk. For example, when writing books and tutorials set:
 
@@ -199,7 +199,7 @@ knitr::opts_chunk$set(
 
 That will hide the code by default to only show the chunks you deliberately choose to show (with `echo = TRUE`). You might consider setting `message = FALSE` and `warning = FALSE`, but that would make it harder to debug problems because you wouldn’t see any messages in the final document.
 
-#### Inline code
+### Inline code
 
 There is one other way to embed R code into an R Markdown document: directly into the text, with: `` `r ` ``. This can be very useful if you mention the properties of your data in the text. For example, in the example document I used at the start of the chapter I had:
 
@@ -219,7 +219,7 @@ comma(.12358124331)
 #> [1] "0.12"
 ```
 
-#### Bibliographies and citations
+### Bibliographies and citations
 
 Pandoc can automatically generate citations and a bibliography in a number of styles. To use this feature, specify a bibliography file using the `bibliography` field in your file’s header. The field should contain a path from the directory that contains your `.Rmd` file to the file that contains the bibliography file:
 
@@ -255,7 +255,7 @@ csl: apa.cslCopy
 
 As with the bibliography field, your csl file should contain a path to the file. Here I assume that the csl file is in the same directory as the .Rmd file. A good place to find CSL style files for common bibliography styles is [http://github.com/citation-style-language/styles](http://github.com/citation-style-language/styles).
 
-#### Learning more
+### Learning more
 
 R Markdown is still relatively young and is still growing rapidly. The best place to stay on top of innovations is the official R Markdown website: [http://rmarkdown.rstudio.com](http://rmarkdown.rstudio.com/). Collaboration is a vital part of modern data science, and you can make your life much easier by using version control tools, like Git and GitHub. Free resources that will teach you about Git include:
 

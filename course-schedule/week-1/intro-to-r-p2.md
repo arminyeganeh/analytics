@@ -6,11 +6,11 @@ description: Reading 1, 450-600 lines, 3 hours to complete
 
 ## Intro to R & RStudio P2
 
-#### Instructions
+### Instructions
 
 Read this tutorial and apply the codes in R. No submission is required.
 
-#### Rules & conventions for naming variables
+### Rules & conventions for naming variables
 
 Variable names (`sales` and `revenue`) have just been English-language words written using lowercase letters. However, R allows a lot more flexibility when it comes to naming variables:
 
@@ -26,7 +26,7 @@ You aren’t obliged to follow these conventions, but it’s generally a good id
 * Use short variable names. So we much prefer to use a name like `sales` over a name like `sales.for.this.book.that.you.are.reading`.
 * Conventional naming styles for multi-word variables include separating words using periods, like `my.new.salary` or underscores, like `my_new_salary`.
 
-#### Using functions in calculations
+### Using functions in calculations
 
 The symbols `+`, `-`, `*` and so on are examples of operators. However, in order to do more advanced calculations and statistical operations, you’re going to need functions. To get started, suppose I wanted to take the square root of 225. Since the square root of 255 is the same thing as raising 225 to the power of 0.5, I could use the power operator `^`, just like we did earlier:
 
@@ -56,7 +56,7 @@ R allows us to put functions together and even combine functions with operators:
 [1] 3
 ```
 
-#### Function arguments, names, and defaults
+### Function arguments, names, and defaults
 
 There are two more fairly important things about functions: named arguments, and default values for arguments. To understand what these two concepts are all about, let's use the function `round()` to round some value to the nearest whole number:
 
@@ -88,17 +88,17 @@ Specifying the arguments by name involves more typing, but it’s easier to read
 
 The second thing you need to know about is **default values**. Notice that the first time we called the `round()` function we didn’t actually specify the `digits` argument at all, and yet R somehow knew that this meant it should round to the nearest whole number. How did that happen? The answer is that the `digits` argument has a default value of `0`. This is quite handy: the vast majority of the time when you want to round a number you want to round it to the nearest whole number, and it would be pretty annoying to have to specify the `digits` argument every single time.
 
-#### RStudio's help with commands
+### RStudio's help with commands
 
 There are a _lot_ of R functions, all of which have their own arguments. You’re probably also worried that you’re going to have to remember all of them! Thankfully, it’s not that bad. In fact, very few data analysts bother to try to remember all the commands. What they really do is use tricks to make their lives easier. The first is to use the internet. If you don’t know how a particular R function works, Google it. Second, you can look up the R help documentation. Third, there are simple tricks that RStudio makes available as follows.
 
 The first thing is the autocomplete ability in RStudio. Start typing the name of the function that you want. RStudio will then display a little window like the one shown in **Figure HA1.1**. The window has two panels. On the left, there’s a list of variables and functions that start with the typed letters, and some grey text that tells you in which package the variable/function is stored. The panel on the right displays information about the `round()` function. You can see that there are a few things that start with the typed letters. You can use the up and down arrow keys to select the one that you want and hit the Tab or the Enter key. Or, if none of the options look right to you, you can hit the Escape key to make the window go away.
 
-#### Command history
+### Command history
 
 R automatically keeps track of your command history. The simplest way is to use the up and down arrow keys in the R console. The second way to get access to your command history is to look at the history panel in RStudio. If you double-click on one of the commands, it will be copied to the R console.
 
-#### Storing numbers as a vector
+### Storing numbers as a vector
 
 In R, the name for a variable that can store multiple values is a **vector**. So let’s create one. Let’s stick to the textbook example. Suppose the textbook company sends you sales data on a monthly basis. Let’s suppose there were 100 sales in February, 200 sales in March and 50 sales in April, and no other sales for the rest of the year. What we would like is `sales.by.month`. The first number stored should be `0` since there were no sales in January and the second should be `100`. The way to do this in R is to use the **combine** function `c()` and type the numbers in a comma-separated list:
 
@@ -123,7 +123,7 @@ Notice that the output is `[1] 100`, not `[2] 100`. This is because R is extreme
 [1] 100
 ```
 
-#### Working with vectors
+### Working with vectors
 
 Sometimes you’ll want to change the values stored in a vector. One possibility would be to assign the whole vector again from the beginning, using `c()`. But that’s a lot of typing. Also, it’s a little wasteful: why should R have to redefine the sales figures for all 12 months, when only the 5th one is wrong? Fortunately, we can tell R to change only the 5th element, using this trick:
 
@@ -161,7 +161,7 @@ In other words, when you multiply a vector by a single number, all elements in t
 
 Notice that the second element of the output is 25 because R has divided the second element of `profit` (i.e. 700) by the second element of `days.per.month` (i.e. 28). Similarly, the third element of the output is equal to 1400 divided by 31, and so on.
 
-#### Storing text data
+### Storing text data
 
 A lot of the time data will be numeric in nature, but sometimes data really needs to be described using text. To create a variable that stores the word “hello”, we can type this:
 
@@ -200,7 +200,7 @@ That makes sense, since there are in fact 5 letters in the string `"hello"`. Bet
 [1] 7 8 5 5 3 4 4 6 9 7 8 8
 ```
 
-#### Storing “true or false” data
+### Storing “true or false” data
 
 A key concept in R is the idea of a **logical value**. A logical value is an assertion about whether something is true or false. This is implemented in R in a pretty straightforward way. There are two logical values, namely `TRUE` and `FALSE`. If you want R to make an explicit judgement, you can use a command like this:
 
@@ -274,7 +274,7 @@ Better yet, because it’s kind of tedious to type `TRUE` or `FALSE` over and ov
 [1] FALSE
 ```
 
-#### Vectors of logical data
+### Vectors of logical data
 
 You can store vectors of logical values in the same way that you can store vectors of numbers and text data:
 
@@ -298,7 +298,7 @@ any.sales.this.month
 
 In other words, `any.sales.this.month` is a logical vector whose elements are `TRUE` only if the corresponding element of `sales.by.month` is greater than zero.
 
-#### Applying logical operation to text
+### Applying logical operation to text
 
 We can ask R if the word `"cat"` is the same as the word `"dog"`, like this:
 
@@ -320,7 +320,7 @@ R is not at all tolerant when it comes to grammar and spacing. If two strings di
 [1] FALSE
 ```
 
-#### Indexing vectors
+### Indexing vectors
 
 So far, whenever we’ve had to get information out of a vector, all we’ve done is typed something like `months[4]` ; and when we do this R prints out the fourth element of the `months` vector. In this section, we’ll see two additional tricks for getting information out of the vector.
 
@@ -398,22 +398,22 @@ months[stock.levels != "high" ]
 
 Either way, we get the answer we want. Logical indexing is a very basic, yet very powerful way to manipulate data. It does take a bit of practice to become completely comfortable using logical indexing, so it’s a good idea to play around with these sorts of commands. Try creating a few different variables of your own, and then ask yourself questions like “how do I get R to spit out all the elements that are \[blah]”. Practice makes perfect, and it’s only by practicing logical indexing that you’ll perfect the art of yelling frustrated insults at your computer.
 
-#### Quitting R
+### Quitting R
 
-<figure><img src="https://learningstatisticswithr.com/book/img/introR/Rstudio_quit.png" alt=""><figcaption><p><strong>Figure HA1.2</strong> The RStudio closing dialogbox</p></figcaption></figure>
+<figure><img src="https://learningstatisticswithr.com/book/img/introR/Rstudio_quit.png" alt=""><figcaption><p>The RStudio closing dialogbox</p></figcaption></figure>
 
-R has a function, called `q()` that you can use to quit, which is pretty handy if you’re running R in a terminal window. Regardless of what method you use to quit R, when you do so for the first time R will probably ask you if you want to save the “workspace image”. If you’re using RStudio, you’ll see a dialog box that looks like the one shown in **Figure HA1.2**. If you’re using a text based interface you’ll see this:
+R has a function, called `q()` that you can use to quit, which is pretty handy if you’re running R in a terminal window. Regardless of what method you use to quit R, when you do so for the first time R will probably ask you if you want to save the “workspace image”. If you’re using RStudio, you’ll see a dialog box that looks like the one shown in **Figure**. If you’re using a text based interface you’ll see this:
 
 ```
 > q()
 Save workspace image? [y/n/c]: 
 ```
 
-The `y/n/c` part here is short for “yes/no/ cancel”. Type `y` if you want to save, `n` if you don’t, and `c` if you’ve changed your mind and you don’t want to quit after all. What does this actually _mean_? t R wants to know if you want to save all those variables that you’ve been creating in a “default” data file, which it will automatically reload for you next time you open R. You can change the settings so that it never asks this again. You can do this in RStudio really easily: use the menu system to find the RStudio option; the dialog box that comes up will give you an option to tell R never to whine about this again. See **Figure HA1.3**. On a Mac, you can open this window by going to the “RStudio” menu and selecting “Preferences”. On a Windows machine you go to the “Tools” menu and select “Global Options”. Under the “General” tab you’ll see an option that reads “Save workspace to .Rdata on exit”. By default this is set to “ask”. If you want R to stop asking, change it to “never”.
+The `y/n/c` part here is short for “yes/no/ cancel”. Type `y` if you want to save, `n` if you don’t, and `c` if you’ve changed your mind and you don’t want to quit after all. What does this actually _mean_? t R wants to know if you want to save all those variables that you’ve been creating in a “default” data file, which it will automatically reload for you the next time you open R. You can change the settings so that it never asks this again. You can do this in RStudio really easily: use the menu system to find the RStudio option; the dialog box that comes up will give you an option to tell R never to whine about this again. See **Figure**. On a Mac, you can open this window by going to the “RStudio” menu and selecting “Preferences”. On a Windows machine, you go to the “Tools” menu and select “Global Options”. Under the “General” tab you’ll see an option that reads “Save workspace to .Rdata on exit”. By default, this is set to “ask”. If you want R to stop asking, change it to “never”.
 
-<figure><img src="https://learningstatisticswithr.com/book/img/introR/Rstudio_options.png" alt=""><figcaption><p><strong>Figure HA1.3</strong> The RStudio Options window</p></figcaption></figure>
+<figure><img src="https://learningstatisticswithr.com/book/img/introR/Rstudio_options.png" alt=""><figcaption><p>The RStudio Options window</p></figcaption></figure>
 
-#### Comments
+### Comments
 
 The **comment character** `#` has a simple meaning: it tells R to ignore everything else you’ve written on this line. You won’t have much need of the `#` character immediately, but it’s very useful later on when writing scripts. For instance, if you read this:
 
@@ -429,6 +429,6 @@ print(keeper)              # print out the value of 'keeper'
 ## [1] 8.539539
 ```
 
-<figure><img src="https://learningstatisticswithr.com/book/img/mechanics/Rstudiopackages.png" alt=""><figcaption><p><strong>Figure HA1.4</strong> RStudio's packages panel</p></figcaption></figure>
+<figure><img src="https://learningstatisticswithr.com/book/img/mechanics/Rstudiopackages.png" alt=""><figcaption><p>RStudio's packages panel</p></figcaption></figure>
 
 Yep. All good.
