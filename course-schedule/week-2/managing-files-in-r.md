@@ -1,2 +1,0 @@
-# Managing Files in R
-
