@@ -6,11 +6,11 @@ description: Reading 2, 450-600 lines, 3 hours to complete
 
 ## Managing Files in R
 
-#### Instructions
+### Instructions
 
 Read this tutorial and apply the codes in R. No submission is required.
 
-#### Windows paths
+### Windows paths
 
 Let’s suppose I’m on Windows. As before, I can find out what my current working directory is like this:
 
@@ -26,9 +26,9 @@ setwd( "C:/Users/dan" )
 setwd( "C:\\Users\\dan" )
 ```
 
-The Files panel shown in **Figure HA2.1** is a decent file browser, which can be used to set the working directory and even delete, rename, and load files.
+The Files panel shown in **Figure** is a decent file browser, which can be used to set the working directory and even delete, rename, and load files.
 
-<figure><img src="https://learningstatisticswithr.com/book/img/mechanics/filepanel.png" alt=""><figcaption><p><strong>Figure HA2.1</strong> RStudio's Files panel</p></figcaption></figure>
+<figure><img src="https://learningstatisticswithr.com/book/img/mechanics/filepanel.png" alt=""><figcaption><p>RStudio's Files panel</p></figcaption></figure>
 
 At the top of the file panel you see some text that says “Home > Rbook > data”, which means the list below shows files are stored in that directory. To change the R working directory using the file panel click on the button “More”. This will bring up a little menu, and one of the options will be “Set as Working Directory”. If you select that option, then R really will change the working directory. You can tell that it has done so because a command like this appears in the console:
 
@@ -36,7 +36,7 @@ At the top of the file panel you see some text that says “Home > Rbook > data�
 setwd("~/Rbook/data")
 ```
 
-#### Loading and saving data
+### Loading and saving data
 
 There are several different types of files that are likely to be relevant to us when doing data analysis. There are three in particular that are especially important from the perspective of this book:
 
@@ -46,7 +46,7 @@ There are several different types of files that are likely to be relevant to us 
 
 There are also several other kinds of data file that you might want to import into R. For instance, you might want to open Microsoft Excel spreadsheets (.xlsx files), or data files that have been saved in the native file formats for other statistics software, such as SPSS, SAS, Minitab, Stata or Systat. Finally, you might have to handle databases.
 
-#### Loading workspace files
+### Loading workspace files
 
 When we used the `list.files()` command to list the contents of the `/Users/dan/Rbook/data` directory, the output referred to a file called booksales.Rdata. Let’s say we want to load the data from this file into the workspace. The way we do this is with the `load()` function. There are two arguments to this function, but the only one we’re interested in is
 
@@ -96,11 +96,11 @@ rm(c("object1", "object2"))
 rm(list = ls() )
 ```
 
-#### Importing data from CSV files
+### Importing data from CSV files
 
-One quite commonly used data format is the humble “comma separated value” file, also called a CSV file, and usually bearing the file extension .csv. CSV files are just plain old-fashioned text files, and what they store is basically just a table of data, illustrated in **Figure HA2.2**. As you can see, each row corresponds to a variable, and each row represents the book sales data for one month. The first row doesn’t contain actual data though: it has the names of the variables. On the left, we have opened the file using a spreadsheet program, which shows that the file is basically a table. On the right, the same file is open in a standard text editor, which shows how the file is formatted. The entries in the table are wrapped in quote marks and separated by commas.
+One quite commonly used data format is the humble “comma separated value” file, also called a CSV file, and usually bearing the file extension .csv. CSV files are just plain old-fashioned text files, and what they store is basically just a table of data, illustrated in **Figure.** As you can see, each row corresponds to a variable, and each row represents the book sales data for one month. The first row doesn’t contain actual data though: it has the names of the variables. On the left, we have opened the file using a spreadsheet program, which shows that the file is basically a table. On the right, the same file is open in a standard text editor, which shows how the file is formatted. The entries in the table are wrapped in quote marks and separated by commas.
 
-<figure><img src="https://learningstatisticswithr.com/book/img/mechanics/booksalescsv.jpg" alt=""><figcaption><p><strong>Figure HA2.2</strong> A CSV file</p></figcaption></figure>
+<figure><img src="https://learningstatisticswithr.com/book/img/mechanics/booksalescsv.jpg" alt=""><figcaption><p>A CSV file</p></figcaption></figure>
 
 If RStudio were not available to you, the easiest way to open this file would be to use the `read.csv()` function. For now there, are two arguments to the function that we will mention:
 
@@ -139,9 +139,9 @@ Clearly, it’s worked, but the format of this output is a bit unfamiliar. We ha
 
 #### Importing data from CSV files
 
-Yet again, it’s easier in RStudio. In the environment panel in RStudio you should see a button called “Import Dataset”. Click on that, and it will give you a couple of options: select the “From Text File…” option, and it will open up a very familiar dialog box asking you to select a file: if you’re on a Mac, it’ll look like the usual Finder window that you use to choose a file; on Windows it looks like an Explorer window. Assuming that you’re familiar with your own computer, so should have no problem finding the CSV file that you want to import! Find the one you want, then click on the “Open” button. When you do this, you’ll see a window that looks like the one in **Figure HA2.3**.
+Yet again, it’s easier in RStudio. In the environment panel in RStudio you should see a button called “Import Dataset”. Click on that, and it will give you a couple of options: select the “From Text File…” option, and it will open up a very familiar dialog box asking you to select a file: if you’re on a Mac, it’ll look like the usual Finder window that you use to choose a file; on Windows it looks like an Explorer window. Assuming that you’re familiar with your own computer, so should have no problem finding the CSV file that you want to import! Find the one you want, then click on the “Open” button. When you do this, you’ll see a window that looks like the one in **Figure**.
 
-<figure><img src="https://learningstatisticswithr.com/book/img/mechanics/import.png" alt=""><figcaption><p><strong>Figure HA2.3</strong> The RStudio window for importing a CSV</p></figcaption></figure>
+<figure><img src="https://learningstatisticswithr.com/book/img/mechanics/import.png" alt=""><figcaption><p>RStudio window for importing a CSV</p></figcaption></figure>
 
 In the top left corner, you need to type the name of the variable you R to create. By default, that will be the same as the file name: our file is called `booksales.csv`, so RStudio suggests the name `booksales`. Immediately below this are a few things that you can tweak to make sure that the data gets imported correctly:
 
@@ -161,7 +161,7 @@ The first of these commands is the one that loads the data. The second one will 
 
 `read.table()` is a multipurpose work-horse function in base R for importing data. The functions `read.csv()` and `read.delim()` are special cases of `read.table()` in which the defaults have been adjusted for efficiency. Compared to the equivalent base functions, functions in the package `readr` are around 10× faster. `read_csv()` maintains the full variable name (whereas read.csv eliminates any spaces in variable names and fills it with ‘.’).
 
-#### Importing data from Excel files
+### Importing data from Excel files
 
 With Excel still being the spreadsheet software of choice, it is important to be able to efficiently import and export data from these files. Often, R users will simply resort to exporting the Excel file as a CSV file and then import into R using `read.csv`; however, this is far from efficient. To import data directly from Excel you can use the package readxl. The available arguments allow you to change the data as you import it. Some examples are provided:
 
@@ -180,7 +180,7 @@ read_excel ("mydata.xlsx", sheet = "Sheet5", skip = 1,
 read_excel ("mydata.xlsx", sheet = "Sheet6", na = "999")
 ```
 
-#### Importing tabular and Excel files stored online
+### Importing tabular and Excel files stored online
 
 A quick perusal of Data.gov illustrates nearly 188,510 examples. In fact, we can provide our first example of importing online tabular data by downloading the Data.gov CSV file that lists all the federal agencies that supply data to Data.gov.
 
@@ -192,7 +192,7 @@ url <- "Enter the url for the online CSV here"
 data_gov <- read.csv (url)
 ```
 
-#### Saving a workspace file
+### Saving a workspace file
 
 There are two commands you can use to do this, `save()` and `save.image()`. If you’re happy to save _all_ of the variables in your workspace into the data file, then you should use `save.image()`. And if you’re happy for R to save the file into the current working directory, all you do is:
 
@@ -220,7 +220,7 @@ save(file = "booksales2.Rdata", list = save.me)   # the command to save them
 
 RStudio allows you to save the workspace pretty easily. In the environment panel, you can see the “save” button. Alternatively, go to the “Session” menu and click on the “Save Workspace As…” option. This will bring up the standard “save” dialog box for your operating system. Pretty straightforward, really.
 
-#### Exporting data
+### Exporting data
 
 Although getting data into R is essential, getting data out of R can be just as important. This section will cover how to export data to text files and Excel files and save R data objects.
 
@@ -243,7 +243,7 @@ write.delim (df, file = "export_txt")
 write.table (df, file = "export_txt", sep="\t")
 ```
 
-#### Special values
+### Special values
 
 Most likely you’ll see these in situations where you were expecting a number, but there are quite a few other ways you can encounter them. These values are `Inf`, `NaN`, `NA` and `NULL`. These values can crop up in various different places, and it’s important to understand what they mean.
 
@@ -264,7 +264,7 @@ Most likely you’ll see these in situations where you were expecting a number, 
 * _Not available_ (`NA`). `NA` indicates that the value that is “supposed” to be stored here is missing. Note the difference between `NA` and `NaN`. For `NaN`, we really do know what’s supposed to be stored; it’s just that it happens to correspond to something like $$0/0$$ that doesn’t make any sense at all. In contrast, `NA` indicates that we actually don’t know what was supposed to be there. The information is _missing_.
 * _No value_ (`NULL`). The `NULL` value takes this “absence” concept even further. It basically asserts that the variable genuinely has no value whatsoever. This is quite different to both `NaN` and `NA`. For `NaN` we actually know what the value is, because it’s something insane like $$0/0$$. For `NA`, we believe that there is supposed to be a value “out there”, but a dog ate our homework and so we don’t quite know what it is. But for `NULL` we strongly believe that there is _no value at all_.
 
-#### Assigning names to vector elements
+### Assigning names to vector elements
 
 One thing about the way that R prints out a vector is that the elements come out unlabelled. Suppose I’ve got data reporting the quarterly profits for some company. That is:
 
@@ -302,7 +302,7 @@ profit["Q1"]
 
 To pull out the names themselves, just type `names(profit)`.
 
-#### Variable classes
+### Variable classes
 
 As we’ve seen, R allows you to store different kinds of data. In particular, the variables we’ve defined so far have either been character data (text), numeric data, or logical data. Even R is smart enough to know you can’t multiply `"apples"` by `"oranges"`. It knows this because the quote marks are indicators that the variable is supposed to be treated as text, not as a number.
 
@@ -333,7 +333,7 @@ class(x)
 
 Exciting, no?
 
-#### Data frames
+### Data frames
 
 In order to understand why R has created this funny thing called a data frame, it helps to try to see what problem it solves. So let’s assume we record 9 individuals' test scores:
 
@@ -387,7 +387,7 @@ An alternative method is to use the `who()` function, as long as you tell it to 
 who(expand = TRUE)
 ```
 
-#### Lists
+### Lists
 
 The next kind of data we want to mention is a **list**. Lists are an extremely fundamental data structure in R, and as you start making the transition from a novice to a savvy R user you will use lists all the time. Most advanced data structures in R are built from lists (e.g., data frames are actually a specific type of list). Because lists are so important to how R stores things, it’s useful to have a basic understanding of them. Okay, so what is a list, exactly? Like data frames, lists are just “collections of variables.” However, unlike data frames – which are basically supposed to look like a nice “rectangular” table of data – there are no constraints in a list on what kinds of variables we include, and no requirement that the variables have any particular relationship to one another. In order to understand what this actually _means_, the best thing to do is create a list, which we can do using the `list()` function. If I type this as my command:
 
@@ -427,7 +427,7 @@ Dan$children <- "Alex"
 
 then R creates a new entry to the end of the list called `children` and assigns it a value of `"Alex"`. Finally, it’s actually possible for lists to contain other lists, so it’s quite possible that we would end up using `Dan$children$age` to find out how old Dan's son is.
 
-#### Formulas
+### Formulas
 
 The last kind of variable that we want to see before finally being able to start talking about statistics is **Formula**. Stated simply, a formula object is a variable, but it’s a special type of variable that specifies a relationship between other variables. A formula is specified using the “tilde operator” `~`:
 
@@ -447,7 +447,7 @@ formula4 <-  ~ var1 + var2         # a 'one-sided' formula
 
 Formulas are pretty flexible things, and so different functions will make use of different formats, depending on what the function is intended to do.
 
-#### Getting help
+### Getting help
 
 So where should you go for help? once you’re moving away from being a pure beginner to becoming a skilled user, you’ll start ﬁnding the help documentation more and more helpful. You can look at the help documentation for the `load()` function using one of the following:
 
