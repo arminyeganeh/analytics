@@ -38,6 +38,7 @@
     * [Cleaning Data](course-schedule/week-1/preparing-data/cleaning-data.md)
     * [Reproducible Workflow](course-schedule/week-1/preparing-data/reproducible-workflow.md)
   * [Intro to R P1](course-schedule/week-1/intro-to-r-p1.md)
+  * [Intro to R P2](course-schedule/week-1/intro-to-r-p2.md)
   * [References](course-schedule/week-1/references.md)
   * [FAQs](course-schedule/week-1/faqs.md)
 * [Week 2](course-schedule/week-2/README.md)
