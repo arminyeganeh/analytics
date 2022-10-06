@@ -1,3 +1,7 @@
+---
+description: 'Week 3 materials are from the references cited here:'
+---
+
 # References
 
 Agresti, A. (2018). Statistical Methods for the Social Sciences.

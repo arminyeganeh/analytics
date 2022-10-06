@@ -1,5 +1,5 @@
 ---
-description: Homework 4, 450-600 lines, 3 hours to complete
+description: Reading 4, 450-600 lines, 3 hours to complete
 ---
 
 # Data Structures in R P2
