@@ -95,8 +95,6 @@ barplot(table(mtcars$cyl))
 
 ![Bar graph of values with base graphics (left); Bar graph of counts (right)](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-QUICK-BAR-BASE-1.png)![Bar graph of values with base graphics (left); Bar graph of counts (right)](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-QUICK-BAR-BASE-2.png)
 
-
-
 With ggplot2, you can get a similar result using `geom_col()` . To plot a bar graph of _values_, use `geom_col()`. Notice the difference in the output when the _x_ variable is continuous and when it is discrete:
 
 ```r
@@ -125,6 +123,41 @@ ggplot(mtcars, aes(x = factor(cyl))) +
 ```
 
 ![Bar graph of counts using geom\_bar() with a continuous x variable (left); With x variable converted to a factor (right)](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-QUICK-BAR-GGPLOT-COUNT-1.png)![Bar graph of counts using geom\_bar() with a continuous x variable (left); With x variable converted to a factor (right)](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-QUICK-BAR-GGPLOT-COUNT-2.png)
+
+### Histogram
+
+To make a histogram in base R use `hist()` and pass it a vector of values:
+
+```r
+# Histogram of data using base R
+hist(mtcars$mpg)
+
+# Specify the approximate number of bins with breaks
+hist(mtcars$mpg, breaks = 10)
+```
+
+![Histogram with base graphics (left); With more bins. Notice that because the bins are narrower, there are fewer items in each bin. (right)](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-QUICK-HIST-BASE-1.png)![Histogram with base graphics (left); With more bins. Notice that because the bins are narrower, there are fewer items in each bin. (right)](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-QUICK-HIST-BASE-2.png)
+
+With the ggplot2, you can get a similar result using `geom_histogram()` :
+
+```r
+# Histogram of data using ggplot2
+library(ggplot2)
+ggplot(mtcars, aes(x = mpg)) +
+  geom_histogram()
+  
+#> `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+
+# With wider bins
+ggplot(mtcars, aes(x = mpg)) +
+  geom_histogram(binwidth = 4)
+```
+
+![ggplot2 histogram with default bin width (left); With wider bins (right)](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-QUICK-HIST-GGPLOT-1.png)![ggplot2 histogram with default bin width (left); With wider bins (right)](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-QUICK-HIST-GGPLOT-2.png)
+
+When you create a histogram without specifying the bin width, `ggplot()` prints out a message telling you that it’s defaulting to 30 bins, and to pick a better bin width. This is because it’s important to explore your data using different bin widths. The default of 30 may or may not show you something useful about your data.
+
+
 
 
 
