@@ -97,14 +97,14 @@ barplot(table(mtcars$cyl))
 
 
 
-With ggplot2, you can get a similar result using `geom_col()` (Figure [2.6](https://r-graphics.org/RECIPE-QUICK-BAR.html#fig:FIG-QUICK-BAR-GGPLOT)). To plot a bar graph of _values_, use `geom_col()`. Notice the difference in the output when the _x_ variable is continuous and when it is discrete:
+With ggplot2, you can get a similar result using `geom_col()` . To plot a bar graph of _values_, use `geom_col()`. Notice the difference in the output when the _x_ variable is continuous and when it is discrete:
 
-```
+```r
+# Bar plot of data using ggplot2
 library(ggplot2)
-# Bar graph of values. This uses the BOD data frame, with the
-# "Time" column for x values and the "demand" column for y values.
 ggplot(BOD, aes(x = Time, y = demand)) +
   geom_col()
+
 # Convert the x variable to a factor, so that it is treated as discrete
 ggplot(BOD, aes(x = factor(Time), y = demand)) +
   geom_col()
@@ -112,30 +112,19 @@ ggplot(BOD, aes(x = factor(Time), y = demand)) +
 
 ![Bar graph of values using geom\_col() with a continuous x variable (left); With x variable converted to a factor (notice that there is no entry for 6; right)](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-QUICK-BAR-GGPLOT-1.png)![Bar graph of values using geom\_col() with a continuous x variable (left); With x variable converted to a factor (notice that there is no entry for 6; right)](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-QUICK-BAR-GGPLOT-2.png)
 
-Figure 2.6: Bar graph of values using `geom_col()` with a continuous x variable (left); With x variable converted to a factor (notice that there is no entry for 6; right)
-
-ggplot2 can also be used to plot the _count_ of the number of data rows in each category (Figure [2.7](https://r-graphics.org/RECIPE-QUICK-BAR.html#fig:FIG-QUICK-BAR-GGPLOT-COUNT), by using `geom_bar()` instead of `geom_col()`. Once again, notice the difference between a continuous x-axis and a discrete one. For some kinds of data, it may make more sense to convert the continuous x variable to a discrete one, with the `factor()` function.
+ggplot2 can also be used to plot the _count_ of the number of data rows in each category by using `geom_bar()` instead of `geom_col()`. Once again, notice the difference between a continuous x-axis and a discrete one. For some kinds of data, it may make more sense to convert the continuous x variable to a discrete one, with the `factor()` function.
 
 ```
-# Bar graph of counts This uses the mtcars data frame, with the "cyl" column for
-# x position. The y position is calculated by counting the number of rows for
-# each value of cyl.
+# Bar plot of counts (rows) using ggplot2 (continuous x)
 ggplot(mtcars, aes(x = cyl)) +
   geom_bar()
-# Bar graph of counts
+
+# Bar graph of counts using the factor function (discrete x)
 ggplot(mtcars, aes(x = factor(cyl))) +
   geom_bar()
 ```
 
 ![Bar graph of counts using geom\_bar() with a continuous x variable (left); With x variable converted to a factor (right)](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-QUICK-BAR-GGPLOT-COUNT-1.png)![Bar graph of counts using geom\_bar() with a continuous x variable (left); With x variable converted to a factor (right)](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-QUICK-BAR-GGPLOT-COUNT-2.png)
-
-Figure 2.7: Bar graph of counts using `geom_bar()` with a continuous x variable (left); With x variable converted to a factor (right)
-
-> **Note**
->
-> In previous versions of ggplot2, the recommended way to create a bar graph of values was to use `geom_bar(stat = "identity")`. As of ggplot2 2.2.0, there is a `geom_col()` function which does the same thing.
-
-
 
 
 
