@@ -1,5 +1,5 @@
 ---
-description: Lab 3, 150-250 lines, 1 hour to complete
+description: Reading 3, 450-600 lines, 3 hours to complete
 ---
 
 # Descriptives in R P2
