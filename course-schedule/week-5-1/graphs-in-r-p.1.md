@@ -16,15 +16,11 @@ _“The greatest value of a picture is when it forces us to notice what we never
 
 Visualizing data is one of the most important tasks facing the data analyst. It’s important for two distinct but closely related reasons. Firstly, there’s the matter of drawing “presentation graphics”: displaying your data in a clean, visually appealing fashion makes it easier for your reader to understand what you’re trying to tell them. Equally important, perhaps even more important, is the fact that graphs help you understand the data. To that end, it’s important to draw “exploratory graphics” that help you learn about the data as you go about analyzing it.
 
-<figure><img src="https://learningstatisticswithr.com/book/lsr_files/figure-html/snowmap1-1.png" alt=""><figcaption><p><strong>Figure LA4.1</strong>: A stylized redrawing of John Snow’s original cholera map</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Map-by-John-Snow.png" alt=""><figcaption><p>John Snow map with cholera dead entered in bars</p></figcaption></figure>
 
-**Figure LA4.1** shows a redrawing of one of the most famous data visualizations of all time: John Snow’s 1854 map of cholera deaths. The map is elegant in its simplicity. In the background, we have a street map, which helps orient the viewer. Over the top, we see a large number of small dots, each one representing the location of a cholera case. The larger symbols show the location of water pumps, labeled by name. Even the most casual inspection of the graph makes it very clear that the source of the outbreak is almost certainly the Broad Street pump. Upon viewing this graph, Dr. Snow arranged to have the handle removed from the pump, ending the outbreak that had killed over 500 people. Such is the power of good data visualization.
+One of the most famous data visualizations of all time is John Snow’s 1854 map of cholera deaths. The map is elegant in its simplicity. In the background, we have a street map, which helps orient the viewer. Over the top, we see cholera mortality cases entered in bars. Even the most casual inspection of the graph makes it very clear that the outbreak's source is almost certainly the Broad Street pump. Upon viewing this graph, Dr. Snow arranged to have the handle removed from the pump, ending the outbreak that had killed over 500 people. Such is the power of good data visualization.
 
-The goals of this chapter are twofold: firstly, to discuss several fairly standard graphs that we use a lot when analyzing and presenting data, and secondly, to show you how to create these graphs in R. Most of the time you can produce a clean, high-quality graphic without having to learn very much about the low-level details of how R handles graphics.
-
-R doesn’t really provide a single coherent graphics system. Instead, R itself provides a platform, and different people have built different graphical tools using that platform. Something that surprises most new R users is the discovery that R actually has independent graphics systems, e.g., **traditional graphics** (in the `graphics` package) and **grid graphics** (in the `grid` package). The grid universe relies heavily on two different packages – `lattice` and `ggplot2` – each of which provides a quite different visual style. For the purpose of this class, we will talk about the package `ggplot2`.
-
-So let’s start painting.
+R doesn’t really provide a single coherent graphics system. Instead, R itself provides a platform, and different people have built different graphical tools using that platform. So let’s start painting.
 
 ### Scatter Plot
 
@@ -32,10 +28,10 @@ So let’s start painting.
 # Load the matcars dataset in R
 mtcars
 
-# Scatter plot in basic R
+# Scatter plot using base R
 plot(mtcars$wt, mtcars$mpg)
 
-# Scatter plot in ggplot2
+# Scatter plot using ggplot2
 library(ggplot2)
 ggplot(mtcars, aes(x = wt, y = mpg)) +
   geom_point()
@@ -43,9 +39,52 @@ ggplot(mtcars, aes(x = wt, y = mpg)) +
 
 ![Scatter plot with base graphics](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-QUICK-SCATTER-BASE-1.png)![Scatter plot with ggplot2](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-QUICK-SCATTER-GGPLOT-1.png)
 
-The first part, `ggplot()`, tell it to create a plot object, and the second part, `geom_point()`, tells it to add a layer of points to the plot.
+The figure on the left hand is the scatter plot using the R function `plot()` and the one on the right hand is the result of `ggplot()`.&#x20;
 
-The usual way to use `ggplot()` is to pass it a data frame (`mtcars`) and then tell it which columns to use for the x and y values. If you want to pass it two vectors for x and y values, you can use `data = NULL`, and then pass it the vectors. Keep in mind that ggplot2 is designed to work with data frames as the data source, not individual vectors, and that using it this way will only allow you to use a limited part of its capabilities.
+The first part in `ggplot()` tells R to create a plot object and the second part `geom_point()` tells R to add a layer of points to the plot. The usual way to use `ggplot()` is to pass it a data frame (`mtcars`) and then tell it which columns to use for the x and y values. If you want to pass it two vectors for x and y values, you can use `data = NULL` and then pass the vectors. Keep in mind that ggplot2 is designed to work with data frames as the data source, not individual vectors and that using it this way will only allow you to use a limited part of its capabilities.
+
+### Line Plot
+
+To make a line graph using `plot()` pass it a vector of x values and a vector of y values, and use `type = "l"`. To add points and/or multiple lines, call `plot()` for the first line, and then add points with `points()` and additional lines with `lines()`:
+
+```r
+# Load the pressure dataset in R
+pressure
+
+# Line plot using base R
+plot(pressure$temperature, pressure$pressure, type = "l")
+
+# Line plot using base R with added points and lines
+plot(pressure$temperature, pressure$pressure, type = "l")
+points(pressure$temperature, pressure$pressure)
+lines(pressure$temperature, pressure$pressure/2, col = "red")
+points(pressure$temperature, pressure$pressure/2, col = "red")
+```
+
+![Line graph with base graphics (left); With points and another line (right)](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-QUICK-LINE-BASE-1.png)![Line graph with base graphics (left); With points and another line (right)](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-QUICK-LINE-BASE-2.png)
+
+With ggplot2, you can get a similar result using `geom_line()` . As with scatter plots, you can pass your data in vectors instead of in a data frame (but this will limit the things you can do later with the plot):
+
+```r
+# Line plot using ggplot2
+library(ggplot2)
+ggplot(pressure, aes(x = temperature, y = pressure)) +
+  geom_line()
+```
+
+![Line graph with ggplot() (left); With points added (right)](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-QUICK-LINE-GGPLOT-1.png)![Line graph with ggplot() (left); With points added (right)](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-QUICK-LINE-GGPLOT-2.png)
+
+
+
+
+
+
+
+
+
+
+
+
 
 ```
 ggplot(data = NULL, aes(x = mtcars$wt, y = mtcars$mpg)) +
