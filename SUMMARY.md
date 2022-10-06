@@ -39,6 +39,7 @@
     * [Reproducible Workflow](course-schedule/week-1/preparing-data/reproducible-workflow.md)
   * [References](course-schedule/week-1/references.md)
   * [FAQs](course-schedule/week-1/faqs.md)
+  * [Intro to R P1](course-schedule/week-1/intro-to-r-p1.md)
 * [Week 2](course-schedule/week-2/README.md)
   * [Exploring Data](course-schedule/week-2/exploring-data.md)
     * [Exploratory Analysis](course-schedule/week-2/exploring-data/exploratory-analysis.md)
