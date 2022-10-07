@@ -108,6 +108,6 @@
   * [References](course-schedule/week-5-1/references.md)
   * [FAQs](course-schedule/week-6/faqs.md)
 * [Week 7](course-schedule/week-7/README.md)
-  * [Basic Programming in R](course-schedule/week-7/basic-programming-in-r.md)
+  * [Basic Programming in R](course-schedule/week-6/basic-programming-in-r.md)
   * [References](course-schedule/week-7/references.md)
   * [FAQs](course-schedule/week-7/faqs.md)
