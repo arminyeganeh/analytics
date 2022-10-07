@@ -37,9 +37,9 @@ ggplot(mtcars, aes(x = wt, y = mpg)) +
   geom_point()
 ```
 
-![Scatter plot with base graphics](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-QUICK-SCATTER-BASE-1.png) ![Scatter plot with ggplot2](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-QUICK-SCATTER-GGPLOT-1.png)
+![Scatter plot with base graphics](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-QUICK-SCATTER-BASE-1.png)![Scatter plot with ggplot2](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-QUICK-SCATTER-GGPLOT-1.png)
 
-The figure on the left hand is the scatter plot using the R function `plot()` and the one on the right hand is the result of `ggplot()`.
+The figure on the left hand is the scatter plot using the R function `plot()` and the one on the right hand is the result of `ggplot()`.&#x20;
 
 The first part in `ggplot()` tells R to create a plot object and the second part `geom_point()` tells R to add a layer of points to the plot. The usual way to use `ggplot()` is to pass it a data frame (`mtcars`) and then tell it which columns to use for the x and y values. If you want to pass it two vectors for x and y values, you can use `data = NULL` and then pass the vectors. Keep in mind that ggplot2 is designed to work with data frames as the data source, not individual vectors and that using it this way will only allow you to use a limited part of its capabilities.
 
@@ -61,7 +61,7 @@ lines(pressure$temperature, pressure$pressure/2, col = "red")
 points(pressure$temperature, pressure$pressure/2, col = "red")
 ```
 
-![Line graph with base graphics (left); With points and another line (right)](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-QUICK-LINE-BASE-1.png) ![Line graph with base graphics (left); With points and another line (right)](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-QUICK-LINE-BASE-2.png)
+![Line graph with base graphics (left); With points and another line (right)](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-QUICK-LINE-BASE-1.png)![Line graph with base graphics (left); With points and another line (right)](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-QUICK-LINE-BASE-2.png)
 
 With ggplot2, you can get a similar result using `geom_line()` . As with scatter plots, you can pass your data in vectors instead of in a data frame (but this will limit the things you can do later with the plot):
 
@@ -72,7 +72,7 @@ ggplot(pressure, aes(x = temperature, y = pressure)) +
   geom_line()
 ```
 
-![Line graph with ggplot() (left); With points added (right)](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-QUICK-LINE-GGPLOT-1.png) ![Line graph with ggplot() (left); With points added (right)](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-QUICK-LINE-GGPLOT-2.png)
+![Line graph with ggplot() (left); With points added (right)](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-QUICK-LINE-GGPLOT-1.png)![Line graph with ggplot() (left); With points added (right)](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-QUICK-LINE-GGPLOT-2.png)
 
 ### Bar Graph
 
@@ -93,7 +93,7 @@ table(mtcars$cyl) # Generate a table of counts
 barplot(table(mtcars$cyl))
 ```
 
-![Bar graph of values with base graphics (left); Bar graph of counts (right)](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-QUICK-BAR-BASE-1.png) ![Bar graph of values with base graphics (left); Bar graph of counts (right)](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-QUICK-BAR-BASE-2.png)
+![Bar graph of values with base graphics (left); Bar graph of counts (right)](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-QUICK-BAR-BASE-1.png)![Bar graph of values with base graphics (left); Bar graph of counts (right)](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-QUICK-BAR-BASE-2.png)
 
 With ggplot2, you can get a similar result using `geom_col()` . To plot a bar graph of _values_, use `geom_col()`. Notice the difference in the output when the _x_ variable is continuous and when it is discrete:
 
@@ -108,7 +108,7 @@ ggplot(BOD, aes(x = factor(Time), y = demand)) +
   geom_col()
 ```
 
-![Bar graph of values using geom\_col() with a continuous x variable (left); With x variable converted to a factor (notice that there is no entry for 6; right)](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-QUICK-BAR-GGPLOT-1.png) ![Bar graph of values using geom\_col() with a continuous x variable (left); With x variable converted to a factor (notice that there is no entry for 6; right)](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-QUICK-BAR-GGPLOT-2.png)
+![Bar graph of values using geom\_col() with a continuous x variable (left); With x variable converted to a factor (notice that there is no entry for 6; right)](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-QUICK-BAR-GGPLOT-1.png)![Bar graph of values using geom\_col() with a continuous x variable (left); With x variable converted to a factor (notice that there is no entry for 6; right)](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-QUICK-BAR-GGPLOT-2.png)
 
 ggplot2 can also be used to plot the _count_ of the number of data rows in each category by using `geom_bar()` instead of `geom_col()`. Once again, notice the difference between a continuous x-axis and a discrete one. For some kinds of data, it may make more sense to convert the continuous x variable to a discrete one, with the `factor()` function.
 
@@ -122,7 +122,7 @@ ggplot(mtcars, aes(x = factor(cyl))) +
   geom_bar()
 ```
 
-![Bar graph of counts using geom\_bar() with a continuous x variable (left); With x variable converted to a factor (right)](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-QUICK-BAR-GGPLOT-COUNT-1.png) ![Bar graph of counts using geom\_bar() with a continuous x variable (left); With x variable converted to a factor (right)](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-QUICK-BAR-GGPLOT-COUNT-2.png)
+![Bar graph of counts using geom\_bar() with a continuous x variable (left); With x variable converted to a factor (right)](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-QUICK-BAR-GGPLOT-COUNT-1.png)![Bar graph of counts using geom\_bar() with a continuous x variable (left); With x variable converted to a factor (right)](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-QUICK-BAR-GGPLOT-COUNT-2.png)
 
 ### Histogram
 
@@ -136,7 +136,7 @@ hist(mtcars$mpg)
 hist(mtcars$mpg, breaks = 10)
 ```
 
-![Histogram with base graphics (left); With more bins. Notice that because the bins are narrower, there are fewer items in each bin. (right)](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-QUICK-HIST-BASE-1.png) ![Histogram with base graphics (left); With more bins. Notice that because the bins are narrower, there are fewer items in each bin. (right)](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-QUICK-HIST-BASE-2.png)
+![Histogram with base graphics (left); With more bins. Notice that because the bins are narrower, there are fewer items in each bin. (right)](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-QUICK-HIST-BASE-1.png)![Histogram with base graphics (left); With more bins. Notice that because the bins are narrower, there are fewer items in each bin. (right)](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-QUICK-HIST-BASE-2.png)
 
 With the ggplot2, you can get a similar result using `geom_histogram()` :
 
@@ -153,9 +153,19 @@ ggplot(mtcars, aes(x = mpg)) +
   geom_histogram(binwidth = 4)
 ```
 
-![ggplot2 histogram with default bin width (left); With wider bins (right)](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-QUICK-HIST-GGPLOT-1.png) ![ggplot2 histogram with default bin width (left); With wider bins (right)](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-QUICK-HIST-GGPLOT-2.png)
+![ggplot2 histogram with default bin width (left); With wider bins (right)](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-QUICK-HIST-GGPLOT-1.png)![ggplot2 histogram with default bin width (left); With wider bins (right)](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-QUICK-HIST-GGPLOT-2.png)
 
 When you create a histogram without specifying the bin width, `ggplot()` prints out a message telling you that it’s defaulting to 30 bins, and to pick a better bin width. This is because it’s important to explore your data using different bin widths. The default of 30 may or may not show you something useful about your data.
+
+
+
+
+
+
+
+
+
+
 
 ```
 ggplot(data = NULL, aes(x = mtcars$wt, y = mtcars$mpg)) +
@@ -163,6 +173,10 @@ ggplot(data = NULL, aes(x = mtcars$wt, y = mtcars$mpg)) +
 ```
 
 It is common to see `ggplot()` commands spread across multiple lines, so you may see the above code also written like this:
+
+
+
+
 
 Let’s use our first graph to answer a question: Do cars with big engines use more fuel than cars with small engines? You probably already have an answer, but try to make your answer precise. What does the relationship between engine size and fuel efficiency look like? Is it positive? Negative? Linear? Nonlinear?
 

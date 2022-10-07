@@ -8,6 +8,14 @@
 
 ### **Task 1: Obtain a geographic boundary file**
 
+The cartographic boundary files are simplified representations of selected geographic areas from the Census Bureau’s MAF/TIGER geographic database. These boundary files are specifically designed for small**-**scale thematic mapping. The cartographic boundary files are available in shapefile and KML format. A shapefile is a geospatial data format for use in geographic information system (GIS) software.
+
+* [ ] Visit [Census Shapefiles](https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html)
+* [ ] &#x20;Scroll down to Census Tracts dropdown menu and select your project's state
+* [ ] Move the downloaded file to your working directory. Hint: `getwd()`
+
+Check out the following page to obtain a Census Tract&#x20;
+
 ### **Task 2: Create a county map**
 
 ````r
@@ -30,8 +38,9 @@ basemap <- get_map('Montgomery County, VA',     # Set your county or city
                    zoom = 10)
 
 # Read a tract shapefile
-market <- readOGR(".","cb_2018_51_tract_500k")  # Set your tract boundary file
-market <- market[market$COUNTYFP=='121',]
+unzip("CENSUS TRACT FILE.zip")
+market <- readOGR(".","SHAPE FILE NAME WITHOUT .shp EXT")  # Set tract boundary file
+market <- market[market$COUNTYFP=='COUNTY FIPS CODE',]
 market <- spTransform(market, CRS("+proj=longlat +datum=WGS84"))
 market <- fortify(market)
 
