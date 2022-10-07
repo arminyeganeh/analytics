@@ -6,13 +6,13 @@ description: 'Week 4 materials are from the references cited here:'
 
 Agresti, A. (2018). Statistical Methods for the Social Sciences.
 
-* Chapter 5 Statistical Inference: Estimation
-* Chapter 6 Statistical Inference: Significance Tests
+*
+*
 
 Bekez G. & Kezdi B. (2021). Data Analysis for Business, Economics, and Analysis. &#x20;
 
-* Chapter 5: Generalization
-* Chapter 6: Hypothesis testing
+* Chapter 7: Simple Regression
+* Chapter 8: Complex Patterns
 
 Navarro, D. (2019) Learning Stats with R
 

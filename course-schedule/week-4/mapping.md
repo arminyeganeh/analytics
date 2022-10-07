@@ -1,3 +1,7 @@
+---
+description: Assignment 4, 450-600 lines, 3 hours to complete
+---
+
 # Mapping
 
 ## Mapping
@@ -13,8 +17,6 @@ The cartographic boundary files are simplified representations of selected geogr
 * [ ] Visit [Census Shapefiles](https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html)
 * [ ] &#x20;Scroll down to Census Tracts dropdown menu and select your project's state
 * [ ] Move the downloaded file to your working directory. Hint: `getwd()`
-
-Check out the following page to obtain a Census Tract&#x20;
 
 ### **Task 2: Create a county map**
 
