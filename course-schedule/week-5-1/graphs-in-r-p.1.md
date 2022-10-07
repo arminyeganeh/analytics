@@ -16,7 +16,7 @@ _“The greatest value of a picture is when it forces us to notice what we never
 
 Visualizing data is one of the most important tasks facing the data analyst. It’s important for two distinct but closely related reasons. Firstly, there’s the matter of drawing “presentation graphics”: displaying your data in a clean, visually appealing fashion makes it easier for your reader to understand what you’re trying to tell them. Equally important, perhaps even more important, is the fact that graphs help you understand the data. To that end, it’s important to draw “exploratory graphics” that help you learn about the data as you go about analyzing it.
 
-<figure><img src="../../.gitbook/assets/Map-by-John-Snow.png" alt=""><figcaption><p>John Snow map with cholera dead entered in bars</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/john_snow_cholera_map.png" alt=""><figcaption><p>John Snow map with cholera dead entered in bars</p></figcaption></figure>
 
 One of the most famous data visualizations of all time is John Snow’s 1854 map of cholera deaths. The map is elegant in its simplicity. In the background, we have a street map, which helps orient the viewer. Over the top, we see cholera mortality cases entered in bars. Even the most casual inspection of the graph makes it very clear that the outbreak's source is almost certainly the Broad Street pump. Upon viewing this graph, Dr. Snow arranged to have the handle removed from the pump, ending the outbreak that had killed over 500 people. Such is the power of good data visualization.
 

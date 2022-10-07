@@ -254,10 +254,3 @@ csl: apa.cslCopy
 ```
 
 As with the bibliography field, your csl file should contain a path to the file. Here I assume that the csl file is in the same directory as the .Rmd file. A good place to find CSL style files for common bibliography styles is [http://github.com/citation-style-language/styles](http://github.com/citation-style-language/styles).
-
-### Learning more
-
-R Markdown is still relatively young and is still growing rapidly. The best place to stay on top of innovations is the official R Markdown website: [http://rmarkdown.rstudio.com](http://rmarkdown.rstudio.com/). Collaboration is a vital part of modern data science, and you can make your life much easier by using version control tools, like Git and GitHub. Free resources that will teach you about Git include:
-
-1. “Happy Git with R”: a user-friendly introduction to Git and GitHub from R users, by Jenny Bryan. The book is freely available online: [http://happygitwithr.com](http://happygitwithr.com/)
-2. The “Git and GitHub” chapter of _R Packages_, by Hadley. You can also read it for free online: [http://r-pkgs.had.co.nz/git.html](http://r-pkgs.had.co.nz/git.html).

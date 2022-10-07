@@ -1,5 +1,11 @@
 # References
 
+### R packages
+
+`readxl()`
+
+### References
+
 Agresti, A. (2018). Statistical Methods for the Social Sciences.
 
 * Chapter 3 Descriptive Statistics
