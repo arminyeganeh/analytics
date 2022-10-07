@@ -4,7 +4,7 @@ description: Reading 6, 450-600 lines, 3 hours to complete
 
 # Graphs in R P.2
 
-<figure><img src="../../.gitbook/assets/essential_graphs (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/essential_graphs (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ### Bar Graph
 
