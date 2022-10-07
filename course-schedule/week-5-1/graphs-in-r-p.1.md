@@ -172,7 +172,7 @@ boxplot(len ~ supp, data = ToothGrowth)
 boxplot(len ~ supp + dose, data = ToothGrowth)
 ```
 
-![Box plot with base graphics (left); With multiple grouping variables (right)](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-QUICK-BOXPLOT-BASE-1.png)
+<figure><img src="https://r-graphics.org/R-Graphics-Cookbook-2e_files/figure-html/FIG-QUICK-BOXPLOT-BASE-1.png" alt=""><figcaption></figcaption></figure>
 
 With the ggplot2 package, you can get a similar result, with `geom_boxplot()`. It’s also possible to make box plots for multiple variables, by combining the variables with `interaction()`
 
