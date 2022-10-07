@@ -100,7 +100,7 @@
   * [Transforming Data in R](course-schedule/week-5/transforming-data-in-r.md)
   * [References](course-schedule/week-5/references.md)
   * [FAQs](course-schedule/week-5/faqs.md)
-* [Week 6](course-schedule/week-6/README.md)
+* [Week 10](course-schedule/week-6/README.md)
   * [Simple Regression](course-schedule/week-5-1/simple-regression.md)
   * [Complex Patterns](course-schedule/week-5-1/complex-patterns.md)
   * [Graphs in R P.1](course-schedule/week-5-1/graphs-in-r-p.1.md)
