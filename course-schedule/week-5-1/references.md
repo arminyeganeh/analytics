@@ -1,3 +1,7 @@
+---
+description: 'Week 6 materials are from the references cited here:'
+---
+
 # References
 
 Agresti, A. (2018). Statistical Methods for the Social Sciences.
@@ -5,7 +9,7 @@ Agresti, A. (2018). Statistical Methods for the Social Sciences.
 * Chapter 5 Statistical Inference: Estimation
 * Chapter 6 Statistical Inference: Significance Tests
 
-Bekez G. & Kezdi B. (2021). Data Analysis for Business, Economics, and Analysis. &#x20;
+Bekez G. & Kezdi B. (2021). Data Analysis for Business, Economics, and Analysis.
 
 * Chapter 5: Generalization
 * Chapter 6: Hypothesis testing
