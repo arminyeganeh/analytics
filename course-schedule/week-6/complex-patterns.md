@@ -1,5 +1,5 @@
 ---
-description: Week 4, Lecture B1.2, 1500 words, 1 hour to complete
+description: Lecture 6.2, 750 words, 30 min to complete
 ---
 
 # Complex Patterns
