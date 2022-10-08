@@ -360,7 +360,7 @@ ggplot(ce, aes(x = Date, y = Weight, fill = Cultivar)) +
 
 ### R Graphics Cookbook&#x20;
 
-[R Graphics Cookbook](https://r-graphics.org/) is a practical guide that provides more than 150 recipes to generate high-quality graphs quickly, without having to comb through all the details of R’s graphing systems. Each recipe tackles a specific problem with a solution you can apply to your own project and includes a discussion of how and why the recipe works. You can use the online version of the book for free as a reference for the remaining ggplot2 graphs:
+[R Graphics Cookbook](https://r-graphics.org/) is a practical guide that provides more than 150 recipes to generate high-quality graphs quickly, without having to comb through all the details of R’s graphing systems. Each recipe tackles a specific problem with a solution you can apply to your own project and includes a discussion of how and why the recipe works. You can use the online version of the book for free as a reference to become familiar with a wide range of ggplot2 capabilities:
 
 ### Line graphs
 
@@ -439,58 +439,66 @@ ggplot(ce, aes(x = Date, y = Weight, fill = Cultivar)) +
 
 ### Controlling the overall appearance of graphs
 
-* [**9** Controlling the Overall Appearance of Graphs](https://r-graphics.org/CHAPTER-APPEARANCE.html)
-  * [**9.1** Setting the Title of a Graph](https://r-graphics.org/RECIPE-APPEARANCE-TITLE.html)
-  * [**9.2** Changing the Appearance of Text](https://r-graphics.org/RECIPE-APPEARANCE-TEXT-APPEARANCE.html)
-  * [**9.3** Using Themes](https://r-graphics.org/RECIPE-APPEARANCE-THEME.html)
-  * [**9.4** Changing the Appearance of Theme Elements](https://r-graphics.org/RECIPE-APPEARANCE-THEME-MODIFY.html)
-  * [**9.5** Creating Your Own Themes](https://r-graphics.org/RECIPE-APPEARANCE-THEME-CREATE.html)
-  * [**9.6** Hiding Grid Lines](https://r-graphics.org/RECIPE-APPEARANCE-HIDE-GRIDLINES.html)
-* [**10** Legends](https://r-graphics.org/CHAPTER-LEGEND.html)
-  * [**10.1** Removing the Legend](https://r-graphics.org/RECIPE-LEGEND-REMOVE.html)
-  * [**10.2** Changing the Position of a Legend](https://r-graphics.org/RECIPE-LEGEND-POSITION.html)
-  * [**10.3** Changing the Order of Items in a Legend](https://r-graphics.org/RECIPE-LEGEND-ORDER.html)
-  * [**10.4** Reversing the Order of Items in a Legend](https://r-graphics.org/RECIPE-LEGEND-REVERSE.html)
-  * [**10.5** Changing a Legend Title](https://r-graphics.org/RECIPE-LEGEND-TITLE-TEXT.html)
-  * [**10.6** Changing the Appearance of a Legend Title](https://r-graphics.org/RECIPE-LEGEND-TITLE-APPEARANCE.html)
-  * [**10.7** Removing a Legend Title](https://r-graphics.org/RECIPE-LEGEND-TITLE-REMOVE.html)
-  * [**10.8** Changing the Labels in a Legend](https://r-graphics.org/RECIPE-LEGEND-LABEL-TEXT.html)
-  * [**10.9** Changing the Appearance of Legend Labels](https://r-graphics.org/RECIPE-LEGEND-LABEL-APPEARANCE.html)
-  * [**10.10** Using Labels with Multiple Lines of Text](https://r-graphics.org/RECIPE-LEGEND-LABEL-MULTILINE.html)
-* [**11** Facets](https://r-graphics.org/CHAPTER-FACET.html)
-  * [**11.1** Splitting Data into Subplots with Facets](https://r-graphics.org/RECIPE-FACET-BASIC.html)
-  * [**11.2** Using Facets with Different Axes](https://r-graphics.org/RECIPE-FACET-FREE.html)
-  * [**11.3** Changing the Text of Facet Labels](https://r-graphics.org/RECIPE-FACET-LABEL-TEXT.html)
-  * [**11.4** Changing the Appearance of Facet Labels and Headers](https://r-graphics.org/RECIPE-FACET-LABEL-APPEARANCE.html)
-* [**12** Using Colors in Plots](https://r-graphics.org/CHAPTER-COLORS.html)
-  * [**12.1** Setting the Colors of Objects](https://r-graphics.org/RECIPE-COLORS-SETTING.html)
-  * [**12.2** Representing Variables with Colors](https://r-graphics.org/RECIPE-COLORS-MAPPING.html)
-  * [**12.3** Using a Colorblind-Friendly Palette](https://r-graphics.org/RECIPE-COLORS-PALETTE-DISCRETE-COLORBLIND.html)
-  * [**12.4** Using a Different Palette for a Discrete Variable](https://r-graphics.org/RECIPE-COLORS-PALETTE-DISCRETE.html)
-  * [**12.5** Using a Manually Defined Palette for a Discrete Variable](https://r-graphics.org/RECIPE-COLORS-PALETTE-DISCRETE-MANUAL.html)
-  * [**12.6** Using a Manually Defined Palette for a Continuous Variable](https://r-graphics.org/RECIPE-COLORS-PALETTE-CONTINUOUS.html)
-  * [**12.7** Coloring a Shaded Region Based on Value](https://r-graphics.org/RECIPE-COLORS-AREA-VALUE.html)
-* [**13** Miscellaneous Graphs](https://r-graphics.org/CHAPTER-MISCGRAPH.html)
-  * [**13.1** Making a Correlation Matrix](https://r-graphics.org/RECIPE-MISCGRAPH-CORRMATRIX.html)
-  * [**13.2** Plotting a Function](https://r-graphics.org/RECIPE-MISCGRAPH-FUNCTION.html)
-  * [**13.3** Shading a Subregion Under a Function Curve](https://r-graphics.org/RECIPE-MISCGRAPH-FUNCTION-SHADE.html)
-  * [**13.4** Creating a Network Graph](https://r-graphics.org/RECIPE-MISCGRAPH-GRAPH.html)
-  * [**13.5** Using Text Labels in a Network Graph](https://r-graphics.org/RECIPE-MISCGRAPH-GRAPH-LABEL.html)
-  * [**13.6** Creating a Heat Map](https://r-graphics.org/RECIPE-MISCGRAPH-HEATMAP.html)
-  * [**13.7** Creating a Three-Dimensional Scatter Plot](https://r-graphics.org/RECIPE-MISCGRAPH-3D-SCATTER.html)
-  * [**13.8** Adding a Prediction Surface to a Three-Dimensional Plot](https://r-graphics.org/RECIPE-MISCGRAPH-3D-SCATTER-MODEL.html)
-  * [**13.9** Saving a Three-Dimensional Plot](https://r-graphics.org/RECIPE-MISCGRAPH-3D-SAVE.html)
-  * [**13.10** Animating a Three-Dimensional Plot](https://r-graphics.org/RECIPE-MISCGRAPH-3D-ANIMATE.html)
-  * [**13.11** Creating a Dendrogram](https://r-graphics.org/RECIPE-MISCGRAPH-DENDROGRAM.html)
-  * [**13.12** Creating a Vector Field](https://r-graphics.org/RECIPE-MISCGRAPH-VECTORFIELD.html)
-  * [**13.13** Creating a QQ Plot](https://r-graphics.org/RECIPE-MISCGRAPH-QQ.html)
-  * [**13.14** Creating a Graph of an Empirical Cumulative Distribution Function](https://r-graphics.org/RECIPE-MISCGRAPH-ECDF.html)
-  * [**13.15** Creating a Mosaic Plot](https://r-graphics.org/RECIPE-MISCGRAPH-MOSAIC.html)
-  * [**13.16** Creating a Pie Chart](https://r-graphics.org/RECIPE-MISCGRAPH-PIE.html)
-  * [**13.17** Creating a Map](https://r-graphics.org/RECIPE-MISCGRAPH-MAP.html)
-  * [**13.18** Creating a Choropleth Map](https://r-graphics.org/RECIPE-MISCGRAPH-CHOROPLETH.html)
-  * [**13.19** Making a Map with a Clean Background](https://r-graphics.org/RECIPE-MISCGRAPH-MAP-BACKGROUND.html)
-  * [**13.20** Creating a Map from a Shapefile](https://r-graphics.org/RECIPE-MISCGRAPH-MAP-SHAPEFILE.html)
+* Controlling the overall appearance of graphs&#x20;
+* Setting the title of a graph
+* Changing the appearance of the text
+* Using themes
+* Changing the appearance of theme elements&#x20;
+* Creating your own themes&#x20;
+* Hiding grid lines
+
+### Legends&#x20;
+
+* Removing the legend&#x20;
+* Changing the position of a legend&#x20;
+* Changing the order of items in a legend&#x20;
+* Reversing the order of items in a legend&#x20;
+* Changing a legend title&#x20;
+* Changing the appearance of a legend title&#x20;
+* Removing a legend title&#x20;
+* Changing the labels in a legend&#x20;
+* Changing the appearance of legend labels&#x20;
+* Using labels with multiple lines of text
+
+### Facets&#x20;
+
+* Splitting data into subplots with facets&#x20;
+* Using facets with different axes&#x20;
+* Changing the text of facet labels&#x20;
+* Changing the appearance of facet labels and headers&#x20;
+
+### Using colors in plots&#x20;
+
+* Setting the colors of objects&#x20;
+* Representing variables with colors&#x20;
+* Using a colorblind-friendly palette&#x20;
+* Using a different palette for a discrete variable&#x20;
+* Using a manually defined palette for a discrete variable&#x20;
+* Using a manually defined palette for a continuous variable&#x20;
+* Coloring a shaded region based on value 13&#x20;
+
+### Miscellaneous graphs&#x20;
+
+* Making a correlation matrix&#x20;
+* Plotting a function&#x20;
+* Shading a subregion under a function curve&#x20;
+* Creating a network graph&#x20;
+* Using text labels in a network graph&#x20;
+* Creating a heat map&#x20;
+* Creating a three-dimensional scatter plot&#x20;
+* Adding a prediction surface to a three-dimensional plot&#x20;
+* Saving a three-dimensional plot&#x20;
+* Animating a three-dimensional plot&#x20;
+* Creating a dendrogram&#x20;
+* Creating a vector field&#x20;
+* Creating a QQ plot
+* Creating a graph of an empirical cumulative distribution function&#x20;
+* Creating a mosaic plot&#x20;
+* Creating a pie chart&#x20;
+* Creating a map&#x20;
+* Creating a choropleth map&#x20;
+* Making a map with a clean background&#x20;
+* Creating a map from a shapefile
 
 [\
 ](https://r-graphics.org/preface.html)
