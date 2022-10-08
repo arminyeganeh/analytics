@@ -6,7 +6,7 @@ description: Reading 6, 450-600 lines, 3 hours to complete
 
 <figure><img src="../../.gitbook/assets/essential_graphs (1) (1).png" alt=""><figcaption></figcaption></figure>
 
-### Bar Graph
+### Bar graph
 
 Use `ggplot()` with `geom_col()` and specify what variables you want on the x- and y-axes:
 
@@ -31,7 +31,7 @@ ggplot(pg_mean, aes(x = group, y = weight)) +
 
 ![A single fill and outline color for all bars](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-BAR-GRAPH-BASIC-BAR-SINGLE-FILL-1.png)
 
-### Group Bar Graph
+### Group bar graph
 
 In this example, we’ll use the `cabbage_exp` data set, which has two categorical variables, `Cultivar` and `Date`, and one continuous variable, `Weight`:
 
@@ -64,7 +64,7 @@ ggplot(cabbage_exp, aes(x = Date, y = Weight, fill = Cultivar)) +
 
 Other aesthetics, such as `colour` (the color of the outlines of the bars) or `linestyle`, can also be used for grouping variables, but `fill` is probably what you’ll want to use.
 
-### Using colors in a bar graph
+### Colors in bar graph
 
 We’ll use the `uspopchange` data set for this example. It contains the percentage change in population for the US states from 2000 to 2010. We’ll take the top 10 fastest-growing states and graph their percentage change. We’ll also color the bars by region (Northeast, South, North Central, or West).
 
@@ -266,16 +266,15 @@ ggplot(mtcars, aes(x = factor(cyl))) +
 
 ![Bar graph of counts with labels under the tops of bars](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-BAR-GRAPH-COUNT-LABEL-1.png)
 
-#### 3.9.3 Discussion
+By setting the vertical justification (`vjust`), the _y_ coordinates of the labels appear below or above the bar tops. One drawback of this is that when the label is above the top of the bar, it can go off the top of the plotting area. To fix this, you can manually set the _y_ limits, or you can set the _y_ positions of the text _above_ the bars and not change the vertical justification. One drawback to changing the text’s _y_ position is that if you want to place the text fully above or below the bar top, the value to add will depend on the _y_ range of the data; in contrast, changing `vjust` to a different value will always move the text the same distance relative to the height of the bar:
 
-In Figure [3.22](https://r-graphics.org/RECIPE-BAR-GRAPH-LABELS.html#fig:FIG-BAR-GRAPH-LABEL), the _y_ coordinates of the labels are centered at the top of each bar; by setting the vertical justification (`vjust`), they appear below or above the bar tops. One drawback of this is that when the label is above the top of the bar, it can go off the top of the plotting area. To fix this, you can manually set the _y_ limits, or you can set the _y_ positions of the text _above_ the bars and not change the vertical justification. One drawback to changing the text’s _y_ position is that if you want to place the text fully above or below the bar top, the value to add will depend on the _y_ range of the data; in contrast, changing `vjust` to a different value will always move the text the same distance relative to the height of the bar:
-
-```
+```r
 # Adjust y limits to be a little higher
 ggplot(cabbage_exp, aes(x = interaction(Date, Cultivar), y = Weight)) +
   geom_col() +
   geom_text(aes(label = Weight), vjust = -0.2) +
   ylim(0, max(cabbage_exp$Weight) * 1.05)
+  
 # Map y positions slightly above bar top - y range of plot will auto-adjust
 ggplot(cabbage_exp, aes(x = interaction(Date, Cultivar), y = Weight)) +
   geom_col() +
@@ -298,7 +297,7 @@ ggplot(cabbage_exp, aes(x = Date, y = Weight, fill = Cultivar)) +
 
 Putting labels on stacked bar graphs requires finding the cumulative sum for each stack. To do this, first make sure the data is sorted properly – if it isn’t, the cumulative sum might be calculated in the wrong order. We’ll use the `arrange()` function from the dplyr package. Note that we have to use the `rev()` function to reverse the order of `Cultivar`:
 
-```
+```r
 library(dplyr)
 # Sort by the Date and Cultivar columns
 ce <- cabbage_exp %>%
@@ -307,7 +306,7 @@ ce <- cabbage_exp %>%
 
 Once we make sure the data is sorted properly, we’ll use `group_by()` to chunk it into groups by `Date`, then calculate a cumulative sum of `Weight` within each chunk:
 
-```
+```r
 # Get the cumulative sum
 ce <- ce %>%
   group_by(Date) %>%
@@ -330,9 +329,9 @@ ggplot(ce, aes(x = Date, y = Weight, fill = Cultivar)) +
 
 ![Labels on stacked bars](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-BAR-LABEL-STACKED-1.png)
 
-When using labels, changes to the stacking order are best done by modifying the order of levels in the factor before taking the cumulative sum. The other method of changing stacking order, by specifying breaks in a scale, won’t work properly, because the order of the cumulative sum won’t be the same as the stacking order.
+When using labels, changes to the stacking order are best done by modifying the order of levels in the factor before taking the cumulative sum. The other method of changing the stacking order, by specifying breaks in a scale, won’t work properly, because the order of the cumulative sum won’t be the same as the stacking order.
 
-To put the labels in the middle of each bar (Figure [3.26](https://r-graphics.org/RECIPE-BAR-GRAPH-LABELS.html#fig:FIG-BAR-LABEL-STACKED-MIDDLE)), there must be an adjustment to the cumulative sum, and the _y_ offset in `geom_bar()` can be removed:
+To put the labels in the middle of each bar, there must be an adjustment to the cumulative sum, and the _y_ offset in `geom_bar()` can be removed:
 
 ```
 ce <- cabbage_exp %>%
@@ -348,9 +347,9 @@ ggplot(ce, aes(x = Date, y = Weight, fill = Cultivar)) +
 
 ![Labels in the middle of stacked bars](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-BAR-LABEL-STACKED-MIDDLE-1.png)
 
-For a more polished graph (Figure [3.27](https://r-graphics.org/RECIPE-BAR-GRAPH-LABELS.html#fig:FIG-BAR-LABEL-STACKED-FINAL)), we’ll change the colors, add labels in the middle with a smaller font using `size`, add a “kg” suffix using `paste`, and make sure there are always two digits after the decimal point by using `format()`:
+For a more polished graph, we’ll change the colors, add labels in the middle with a smaller font using `size`, add a “kg” suffix using `paste`, and make sure there are always two digits after the decimal point by using `format()`:
 
-```
+```r
 ggplot(ce, aes(x = Date, y = Weight, fill = Cultivar)) +
   geom_col(colour = "black") +
   geom_text(aes(y = label_y, label = paste(format(Weight, nsmall = 2), "kg")), size = 4) +
@@ -359,7 +358,126 @@ ggplot(ce, aes(x = Date, y = Weight, fill = Cultivar)) +
 
 ![Customized stacked bar graph with labels](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-BAR-LABEL-STACKED-FINAL-1.png)
 
-Figure 3.27: Customized stacked bar graph with labels
 
 
+* [**4** Line Graphs](https://r-graphics.org/CHAPTER-LINE-GRAPH.html)
+  * [**4.1** Making a Basic Line Graph](https://r-graphics.org/RECIPE-LINE-GRAPH-BASIC-LINE.html)
+  * [**4.2** Adding Points to a Line Graph](https://r-graphics.org/RECIPE-LINE-GRAPH-POINTS.html)
+  * [**4.3** Making a Line Graph with Multiple Lines](https://r-graphics.org/RECIPE-LINE-GRAPH-MULTIPLE-LINE.html)
+  * [**4.4** Changing the Appearance of Lines](https://r-graphics.org/RECIPE-LINE-GRAPH-LINE-APPEARANCE.html)
+  * [**4.5** Changing the Appearance of Points](https://r-graphics.org/RECIPE-LINE-GRAPH-POINT-APPEARANCE.html)
+  * [**4.6** Making a Graph with a Shaded Area](https://r-graphics.org/RECIPE-LINE-GRAPH-AREA.html)
+  * [**4.7** Making a Stacked Area Graph](https://r-graphics.org/RECIPE-LINE-GRAPH-STACKED-AREA.html)
+  * [**4.8** Making a Proportional Stacked Area Graph](https://r-graphics.org/RECIPE-LINE-GRAPH-PROPORTIONAL-STACKED-AREA.html)
+  * [**4.9** Adding a Confidence Region](https://r-graphics.org/RECIPE-LINE-GRAPH-REGION.html)
+* [**5** Scatter Plots](https://r-graphics.org/CHAPTER-SCATTER.html)
+  * [**5.1** Making a Basic Scatter Plot](https://r-graphics.org/RECIPE-SCATTER-BASIC-SCATTER.html)
+  * [**5.2** Grouping Points Together using Shapes or Colors](https://r-graphics.org/RECIPE-SCATTER-GROUPED-SCATTER.html)
+  * [**5.3** Using Different Point Shapes](https://r-graphics.org/RECIPE-SCATTER-SHAPES.html)
+  * [**5.4** Mapping a Continuous Variable to Color or Size](https://r-graphics.org/RECIPE-SCATTER-CONTINUOUS-SCATTER.html)
+  * [**5.5** Dealing with Overplotting](https://r-graphics.org/RECIPE-SCATTER-OVERPLOT.html)
+  * [**5.6** Adding Fitted Regression Model Lines](https://r-graphics.org/RECIPE-SCATTER-FITLINES.html)
+  * [**5.7** Adding Fitted Lines from an Existing Model](https://r-graphics.org/RECIPE-SCATTER-FITLINES-MODEL.html)
+  * [**5.8** Adding Fitted Lines from Multiple Existing Models](https://r-graphics.org/RECIPE-SCATTER-FITLINES-MODEL-MULTI.html)
+  * [**5.9** Adding Annotations with Model Coefficients](https://r-graphics.org/RECIPE-SCATTER-FITLINES-TEXT.html)
+  * [**5.10** Adding Marginal Rugs to a Scatter Plot](https://r-graphics.org/RECIPE-SCATTER-RUG.html)
+  * [**5.11** Labeling Points in a Scatter Plot](https://r-graphics.org/RECIPE-SCATTER-LABELS.html)
+  * [**5.12** Creating a Balloon Plot](https://r-graphics.org/RECIPE-SCATTER-BALLOON.html)
+  * [**5.13** Making a Scatter Plot Matrix](https://r-graphics.org/RECIPE-SCATTER-SPLOM.html)
+* [**6** Summarized Data Distributions](https://r-graphics.org/CHAPTER-DISTRIBUTION.html)
+  * [**6.1** Making a Basic Histogram](https://r-graphics.org/RECIPE-DISTRIBUTION-BASIC-HIST.html)
+  * [**6.2** Making Multiple Histograms from Grouped Data](https://r-graphics.org/RECIPE-DISTRIBUTION-MULTI-HIST.html)
+  * [**6.3** Making a Density Curve](https://r-graphics.org/RECIPE-DISTRIBUTION-BASIC-DENSITY.html)
+  * [**6.4** Making Multiple Density Curves from Grouped Data](https://r-graphics.org/RECIPE-DISTRIBUTION-MULTI-DENSITY.html)
+  * [**6.5** Making a Frequency Polygon](https://r-graphics.org/RECIPE-DISTRIBUTION-FREQPOLY.html)
+  * [**6.6** Making a Basic Box Plot](https://r-graphics.org/RECIPE-DISTRIBUTION-BASIC-BOXPLOT.html)
+  * [**6.7** Adding Notches to a Box Plot](https://r-graphics.org/RECIPE-DISTRIBUTION-BOXPLOT-NOTCH.html)
+  * [**6.8** Adding Means to a Box Plot](https://r-graphics.org/RECIPE-DISTRIBUTION-BOXPLOT-MEAN.html)
+  * [**6.9** Making a Violin Plot](https://r-graphics.org/RECIPE-DISTRIBUTION-VIOLIN.html)
+  * [**6.10** Making a Dot Plot](https://r-graphics.org/RECIPE-DISTRIBUTION-DOT-PLOT.html)
+  * [**6.11** Making Multiple Dot Plots for Grouped Data](https://r-graphics.org/RECIPE-DISTRIBUTION-DOT-PLOT-MULTI.html)
+  * [**6.12** Making a Density Plot of Two-Dimensional Data](https://r-graphics.org/RECIPE-DISTRIBUTION-DENSITY2D.html)
+* [**7** Annotations](https://r-graphics.org/CHAPTER-ANNOTATE.html)
+  * [**7.1** Adding Text Annotations](https://r-graphics.org/RECIPE-ANNOTATE-TEXT.html)
+  * [**7.2** Using Mathematical Expressions in Annotations](https://r-graphics.org/RECIPE-ANNOTATE-TEXT-MATH.html)
+  * [**7.3** Adding Lines](https://r-graphics.org/RECIPE-ANNOTATE-LINES.html)
+  * [**7.4** Adding Line Segments and Arrows](https://r-graphics.org/RECIPE-ANNOTATE-SEGMENT.html)
+  * [**7.5** Adding a Shaded Rectangle](https://r-graphics.org/RECIPE-ANNOTATE-RECT.html)
+  * [**7.6** Highlighting an Item](https://r-graphics.org/RECIPE-ANNOTATE-HIGHLIGHT.html)
+  * [**7.7** Adding Error Bars](https://r-graphics.org/RECIPE-ANNOTATE-ERROR-BAR.html)
+  * [**7.8** Adding Annotations to Individual Facets](https://r-graphics.org/RECIPE-ANNOTATE-FACET.html)
+* [**8** Axes](https://r-graphics.org/CHAPTER-AXES.html)
+  * [**8.1** Swapping X- and Y-Axes](https://r-graphics.org/RECIPE-AXES-SWAP-AXES.html)
+  * [**8.2** Setting the Range of a Continuous Axis](https://r-graphics.org/RECIPE-AXES-RANGE.html)
+  * [**8.3** Reversing a Continuous Axis](https://r-graphics.org/RECIPE-AXES-REVERSE.html)
+  * [**8.4** Changing the Order of Items on a Categorical Axis](https://r-graphics.org/RECIPE-AXIS-ORDER.html)
+  * [**8.5** Setting the Scaling Ratio of the X- and Y-Axes](https://r-graphics.org/RECIPE-AXES-SCALE.html)
+  * [**8.6** Setting the Positions of Tick Marks](https://r-graphics.org/RECIPE-AXES-SET-TICKS.html)
+  * [**8.7** Removing Tick Marks and Labels](https://r-graphics.org/RECIPE-AXIS-REMOVE-TICKS.html)
+  * [**8.8** Changing the Text of Tick Labels](https://r-graphics.org/RECIPE-AXES-TICK-LABEL.html)
+  * [**8.9** Changing the Appearance of Tick Labels](https://r-graphics.org/RECIPE-AXES-TICK-LABEL-APPEARANCE.html)
+  * [**8.10** Changing the Text of Axis Labels](https://r-graphics.org/RECIPE-AXES-AXIS-LABEL.html)
+  * [**8.11** Removing Axis Labels](https://r-graphics.org/RECIPE-AXES-AXIS-LABEL-REMOVE.html)
+  * [**8.12** Changing the Appearance of Axis Labels](https://r-graphics.org/RECIPE-AXES-AXIS-LABEL-APPEARANCE.html)
+  * [**8.13** Showing Lines Along the Axes](https://r-graphics.org/RECIPE-AXES-AXIS-LINES.html)
+  * [**8.14** Using a Logarithmic Axis](https://r-graphics.org/RECIPE-AXES-AXIS-LOG.html)
+  * [**8.15** Adding Ticks for a Logarithmic Axis](https://r-graphics.org/RECIPE-AXES-AXIS-LOG-TICKS.html)
+  * [**8.16** Making a Circular Plot](https://r-graphics.org/RECIPE-AXES-POLAR.html)
+  * [**8.17** Using Dates on an Axis](https://r-graphics.org/RECIPE-AXES-AXIS-DATE.html)
+  * [**8.18** Using Relative Times on an Axis](https://r-graphics.org/RECIPE-AXES-TIME-REL.html)
+* [**9** Controlling the Overall Appearance of Graphs](https://r-graphics.org/CHAPTER-APPEARANCE.html)
+  * [**9.1** Setting the Title of a Graph](https://r-graphics.org/RECIPE-APPEARANCE-TITLE.html)
+  * [**9.2** Changing the Appearance of Text](https://r-graphics.org/RECIPE-APPEARANCE-TEXT-APPEARANCE.html)
+  * [**9.3** Using Themes](https://r-graphics.org/RECIPE-APPEARANCE-THEME.html)
+  * [**9.4** Changing the Appearance of Theme Elements](https://r-graphics.org/RECIPE-APPEARANCE-THEME-MODIFY.html)
+  * [**9.5** Creating Your Own Themes](https://r-graphics.org/RECIPE-APPEARANCE-THEME-CREATE.html)
+  * [**9.6** Hiding Grid Lines](https://r-graphics.org/RECIPE-APPEARANCE-HIDE-GRIDLINES.html)
+* [**10** Legends](https://r-graphics.org/CHAPTER-LEGEND.html)
+  * [**10.1** Removing the Legend](https://r-graphics.org/RECIPE-LEGEND-REMOVE.html)
+  * [**10.2** Changing the Position of a Legend](https://r-graphics.org/RECIPE-LEGEND-POSITION.html)
+  * [**10.3** Changing the Order of Items in a Legend](https://r-graphics.org/RECIPE-LEGEND-ORDER.html)
+  * [**10.4** Reversing the Order of Items in a Legend](https://r-graphics.org/RECIPE-LEGEND-REVERSE.html)
+  * [**10.5** Changing a Legend Title](https://r-graphics.org/RECIPE-LEGEND-TITLE-TEXT.html)
+  * [**10.6** Changing the Appearance of a Legend Title](https://r-graphics.org/RECIPE-LEGEND-TITLE-APPEARANCE.html)
+  * [**10.7** Removing a Legend Title](https://r-graphics.org/RECIPE-LEGEND-TITLE-REMOVE.html)
+  * [**10.8** Changing the Labels in a Legend](https://r-graphics.org/RECIPE-LEGEND-LABEL-TEXT.html)
+  * [**10.9** Changing the Appearance of Legend Labels](https://r-graphics.org/RECIPE-LEGEND-LABEL-APPEARANCE.html)
+  * [**10.10** Using Labels with Multiple Lines of Text](https://r-graphics.org/RECIPE-LEGEND-LABEL-MULTILINE.html)
+* [**11** Facets](https://r-graphics.org/CHAPTER-FACET.html)
+  * [**11.1** Splitting Data into Subplots with Facets](https://r-graphics.org/RECIPE-FACET-BASIC.html)
+  * [**11.2** Using Facets with Different Axes](https://r-graphics.org/RECIPE-FACET-FREE.html)
+  * [**11.3** Changing the Text of Facet Labels](https://r-graphics.org/RECIPE-FACET-LABEL-TEXT.html)
+  * [**11.4** Changing the Appearance of Facet Labels and Headers](https://r-graphics.org/RECIPE-FACET-LABEL-APPEARANCE.html)
+* [**12** Using Colors in Plots](https://r-graphics.org/CHAPTER-COLORS.html)
+  * [**12.1** Setting the Colors of Objects](https://r-graphics.org/RECIPE-COLORS-SETTING.html)
+  * [**12.2** Representing Variables with Colors](https://r-graphics.org/RECIPE-COLORS-MAPPING.html)
+  * [**12.3** Using a Colorblind-Friendly Palette](https://r-graphics.org/RECIPE-COLORS-PALETTE-DISCRETE-COLORBLIND.html)
+  * [**12.4** Using a Different Palette for a Discrete Variable](https://r-graphics.org/RECIPE-COLORS-PALETTE-DISCRETE.html)
+  * [**12.5** Using a Manually Defined Palette for a Discrete Variable](https://r-graphics.org/RECIPE-COLORS-PALETTE-DISCRETE-MANUAL.html)
+  * [**12.6** Using a Manually Defined Palette for a Continuous Variable](https://r-graphics.org/RECIPE-COLORS-PALETTE-CONTINUOUS.html)
+  * [**12.7** Coloring a Shaded Region Based on Value](https://r-graphics.org/RECIPE-COLORS-AREA-VALUE.html)
+* [**13** Miscellaneous Graphs](https://r-graphics.org/CHAPTER-MISCGRAPH.html)
+  * [**13.1** Making a Correlation Matrix](https://r-graphics.org/RECIPE-MISCGRAPH-CORRMATRIX.html)
+  * [**13.2** Plotting a Function](https://r-graphics.org/RECIPE-MISCGRAPH-FUNCTION.html)
+  * [**13.3** Shading a Subregion Under a Function Curve](https://r-graphics.org/RECIPE-MISCGRAPH-FUNCTION-SHADE.html)
+  * [**13.4** Creating a Network Graph](https://r-graphics.org/RECIPE-MISCGRAPH-GRAPH.html)
+  * [**13.5** Using Text Labels in a Network Graph](https://r-graphics.org/RECIPE-MISCGRAPH-GRAPH-LABEL.html)
+  * [**13.6** Creating a Heat Map](https://r-graphics.org/RECIPE-MISCGRAPH-HEATMAP.html)
+  * [**13.7** Creating a Three-Dimensional Scatter Plot](https://r-graphics.org/RECIPE-MISCGRAPH-3D-SCATTER.html)
+  * [**13.8** Adding a Prediction Surface to a Three-Dimensional Plot](https://r-graphics.org/RECIPE-MISCGRAPH-3D-SCATTER-MODEL.html)
+  * [**13.9** Saving a Three-Dimensional Plot](https://r-graphics.org/RECIPE-MISCGRAPH-3D-SAVE.html)
+  * [**13.10** Animating a Three-Dimensional Plot](https://r-graphics.org/RECIPE-MISCGRAPH-3D-ANIMATE.html)
+  * [**13.11** Creating a Dendrogram](https://r-graphics.org/RECIPE-MISCGRAPH-DENDROGRAM.html)
+  * [**13.12** Creating a Vector Field](https://r-graphics.org/RECIPE-MISCGRAPH-VECTORFIELD.html)
+  * [**13.13** Creating a QQ Plot](https://r-graphics.org/RECIPE-MISCGRAPH-QQ.html)
+  * [**13.14** Creating a Graph of an Empirical Cumulative Distribution Function](https://r-graphics.org/RECIPE-MISCGRAPH-ECDF.html)
+  * [**13.15** Creating a Mosaic Plot](https://r-graphics.org/RECIPE-MISCGRAPH-MOSAIC.html)
+  * [**13.16** Creating a Pie Chart](https://r-graphics.org/RECIPE-MISCGRAPH-PIE.html)
+  * [**13.17** Creating a Map](https://r-graphics.org/RECIPE-MISCGRAPH-MAP.html)
+  * [**13.18** Creating a Choropleth Map](https://r-graphics.org/RECIPE-MISCGRAPH-CHOROPLETH.html)
+  * [**13.19** Making a Map with a Clean Background](https://r-graphics.org/RECIPE-MISCGRAPH-MAP-BACKGROUND.html)
+  * [**13.20** Creating a Map from a Shapefile](https://r-graphics.org/RECIPE-MISCGRAPH-MAP-SHAPEFILE.html)
+
+[\
+](https://r-graphics.org/preface.html)
 
