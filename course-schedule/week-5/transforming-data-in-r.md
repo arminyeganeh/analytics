@@ -286,7 +286,7 @@ sub_exp %>% slice (3:5)
 sub_exp %>% top_n (n = 5, wt = X2011) 
 ```
 
-Grouping data by categorical variables
+### Grouping data by categorical variables
 
 Often, observations are nested within groups or categories and our goal is to perform statistical analysis both at the observation level and also at the group level. The function `group_by()` allows us to create these categorical groupings.
 
