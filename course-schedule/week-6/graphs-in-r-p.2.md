@@ -362,7 +362,7 @@ ggplot(ce, aes(x = Date, y = Weight, fill = Cultivar)) +
 
 [R Graphics Cookbook](https://r-graphics.org/) is a practical guide that provides more than 150 recipes to generate high-quality graphs quickly, without having to comb through all the details of R’s graphing systems. Each recipe tackles a specific problem with a solution you can apply to your own project and includes a discussion of how and why the recipe works. You can use the online version of the book for free as a reference for the remaining ggplot2 graphs:
 
-### Line Graphs
+### Line graphs
 
 * Making a basic line graph
 * Adding points to a line graph
@@ -374,7 +374,7 @@ ggplot(ce, aes(x = Date, y = Weight, fill = Cultivar)) +
 * Making a proportional stacked area graph
 * Adding a confidence region
 
-### Scatter Plots
+### Scatter plots
 
 * Making a basic scatter plot
 * Grouping points together using shapes or colors
@@ -390,7 +390,7 @@ ggplot(ce, aes(x = Date, y = Weight, fill = Cultivar)) +
 * Creating a balloon plot
 * Making a scatter plot matrix
 
-### Summarized Data Distributions
+### Summarized data distributions
 
 * Making a basic histogram
 * Making multiple histograms from grouped data
@@ -418,24 +418,27 @@ ggplot(ce, aes(x = Date, y = Weight, fill = Cultivar)) +
 
 ### Axes
 
-* Swapping X- and Y-Axes
-* Setting the Range of a Continuous Axis
-* Reversing a Continuous Axis
-* Changing the Order of Items on a Categorical Axis
-* Setting the Scaling Ratio of the X- and Y-Axes
-* Setting the Positions of Tick Marks
-* Removing Tick Marks and Labels
-* Changing the Text of Tick Labels
-* Changing the Appearance of Tick Labels
-* Changing the Text of Axis Labels
-* [**8.11** Removing Axis Labels](https://r-graphics.org/RECIPE-AXES-AXIS-LABEL-REMOVE.html)
-* [**8.12** Changing the Appearance of Axis Labels](https://r-graphics.org/RECIPE-AXES-AXIS-LABEL-APPEARANCE.html)
-* [**8.13** Showing Lines Along the Axes](https://r-graphics.org/RECIPE-AXES-AXIS-LINES.html)
-* [**8.14** Using a Logarithmic Axis](https://r-graphics.org/RECIPE-AXES-AXIS-LOG.html)
-* [**8.15** Adding Ticks for a Logarithmic Axis](https://r-graphics.org/RECIPE-AXES-AXIS-LOG-TICKS.html)
-* [**8.16** Making a Circular Plot](https://r-graphics.org/RECIPE-AXES-POLAR.html)
-* [**8.17** Using Dates on an Axis](https://r-graphics.org/RECIPE-AXES-AXIS-DATE.html)
-* [**8.18** Using Relative Times on an Axis](https://r-graphics.org/RECIPE-AXES-TIME-REL.html)
+* Swapping x- and y-axes
+* Setting the range of a continuous axis
+* Reversing a continuous axis
+* Changing the order of items on a categorical axis
+* Setting the scaling ratio of the x- and y-axes
+* Setting the positions of tick marks
+* Removing tick marks and labels
+* Changing the text of tick labels
+* Changing the appearance of tick labels
+* Changing the text of axis labels
+* Removing axis labels
+* Changing the appearance of axis labels
+* Showing lines along the axes
+* Using a logarithmic axis
+* Adding ticks for a logarithmic axis
+* Making a circular plot
+* Using dates on an axis
+* Using relative times on an axis
+
+### Controlling the overall appearance of graphs
+
 * [**9** Controlling the Overall Appearance of Graphs](https://r-graphics.org/CHAPTER-APPEARANCE.html)
   * [**9.1** Setting the Title of a Graph](https://r-graphics.org/RECIPE-APPEARANCE-TITLE.html)
   * [**9.2** Changing the Appearance of Text](https://r-graphics.org/RECIPE-APPEARANCE-TEXT-APPEARANCE.html)
