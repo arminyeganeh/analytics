@@ -358,76 +358,84 @@ ggplot(ce, aes(x = Date, y = Weight, fill = Cultivar)) +
 
 ![Customized stacked bar graph with labels](https://r-graphics.org/R-Graphics-Cookbook-2e\_files/figure-html/FIG-BAR-LABEL-STACKED-FINAL-1.png)
 
-### [Line Graphs](https://r-graphics.org/CHAPTER-LINE-GRAPH.html)
+### R Graphics Cookbook&#x20;
 
-* [Making a Basic Line Graph](https://r-graphics.org/RECIPE-LINE-GRAPH-BASIC-LINE.html)
-* [Adding Points to a Line Graph](https://r-graphics.org/RECIPE-LINE-GRAPH-POINTS.html)
-* [Making a Line Graph with Multiple Lines](https://r-graphics.org/RECIPE-LINE-GRAPH-MULTIPLE-LINE.html)
-* [Changing the Appearance of Lines](https://r-graphics.org/RECIPE-LINE-GRAPH-LINE-APPEARANCE.html)
-* [Changing the Appearance of Points](https://r-graphics.org/RECIPE-LINE-GRAPH-POINT-APPEARANCE.html)
-* [Making a Graph with a Shaded Area](https://r-graphics.org/RECIPE-LINE-GRAPH-AREA.html)
-* [Making a Stacked Area Graph](https://r-graphics.org/RECIPE-LINE-GRAPH-STACKED-AREA.html)
-* [Making a Proportional Stacked Area Graph](https://r-graphics.org/RECIPE-LINE-GRAPH-PROPORTIONAL-STACKED-AREA.html)
-* [Adding a Confidence Region](https://r-graphics.org/recipe-line-graph-region)
+[R Graphics Cookbook](https://r-graphics.org/) is a practical guide that provides more than 150 recipes to generate high-quality graphs quickly, without having to comb through all the details of R’s graphing systems. Each recipe tackles a specific problem with a solution you can apply to your own project and includes a discussion of how and why the recipe works. You can use the online version of the book for free as a reference for the remaining ggplot2 graphs:
 
-### [Scatter Plots](https://r-graphics.org/CHAPTER-SCATTER.html)
+### Line Graphs
 
-* [**5.1** Making a Basic Scatter Plot](https://r-graphics.org/RECIPE-SCATTER-BASIC-SCATTER.html)
-* [**5.2** Grouping Points Together using Shapes or Colors](https://r-graphics.org/RECIPE-SCATTER-GROUPED-SCATTER.html)
-* [**5.3** Using Different Point Shapes](https://r-graphics.org/RECIPE-SCATTER-SHAPES.html)
-* [**5.4** Mapping a Continuous Variable to Color or Size](https://r-graphics.org/RECIPE-SCATTER-CONTINUOUS-SCATTER.html)
-* [**5.5** Dealing with Overplotting](https://r-graphics.org/RECIPE-SCATTER-OVERPLOT.html)
-* [**5.6** Adding Fitted Regression Model Lines](https://r-graphics.org/RECIPE-SCATTER-FITLINES.html)
-* [**5.7** Adding Fitted Lines from an Existing Model](https://r-graphics.org/RECIPE-SCATTER-FITLINES-MODEL.html)
-* [**5.8** Adding Fitted Lines from Multiple Existing Models](https://r-graphics.org/RECIPE-SCATTER-FITLINES-MODEL-MULTI.html)
-* [**5.9** Adding Annotations with Model Coefficients](https://r-graphics.org/RECIPE-SCATTER-FITLINES-TEXT.html)
-* [**5.10** Adding Marginal Rugs to a Scatter Plot](https://r-graphics.org/RECIPE-SCATTER-RUG.html)
-* [**5.11** Labeling Points in a Scatter Plot](https://r-graphics.org/RECIPE-SCATTER-LABELS.html)
-* [**5.12** Creating a Balloon Plot](https://r-graphics.org/RECIPE-SCATTER-BALLOON.html)
-* [**5.13** Making a Scatter Plot Matr](https://r-graphics.org/RECIPE-SCATTER-SPLOM.html)
+* Making a basic line graph
+* Adding points to a line graph
+* Making a line graph with multiple lines
+* Changing the appearance of lines
+* Changing the appearance of points
+* Making a graph with a shaded area
+* Making a stacked area graph
+* Making a proportional stacked area graph
+* Adding a confidence region
 
-### [Summarized Data Distributions](https://r-graphics.org/CHAPTER-DISTRIBUTION.html)
+### Scatter Plots
 
-* [**6.1** Making a Basic Histogram](https://r-graphics.org/RECIPE-DISTRIBUTION-BASIC-HIST.html)
-* [**6.2** Making Multiple Histograms from Grouped Data](https://r-graphics.org/RECIPE-DISTRIBUTION-MULTI-HIST.html)
-* [**6.3** Making a Density Curve](https://r-graphics.org/RECIPE-DISTRIBUTION-BASIC-DENSITY.html)
-* [**6.4** Making Multiple Density Curves from Grouped Data](https://r-graphics.org/RECIPE-DISTRIBUTION-MULTI-DENSITY.html)
-* [**6.5** Making a Frequency Polygon](https://r-graphics.org/RECIPE-DISTRIBUTION-FREQPOLY.html)
-* [**6.6** Making a Basic Box Plot](https://r-graphics.org/RECIPE-DISTRIBUTION-BASIC-BOXPLOT.html)
-* [**6.7** Adding Notches to a Box Plot](https://r-graphics.org/RECIPE-DISTRIBUTION-BOXPLOT-NOTCH.html)
-* [**6.8** Adding Means to a Box Plot](https://r-graphics.org/RECIPE-DISTRIBUTION-BOXPLOT-MEAN.html)
-* [**6.9** Making a Violin Plot](https://r-graphics.org/RECIPE-DISTRIBUTION-VIOLIN.html)
-* [**6.10** Making a Dot Plot](https://r-graphics.org/RECIPE-DISTRIBUTION-DOT-PLOT.html)
-* [**6.11** Making Multiple Dot Plots for Grouped Data](https://r-graphics.org/RECIPE-DISTRIBUTION-DOT-PLOT-MULTI.html)
-* [**6.12** Making a Density Plot of Two-Dimensional Data](https://r-graphics.org/RECIPE-DISTRIBUTION-DENSITY2D.html)
-* [**7** Annotations](https://r-graphics.org/CHAPTER-ANNOTATE.html)
-  * [**7.1** Adding Text Annotations](https://r-graphics.org/RECIPE-ANNOTATE-TEXT.html)
-  * [**7.2** Using Mathematical Expressions in Annotations](https://r-graphics.org/RECIPE-ANNOTATE-TEXT-MATH.html)
-  * [**7.3** Adding Lines](https://r-graphics.org/RECIPE-ANNOTATE-LINES.html)
-  * [**7.4** Adding Line Segments and Arrows](https://r-graphics.org/RECIPE-ANNOTATE-SEGMENT.html)
-  * [**7.5** Adding a Shaded Rectangle](https://r-graphics.org/RECIPE-ANNOTATE-RECT.html)
-  * [**7.6** Highlighting an Item](https://r-graphics.org/RECIPE-ANNOTATE-HIGHLIGHT.html)
-  * [**7.7** Adding Error Bars](https://r-graphics.org/RECIPE-ANNOTATE-ERROR-BAR.html)
-  * [**7.8** Adding Annotations to Individual Facets](https://r-graphics.org/RECIPE-ANNOTATE-FACET.html)
-* [**8** Axes](https://r-graphics.org/CHAPTER-AXES.html)
-  * [**8.1** Swapping X- and Y-Axes](https://r-graphics.org/RECIPE-AXES-SWAP-AXES.html)
-  * [**8.2** Setting the Range of a Continuous Axis](https://r-graphics.org/RECIPE-AXES-RANGE.html)
-  * [**8.3** Reversing a Continuous Axis](https://r-graphics.org/RECIPE-AXES-REVERSE.html)
-  * [**8.4** Changing the Order of Items on a Categorical Axis](https://r-graphics.org/RECIPE-AXIS-ORDER.html)
-  * [**8.5** Setting the Scaling Ratio of the X- and Y-Axes](https://r-graphics.org/RECIPE-AXES-SCALE.html)
-  * [**8.6** Setting the Positions of Tick Marks](https://r-graphics.org/RECIPE-AXES-SET-TICKS.html)
-  * [**8.7** Removing Tick Marks and Labels](https://r-graphics.org/RECIPE-AXIS-REMOVE-TICKS.html)
-  * [**8.8** Changing the Text of Tick Labels](https://r-graphics.org/RECIPE-AXES-TICK-LABEL.html)
-  * [**8.9** Changing the Appearance of Tick Labels](https://r-graphics.org/RECIPE-AXES-TICK-LABEL-APPEARANCE.html)
-  * [**8.10** Changing the Text of Axis Labels](https://r-graphics.org/RECIPE-AXES-AXIS-LABEL.html)
-  * [**8.11** Removing Axis Labels](https://r-graphics.org/RECIPE-AXES-AXIS-LABEL-REMOVE.html)
-  * [**8.12** Changing the Appearance of Axis Labels](https://r-graphics.org/RECIPE-AXES-AXIS-LABEL-APPEARANCE.html)
-  * [**8.13** Showing Lines Along the Axes](https://r-graphics.org/RECIPE-AXES-AXIS-LINES.html)
-  * [**8.14** Using a Logarithmic Axis](https://r-graphics.org/RECIPE-AXES-AXIS-LOG.html)
-  * [**8.15** Adding Ticks for a Logarithmic Axis](https://r-graphics.org/RECIPE-AXES-AXIS-LOG-TICKS.html)
-  * [**8.16** Making a Circular Plot](https://r-graphics.org/RECIPE-AXES-POLAR.html)
-  * [**8.17** Using Dates on an Axis](https://r-graphics.org/RECIPE-AXES-AXIS-DATE.html)
-  * [**8.18** Using Relative Times on an Axis](https://r-graphics.org/RECIPE-AXES-TIME-REL.html)
+* Making a basic scatter plot
+* Grouping points together using shapes or colors
+* Using different point shapes
+* Mapping a continuous variable to color or size
+* Dealing with overplotting
+* Adding fitted regression model lines
+* Adding fitted lines from an existing model
+* Adding fitted lines from multiple existing models
+* Adding annotations with model coefficients
+* Adding marginal rugs to a scatter plot
+* Labeling points in a scatter plot
+* Creating a balloon plot
+* Making a scatter plot matrix
+
+### Summarized Data Distributions
+
+* Making a Basic Histogram
+* Making Multiple Histograms from Grouped Data
+* Making a Density Curve
+* Making Multiple Density Curves from Grouped Data
+* Making a Frequency Polygon
+* Making a Basic Box Plot
+* Adding Notches to a Box Plot
+* Adding Means to a Box Plot
+* Making a Violin Plot
+* Making a Dot Plot
+* Making Multiple Dot Plots for Grouped Data
+* Making a Density Plot of Two-Dimensional Data
+
+### Annotations
+
+* Adding Text Annotations
+* Using Mathematical Expressions in Annotations
+* Adding Lines
+* Adding Line Segments and Arrows
+* Adding a Shaded Rectangle
+* Highlighting an Item
+* Adding Error Bars
+* Adding Annotations to Individual Facets
+
+### Axes
+
+* **8.1** Swapping X- and Y-Axes
+* **8.2** Setting the Range of a Continuous Axis
+* [**8.3** Reversing a Continuous Axis](https://r-graphics.org/RECIPE-AXES-REVERSE.html)
+* [**8.4** Changing the Order of Items on a Categorical Axis](https://r-graphics.org/RECIPE-AXIS-ORDER.html)
+* [**8.5** Setting the Scaling Ratio of the X- and Y-Axes](https://r-graphics.org/RECIPE-AXES-SCALE.html)
+* [**8.6** Setting the Positions of Tick Marks](https://r-graphics.org/RECIPE-AXES-SET-TICKS.html)
+* [**8.7** Removing Tick Marks and Labels](https://r-graphics.org/RECIPE-AXIS-REMOVE-TICKS.html)
+* [**8.8** Changing the Text of Tick Labels](https://r-graphics.org/RECIPE-AXES-TICK-LABEL.html)
+* [**8.9** Changing the Appearance of Tick Labels](https://r-graphics.org/RECIPE-AXES-TICK-LABEL-APPEARANCE.html)
+* [**8.10** Changing the Text of Axis Labels](https://r-graphics.org/RECIPE-AXES-AXIS-LABEL.html)
+* [**8.11** Removing Axis Labels](https://r-graphics.org/RECIPE-AXES-AXIS-LABEL-REMOVE.html)
+* [**8.12** Changing the Appearance of Axis Labels](https://r-graphics.org/RECIPE-AXES-AXIS-LABEL-APPEARANCE.html)
+* [**8.13** Showing Lines Along the Axes](https://r-graphics.org/RECIPE-AXES-AXIS-LINES.html)
+* [**8.14** Using a Logarithmic Axis](https://r-graphics.org/RECIPE-AXES-AXIS-LOG.html)
+* [**8.15** Adding Ticks for a Logarithmic Axis](https://r-graphics.org/RECIPE-AXES-AXIS-LOG-TICKS.html)
+* [**8.16** Making a Circular Plot](https://r-graphics.org/RECIPE-AXES-POLAR.html)
+* [**8.17** Using Dates on an Axis](https://r-graphics.org/RECIPE-AXES-AXIS-DATE.html)
+* [**8.18** Using Relative Times on an Axis](https://r-graphics.org/RECIPE-AXES-TIME-REL.html)
 * [**9** Controlling the Overall Appearance of Graphs](https://r-graphics.org/CHAPTER-APPEARANCE.html)
   * [**9.1** Setting the Title of a Graph](https://r-graphics.org/RECIPE-APPEARANCE-TITLE.html)
   * [**9.2** Changing the Appearance of Text](https://r-graphics.org/RECIPE-APPEARANCE-TEXT-APPEARANCE.html)
