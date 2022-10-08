@@ -392,42 +392,42 @@ ggplot(ce, aes(x = Date, y = Weight, fill = Cultivar)) +
 
 ### Summarized Data Distributions
 
-* Making a Basic Histogram
-* Making Multiple Histograms from Grouped Data
-* Making a Density Curve
-* Making Multiple Density Curves from Grouped Data
-* Making a Frequency Polygon
-* Making a Basic Box Plot
-* Adding Notches to a Box Plot
-* Adding Means to a Box Plot
-* Making a Violin Plot
-* Making a Dot Plot
-* Making Multiple Dot Plots for Grouped Data
-* Making a Density Plot of Two-Dimensional Data
+* Making a basic histogram
+* Making multiple histograms from grouped data
+* Making a density curve
+* Making multiple density curves from grouped data
+* Making a frequency polygon
+* Making a basic box plot
+* Adding notches to a box plot
+* Adding means to a box plot
+* Making a violin plot
+* Making a dot plot
+* Making multiple dot plots for grouped data
+* Making a density plot of two-dimensional data
 
 ### Annotations
 
-* Adding Text Annotations
-* Using Mathematical Expressions in Annotations
-* Adding Lines
-* Adding Line Segments and Arrows
-* Adding a Shaded Rectangle
-* Highlighting an Item
-* Adding Error Bars
-* Adding Annotations to Individual Facets
+* Adding text annotations
+* Using mathematical expressions in annotations
+* Adding lines
+* Adding line segments and arrows
+* Adding a shaded rectangle
+* Highlighting an item
+* Adding error bars
+* Adding annotations to individual facets
 
 ### Axes
 
-* **8.1** Swapping X- and Y-Axes
-* **8.2** Setting the Range of a Continuous Axis
-* [**8.3** Reversing a Continuous Axis](https://r-graphics.org/RECIPE-AXES-REVERSE.html)
-* [**8.4** Changing the Order of Items on a Categorical Axis](https://r-graphics.org/RECIPE-AXIS-ORDER.html)
-* [**8.5** Setting the Scaling Ratio of the X- and Y-Axes](https://r-graphics.org/RECIPE-AXES-SCALE.html)
-* [**8.6** Setting the Positions of Tick Marks](https://r-graphics.org/RECIPE-AXES-SET-TICKS.html)
-* [**8.7** Removing Tick Marks and Labels](https://r-graphics.org/RECIPE-AXIS-REMOVE-TICKS.html)
-* [**8.8** Changing the Text of Tick Labels](https://r-graphics.org/RECIPE-AXES-TICK-LABEL.html)
-* [**8.9** Changing the Appearance of Tick Labels](https://r-graphics.org/RECIPE-AXES-TICK-LABEL-APPEARANCE.html)
-* [**8.10** Changing the Text of Axis Labels](https://r-graphics.org/RECIPE-AXES-AXIS-LABEL.html)
+* Swapping X- and Y-Axes
+* Setting the Range of a Continuous Axis
+* Reversing a Continuous Axis
+* Changing the Order of Items on a Categorical Axis
+* Setting the Scaling Ratio of the X- and Y-Axes
+* Setting the Positions of Tick Marks
+* Removing Tick Marks and Labels
+* Changing the Text of Tick Labels
+* Changing the Appearance of Tick Labels
+* Changing the Text of Axis Labels
 * [**8.11** Removing Axis Labels](https://r-graphics.org/RECIPE-AXES-AXIS-LABEL-REMOVE.html)
 * [**8.12** Changing the Appearance of Axis Labels](https://r-graphics.org/RECIPE-AXES-AXIS-LABEL-APPEARANCE.html)
 * [**8.13** Showing Lines Along the Axes](https://r-graphics.org/RECIPE-AXES-AXIS-LINES.html)
