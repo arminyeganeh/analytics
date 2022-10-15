@@ -1,5 +1,7 @@
 ---
-description: Data Analytics and Emerging Technologies in Real Estate, Spring 2023
+description: >-
+  CMP 891 Special Topics:  Data Analytics and Emerging Technologies in Real
+  Estate, Spring 2023
 ---
 
 # Syllabus
@@ -66,11 +68,11 @@ By the end of this course, learners will be able to:&#x20;
 
 ### Course Structure
 
-This course is composed of five modules, and each module is covered in three weeks. Each week involves two lecture sections followed by one lab section structured around case studies. Except for the first week, each week has core and complementary readings. The primary statistical computing package that is used in this course is R, although the choice of software (R vs. Python) is open to learners. R is a data programming language used for statistics, data analysis, text analysis, and machine learning. R arguably is the fastest-growing and leading statistical tool for researchers. It is freely distributed online and can be downloaded from the R homepage [http://cran.r-project.org/](https://cran.r-project.org/). Students will use [R Markdown](https://rmarkdown.rstudio.com/), along with [RStudio](http://www.rstudio.com/) Desktop, to complete the assignments.
+This course is composed of sixteen weeks of lectures, labs, readings, and assignments. Each week involves two lecture sections followed by one lab section structured around case studies. Lectures are composed of theory of statistics and data analytics. Labs and readings are composed of R tutorials. Assignments are applications of R in real estate market analysis. The primary statistical computing package that is used in this course is R, a data programming language used for statistics, data analysis, text analysis, and machine learning. R arguably is the fastest-growing and leading statistical tool for researchers. It is freely distributed online and can be downloaded from the R homepage [http://cran.r-project.org/](https://cran.r-project.org/). Students will use [R Markdown](https://rmarkdown.rstudio.com/), along with [RStudio](http://www.rstudio.com/) to complete the assignments.
 
 ## Part 2: Schedule <a href="#part-1-course-information" id="part-1-course-information"></a>
 
-Classes are held **\*\*\***days and **\*\*\***days from **\*\*\*** to **\*\*\***. The first day of class is **\*\*\***, January **\*\*\***th, 2023. The last day of classes is **\*\*\***day, April **\*\*\***th, 2023. Lectures are held in **\*\*\*** at **\*\*\***. The street address of the main entrance is **\*\*\***, and the classroom is at the **\*\*\*** of the **\*\*\*** level (see map). Students are normally required to attend class in person. If, however, a reasonable accommodation is needed (either to miss class and watch the lecture online or to participate in class remotely via Zoom), please tell the instructor ahead of time and the accommodation will normally be granted. A tentative schedule of lectures and class assignments is as follows.
+Classes are held Mondays from 1:50 pm to 4:40 pm. The first day of class is January 9th, 2023. The last day of classes is April 24th, 2023. Lectures are held in **\*\*\*** at **\*\*\***. The street address of the main entrance is **\*\*\***, and the classroom is at the **\*\*\*** of the **\*\*\*** level (see map). Students are normally required to attend class in person. If, however, a reasonable accommodation is needed (either to miss class and watch the lecture online or to participate in class remotely via Zoom), please tell the instructor ahead of time and the accommodation will normally be granted. A tentative schedule of lectures and class assignments is as follows.
 
 ### **Schedule of Lectures**&#x20;
 
