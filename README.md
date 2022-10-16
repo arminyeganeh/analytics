@@ -68,11 +68,11 @@ By the end of this course, learners will be able to:&#x20;
 
 ### Course Structure
 
-This course is composed of sixteen weeks of lectures, labs, readings, and assignments. Each week involves two lecture sections followed by one lab section structured around case studies. Lectures are composed of theory of statistics and data analytics. Labs and readings are composed of R tutorials. Assignments are applications of R in real estate market analysis. The primary statistical computing package that is used in this course is R, a data programming language used for statistics, data analysis, text analysis, and machine learning. R arguably is the fastest-growing and leading statistical tool for researchers. It is freely distributed online and can be downloaded from the R homepage [http://cran.r-project.org/](https://cran.r-project.org/). Students will use [R Markdown](https://rmarkdown.rstudio.com/), along with [RStudio](http://www.rstudio.com/) to complete the assignments.
+This course is composed of sixteen weeks of lectures, labs, readings, and assignments. Each week involves two lecture sections followed by one lab section structured around case studies. Lectures are composed of the theory of statistics and data analytics. Labs and readings are composed of R tutorials. Assignments are applications of R in real estate market analysis. The primary statistical computing package that is used in this course is R, a data programming language used for statistics, data analysis, text analysis, and machine learning. R arguably is the fastest-growing and leading statistical tool for researchers. It is freely distributed online and can be downloaded from the R homepage [http://cran.r-project.org/](https://cran.r-project.org/). Students will use [R Markdown](https://rmarkdown.rstudio.com/), along with [RStudio](http://www.rstudio.com/) to complete the assignments.
 
 ## Part 2: Schedule <a href="#part-1-course-information" id="part-1-course-information"></a>
 
-Classes are held Mondays from 1:50 pm to 4:40 pm. The first day of class is January 9th, 2023. The last day of classes is April 24th, 2023. Lectures are held in **\*\*\*** at **\*\*\***. The street address of the main entrance is **\*\*\***, and the classroom is at the **\*\*\*** of the **\*\*\*** level (see map). Students are normally required to attend class in person. If, however, a reasonable accommodation is needed (either to miss class and watch the lecture online or to participate in class remotely via Zoom), please tell the instructor ahead of time and the accommodation will normally be granted. A tentative schedule of lectures and class assignments is as follows.
+Spring semester classes are held Mondays from 1:50 pm to 4:40 pm. The first day of class is January 9th, 2023. The last day of classes is April 24th, 2023. Lectures are held in **\*\*\*** at **\*\*\***. The street address of the main entrance is **\*\*\***, and the classroom is at the **\*\*\*** of the **\*\*\*** level (see map). Students are normally required to attend class in person. If, however, a reasonable accommodation is needed (either to miss class and watch the lecture online or to participate in class remotely via Zoom), please tell the instructor ahead of time and the accommodation will normally be granted. A tentative schedule of lectures and class assignments is as follows.
 
 ### **Schedule of Lectures**&#x20;
 
@@ -101,35 +101,35 @@ Classes are held Mondays from 1:50 pm to 4:40 pm. The first day of class is Janu
 
 ## Part 3: Assessment <a href="#part-1-course-information" id="part-1-course-information"></a>
 
-Learners will be assessed on participation, weekly quizzes, assignments, and a class presentation. Learners are expected to complete core readings for every module and complementary readings for at least one module based on interest. Learners will report which module for which they would like to complete the complementary readings by way of a poll. Class presentations will revolve around complementary readings and will be led by those who completed the associated readings. At the end of every week's second lecture, there will be short quiz on the assigned core reading.&#x20;
+Learners will be assessed on participation, lab quizzes, individual assignments, and a group assignment presented in front of the class. Learners are expected to complete core readings for every module and complementary readings for at least one module based on interest. Learners will report which module for which they would like to complete the complementary readings by way of a poll. At the end of every week's lab, there is a short quiz on the assigned core reading.&#x20;
 
-Weekly assignment submissions take the form of a single [R Markdown](https://rmarkdown.rstudio.com/), composed of three sets of lab questions and three sets of homework questions. Except where otherwise noted, assignments are due at the end of the corresponding module, on Fridays at 11:59 pm ET. Assignments will be evaluated on the basis of correctness and style. Complete descriptions and instructions for completing assessments will be provided when assignments are published on the course website. All submissions are individual except where group work is expressly permitted. Adherence to the Honor Code (see below) will be rigorously enforced.
+Weekly assignment submissions take the form of a single [R Markdown](https://rmarkdown.rstudio.com/). Except where otherwise noted, assignments are due at the end of the corresponding module, on Fridays at 11:59 pm ET. Assignments will be evaluated on the basis of correctness and style. Complete descriptions and instructions for completing assessments will be provided when assignments are published on the course website. All submissions are individual except where group work is expressly permitted. Adherence to the Honor Code (see below) will be rigorously enforced.
 
 ### **Schedule of Assessments**&#x20;
 
-| Module       | Quiz    | Lab    | Homework             |
-| ------------ | ------- | ------ | -------------------- |
-| **Module A** |         |        |                      |
-| Week 1       | Quiz A1 | Lab A1 | Homework A1          |
-| Week 2       | Quiz A2 | Lab A2 | Homework A2          |
-| Week 3       | Quiz A3 | Lab A3 | Homework A3          |
-| **Module B** |         |        | **Submission A Due** |
-| Week 4       | Quiz B1 | Lab B1 | Homework B1          |
-| Week 5       | Quiz B2 | Lab B2 | Homework B2          |
-| Week 6       | Quiz B3 | Lab B3 | Homework B3          |
-| **Module C** |         |        | **Submission B Due** |
-| Week 7       | Quiz C1 | Lab C1 | Homework C1          |
-| Week 8       | Quiz C2 | Lab C2 | Homework C2          |
-| Week 9       | Quiz C3 | Lab C3 | Homework C3          |
-| **Module D** |         |        | **Submission C Due** |
-| Week 10      | Quiz D1 | Lab D1 | Homework D1          |
-| Week 11      | Quiz D2 | Lab D2 | Homework D2          |
-| Week 12      | Quiz D3 | Lab D3 | Homework D3          |
-| **Module E** |         |        | **Assignment D Due** |
-| Week 13      | Quiz E1 | Lab E1 | Homework E1          |
-| Week 14      | Quiz E2 | Lab E2 | Homework E2          |
-| Week 15      | Quiz E3 | Lab E3 | Homework E3          |
-|              |         |        | **Assignment E Due** |
+| Module       | Lab    | Assignment           |
+| ------------ | ------ | -------------------- |
+| **Module A** |        |                      |
+| Week 1       | Lab 1  | Assignment 1         |
+| Week 2       | Lab 2  | Assignment 2         |
+| Week 3       | Lab 3  | Assignment 3         |
+| **Module B** |        | **Submission A Due** |
+| Week 4       | Lab 4  | Assignment 4         |
+| Week 5       | Lab 5  | Assignment 5         |
+| Week 6       | Lab 6  | Assignment 6         |
+| **Module C** |        | **Submission B Due** |
+| Week 7       | Lab 7  | Assignment 7         |
+| Week 8       | Lab 8  | Assignment 8         |
+| Week 9       | Lab 9  | Assignment 9         |
+| **Module D** |        | **Submission C Due** |
+| Week 10      | Lab 10 | Assignment 10        |
+| Week 11      | Lab 11 | Assignment 11        |
+| Week 12      | Lab 12 | Assignment 12        |
+| **Module E** |        | **Submission D Due** |
+| Week 13      | Lab 13 | Assignment 13        |
+| Week 14      | Lab 14 | Assignment 14        |
+| Week 15      | Lab 15 | Assignment 15        |
+|              |        | **Submission E Due** |
 
 ### Grading System
 
@@ -165,7 +165,7 @@ Visit the [Spartan Code of Honor](http://asmsu.msu.edu/initiatives/spartan-code-
 
 ### **Late Assignments**
 
-Submission of assignments past the posted due date is subject to penalty at the instructor's discretion. If there are circumstances that require late submission of an assignment, learners should contact the instructor as far in advance as possible to discuss a contingency plan. Depending on the circumstances, accommodations may include penalty-free late submission or waiver of the assignment. Learners should be prepared to submit evidence of the circumstances that necessitate accommodation.
+If there are circumstances that require late submission of an assignment, learners should contact the instructor as far in advance as possible to discuss a contingency plan. Depending on the circumstances, accommodations may include penalty-free late submission or waiver of the assignment. Learners should be prepared to submit evidence of the circumstances that necessitate accommodation.
 
 ### **Participation Expectations**
 
