@@ -20,7 +20,7 @@ Visualizing data is one of the most important tasks facing the data analyst. It�
 
 One of the most famous data visualizations of all time is John Snow’s 1854 map of cholera deaths. The map is elegant in its simplicity. In the background, we have a street map, which helps orient the viewer. Over the top, we see cholera mortality cases entered in bars. Even the most casual inspection of the graph makes it very clear that the outbreak's source is almost certainly the Broad Street pump. Upon viewing this graph, Dr. Snow arranged to have the handle removed from the pump, ending the outbreak that had killed over 500 people. Such is the power of good data visualization.
 
-R doesn’t really provide a single coherent graphics system. Instead, R itself provides a platform, and different people have built different graphical tools using that platform. So let’s start painting.
+R doesn’t really provide a single coherent graphics system. Instead, R itself provides a platform, and different people have built different graphical tools using that platform. [ggplot2](https://ggplot2.tidyverse.org/index.html) is a system for declaratively creating graphics, based on The Grammar of Graphics. You provide the data, tell ggplot2 how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details. So let’s start painting.
 
 ### Scatter Plot
 

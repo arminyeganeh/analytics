@@ -360,7 +360,7 @@ ggplot(ce, aes(x = Date, y = Weight, fill = Cultivar)) +
 
 ### R Graphics Cookbook&#x20;
 
-[R Graphics Cookbook](https://r-graphics.org/) is a practical guide that provides more than 150 recipes to generate high-quality graphs quickly, without having to comb through all the details of R’s graphing systems. Each recipe tackles a specific problem with a solution you can apply to your own project and includes a discussion of how and why the recipe works. You can use the online version of the book for free as a reference to become familiar with a wide range of ggplot2 capabilities:
+[R Graphics Cookbook](https://r-graphics.org/) is a practical guide that provides more than 150 recipes to generate high-quality graphs quickly, without having to comb through all the details of R’s graphing systems. Each recipe tackles a specific problem with a solution you can apply to your own project and includes a discussion of how and why the recipe works. You can use the online version of the book for free as a reference to become familiar with a wide range of ggplot2 capabilities as follows. For a comprehensive reference on ggplot2 capabilities, see this [ggplot2 Reference](https://ggplot2.tidyverse.org/reference/index.html).&#x20;
 
 ### Line graphs
 
