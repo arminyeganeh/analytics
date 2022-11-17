@@ -108,6 +108,7 @@
   * [Graphs in R P.2](course-schedule/week-6/graphs-in-r-p.2.md)
   * [References](course-schedule/week-6/references.md)
   * [FAQs](course-schedule/week-6/faqs.md)
+  * [Market feasibility](course-schedule/week-6/market-feasibility.md)
 * [Week 7](course-schedule/week-7/README.md)
   * [Causal Analysis](course-schedule/week-7/causal-analysis.md)
   * [Experiment Design](course-schedule/week-7/experiment-design.md)

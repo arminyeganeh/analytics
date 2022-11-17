@@ -1,0 +1,3 @@
+# Market feasibility
+
+The market feasibility study shows the compatibility of the project with the surroundings, means of public access, the effect on the environment, and compliance with zoning regulations. Similar successful projects in the area should be noted, and the continuing need for additional facilities proven. And finally, the adaptability to another occupancy and resale value should be evaluated. The most carefully scrutinized section of the presentation will probably be the projected value of the project based on income, or whether the project will generate enough income to repay the loan on time with interest. What is included here will vary with the type of project.
