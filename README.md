@@ -6,7 +6,9 @@ description: >-
 
 # Syllabus
 
-**Lecture & Lab:** Berkey Hall 115, Mondays 1:50 pm – 4:40 pm&#x20;
+**Location:** 115 Berkey Hall, 509 E Circle Dr, East Lansing, MI 48824
+
+**Time:** Mondays 1:50 pm – 4:40 pm&#x20;
 
 **Instructor:** Armin Yeganeh, Ph.D. (armin@msu.edu)
 
@@ -80,7 +82,17 @@ This course is composed of sixteen weeks of lectures, labs, readings, and assign
 
 ## Part 2: Schedule <a href="#part-1-course-information" id="part-1-course-information"></a>
 
-Spring semester classes are held Mondays from 1:50 pm to 4:40 pm. The first day of class is January 9th, 2023. The last day of classes is April 24th, 2023. Lectures are held in **\*\*\*** at **\*\*\***. The street address of the main entrance is **\*\*\***, and the classroom is at the **\*\*\*** of the **\*\*\*** level (see map). Students are normally required to attend class in person. If, however, a reasonable accommodation is needed (either to miss class and watch the lecture online or to participate in class remotely via Zoom), please tell the instructor ahead of time and the accommodation will normally be granted. A tentative schedule of lectures and class assignments is as follows.
+Spring semester classes are held Mondays from 1:50 pm to 4:40 pm. The first day of class is January 9th, 2023. The last day of classes is April 24th, 2023. Lectures are held at 115 Berkey Hall. The street address of the main entrance is 509 E Circle Dr, East Lansing, MI 48824, and the classroom is on the first level (see map). Learners are normally required to attend class in person. If, however, reasonable accommodation is needed (either to miss class and watch the lecture online or to participate in class remotely via Zoom), please tell the instructor ahead of time and the accommodation will normally be granted. A tentative schedule of lectures and class assignments is as follows:
+
+<div>
+
+<figure><img src=".gitbook/assets/Berkey_Hall_1.png" alt=""><figcaption><p>Berkey Hall Entrance</p></figcaption></figure>
+
+ 
+
+<figure><img src=".gitbook/assets/Berkey_Hall.png" alt=""><figcaption><p>Berkey Hall Location</p></figcaption></figure>
+
+</div>
 
 ### **Schedule of Lectures**&#x20;
 
