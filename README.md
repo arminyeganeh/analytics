@@ -6,6 +6,14 @@ description: >-
 
 # Syllabus
 
+**Lecture & Lab:** Berkey Hall 115, Mondays 1:50 pm – 4:40 pm&#x20;
+
+**Instructor:** Armin Yeganeh, Ph.D. (armin@msu.edu)
+
+**Office:** 203F Human Ecology Building, 552 W Circle Dr, East Lansing, MI 48823 (By appointment)
+
+**Meeting Online:** https://msu.zoom.us/my/arminyeganeh, Passcode: SPDC
+
 ## Part 1: Introduction <a href="#part-1-course-information" id="part-1-course-information"></a>
 
 ### Course Description <a href="#instructor" id="instructor"></a>
