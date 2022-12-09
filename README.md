@@ -22,20 +22,20 @@ description: >-
 
 _Data Analytics_ comprises the application of raw data, tools, and processes to inform decision-making. Data analytics helps businesses and individuals optimize their performance, perform more efficiently, maximize profit, or make more strategically-guided decisions. This three-credit hour graduate-level course provides future data analysts with several tools, methods, and skills to answer questions, characterize trends, and identify opportunities for growth. Learners will practice collecting, preparing, processing, visualizing, and interpreting data, and reporting reproducible results to improve decision-making in real estate business, finance, policy, and even in personal life. Using widely used statistical programming languages, such as R and Python, learners will study various approaches to data analytics, including looking at what happened (descriptive analytics), why something happened (diagnostic analytics), what is going to happen (predictive analytics), or what should be done next (prescriptive analytics). Throughout problem-based learning activities, learners apply the data analytics knowledge acquired from lectures and readings by developing case studies focused on housing and community development.
 
-### Course Objectives
+### Course Objectives (Inputs)
 
-This course covers the application of quantitative techniques to real estate:&#x20;
+Course objectives reflect specific knowledge, skills, abilities, or competencies that instructors expect students to acquire from a particular course. Course objectives are often very specific and detailed statements that describe the content or skills that will be taught in the classroom. In some regards, course objectives can be thought of as inputs of student learning, representing the many important details that faculty members will cover during a particular course. These objectives ultimately become building blocks for a student’s learning in a program. This course covers the application of quantitative techniques to real estate:&#x20;
 
 * Fundamentals of applied quantitative methods&#x20;
 * Fundamentals of data programming for statistical analysis
 * Data collection from major socioeconomic and real estate data sources
 * Real estate valuation, risk assessment, and trends analysis models
 * Empirical economic analysis to assess market demand for real property&#x20;
-* Quantitative analysis to drive optimum capital- and location allocation
+* Quantitative analysis to drive optimum capital- and location-allocation
 
-### Learning Outcomes
+### Student Learning Outcomes (Outputs)
 
-By the end of this course, learners will be able to:&#x20;
+Student learning outcomes are informed by all the course objectives across a program and reflect the knowledge, skills, abilities, or competencies that students are expected to acquire from completing a program. Student learning outcomes typically encompass numerous course objectives and are sometimes presented at a higher cognitive level. Consequently, student learning outcomes can be thought of as outputs of student learning, representing what students should know or be able to do after completing a program. By the end of this course, learners will be able to:&#x20;
 
 * Use a data programming language, such as R or Python,&#x20;
 * Import, export, and manipulate data and create statistical summaries,&#x20;
