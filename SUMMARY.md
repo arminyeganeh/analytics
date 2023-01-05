@@ -3,6 +3,7 @@
 ## Course Information
 
 * [Syllabus](README.md)
+* [Student Survey](course-information/student-survey.md)
 
 ## Course Schedule
 
