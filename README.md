@@ -10,6 +10,8 @@ description: >-
 
 **Time:** Mondays 1:50 pm – 4:40 pm&#x20;
 
+**Date:** 1/9/2023 - 4/30/2023
+
 **Instructor:** Armin Yeganeh, Ph.D. (armin@msu.edu)
 
 **Office:** 203F Human Ecology Building, 552 W Circle Dr, East Lansing, MI 48823 (By appointment)
