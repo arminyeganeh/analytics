@@ -10,6 +10,8 @@ description: >-
 
 **Time:** Mondays 1:50 pm – 4:40 pm&#x20;
 
+**Date:** 1/9/2023 - 4/30/2023
+
 **Instructor:** Armin Yeganeh, Ph.D. (armin@msu.edu)
 
 **Office:** 203F Human Ecology Building, 552 W Circle Dr, East Lansing, MI 48823 (By appointment)
@@ -37,12 +39,12 @@ Course objectives reflect specific knowledge, skills, abilities, or competencies
 
 Student learning outcomes are informed by all the course objectives across a program and reflect the knowledge, skills, abilities, or competencies that students are expected to acquire from completing a program. Student learning outcomes typically encompass numerous course objectives and are sometimes presented at a higher cognitive level. Consequently, student learning outcomes can be thought of as outputs of student learning, representing what students should know or be able to do after completing a program. By the end of this course, learners will be able to:&#x20;
 
-* Use a data programming language, such as R or Python,&#x20;
-* Import, export, and manipulate data and create statistical summaries,&#x20;
-* Produce, interpret, and communicate basic and advanced statistical results,
-* Perform standard hypothesis tests and run intermediate regression models,
-* Apply non-linear statistical methods to address questions ill-suited for OLS regression,
-* Draw inferences using statistical theory and report in markdowns/notebooks,&#x20;
+* Use a data programming language, such as R or Python&#x20;
+* Import, export, and manipulate data and create statistical summaries&#x20;
+* Produce, interpret, and communicate basic and advanced statistical results
+* Perform standard hypothesis tests and run intermediate regression models
+* Apply non-linear statistical methods to address questions ill-suited for OLS regression
+* Draw inferences using statistical theory and report in markdowns/notebooks
 
 ### Instructor <a href="#instructor" id="instructor"></a>
 
@@ -70,8 +72,8 @@ Student learning outcomes are informed by all the course objectives across a pro
 
 **Recommended Books on R:**
 
-* Navarro, D. (2019) [Learning Stats with R](https://learningstatisticswithr.com/book/)
-* Boehmke, B. (2016) Data Wrangling with R
+* Navarro, D. (2019). [Learning Stats with R](https://learningstatisticswithr.com/book/)
+* Boehmke, B. (2016). Data Wrangling with R
 * Grolemund, G., & Wickham H. (2022). [R for Data Science](https://r4ds.had.co.nz/)
 * Venables, W. et al. (2022). [An Introduction to R](https://cran.r-project.org/manuals.html)
 * Garson, D. G. (2022). Data Analytics for the Social Sciences.
