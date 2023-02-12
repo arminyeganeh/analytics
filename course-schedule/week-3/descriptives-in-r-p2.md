@@ -78,9 +78,8 @@ $$
 
 we can see that the interquartile range for the 2010 AFL winning margins data is 37.75. Of course, that seems like too much work to do all that typing, so R has a built-in function called `IQR()` that we can use:
 
-```
-IQR(x = afl.margins)
-```
+<pre><code><strong>IQR(x = afl.margins)
+</strong></code></pre>
 
 ```
 [1] 37.75
